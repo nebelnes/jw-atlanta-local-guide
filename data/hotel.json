@@ -1,0 +1,11 @@
+{
+  "id": "jw-marriott-atlanta-downtown",
+  "name": "JW Marriott Atlanta Downtown",
+  "address": {
+    "street": "45 Ivan Allen Jr Blvd NW",
+    "locality": "Atlanta",
+    "region": "GA",
+    "postalCode": "30308"
+  },
+  "phone": "+1 404-582-5800"
+}
