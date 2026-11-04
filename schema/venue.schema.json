@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nebelnes.github.io/jw-atlanta-local-guide/schema/venue.schema.json",
+  "title": "JW Atlanta Local Guide venue file",
+  "description": "Structure of data/venues.json. See docs/DATA_MODEL.md for the meaning of each field. Cross-file rules (taxonomy membership, unique ids, dates) are enforced by scripts/validate-data.mjs.",
+  "type": "object",
+  "required": ["venues"],
+  "additionalProperties": false,
+  "properties": {
+    "venues": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/venue" }
+    }
+  },
+  "$defs": {
+    "nullableText": { "type": ["string", "null"], "minLength": 1 },
+    "tagList": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "venue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "name", "status", "category", "cuisine", "cuisineGroup",
+        "priceLevel", "address", "verification"
+      ],
+      "properties": {
+        "id": {
+          "description": "Stable kebab-case identifier. Never reuse or change once published.",
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "name": { "type": "string", "minLength": 1 },
+        "status": {
+          "enum": ["active", "temporarily_unavailable", "closed"]
+        },
+        "category": {
+          "description": "Top-level section. Only dining exists today.",
+          "enum": ["dining"]
+        },
+        "subcategories": { "$ref": "#/$defs/tagList" },
+        "cuisine": { "type": "string", "minLength": 1 },
+        "cuisineGroup": { "type": "string", "minLength": 1 },
+        "priceLevel": { "type": "string", "pattern": "^\\${1,4}$" },
+        "diningStyle": { "type": "string", "minLength": 1 },
+
+        "neighborhood": { "$ref": "#/$defs/nullableText" },
+        "address": { "type": "string", "minLength": 1 },
+        "coordinates": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["lat", "lng"],
+          "properties": {
+            "lat": { "type": "number", "minimum": -90, "maximum": 90 },
+            "lng": { "type": "number", "minimum": -180, "maximum": 180 }
+          }
+        },
+        "website": { "type": ["string", "null"], "format": "uri" },
+        "phone": { "$ref": "#/$defs/nullableText" },
+        "hours": { "$ref": "#/$defs/nullableText" },
+        "rating": {
+          "description": "Legacy field kept so current behavior is unchanged; not populated. Slated for removal.",
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 5
+        },
+
+        "walkMinutes": {
+          "description": "Walking time from the hotel in data/hotel.json. Current values are curated estimates.",
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "walkable": { "type": ["boolean", "null"] },
+        "driveMinutes": { "type": ["integer", "null"], "minimum": 0 },
+        "walkingRoute": { "$ref": "#/$defs/walkingRoute" },
+
+        "reservations": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "policy": { "enum": ["required", "recommended", "accepted", "not_accepted", "unknown"] },
+            "notes": { "$ref": "#/$defs/nullableText" }
+          }
+        },
+        "dressCode": { "$ref": "#/$defs/nullableText" },
+        "bestFor": { "$ref": "#/$defs/tagList" },
+        "atmosphere": { "$ref": "#/$defs/tagList" },
+        "dietaryOptions": { "$ref": "#/$defs/tagList" },
+
+        "summary": {
+          "description": "Short description shown on the card.",
+          "type": "string",
+          "minLength": 1
+        },
+        "whyWeRecommend": { "$ref": "#/$defs/nullableText" },
+        "insiderTip": { "$ref": "#/$defs/nullableText" },
+        "caveat": { "$ref": "#/$defs/nullableText" },
+
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sourceLabel", "sourceUrls", "lastVerified"],
+          "properties": {
+            "sourceLabel": { "type": "string", "minLength": 1 },
+            "sourceUrls": {
+              "type": "array",
+              "items": { "type": "string", "format": "uri" },
+              "uniqueItems": true
+            },
+            "lastVerified": {
+              "description": "ISO date (YYYY-MM-DD) the volatile facts were last checked, or null if never.",
+              "type": ["string", "null"],
+              "format": "date"
+            }
+          }
+        }
+      }
+    },
+    "walkingRoute": {
+      "description": "Prebuilt walking route from the hotel (issue #2). Optional until routes are generated.",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["distanceMeters", "durationMinutes", "polyline", "steps", "source", "computedAt"],
+      "properties": {
+        "distanceMeters": { "type": "integer", "minimum": 0 },
+        "durationMinutes": { "type": "integer", "minimum": 0 },
+        "polyline": {
+          "description": "Encoded polyline (Google format) of the route path.",
+          "type": "string",
+          "minLength": 1
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["instruction", "distanceMeters"],
+            "properties": {
+              "instruction": { "type": "string", "minLength": 1 },
+              "distanceMeters": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "source": { "type": "string", "minLength": 1 },
+        "computedAt": { "type": "string", "format": "date" }
+      }
+    }
+  }
+}

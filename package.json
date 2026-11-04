@@ -1,0 +1,19 @@
+{
+  "name": "jw-atlanta-local-guide",
+  "private": true,
+  "description": "Curated concierge recommendations for JW Marriott Atlanta Downtown.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "serve": "node scripts/serve.mjs",
+    "validate": "node scripts/validate-data.mjs",
+    "test": "node --test \"tests/unit/*.test.mjs\"",
+    "test:e2e": "playwright test",
+    "check": "npm run validate && npm test"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

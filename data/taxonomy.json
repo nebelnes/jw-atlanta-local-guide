@@ -1,0 +1,90 @@
+{
+  "cuisineGroups": [
+    {
+      "name": "American",
+      "description": "American, Southern, Steakhouse, Seafood, Burgers & BBQ",
+      "cuisines": [
+        "American",
+        "Southern",
+        "Steakhouse",
+        "Seafood",
+        "Burgers",
+        "BBQ"
+      ]
+    },
+    {
+      "name": "European",
+      "description": "Italian, French, Greek, Spanish, German & more",
+      "cuisines": [
+        "Italian",
+        "French",
+        "Greek / Mediterranean",
+        "Spanish / Tapas",
+        "German"
+      ]
+    },
+    {
+      "name": "Latin American",
+      "description": "Mexican, Cuban, Brazilian & Latin American",
+      "cuisines": [
+        "Mexican",
+        "Cuban",
+        "Brazilian",
+        "Latin American"
+      ]
+    },
+    {
+      "name": "Asian",
+      "description": "Japanese, Chinese, Thai, Korean, Vietnamese & Indian",
+      "cuisines": [
+        "Japanese / Sushi",
+        "Chinese",
+        "Thai",
+        "Korean",
+        "Vietnamese",
+        "Indian"
+      ]
+    },
+    {
+      "name": "Middle Eastern & Mediterranean",
+      "description": "Middle Eastern and Mediterranean cuisines",
+      "cuisines": [
+        "Lebanese / Middle Eastern",
+        "Mediterranean"
+      ]
+    },
+    {
+      "name": "Breakfast & Casual",
+      "description": "Breakfast, brunch, pizza, cafés & healthy choices",
+      "cuisines": [
+        "Breakfast / Brunch",
+        "Pizza",
+        "Café / Bakery",
+        "Vegetarian / Healthy"
+      ]
+    }
+  ],
+  "priceLevels": [
+    {
+      "value": "$",
+      "label": "$ · Under $25"
+    },
+    {
+      "value": "$$",
+      "label": "$$ · $25–$50"
+    },
+    {
+      "value": "$$$",
+      "label": "$$$ · $51–$75"
+    },
+    {
+      "value": "$$$$",
+      "label": "$$$$ · Over $75"
+    }
+  ],
+  "diningStyles": [
+    "Casual",
+    "Upscale",
+    "Fine Dining"
+  ]
+}

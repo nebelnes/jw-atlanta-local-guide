@@ -1,0 +1,487 @@
+{
+  "venues": [
+    {
+      "id": "fiora-cucina-italiana",
+      "name": "Fiora Cucina Italiana",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Italian",
+      "cuisineGroup": "European",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "address": "45 Ivan Allen Jr Blvd NW, Atlanta, GA 30308",
+      "phone": "(404) 582-5800",
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 0,
+      "summary": "Italian-inspired dining inside JW Marriott Atlanta Downtown.",
+      "verification": {
+        "sourceLabel": "Marriott",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "atlanta-breakfast-club",
+      "name": "Atlanta Breakfast Club",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Breakfast / Brunch",
+      "cuisineGroup": "Breakfast & Casual",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "249 Ivan Allen Jr Blvd NW, Atlanta, GA 30313",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 6,
+      "summary": "Downtown breakfast and brunch restaurant.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "catch-12",
+      "name": "Catch 12",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "address": "400 W Peachtree St NW, Atlanta, GA 30308",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 8,
+      "summary": "Contemporary American dining at TWELVE Centennial Park.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "alma-cocina",
+      "name": "Alma Cocina",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Mexican",
+      "cuisineGroup": "Latin American",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "address": "191 Peachtree St NE, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 13,
+      "summary": "Contemporary Mexican cuisine in Downtown Atlanta.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "ag-steakhouse",
+      "name": "AG Steakhouse",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Steakhouse",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$$",
+      "diningStyle": "Fine Dining",
+      "address": "181 Peachtree St NE, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 14,
+      "summary": "Modern steakhouse at The Ritz-Carlton Atlanta.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "amalfi-cucina-and-mercato",
+      "name": "Amalfi Cucina & Mercato",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Italian",
+      "cuisineGroup": "European",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "17 Andrew Young International Blvd NE, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 15,
+      "summary": "Neapolitan pizza and Italian dishes Downtown.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "atalian-kitchen-and-bar",
+      "name": "Atalian Kitchen & Bar",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Italian",
+      "cuisineGroup": "European",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "address": "60 Luckie St NW, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 16,
+      "summary": "Full-service Italian dining in a business-casual setting.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "rays-in-the-city",
+      "name": "Ray's in the City",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Seafood",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$$",
+      "diningStyle": "Fine Dining",
+      "address": "240 Peachtree St NW, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 16,
+      "summary": "Downtown seafood and steak destination.",
+      "verification": {
+        "sourceLabel": "Official restaurant / Downtown directory",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "white-oak-kitchen-and-cocktails",
+      "name": "White Oak Kitchen & Cocktails",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Southern",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "address": "270 Peachtree St NW, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 16,
+      "summary": "Contemporary Southern-inspired food and cocktails.",
+      "verification": {
+        "sourceLabel": "Official restaurant / Atlanta visitor listings",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "max-lagers-wood-fired-grill-and-brewery",
+      "name": "Max Lager's Wood-Fired Grill & Brewery",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "320 Peachtree St NE, Atlanta, GA 30308",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 17,
+      "summary": "Downtown brewpub with wood-fired American fare.",
+      "verification": {
+        "sourceLabel": "Official restaurant / Atlanta visitor listings",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "hard-rock-cafe-atlanta",
+      "name": "Hard Rock Cafe Atlanta",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Burgers",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "215 Peachtree St NE, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 17,
+      "summary": "Casual American classics and live-music memorabilia.",
+      "verification": {
+        "sourceLabel": "Official restaurant",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "sweet-georgias-juke-joint",
+      "name": "Sweet Georgia's Juke Joint",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Southern",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$",
+      "diningStyle": "Casual",
+      "address": "200 Peachtree St NW, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 18,
+      "summary": "Southern food with live music and a lively atmosphere.",
+      "verification": {
+        "sourceLabel": "Official restaurant / Atlanta visitor listings",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "teds-montana-grill-luckie-street",
+      "name": "Ted's Montana Grill - Luckie Street",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "133 Luckie St NW, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 18,
+      "summary": "American grill known for burgers, steaks, and bison.",
+      "verification": {
+        "sourceLabel": "Official restaurant",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "der-biergarten",
+      "name": "Der Biergarten",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "German",
+      "cuisineGroup": "European",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "300 Marietta St NW, Atlanta, GA 30313",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 18,
+      "summary": "German beer hall and restaurant near Centennial Park.",
+      "verification": {
+        "sourceLabel": "Official restaurant / Atlanta visitor listings",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "twin-smokers-bbq",
+      "name": "Twin Smokers BBQ",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "BBQ",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "300 Marietta St NW, Atlanta, GA 30313",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 18,
+      "summary": "Downtown barbecue restaurant serving smoked meats and sides.",
+      "verification": {
+        "sourceLabel": "Official restaurant / Atlanta visitor listings",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "pittypats-porch",
+      "name": "Pittypat's Porch",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Southern",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "address": "25 Andrew Young International Blvd NW, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 19,
+      "summary": "Long-running Atlanta restaurant focused on Southern cooking.",
+      "verification": {
+        "sourceLabel": "Official restaurant / Atlanta visitor listings",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "polaris",
+      "name": "Polaris",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$$",
+      "diningStyle": "Fine Dining",
+      "address": "265 Peachtree St NE, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 20,
+      "summary": "Rotating rooftop restaurant at Hyatt Regency Atlanta.",
+      "verification": {
+        "sourceLabel": "Official hotel dining page",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "sway",
+      "name": "Sway",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Southern",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "address": "265 Peachtree St NE, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 20,
+      "summary": "Southern-inspired restaurant inside Hyatt Regency Atlanta.",
+      "verification": {
+        "sourceLabel": "Official hotel dining page",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "cuts-steakhouse",
+      "name": "Cuts Steakhouse",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Steakhouse",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$$",
+      "diningStyle": "Fine Dining",
+      "address": "60 Andrew Young International Blvd NE, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 21,
+      "summary": "Downtown steakhouse serving steaks and seafood.",
+      "verification": {
+        "sourceLabel": "Official restaurant / Atlanta visitor listings",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "park-bar",
+      "name": "Park Bar",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "150 Walton St NW, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 21,
+      "summary": "Casual bar and grill near Centennial Olympic Park.",
+      "verification": {
+        "sourceLabel": "Official restaurant / Downtown listings",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "glenns-kitchen",
+      "name": "Glenn's Kitchen",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "address": "110 Marietta St NW, Atlanta, GA 30303",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 22,
+      "summary": "Modern American restaurant inside Glenn Hotel.",
+      "verification": {
+        "sourceLabel": "Official hotel dining page",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "stats-brewpub",
+      "name": "Stats Brewpub",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "300 Marietta St NW, Atlanta, GA 30313",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 22,
+      "summary": "Sports-focused brewpub near Downtown venues.",
+      "verification": {
+        "sourceLabel": "Official restaurant / Atlanta visitor listings",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    },
+    {
+      "id": "margaritaville-atlanta",
+      "name": "Margaritaville Atlanta",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "155 Centennial Olympic Park Dr NW, Atlanta, GA 30313",
+      "phone": null,
+      "hours": null,
+      "rating": null,
+      "walkMinutes": 23,
+      "summary": "Casual American and island-inspired restaurant near Centennial Park.",
+      "verification": {
+        "sourceLabel": "Official restaurant",
+        "sourceUrls": [],
+        "lastVerified": null
+      }
+    }
+  ]
+}
