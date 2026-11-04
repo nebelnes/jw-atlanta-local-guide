@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JW Atlanta Local Guide</title>
+<style>
+:root{--ink:#1d2528;--muted:#617076;--paper:#f6f3ee;--card:#fff;--gold:#9b7a3c;--wine:#55343c;--line:#ddd5c9;--green:#2f6b57;--shadow:0 10px 30px rgba(29,37,40,.08)}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink)}
+button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0 22px;border-bottom:1px solid var(--line)}
+.brand small{display:block;letter-spacing:.16em;color:var(--gold);font-weight:700}.brand h1{margin:4px 0 0;font-family:Georgia,serif;font-size:clamp(25px,4vw,42px);font-weight:500}.home-btn{border:1px solid var(--line);background:white;padding:10px 14px;border-radius:999px;cursor:pointer}
+.hero{padding:40px 0 24px}.hero h2{font-family:Georgia,serif;font-weight:500;font-size:clamp(30px,5vw,54px);margin:0 0 10px}.hero p{color:var(--muted);font-size:18px;margin:0}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tile{min-height:140px;border:1px solid var(--line);border-radius:18px;background:var(--card);padding:22px;text-align:left;cursor:pointer;box-shadow:var(--shadow);transition:.2s}.tile:hover,.tile:focus{transform:translateY(-2px);border-color:var(--gold);outline:none}.tile .icon{font-size:32px}.tile strong{display:block;font-family:Georgia,serif;font-size:24px;margin-top:18px}.tile span{color:var(--muted);font-size:14px}
+.quick{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0}.pill{border:1px solid var(--line);background:#fff;padding:10px 14px;border-radius:999px;cursor:pointer}.pill.active{background:var(--wine);color:#fff;border-color:var(--wine)}
+.view{display:none}.view.active{display:block}.section-head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin:28px 0 18px}.section-head h2{font-family:Georgia,serif;font-size:36px;font-weight:500;margin:0}.section-head p{color:var(--muted);margin:4px 0 0}
+.region-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 30px}.region-tile{min-height:135px;border:1px solid var(--line);border-radius:18px;background:#fff;padding:22px;text-align:left;cursor:pointer;box-shadow:var(--shadow);transition:.2s}.region-tile:hover,.region-tile:focus{transform:translateY(-2px);border-color:var(--gold);outline:none}.region-tile strong{display:block;font-family:Georgia,serif;font-size:23px;margin-bottom:8px}.region-tile span{color:var(--muted);line-height:1.4}.subcategory-bar{display:none;margin:10px 0 16px}.subcategory-bar.active{display:block}.subcategory-title{font-size:13px;color:var(--muted);font-weight:700;margin:0 0 9px}.cuisines{display:flex;flex-wrap:wrap;gap:10px}.cuisine{border:1px solid var(--line);background:white;padding:12px 15px;border-radius:12px;cursor:pointer}.cuisine:hover,.cuisine:focus{border-color:var(--gold);outline:none}.cuisine.selected{background:var(--wine);color:#fff;border-color:var(--wine)} .flag-img{width:24px;height:16px;object-fit:cover;border-radius:2px;vertical-align:-3px;margin-right:7px;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+.controls{position:sticky;top:0;z-index:4;background:rgba(246,243,238,.96);padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap;align-items:end}.control label{display:block;font-size:12px;font-weight:700;margin-bottom:5px;color:var(--muted)}select{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;min-width:145px}.count{margin-left:auto;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:20px 0}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:var(--shadow)}.card-top{display:flex;justify-content:space-between;gap:12px}.card h3{font-family:Georgia,serif;font-size:24px;font-weight:500;margin:0 0 5px}.badge{display:inline-block;background:#f2eadc;color:#6f5427;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:700}.meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:12px 0}.desc{line-height:1.45}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.action{border:1px solid var(--line);background:white;border-radius:10px;padding:9px 11px;cursor:pointer}.action.primary{background:var(--wine);color:#fff;border-color:var(--wine)}
+.placeholder{border:1px dashed var(--line);border-radius:18px;padding:30px;background:#fff;color:var(--muted)}.notice{background:#fff8e7;border:1px solid #ecd9a8;padding:12px 14px;border-radius:12px;color:#6c5528;margin:16px 0}.empty{grid-column:1/-1;padding:25px;background:#fff;border-radius:16px;text-align:center;color:var(--muted)}
+.map-panel{display:none;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0;box-shadow:var(--shadow)}.map-panel.active{display:block}.map-head{display:flex;justify-content:space-between;gap:12px;align-items:start}.map-head h3{font-family:Georgia,serif;font-size:27px;font-weight:500;margin:0}.route-box{margin-top:16px;padding:18px;border-radius:14px;background:#f5f0e7;border:1px solid var(--line)}.route-line{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;margin:10px 0}.route-dot{width:14px;height:14px;border-radius:50%;background:var(--wine);margin:auto}.route-path{width:3px;height:24px;background:var(--gold);margin:auto}.map-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.print-only{display:none} footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0;color:var(--muted);font-size:13px}
+@media(max-width:760px){.tiles,.region-grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.count{width:100%;margin:0}.topbar{align-items:flex-start}.tile{min-height:120px;padding:16px}.tile strong{font-size:20px;margin-top:12px}}
+@media(max-width:420px){.shell{padding:12px}.tiles,.region-grid{grid-template-columns:1fr 1fr;gap:9px}.tile{min-height:105px}.tile span{display:none}.hero{padding-top:28px}.controls{position:static}.control{width:100%}select{width:100%}}
+@media print{body{background:#fff}.topbar,.controls,.quick,.actions,footer,.notice,.section-head,.subcategory-bar,.cards{display:none!important}.map-panel.active{display:block!important;border:0;box-shadow:none;padding:0}.map-actions{display:none}.print-only{display:block}.shell{max-width:none}.card{box-shadow:none;break-inside:avoid}.cards{display:block}.card{margin-bottom:14px}}
+</style>
+</head>
+<body>
+<div class="shell" id="app">
+<header class="topbar"><div class="brand"><small>JW MARRIOTT ATLANTA DOWNTOWN</small><h1>Local Guide</h1></div><button class="home-btn" id="homeBtn" type="button">⌂ Home</button></header>
+
+<main>
+<section id="home" class="view active">
+ <div class="hero"><h2>What is your guest looking for?</h2><p>Curated Atlanta recommendations, routes, and guest-ready information.</p></div>
+ <div class="tiles">
+  <button class="tile" data-view="restaurants" type="button"><span class="icon">🍽️</span><strong>Restaurants</strong><span>Browse by region and cuisine</span></button>
+  <button class="tile" data-view="attractions" type="button"><span class="icon">🏛️</span><strong>Attractions</strong><span>Family, culture, and must-see places</span></button>
+  <button class="tile" data-view="events" type="button"><span class="icon">🏟️</span><strong>Sports & Events</strong><span>Venues and upcoming events</span></button>
+  <button class="tile" data-view="entertainment" type="button"><span class="icon">🎭</span><strong>Entertainment</strong><span>Theater, music, and nightlife</span></button>
+  <button class="tile" data-view="shopping" type="button"><span class="icon">🛍️</span><strong>Shopping</strong><span>Markets, malls, and boutiques</span></button>
+  <button class="tile" data-view="outdoors" type="button"><span class="icon">🌳</span><strong>Parks & Outdoors</strong><span>Green spaces and outdoor activities</span></button>
+ </div>
+ <div class="quick"><button class="pill" type="button">⭐ JW Recommended</button><button class="pill" type="button">📍 Closest to Hotel</button><button class="pill" type="button">🕐 Open Now</button><button class="pill" type="button">🎟️ What's Happening Today</button></div>
+</section>
+
+<section id="restaurants" class="view">
+ <div id="regionChooser">
+  <div class="section-head"><div><h2>Restaurants</h2><p>Choose a regional cuisine.</p></div></div>
+  <div class="region-grid" id="regionGrid"></div>
+ </div>
+ <div id="restaurantResults" style="display:none">
+  <div class="section-head"><div><h2 id="restaurantTitle">Restaurants</h2><p>Choose a subcategory or refine the results below.</p></div><button class="home-btn" id="changeRegion" type="button">← Change region</button></div>
+  <div class="subcategory-bar active"><div class="subcategory-title">Cuisine subcategories</div><div class="cuisines" id="cuisineMenu"></div></div>
+  <div class="notice">Restaurant listings are not automatically JW recommendations. Live ratings, hours, phone details, and exact walking times still require a live places service.</div>
+ <div class="controls" aria-label="Restaurant filters">
+  <div class="control"><label for="rating">Rating</label><select id="rating"><option value="0">Any rating</option><option value="4.5">4.5+</option><option value="4">4.0+</option><option value="3.5">3.5+</option></select></div>
+  <div class="control"><label for="price">Average check</label><select id="price"><option value="All">Any price</option><option value="$">$ · Under $25</option><option value="$$">$$ · $25–$50</option><option value="$$$">$$$ · $51–$75</option><option value="$$$$">$$$$ · Over $75</option></select></div>
+  <div class="control"><label for="type">Restaurant type</label><select id="type"><option value="All">Any type</option><option>Casual</option><option>Upscale</option><option>Fine Dining</option></select></div>
+  <div class="count" id="resultCount" aria-live="polite"></div>
+ </div>
+ <div class="map-panel" id="mapPanel">
+   <div class="map-head"><div><div class="badge">WALKING DIRECTIONS</div><h3 id="mapDestination">Destination</h3></div><button class="action" id="closeMap" type="button">Close</button></div>
+   <p><strong>From:</strong> JW Marriott Atlanta Downtown<br><span style="color:var(--muted)">45 Ivan Allen Jr Blvd NW, Atlanta, GA 30308</span></p>
+   <div class="route-box">
+    <div class="route-line"><div class="route-dot"></div><div><strong>JW Marriott Atlanta Downtown</strong><br><span style="color:var(--muted)">Start at 45 Ivan Allen Jr Blvd NW</span></div></div>
+    <div class="route-line"><div class="route-path"></div><div id="mapSummary">Walking route</div></div>
+    <div class="route-line"><div class="route-dot" style="background:var(--gold)"></div><div><strong id="mapEndName">Destination</strong><br><span id="mapEndAddress" style="color:var(--muted)"></span></div></div>
+   </div>
+   <div class="map-actions"><button class="action primary" id="openGoogleMap" type="button">Open Live Walking Map</button><button class="action" id="printRoute" type="button">Print Walking Directions</button></div>
+   <p class="print-only">For live turn-by-turn directions, please ask the Front Desk to open the digital walking map.</p>
+  </div>
+ <div class="cards" id="restaurantCards"></div>
+ </div>
+</section>
+
+<section id="attractions" class="view"><div class="section-head"><div><h2>Attractions</h2><p>Family, culture, history, outdoor spaces, and Atlanta must-sees.</p></div></div><div class="placeholder"><strong>Attraction section is ready for the next build step.</strong><br><br>Planned cards: Georgia Aquarium, Centennial Olympic Park, World of Coca-Cola, National Center for Civil and Human Rights, and more.</div></section>
+<section id="events" class="view"><div class="section-head"><div><h2>Sports & Events</h2><p>Venues, event details, walking routes, and restaurants near the venue.</p></div></div><div class="placeholder"><strong>Events section is ready for the next build step.</strong><br><br>Planned venues: Mercedes-Benz Stadium, State Farm Arena, Fox Theatre, Tabernacle, and Georgia World Congress Center.</div></section>
+<section id="entertainment" class="view"><div class="section-head"><div><h2>Entertainment</h2><p>Theaters, live music, shows, and nightlife.</p></div></div><div class="placeholder">This category will be populated in a future revision.</div></section>
+<section id="shopping" class="view"><div class="section-head"><div><h2>Shopping</h2><p>Markets, malls, and local shopping destinations.</p></div></div><div class="placeholder">This category will be populated in a future revision.</div></section>
+<section id="outdoors" class="view"><div class="section-head"><div><h2>Parks & Outdoors</h2><p>Green spaces, trails, and outdoor activities.</p></div></div><div class="placeholder">This category will be populated in a future revision.</div></section>
+</main>
+<footer>JW Atlanta Local Guide · Working prototype · Designed for desktop, tablet, and phone</footer>
+</div>
+<script>
+const regions={
+ "American":["American","Southern","Steakhouse","Seafood","Burgers","BBQ"],
+ "European":["Italian","French","Greek / Mediterranean","Spanish / Tapas","German"],
+ "Latin American":["Mexican","Cuban","Brazilian","Latin American"],
+ "Asian":["Japanese / Sushi","Chinese","Thai","Korean","Vietnamese","Indian"],
+ "Middle Eastern & Mediterranean":["Lebanese / Middle Eastern","Mediterranean"],
+ "Breakfast & Casual":["Breakfast / Brunch","Pizza","Café / Bakery","Vegetarian / Healthy"]
+};
+const flagSvg={
+ "Italian":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'><path fill='#009246' d='M0 0h1v2H0z'/><path fill='#fff' d='M1 0h1v2H1z'/><path fill='#ce2b37' d='M2 0h1v2H2z'/></svg>",
+ "French":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'><path fill='#002395' d='M0 0h1v2H0z'/><path fill='#fff' d='M1 0h1v2H1z'/><path fill='#ed2939' d='M2 0h1v2H2z'/></svg>",
+ "Greek / Mediterranean":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 18'><path fill='#0d5eaf' d='M0 0h27v18H0z'/><path stroke='#fff' stroke-width='2' d='M0 3h27M0 7h27M0 11h27M0 15h27'/><path fill='#0d5eaf' stroke='#fff' stroke-width='2' d='M0 0h10v10H0z'/><path stroke='#fff' stroke-width='2' d='M5 0v10M0 5h10'/></svg>",
+ "Spanish / Tapas":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'><path fill='#aa151b' d='M0 0h3v2H0z'/><path fill='#f1bf00' d='M0 .5h3v1H0z'/></svg>",
+ "Mexican":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'><path fill='#006847' d='M0 0h1v2H0z'/><path fill='#fff' d='M1 0h1v2H1z'/><path fill='#ce1126' d='M2 0h1v2H2z'/></svg>",
+ "Cuban":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><path fill='#fff' d='M0 0h30v20H0z'/><path stroke='#002a8f' stroke-width='4' d='M0 2h30M0 10h30M0 18h30'/><path fill='#cf142b' d='M0 0l13 10L0 20z'/></svg>",
+ "Brazilian":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 14'><path fill='#009c3b' d='M0 0h20v14H0z'/><path fill='#ffdf00' d='M10 2l7 5-7 5-7-5z'/><circle fill='#002776' cx='10' cy='7' r='3'/></svg>",
+ "Japanese / Sushi":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'><path fill='#fff' d='M0 0h3v2H0z'/><circle fill='#bc002d' cx='1.5' cy='1' r='.6'/></svg>",
+ "Chinese":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><path fill='#de2910' d='M0 0h30v20H0z'/><path fill='#ffde00' d='M6 3l1 2 2 .2-1.5 1.4.5 2-2-1-2 1 .5-2L2 5.2 5 5z'/></svg>",
+ "Thai":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 4'><path fill='#a51931' d='M0 0h6v4H0z'/><path fill='#fff' d='M0 .7h6v2.6H0z'/><path fill='#2d2a4a' d='M0 1.3h6v1.4H0z'/></svg>",
+ "Korean":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><path fill='#fff' d='M0 0h30v20H0z'/><circle fill='#cd2e3a' cx='15' cy='9' r='5'/><path fill='#0047a0' d='M10 9a5 5 0 0 0 10 0 2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 0-5 0z'/></svg>",
+ "Vietnamese":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><path fill='#da251d' d='M0 0h30v20H0z'/><path fill='#ff0' d='M15 4l1.5 4h4l-3.2 2.4 1.2 4-3.5-2.4-3.5 2.4 1.2-4L9.5 8h4z'/></svg>",
+ "Indian":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'><path fill='#ff9933' d='M0 0h3v.667H0z'/><path fill='#fff' d='M0 .667h3v.666H0z'/><path fill='#138808' d='M0 1.333h3V2H0z'/><circle cx='1.5' cy='1' r='.13' fill='none' stroke='#000080' stroke-width='.05'/></svg>"
+};
+function flagImg(name){const svg=flagSvg[name];return svg?`<img class="flag-img" alt="" aria-hidden="true" src="data:image/svg+xml,${encodeURIComponent(svg)}">`:'';}
+const restaurants=[
+ {name:"Fiora Cucina Italiana",region:"European",cuisine:"Italian",rating:null,price:"$$$",type:"Upscale",walk:0,hours:"Check current hours",phone:"(404) 582-5800",address:"45 Ivan Allen Jr Blvd NW, Atlanta, GA 30308",desc:"Italian-inspired dining inside JW Marriott Atlanta Downtown.",verified:"Marriott"},
+ {name:"Atlanta Breakfast Club",region:"Breakfast & Casual",cuisine:"Breakfast / Brunch",rating:null,price:"$$",type:"Casual",walk:6,hours:"Check current hours",phone:"Check official site",address:"249 Ivan Allen Jr Blvd NW, Atlanta, GA 30313",desc:"Downtown breakfast and brunch restaurant.",verified:"Discover Atlanta"},
+ {name:"Catch 12",region:"American",cuisine:"American",rating:null,price:"$$$",type:"Upscale",walk:8,hours:"Check current hours",phone:"Check official site",address:"400 W Peachtree St NW, Atlanta, GA 30308",desc:"Contemporary American dining at TWELVE Centennial Park.",verified:"Discover Atlanta"},
+ {name:"Alma Cocina",region:"Latin American",cuisine:"Mexican",rating:null,price:"$$$",type:"Upscale",walk:13,hours:"Check current hours",phone:"Check official site",address:"191 Peachtree St NE, Atlanta, GA 30303",desc:"Contemporary Mexican cuisine in Downtown Atlanta.",verified:"Discover Atlanta"},
+ {name:"AG Steakhouse",region:"American",cuisine:"Steakhouse",rating:null,price:"$$$$",type:"Fine Dining",walk:14,hours:"Check current hours",phone:"Check official site",address:"181 Peachtree St NE, Atlanta, GA 30303",desc:"Modern steakhouse at The Ritz-Carlton Atlanta.",verified:"Discover Atlanta"},
+ {name:"Amalfi Cucina & Mercato",region:"European",cuisine:"Italian",rating:null,price:"$$",type:"Casual",walk:15,hours:"Check current hours",phone:"Check official site",address:"17 Andrew Young International Blvd NE, Atlanta, GA 30303",desc:"Neapolitan pizza and Italian dishes Downtown.",verified:"Discover Atlanta"},
+ {name:"Atalian Kitchen & Bar",region:"European",cuisine:"Italian",rating:null,price:"$$$",type:"Upscale",walk:16,hours:"Check current hours",phone:"Check official site",address:"60 Luckie St NW, Atlanta, GA 30303",desc:"Full-service Italian dining in a business-casual setting.",verified:"Discover Atlanta"},
+ {name:"Ray's in the City",region:"American",cuisine:"Seafood",rating:null,price:"$$$$",type:"Fine Dining",walk:16,hours:"Check current hours",phone:"Check official site",address:"240 Peachtree St NW, Atlanta, GA 30303",desc:"Downtown seafood and steak destination.",verified:"Official restaurant / Downtown directory"},
+ {name:"White Oak Kitchen & Cocktails",region:"American",cuisine:"Southern",rating:null,price:"$$$",type:"Upscale",walk:16,hours:"Check current hours",phone:"Check official site",address:"270 Peachtree St NW, Atlanta, GA 30303",desc:"Contemporary Southern-inspired food and cocktails.",verified:"Official restaurant / Atlanta visitor listings"},
+ {name:"Max Lager's Wood-Fired Grill & Brewery",region:"American",cuisine:"American",rating:null,price:"$$",type:"Casual",walk:17,hours:"Check current hours",phone:"Check official site",address:"320 Peachtree St NE, Atlanta, GA 30308",desc:"Downtown brewpub with wood-fired American fare.",verified:"Official restaurant / Atlanta visitor listings"},
+ {name:"Hard Rock Cafe Atlanta",region:"American",cuisine:"Burgers",rating:null,price:"$$",type:"Casual",walk:17,hours:"Check current hours",phone:"Check official site",address:"215 Peachtree St NE, Atlanta, GA 30303",desc:"Casual American classics and live-music memorabilia.",verified:"Official restaurant"},
+ {name:"Sweet Georgia's Juke Joint",region:"American",cuisine:"Southern",rating:null,price:"$$$",type:"Casual",walk:18,hours:"Check current hours",phone:"Check official site",address:"200 Peachtree St NW, Atlanta, GA 30303",desc:"Southern food with live music and a lively atmosphere.",verified:"Official restaurant / Atlanta visitor listings"},
+ {name:"Ted's Montana Grill - Luckie Street",region:"American",cuisine:"American",rating:null,price:"$$",type:"Casual",walk:18,hours:"Check current hours",phone:"Check official site",address:"133 Luckie St NW, Atlanta, GA 30303",desc:"American grill known for burgers, steaks, and bison.",verified:"Official restaurant"},
+ {name:"Der Biergarten",region:"European",cuisine:"German",rating:null,price:"$$",type:"Casual",walk:18,hours:"Check current hours",phone:"Check official site",address:"300 Marietta St NW, Atlanta, GA 30313",desc:"German beer hall and restaurant near Centennial Park.",verified:"Official restaurant / Atlanta visitor listings"},
+ {name:"Twin Smokers BBQ",region:"American",cuisine:"BBQ",rating:null,price:"$$",type:"Casual",walk:18,hours:"Check current hours",phone:"Check official site",address:"300 Marietta St NW, Atlanta, GA 30313",desc:"Downtown barbecue restaurant serving smoked meats and sides.",verified:"Official restaurant / Atlanta visitor listings"},
+ {name:"Pittypat's Porch",region:"American",cuisine:"Southern",rating:null,price:"$$$",type:"Upscale",walk:19,hours:"Check current hours",phone:"Check official site",address:"25 Andrew Young International Blvd NW, Atlanta, GA 30303",desc:"Long-running Atlanta restaurant focused on Southern cooking.",verified:"Official restaurant / Atlanta visitor listings"},
+ {name:"Polaris",region:"American",cuisine:"American",rating:null,price:"$$$$",type:"Fine Dining",walk:20,hours:"Check current hours",phone:"Check official site",address:"265 Peachtree St NE, Atlanta, GA 30303",desc:"Rotating rooftop restaurant at Hyatt Regency Atlanta.",verified:"Official hotel dining page"},
+ {name:"Sway",region:"American",cuisine:"Southern",rating:null,price:"$$$",type:"Upscale",walk:20,hours:"Check current hours",phone:"Check official site",address:"265 Peachtree St NE, Atlanta, GA 30303",desc:"Southern-inspired restaurant inside Hyatt Regency Atlanta.",verified:"Official hotel dining page"},
+ {name:"Cuts Steakhouse",region:"American",cuisine:"Steakhouse",rating:null,price:"$$$$",type:"Fine Dining",walk:21,hours:"Check current hours",phone:"Check official site",address:"60 Andrew Young International Blvd NE, Atlanta, GA 30303",desc:"Downtown steakhouse serving steaks and seafood.",verified:"Official restaurant / Atlanta visitor listings"},
+ {name:"Park Bar",region:"American",cuisine:"American",rating:null,price:"$$",type:"Casual",walk:21,hours:"Check current hours",phone:"Check official site",address:"150 Walton St NW, Atlanta, GA 30303",desc:"Casual bar and grill near Centennial Olympic Park.",verified:"Official restaurant / Downtown listings"},
+ {name:"Glenn's Kitchen",region:"American",cuisine:"American",rating:null,price:"$$$",type:"Upscale",walk:22,hours:"Check current hours",phone:"Check official site",address:"110 Marietta St NW, Atlanta, GA 30303",desc:"Modern American restaurant inside Glenn Hotel.",verified:"Official hotel dining page"},
+ {name:"Stats Brewpub",region:"American",cuisine:"American",rating:null,price:"$$",type:"Casual",walk:22,hours:"Check current hours",phone:"Check official site",address:"300 Marietta St NW, Atlanta, GA 30313",desc:"Sports-focused brewpub near Downtown venues.",verified:"Official restaurant / Atlanta visitor listings"},
+ {name:"Margaritaville Atlanta",region:"American",cuisine:"American",rating:null,price:"$$",type:"Casual",walk:23,hours:"Check current hours",phone:"Check official site",address:"155 Centennial Olympic Park Dr NW, Atlanta, GA 30313",desc:"Casual American and island-inspired restaurant near Centennial Park.",verified:"Official restaurant"}
+];
+let selected="All";
+let selectedRegion=null;
+const menu=document.getElementById('cuisineMenu');
+const regionGrid=document.getElementById('regionGrid');
+const regionText={
+ "American":"American, Southern, Steakhouse, Seafood, Burgers & BBQ",
+ "European":"Italian, French, Greek, Spanish, German & more",
+ "Latin American":"Mexican, Cuban, Brazilian & Latin American",
+ "Asian":"Japanese, Chinese, Thai, Korean, Vietnamese & Indian",
+ "Middle Eastern & Mediterranean":"Middle Eastern and Mediterranean cuisines",
+ "Breakfast & Casual":"Breakfast, brunch, pizza, cafés & healthy choices"
+};
+Object.keys(regions).forEach(region=>{
+ const b=document.createElement('button'); b.type='button'; b.className='region-tile'; b.dataset.regionTile=region;
+ b.innerHTML=`<strong>${region}</strong><span>${regionText[region]||''}</span>`; regionGrid.appendChild(b);
+});
+function openRegion(region){
+ selectedRegion=region; selected=region;
+ document.getElementById('regionChooser').style.display='none';
+ document.getElementById('restaurantResults').style.display='block';
+ document.getElementById('restaurantTitle').textContent=region+' Restaurants';
+ menu.innerHTML='';
+ const all=document.createElement('button'); all.type='button'; all.className='cuisine selected'; all.dataset.cuisine=region; all.textContent='All '+region; menu.appendChild(all);
+ (regions[region]||[]).forEach(item=>{const clean=item.replace(/^[^A-Za-z]+/,'');const b=document.createElement('button');b.type='button';b.className='cuisine';b.dataset.cuisine=clean;b.innerHTML=flagImg(clean)+clean;menu.appendChild(b)});
+ render(); window.scrollTo({top:0,behavior:'smooth'});
+}
+function resetRestaurantView(){document.getElementById('regionChooser').style.display='block';document.getElementById('restaurantResults').style.display='none';selected='All';selectedRegion=null;}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.view==='restaurants')resetRestaurantView();showView(b.dataset.view)}));
+document.getElementById('homeBtn').addEventListener('click',()=>showView('home'));document.getElementById('changeRegion').addEventListener('click',resetRestaurantView);
+function choose(value,el){selected=value;document.querySelectorAll('.cuisine').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');render()}
+document.addEventListener('click',e=>{const wb=e.target.closest('.walk-btn');if(wb){showWalkingMap(wb.dataset.name,wb.dataset.address,wb.dataset.walk);return;}const rt=e.target.closest('[data-region-tile]');if(rt){openRegion(rt.dataset.regionTile);return;}const b=e.target.closest('[data-cuisine]');if(!b)return;choose(b.dataset.cuisine,b)});
+['rating','price','type'].forEach(id=>document.getElementById(id).addEventListener('change',render));
+function showWalkingMap(name,address,walk){
+ const panel=document.getElementById('mapPanel');
+ document.getElementById('mapDestination').textContent=name;
+ document.getElementById('mapEndName').textContent=name;
+ document.getElementById('mapEndAddress').textContent=address;
+ document.getElementById('mapSummary').innerHTML=`Approximately <strong>${walk} minute walk</strong> based on the current curated estimate. Use the live map for the current pedestrian route.`;
+ document.getElementById('openGoogleMap').onclick=()=>window.open('https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent('45 Ivan Allen Jr Blvd NW, Atlanta, GA 30308')+'&destination='+encodeURIComponent(address)+'&travelmode=walking','_blank');
+ panel.classList.add('active'); panel.scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.getElementById('closeMap').addEventListener('click',()=>document.getElementById('mapPanel').classList.remove('active'));
+document.getElementById('printRoute').addEventListener('click',()=>window.print());
+function render(){
+ const minRating=Number(document.getElementById('rating').value),price=document.getElementById('price').value,type=document.getElementById('type').value;
+ const regional=selectedRegion && selected===selectedRegion;
+ const rows=restaurants.filter(r=>(selected==='All'||(regional?r.region===selectedRegion:r.cuisine===selected))&&(minRating===0 || (r.rating!==null && r.rating>=minRating))&&(price==='All'||r.price===price)&&(type==='All'||r.type===type)).sort((a,b)=>a.walk-b.walk||b.rating-a.rating);
+ document.getElementById('resultCount').textContent=`${rows.length} result${rows.length===1?'':'s'} · closest first`;
+ document.getElementById('restaurantCards').innerHTML=rows.length?rows.map(r=>`<article class="card"><div class="card-top"><div><h3>${r.name}</h3><span class="badge">${r.cuisine}</span></div><strong>🚶 ${r.walk} min</strong></div><div class="meta"><span>⭐ ${r.rating===null?'Not loaded':r.rating}</span><span>${r.price}</span><span>🍽️ ${r.type}</span></div><p class="desc">${r.desc}</p><div class="meta"><span>🕐 ${r.hours}</span><span>📞 ${r.phone}</span><span>✓ ${r.verified}</span></div><div class="actions"><button class="action primary walk-btn" type="button" data-name="${r.name.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" data-address="${r.address.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" data-walk="${r.walk}">📍 Walking Map</button><button class="action" type="button" onclick="window.print()">🖨 Print</button><button class="action" type="button" onclick="alert('Restaurant details screen is planned for the next revision.')">Details</button></div></article>`).join(''):'<div class="empty">No restaurants match these filters.</div>';
+}
+render();
+</script>
+</body>
+</html>
