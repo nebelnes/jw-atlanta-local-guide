@@ -1,0 +1,404 @@
+{
+  "venueId": "college-football-hall-of-fame",
+  "sameBuilding": false,
+  "distanceMeters": 968,
+  "durationMinutes": 13,
+  "geometry": [
+    [
+      -84.389225,
+      33.764746
+    ],
+    [
+      -84.389358,
+      33.764748
+    ],
+    [
+      -84.389484,
+      33.764749
+    ],
+    [
+      -84.389549,
+      33.76475
+    ],
+    [
+      -84.389614,
+      33.764751
+    ],
+    [
+      -84.389667,
+      33.764752
+    ],
+    [
+      -84.389777,
+      33.764753
+    ],
+    [
+      -84.390176,
+      33.764758
+    ],
+    [
+      -84.390198,
+      33.764765
+    ],
+    [
+      -84.390211,
+      33.764773
+    ],
+    [
+      -84.390211,
+      33.764656
+    ],
+    [
+      -84.390203,
+      33.76455
+    ],
+    [
+      -84.390224,
+      33.76453
+    ],
+    [
+      -84.390222,
+      33.764222
+    ],
+    [
+      -84.390222,
+      33.764205
+    ],
+    [
+      -84.390221,
+      33.764095
+    ],
+    [
+      -84.390368,
+      33.764093
+    ],
+    [
+      -84.390508,
+      33.764099
+    ],
+    [
+      -84.390529,
+      33.764095
+    ],
+    [
+      -84.390561,
+      33.764092
+    ],
+    [
+      -84.391574,
+      33.764071
+    ],
+    [
+      -84.39159,
+      33.764072
+    ],
+    [
+      -84.391613,
+      33.764077
+    ],
+    [
+      -84.391637,
+      33.764087
+    ],
+    [
+      -84.391711,
+      33.764005
+    ],
+    [
+      -84.391754,
+      33.763955
+    ],
+    [
+      -84.391772,
+      33.763947
+    ],
+    [
+      -84.391789,
+      33.763932
+    ],
+    [
+      -84.391812,
+      33.763901
+    ],
+    [
+      -84.391867,
+      33.763797
+    ],
+    [
+      -84.391897,
+      33.763712
+    ],
+    [
+      -84.391909,
+      33.763635
+    ],
+    [
+      -84.391925,
+      33.763429
+    ],
+    [
+      -84.391921,
+      33.763401
+    ],
+    [
+      -84.391907,
+      33.763385
+    ],
+    [
+      -84.391912,
+      33.763344
+    ],
+    [
+      -84.391917,
+      33.7633
+    ],
+    [
+      -84.391919,
+      33.763255
+    ],
+    [
+      -84.391934,
+      33.762424
+    ],
+    [
+      -84.391935,
+      33.762374
+    ],
+    [
+      -84.391931,
+      33.76236
+    ],
+    [
+      -84.391934,
+      33.762281
+    ],
+    [
+      -84.391936,
+      33.76221
+    ],
+    [
+      -84.392031,
+      33.762169
+    ],
+    [
+      -84.392146,
+      33.762128
+    ],
+    [
+      -84.392148,
+      33.762105
+    ],
+    [
+      -84.39215,
+      33.762081
+    ],
+    [
+      -84.392159,
+      33.762072
+    ],
+    [
+      -84.392159,
+      33.761978
+    ],
+    [
+      -84.392169,
+      33.761863
+    ],
+    [
+      -84.392168,
+      33.761569
+    ],
+    [
+      -84.3922,
+      33.761569
+    ],
+    [
+      -84.392235,
+      33.76157
+    ],
+    [
+      -84.392341,
+      33.761487
+    ],
+    [
+      -84.392341,
+      33.761371
+    ],
+    [
+      -84.392447,
+      33.761281
+    ],
+    [
+      -84.392495,
+      33.761282
+    ],
+    [
+      -84.39255,
+      33.761282
+    ],
+    [
+      -84.392599,
+      33.761283
+    ],
+    [
+      -84.392868,
+      33.761286
+    ],
+    [
+      -84.392872,
+      33.761004
+    ],
+    [
+      -84.393562,
+      33.761009
+    ],
+    [
+      -84.393558,
+      33.760932
+    ],
+    [
+      -84.393643,
+      33.760864
+    ],
+    [
+      -84.39367,
+      33.760841
+    ],
+    [
+      -84.393696,
+      33.760822
+    ],
+    [
+      -84.393781,
+      33.760828
+    ],
+    [
+      -84.39381,
+      33.760808
+    ],
+    [
+      -84.393889,
+      33.760751
+    ],
+    [
+      -84.393908,
+      33.760738
+    ],
+    [
+      -84.394273,
+      33.760478
+    ],
+    [
+      -84.39464,
+      33.760217
+    ],
+    [
+      -84.394725,
+      33.760156
+    ],
+    [
+      -84.394774,
+      33.7602
+    ],
+    [
+      -84.394824,
+      33.760242
+    ],
+    [
+      -84.39496,
+      33.760183
+    ],
+    [
+      -84.395025,
+      33.760271
+    ]
+  ],
+  "steps": [
+    {
+      "instruction": "Leave the hotel and head west on Ivan Allen Jr Blvd.",
+      "distanceMeters": 92,
+      "startMeters": 0,
+      "passing": []
+    },
+    {
+      "instruction": "Turn left onto Williams St NW, heading south.",
+      "distanceMeters": 76,
+      "startMeters": 92,
+      "passing": []
+    },
+    {
+      "instruction": "Turn right onto West Peachtree Pl NW, heading west.",
+      "distanceMeters": 132,
+      "startMeters": 168,
+      "passing": []
+    },
+    {
+      "instruction": "Turn left and continue south across the pedestrian plaza.",
+      "distanceMeters": 91,
+      "startMeters": 299,
+      "passing": []
+    },
+    {
+      "instruction": "Continue south on Centennial Olympic Park Dr NW.",
+      "distanceMeters": 147,
+      "startMeters": 390,
+      "passing": [
+        {
+          "landmarkId": "world-of-coca-cola",
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "instruction": "Bear right and enter Centennial Olympic Park. Follow PATH Parkway, Garden Walk and Belvedere southwest through the park.",
+      "distanceMeters": 277,
+      "startMeters": 537,
+      "passing": []
+    },
+    {
+      "instruction": "Continue southwest on Park Ave West.",
+      "distanceMeters": 115,
+      "startMeters": 814,
+      "passing": [
+        {
+          "landmarkId": "centennial-olympic-park",
+          "side": "left"
+        }
+      ]
+    },
+    {
+      "instruction": "Bear right and continue northwest along the walkway toward College Football Hall of Fame.",
+      "distanceMeters": 39,
+      "startMeters": 929,
+      "passing": []
+    },
+    {
+      "instruction": "Arrive at College Football Hall of Fame.",
+      "distanceMeters": 0,
+      "startMeters": 968,
+      "passing": []
+    }
+  ],
+  "landmarks": [
+    {
+      "landmarkId": "world-of-coca-cola",
+      "side": "right",
+      "atMeters": 406,
+      "metersFromRoute": 23
+    },
+    {
+      "landmarkId": "centennial-olympic-park",
+      "side": "left",
+      "atMeters": 818,
+      "metersFromRoute": 2
+    }
+  ],
+  "from": "jw-marriott-atlanta-downtown",
+  "to": {
+    "lat": 33.760084,
+    "lng": -84.395396
+  },
+  "source": "OpenStreetMap: route by OSRM (routing.openstreetmap.de), street names and coordinates by Nominatim",
+  "computedAt": "2026-11-05",
+  "reviewed": false
+}

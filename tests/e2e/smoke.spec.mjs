@@ -184,8 +184,8 @@ test("Closest to the hotel lists every restaurant, nearest first", async ({ page
   await expect(page.locator("#restaurantTitle")).toHaveText("Closest to the hotel");
   await expect(page.locator("#resultCount")).toHaveText("23 results · closest first");
   await expect(page.locator(".card h3").first()).toHaveText("Fiora Cucina Italiana"); // inside the hotel
-  const minutes = await page.locator(".card-top strong").allInnerTexts();
-  const nums = minutes.map((t) => Number(t.match(/\d+/)[0]));
+  const minutes = await page.locator("#restaurantCards .card-top strong").allInnerTexts();
+  const nums = minutes.map((t) => (/In the hotel/.test(t) ? 0 : Number(t.match(/\d+/)[0])));
   expect(nums).toEqual([...nums].sort((a, b) => a - b));
   // going into a region afterwards brings the cuisine buttons back
   await page.getByRole("button", { name: /Change region/ }).click();
@@ -195,12 +195,11 @@ test("Closest to the hotel lists every restaurant, nearest first", async ({ page
 
 test("no dead controls: no rating filter, no placeholder Details button, empty sections marked", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator(".tile", { hasText: "Attractions" })).toContainText("Coming soon");
-  await expect(page.locator(".tile", { hasText: "Restaurants" })).not.toContainText("Coming soon");
+  await expect(page.locator(".soon")).toHaveCount(0); // every section now has places
   await expect(page.locator(".pill")).toHaveCount(1);
   await openRestaurants(page, "American");
   await expect(page.locator("#rating")).toHaveCount(0);
-  await expect(page.locator(".cards")).not.toContainText("Not loaded");
+  await expect(page.locator("#restaurantCards")).not.toContainText("Not loaded");
   await expect(page.getByRole("button", { name: "Details" })).toHaveCount(0);
 });
 
@@ -211,4 +210,35 @@ test("a restaurant inside the hotel says so instead of offering walking directio
   await expect(fiora).toContainText("In the hotel");
   await expect(fiora.getByRole("link", { name: /Walking Map/ })).toHaveCount(0);
   await expect(fiora.getByRole("link", { name: /Print directions/ })).toHaveCount(1);
+});
+
+test("Attractions lists walkable places with walking map and printable card", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Attractions/ }).click();
+  await expect(page.locator('[data-count="attractions"]')).toHaveText("5 places · closest first");
+  const aquarium = page.locator('[data-cards="attractions"] .card', { hasText: "Georgia Aquarium" });
+  await expect(aquarium).toContainText("🚶");
+  await expect(aquarium.getByRole("link", { name: /Print directions/ })).toHaveAttribute("href", "walk.html?id=georgia-aquarium&print=1");
+  const walk = new URL(await aquarium.getByRole("link", { name: /Walking Map/ }).getAttribute("href"));
+  expect(walk.searchParams.get("destination")).toBe("225 Baker St NW, Atlanta, GA 30313");
+  expect(walk.searchParams.get("travelmode")).toBe("walking");
+});
+
+test("far places offer driving directions instead of a walk", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Shopping/ }).click();
+  const lenox = page.locator('[data-cards="shopping"] .card').filter({ has: page.getByRole("heading", { name: "Lenox Square", exact: true }) });
+  await expect(lenox).toContainText("🚗");
+  await expect(lenox).toContainText("without traffic");
+  await expect(lenox.getByRole("link", { name: /Print directions/ })).toHaveCount(0);
+  const drive = new URL(await lenox.getByRole("link", { name: /driving directions/i }).getAttribute("href"));
+  expect(drive.searchParams.get("travelmode")).toBe("driving");
+});
+
+test("section chips filter by type", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Sports & Events/ }).click();
+  await page.locator('[data-chips="events"] [data-sub="Stadium"]').click();
+  await expect(page.locator('[data-count="events"]')).toHaveText("2 places · closest first");
+  await expect(page.locator('[data-cards="events"] .card h3')).toHaveText(["Bobby Dodd Stadium", "Mercedes-Benz Stadium"]);
 });

@@ -1,0 +1,241 @@
+{
+  "venueId": "world-of-coca-cola",
+  "sameBuilding": false,
+  "distanceMeters": 561,
+  "durationMinutes": 7,
+  "geometry": [
+    [
+      -84.389225,
+      33.764746
+    ],
+    [
+      -84.389358,
+      33.764748
+    ],
+    [
+      -84.389484,
+      33.764749
+    ],
+    [
+      -84.389549,
+      33.76475
+    ],
+    [
+      -84.389614,
+      33.764751
+    ],
+    [
+      -84.389667,
+      33.764752
+    ],
+    [
+      -84.389777,
+      33.764753
+    ],
+    [
+      -84.390176,
+      33.764758
+    ],
+    [
+      -84.390198,
+      33.764765
+    ],
+    [
+      -84.390211,
+      33.764773
+    ],
+    [
+      -84.390211,
+      33.764656
+    ],
+    [
+      -84.390203,
+      33.76455
+    ],
+    [
+      -84.390224,
+      33.76453
+    ],
+    [
+      -84.390222,
+      33.764222
+    ],
+    [
+      -84.390222,
+      33.764205
+    ],
+    [
+      -84.390221,
+      33.764095
+    ],
+    [
+      -84.390368,
+      33.764093
+    ],
+    [
+      -84.390508,
+      33.764099
+    ],
+    [
+      -84.390529,
+      33.764095
+    ],
+    [
+      -84.390561,
+      33.764092
+    ],
+    [
+      -84.391574,
+      33.764071
+    ],
+    [
+      -84.39159,
+      33.764072
+    ],
+    [
+      -84.391613,
+      33.764077
+    ],
+    [
+      -84.391637,
+      33.764087
+    ],
+    [
+      -84.391711,
+      33.764005
+    ],
+    [
+      -84.391754,
+      33.763955
+    ],
+    [
+      -84.391772,
+      33.763947
+    ],
+    [
+      -84.391789,
+      33.763932
+    ],
+    [
+      -84.391812,
+      33.763901
+    ],
+    [
+      -84.391867,
+      33.763797
+    ],
+    [
+      -84.391897,
+      33.763712
+    ],
+    [
+      -84.391909,
+      33.763635
+    ],
+    [
+      -84.391925,
+      33.763429
+    ],
+    [
+      -84.392012,
+      33.763428
+    ],
+    [
+      -84.392124,
+      33.763429
+    ],
+    [
+      -84.392128,
+      33.763252
+    ],
+    [
+      -84.392141,
+      33.762382
+    ],
+    [
+      -84.392147,
+      33.762364
+    ],
+    [
+      -84.392164,
+      33.762357
+    ],
+    [
+      -84.392183,
+      33.762359
+    ],
+    [
+      -84.392198,
+      33.762282
+    ],
+    [
+      -84.392551,
+      33.762281
+    ]
+  ],
+  "steps": [
+    {
+      "instruction": "Leave the hotel and head west on Ivan Allen Jr Blvd.",
+      "distanceMeters": 92,
+      "startMeters": 0,
+      "passing": []
+    },
+    {
+      "instruction": "Turn left onto Williams St NW, heading south.",
+      "distanceMeters": 76,
+      "startMeters": 92,
+      "passing": []
+    },
+    {
+      "instruction": "Turn right onto West Peachtree Pl NW, heading west.",
+      "distanceMeters": 132,
+      "startMeters": 168,
+      "passing": []
+    },
+    {
+      "instruction": "Bear left and continue south across the pedestrian plaza.",
+      "distanceMeters": 80,
+      "startMeters": 299,
+      "passing": []
+    },
+    {
+      "instruction": "Continue south on Centennial Olympic Park Dr NW.",
+      "distanceMeters": 149,
+      "startMeters": 380,
+      "passing": []
+    },
+    {
+      "instruction": "Turn right onto Baker St NW, heading west.",
+      "distanceMeters": 33,
+      "startMeters": 529,
+      "passing": [
+        {
+          "landmarkId": "centennial-olympic-park",
+          "side": "left"
+        }
+      ]
+    },
+    {
+      "instruction": "Arrive at World of Coca-Cola.",
+      "distanceMeters": 0,
+      "startMeters": 561,
+      "passing": []
+    }
+  ],
+  "landmarks": [
+    {
+      "landmarkId": "centennial-olympic-park",
+      "side": "left",
+      "atMeters": 535,
+      "metersFromRoute": 17
+    }
+  ],
+  "from": "jw-marriott-atlanta-downtown",
+  "to": {
+    "lat": 33.762898,
+    "lng": -84.392552
+  },
+  "source": "OpenStreetMap: route by OSRM (routing.openstreetmap.de), street names and coordinates by Nominatim",
+  "computedAt": "2026-11-05",
+  "reviewed": false
+}

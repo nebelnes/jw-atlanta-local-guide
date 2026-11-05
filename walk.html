@@ -173,12 +173,16 @@ function frame(points) {
 
 /** Greedy label placement: try spots around each anchor, keep the one that covers the least. */
 function placeLabels(labels, obstacles) {
-  const RADII = { tag: [10, 24, 42, 64], callout: [16, 46, 80, 120, 165] }; // start/arrival labels stay beside their pin
+  // start/arrival labels stay beside their pin, and only move farther out if they'd otherwise cover another label
+  const RADII = { tag: [10, 24, 42, 64], tagFar: [90, 120, 160, 210], callout: [16, 46, 80, 120, 165] };
   const placed = [];
   const overlap = (a, b) => Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x)) * Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y));
   for (const lab of labels) {
     let best = null;
-    for (const r of RADII[lab.kind] ?? RADII.callout) {
+    const rings = lab.kind === "tag" ? [RADII.tag, RADII.tagFar] : [RADII.callout];
+    for (const radii of rings) {
+    if (best && best.clash === 0) break;
+    for (const r of radii) {
       for (let k = 0; k < 16; k++) {
         const ang = (k / 16) * 2 * Math.PI;
         const cx = lab.ax + Math.cos(ang) * (r + lab.w / 2), cy = lab.ay + Math.sin(ang) * (r + lab.h / 2);
@@ -191,6 +195,7 @@ function placeLabels(labels, obstacles) {
         cost += clash * 50;
         if (!best || cost < best.cost) best = { ...box, cost, clash };
       }
+    }
     }
     if (!best && lab.kind === "callout") { lab.dropped = true; continue; }
     best ??= { x: Math.min(Math.max(lab.ax, 4), MAP_W - lab.w - 4), y: Math.min(Math.max(lab.ay, 4), MAP_H - lab.h - 4), w: lab.w, h: lab.h };
@@ -339,6 +344,18 @@ function drawMap({ venue, hotel, route, lmById }, size) {
     { x: sx - 13, y: sy - 13, w: 26, h: 26, weight: 6 }, { x: ex - 13, y: ey - 13, w: 26, h: 26, weight: 6 },
     { x: 0, y: MAP_H - 36, w: compact ? 230 : 260, h: 36, weight: 4 }, { x: MAP_W - 200, y: compact ? 0 : MAP_H - 22, w: 200, h: 22, weight: 4 },
   ];
+  // measure each label as it will actually render (long names wrap), so placement uses real sizes
+  const labelClass = (l) => `label ${l.kind === "callout" ? `callout ${l.lm.kind === "park" ? "park" : ""}` : ""}`;
+  const labelStyle = (l) => (l.kind === "callout" ? `width:${l.w}px` : `min-width:${Math.min(l.w, 150)}px;max-width:${l.w}px;white-space:normal`);
+  const probe = document.createElement("div");
+  probe.style.cssText = "position:absolute;left:0;top:0;visibility:hidden";
+  map.appendChild(probe);
+  for (const l of labels) {
+    probe.innerHTML = `<div class="${labelClass(l)}" style="${labelStyle(l)}">${l.html}</div>`;
+    const el = probe.firstElementChild;
+    l.w = Math.ceil(el.offsetWidth) + 2; l.h = Math.ceil(el.offsetHeight) + 2;
+  }
+  probe.remove();
   placeLabels(labels, obstacles);
 
   const shown = labels.filter((l) => !l.dropped);
@@ -358,7 +375,7 @@ function drawMap({ venue, hotel, route, lmById }, size) {
     <g class="pin" transform="translate(${sx.toFixed(1)},${sy.toFixed(1)})"><circle r="11" fill="#1d2528"/><text dy="3.5">1</text></g>
     <g class="pin" transform="translate(${ex.toFixed(1)},${ey.toFixed(1)})"><circle r="11" fill="#9b7a3c"/><text dy="3.5">${n}</text></g>
   </svg>
-  ${shown.map((l) => `<div class="label ${l.kind === "callout" ? `callout ${l.lm.kind === "park" ? "park" : ""}` : ""}" style="left:${l.box.x.toFixed(1)}px;top:${l.box.y.toFixed(1)}px;${l.kind === "callout" ? `width:${l.w}px` : `min-width:${Math.min(l.w, 150)}px;max-width:${l.w}px;white-space:normal`}">${l.html}</div>`).join("")}
+  ${shown.map((l) => `<div class="${labelClass(l)}" style="left:${l.box.x.toFixed(1)}px;top:${l.box.y.toFixed(1)}px;${l.kind === "callout" ? `width:${l.w - 2}px` : `width:${l.w - 2}px;white-space:normal`}">${l.html}</div>`).join("")}
   <div class="legend"><span><i class="lg-route"></i>Walking route</span><span><i class="lg-badge"></i>Step</span>${passed.length ? '<span><i class="lg-pass"></i>You pass</span>' : ""}</div>
   <div class="attrib">Map data © OpenStreetMap contributors</div>`;
 

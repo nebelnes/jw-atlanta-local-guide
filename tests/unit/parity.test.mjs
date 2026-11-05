@@ -19,7 +19,8 @@ import { readFileSync } from "node:fs";
 
 const read = (p) => JSON.parse(readFileSync(new URL(`../../${p}`, import.meta.url), "utf8"));
 const baseline = read("tests/fixtures/baseline-restaurants.json");
-const venues = read("data/venues.json").venues;
+const allVenues = read("data/venues.json").venues;
+const venues = allVenues.filter((v) => v.category === "dining"); // the original restaurant list
 const PLACEHOLDER = /^Check /;
 
 test("same number of restaurants, in the same order", () => {
@@ -70,7 +71,7 @@ test("new fields have their documented starting values", () => {
 });
 
 test("walk minutes match the generated route wherever one exists", () => {
-  for (const v of venues) {
+  for (const v of allVenues) {
     const url = new URL(`../../data/routes/${v.id}.json`, import.meta.url);
     let route;
     try { route = JSON.parse(readFileSync(url, "utf8")); } catch { continue; }

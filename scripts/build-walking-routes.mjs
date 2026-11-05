@@ -8,12 +8,13 @@
 // Usage:
 //   npm run routes                 # compute routes that are missing
 //   npm run routes -- --only catch-12,polaris
-//   npm run routes -- --force      # recompute everything
+//   npm run routes -- --force      # recompute every route (venue pins are kept)
+//   npm run routes -- --force --regeocode   # also re-look-up every venue pin from its address
 //
 // Network access is required, so this is NOT part of `npm test` or CI. Lookups are cached in
 // .cache/ (git-ignored) and throttled to 1 request per second per service, as the services ask.
 
-import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, readdir, rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -27,9 +28,13 @@ const OSRM = "https://routing.openstreetmap.de/routed-foot/route/v1/foot";
 const OSRM_NEAREST = "https://routing.openstreetmap.de/routed-foot/nearest/v1/foot";
 const SAMPLE_EVERY_M = 40;
 const SAME_BUILDING_M = 60;
+const WALK_LIMIT_M = 2400;   // straight-line pre-check: farther than this is never offered as a walk
+const WALK_LIMIT_MIN = 30;   // and a walk longer than this is too long to recommend: drive time instead
+const OSRM_CAR = "https://routing.openstreetmap.de/routed-car/route/v1/driving";
 
 const args = process.argv.slice(2);
-const force = args.includes("--force");
+const force = args.includes("--force");          // recompute routes
+const regeocode = args.includes("--regeocode");  // also re-look-up venue pins (normally kept once set)
 const only = args.includes("--only") ? new Set(args[args.indexOf("--only") + 1].split(",")) : null;
 
 const readJson = async (rel) => JSON.parse(await readFile(join(root, rel), "utf8"));
@@ -175,15 +180,16 @@ for (const venue of venuesDoc.venues) {
   if (venue.status === "closed") continue;
   if (only && !only.has(venue.id)) continue;
   if (!force && existing.has(venue.id) && venue.coordinates) continue;
+  if (!force && venue.walkable === false && venue.driveMinutes != null && venue.coordinates) continue;
 
   const note = { id: venue.id, flags: [] };
   report.push(note);
 
   const hotelAddress = `${hotel.address.street}, ${hotel.address.locality}, ${hotel.address.region} ${hotel.address.postalCode}`;
-  if ((!venue.coordinates || force) && venue.address === hotelAddress) {
+  if ((!venue.coordinates || regeocode) && venue.address === hotelAddress) {
     venue.coordinates = { ...hotel.coordinates }; venuesChanged = true;
     note.geocode = "same address as the hotel";
-  } else if (!venue.coordinates || force) {
+  } else if (!venue.coordinates || regeocode) {
     const g = await geocode(venue);
     if (!g) { note.flags.push("could not find the address in OpenStreetMap — add coordinates by hand"); continue; }
     venue.coordinates = g.coordinates; venuesChanged = true;
@@ -192,15 +198,36 @@ for (const venue of venuesDoc.venues) {
   }
   const dest = [venue.coordinates.lng, venue.coordinates.lat];
   const straight = haversine(origin, dest);
-  if (straight > 4000) note.flags.push(`destination is ${(straight / 1000).toFixed(1)} km away; geocode may be wrong`);
+  if (straight > 40000) note.flags.push(`destination is ${(straight / 1000).toFixed(1)} km away; geocode may be wrong`);
+
+  let tooLongWalk = false;
+  if (straight <= WALK_LIMIT_M && straight >= SAME_BUILDING_M) {
+    const peek = await getJson(`${OSRM}/${origin[0]},${origin[1]};${dest[0]},${dest[1]}?overview=false`, "osrm");
+    tooLongWalk = peek.code === "Ok" && peek.routes[0].duration / 60 > WALK_LIMIT_MIN;
+  }
+  if (straight > WALK_LIMIT_M || tooLongWalk) {
+    // too far to recommend walking: store a drive time, and no walking card
+    const car = await getJson(`${OSRM_CAR}/${origin[0]},${origin[1]};${dest[0]},${dest[1]}?overview=false`, "osrm");
+    if (car.code !== "Ok" || !car.routes?.length) { note.flags.push(`no driving route found (${car.code})`); continue; }
+    venue.walkable = false; venue.walkMinutes = null;
+    venue.driveMinutes = Math.max(1, Math.round(car.routes[0].duration / 60));
+    venuesChanged = true;
+    if (existing.has(venue.id)) await rm(join(root, `data/routes/${venue.id}.json`));
+    note.result = `${(car.routes[0].distance / 1609.34).toFixed(1)} mi by car, ~${venue.driveMinutes} min without traffic (not walkable)`;
+    console.log(`✓ ${venue.id}: ${note.result}${note.flags.length ? `  ⚠ ${note.flags.join("; ")}` : ""}`);
+    continue;
+  }
+  if (venue.walkable !== true || venue.driveMinutes !== undefined) { venue.walkable = true; delete venue.driveMinutes; venuesChanged = true; }
 
   let routeFile;
   if (straight < SAME_BUILDING_M) {
     routeFile = { venueId: venue.id, sameBuilding: true, distanceMeters: 0, durationMinutes: 0, geometry: [round6(origin)], steps: [
       { instruction: `${venue.name} is inside the hotel building.`, distanceMeters: 0, startMeters: 0, passing: [] }], landmarks: [] };
   } else {
-    const door = await frontDoor(venue, dest);
-    if (!door) note.flags.push(`couldn't find the sidewalk on ${addressStreet(venue.address)}; route ends at the building pin`);
+    // parks and trails are listed by name, not a street address: route straight to the pin
+    const hasStreetAddress = /^\d/.test(venue.address.trim());
+    const door = hasStreetAddress ? await frontDoor(venue, dest) : null;
+    if (hasStreetAddress && !door) note.flags.push(`couldn't find the sidewalk on ${addressStreet(venue.address)}; route ends at the building pin`);
     const target = door?.point ?? dest;
     const url = `${OSRM}/${origin[0]},${origin[1]};${target[0]},${target[1]}?overview=full&geometries=geojson&steps=true`;
     const osrm = await getJson(url, "osrm");

@@ -11,7 +11,7 @@ A static website: plain HTML, CSS and JavaScript, hosted free on GitHub Pages, w
 | Path | What it holds |
 |---|---|
 | `index.html` | The page: layout, styling and behavior |
-| `data/venues.json` | Venue recommendations (currently 23 Downtown restaurants) |
+| `data/venues.json` | Venue recommendations: 23 restaurants plus attractions, sports & events, entertainment, shopping, and parks & outdoors |
 | `data/taxonomy.json` | Cuisine groups, price levels and dining styles used by filters |
 | `data/hotel.json` | The hotel the guide is centered on (origin for walking routes) |
 | `data/routes/` | One generated walking route per venue (from OpenStreetMap) |

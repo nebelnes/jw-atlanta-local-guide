@@ -7,10 +7,11 @@
     // iPadOS reports itself as a Mac; touch support tells them apart
     return /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   }
-  window.liveDirections = function (from, to) {
-    var f = encodeURIComponent(from), t = encodeURIComponent(to);
+  // mode: "walk" (default) or "drive"
+  window.liveDirections = function (from, to, mode) {
+    var f = encodeURIComponent(from), t = encodeURIComponent(to), drive = mode === "drive";
     return isAppleMobile()
-      ? { app: "Apple Maps", url: "https://maps.apple.com/?saddr=" + f + "&daddr=" + t + "&dirflg=w" }
-      : { app: "Google Maps", url: "https://www.google.com/maps/dir/?api=1&origin=" + f + "&destination=" + t + "&travelmode=walking" };
+      ? { app: "Apple Maps", url: "https://maps.apple.com/?saddr=" + f + "&daddr=" + t + "&dirflg=" + (drive ? "d" : "w") }
+      : { app: "Google Maps", url: "https://www.google.com/maps/dir/?api=1&origin=" + f + "&destination=" + t + "&travelmode=" + (drive ? "driving" : "walking") };
   };
 })();

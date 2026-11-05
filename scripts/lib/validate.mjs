@@ -55,6 +55,11 @@ export function validateData({ venuesDoc, taxonomy, hotel, schema, landmarksDoc,
       else seenIds.set(v.id, i);
     }
 
+    if (v.category === "dining") {
+      for (const field of ["cuisine", "cuisineGroup", "priceLevel"]) {
+        if (v[field] === undefined) add(field, "is required for dining venues");
+      }
+    }
     if (typeof v.cuisineGroup === "string") {
       if (!groups.has(v.cuisineGroup)) {
         add("cuisineGroup", `"${v.cuisineGroup}" is not a cuisine group in data/taxonomy.json`);
