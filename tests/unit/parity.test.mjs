@@ -7,6 +7,8 @@
 //   walk     → walkMinutes         desc  → summary         verified → verification.sourceLabel
 //   "Check current hours" / "Check official site" placeholders → null (the page shows the placeholder)
 //   new fields: id, status ("active"), category ("dining"), verification.sourceUrls ([]), verification.lastVerified (null)
+//   walkMinutes: replaced in the walking-routes PR by minutes from data/routes/<id>.json (see ADR 0002);
+//                the original curated estimates remain in the baseline fixture for reference
 //
 // Once content editing starts (new venues, rewritten summaries), this test has done its job
 // and can be deleted in the same pull request that intentionally changes the data.
@@ -35,7 +37,6 @@ test("every original value survives the move", () => {
       rating: b.rating,
       priceLevel: b.price,
       diningStyle: b.type,
-      walkMinutes: b.walk,
       hours: PLACEHOLDER.test(b.hours) ? null : b.hours,
       phone: PLACEHOLDER.test(b.phone) ? null : b.phone,
       address: b.address,
@@ -49,7 +50,6 @@ test("every original value survives the move", () => {
       rating: v.rating,
       priceLevel: v.priceLevel,
       diningStyle: v.diningStyle,
-      walkMinutes: v.walkMinutes,
       hours: v.hours,
       phone: v.phone,
       address: v.address,
@@ -66,5 +66,14 @@ test("new fields have their documented starting values", () => {
     assert.equal(v.category, "dining", v.id);
     assert.deepEqual(v.verification.sourceUrls, [], v.id);
     assert.equal(v.verification.lastVerified, null, v.id);
+  }
+});
+
+test("walk minutes match the generated route wherever one exists", () => {
+  for (const v of venues) {
+    const url = new URL(`../../data/routes/${v.id}.json`, import.meta.url);
+    let route;
+    try { route = JSON.parse(readFileSync(url, "utf8")); } catch { continue; }
+    assert.equal(v.walkMinutes, route.sameBuilding ? 0 : route.durationMinutes, v.id);
   }
 });

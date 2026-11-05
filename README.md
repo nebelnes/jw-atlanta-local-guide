@@ -14,6 +14,9 @@ A static website: plain HTML, CSS and JavaScript, hosted free on GitHub Pages, w
 | `data/venues.json` | Venue recommendations (currently 23 Downtown restaurants) |
 | `data/taxonomy.json` | Cuisine groups, price levels and dining styles used by filters |
 | `data/hotel.json` | The hotel the guide is centered on (origin for walking routes) |
+| `data/routes/` | One generated walking route per venue (from OpenStreetMap) |
+| `data/landmarks.json` | Landmarks the walking cards can point out |
+| `walk.html` | Printable walking card, e.g. `walk.html?id=catch-12` |
 | `schema/venue.schema.json` | The rules every venue record must follow |
 | `scripts/` | Data checker and a local preview server |
 | `tests/` | Unit tests and browser smoke tests |
@@ -40,6 +43,15 @@ npm install        # once, installs Playwright
 npm run test:e2e
 ```
 
+Walking routes are generated from OpenStreetMap and stored in `data/routes/`. After adding venues:
+
+```sh
+npm run routes     # needs internet; computes missing routes (~1 minute each)
+```
+
 ## Decisions
 
 - [ADR 0001: Venue data in static JSON files](docs/adr/0001-static-json-data.md)
+- [ADR 0002: Prebuilt walking routes from OpenStreetMap](docs/adr/0002-walking-routes-openstreetmap.md)
+
+Map data © OpenStreetMap contributors.

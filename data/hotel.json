@@ -7,5 +7,10 @@
     "region": "GA",
     "postalCode": "30308"
   },
-  "phone": "+1 404-582-5800"
+  "phone": "+1 404-582-5800",
+  "coordinates": {
+    "lat": 33.764797,
+    "lng": -84.389224
+  },
+  "coordinatesSource": "OpenStreetMap node 11812635163 (the building at 45 Ivan Allen Jr Blvd NW, still listed under its former W Atlanta \u2013 Downtown name); matches the hotel's Google Maps pin to within ~10 m"
 }

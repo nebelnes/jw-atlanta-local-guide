@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>JW Atlanta Local Guide</title>
 <style>
@@ -15,7 +16,7 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 .view{display:none}.view.active{display:block}.section-head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin:28px 0 18px}.section-head h2{font-family:Georgia,serif;font-size:36px;font-weight:500;margin:0}.section-head p{color:var(--muted);margin:4px 0 0}
 .region-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 30px}.region-tile{min-height:135px;border:1px solid var(--line);border-radius:18px;background:#fff;padding:22px;text-align:left;cursor:pointer;box-shadow:var(--shadow);transition:.2s}.region-tile:hover,.region-tile:focus{transform:translateY(-2px);border-color:var(--gold);outline:none}.region-tile strong{display:block;font-family:Georgia,serif;font-size:23px;margin-bottom:8px}.region-tile span{color:var(--muted);line-height:1.4}.subcategory-bar{display:none;margin:10px 0 16px}.subcategory-bar.active{display:block}.subcategory-title{font-size:13px;color:var(--muted);font-weight:700;margin:0 0 9px}.cuisines{display:flex;flex-wrap:wrap;gap:10px}.cuisine{border:1px solid var(--line);background:white;padding:12px 15px;border-radius:12px;cursor:pointer}.cuisine:hover,.cuisine:focus{border-color:var(--gold);outline:none}.cuisine.selected{background:var(--wine);color:#fff;border-color:var(--wine)} .flag-img{width:24px;height:16px;object-fit:cover;border-radius:2px;vertical-align:-3px;margin-right:7px;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
 .controls{position:sticky;top:0;z-index:4;background:rgba(246,243,238,.96);padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap;align-items:end}.control label{display:block;font-size:12px;font-weight:700;margin-bottom:5px;color:var(--muted)}select{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;min-width:145px}.count{margin-left:auto;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:20px 0}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:var(--shadow)}.card-top{display:flex;justify-content:space-between;gap:12px}.card h3{font-family:Georgia,serif;font-size:24px;font-weight:500;margin:0 0 5px}.badge{display:inline-block;background:#f2eadc;color:#6f5427;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:700}.meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:12px 0}.desc{line-height:1.45}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.action{border:1px solid var(--line);background:white;border-radius:10px;padding:9px 11px;cursor:pointer}.action.primary{background:var(--wine);color:#fff;border-color:var(--wine)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:20px 0}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:var(--shadow)}.card-top{display:flex;justify-content:space-between;gap:12px}.card h3{font-family:Georgia,serif;font-size:24px;font-weight:500;margin:0 0 5px}.badge{display:inline-block;background:#f2eadc;color:#6f5427;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:700}.meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:12px 0}.desc{line-height:1.45}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.action{border:1px solid var(--line);background:white;border-radius:10px;padding:9px 11px;cursor:pointer}.action.primary{background:var(--wine);color:#fff;border-color:var(--wine)}a.action{text-decoration:none;display:inline-block;color:inherit}a.action.primary{color:#fff}
 .placeholder{border:1px dashed var(--line);border-radius:18px;padding:30px;background:#fff;color:var(--muted)}.notice{background:#fff8e7;border:1px solid #ecd9a8;padding:12px 14px;border-radius:12px;color:#6c5528;margin:16px 0}.empty{grid-column:1/-1;padding:25px;background:#fff;border-radius:16px;text-align:center;color:var(--muted)}.load-error{margin:24px 0}
 .map-panel{display:none;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0;box-shadow:var(--shadow)}.map-panel.active{display:block}.map-head{display:flex;justify-content:space-between;gap:12px;align-items:start}.map-head h3{font-family:Georgia,serif;font-size:27px;font-weight:500;margin:0}.route-box{margin-top:16px;padding:18px;border-radius:14px;background:#f5f0e7;border:1px solid var(--line)}.route-line{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;margin:10px 0}.route-dot{width:14px;height:14px;border-radius:50%;background:var(--wine);margin:auto}.route-path{width:3px;height:24px;background:var(--gold);margin:auto}.map-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.print-only{display:none} footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0;color:var(--muted);font-size:13px}
 @media(max-width:760px){.tiles,.region-grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.count{width:100%;margin:0}.topbar{align-items:flex-start}.tile{min-height:120px;padding:16px}.tile strong{font-size:20px;margin-top:12px}}
@@ -56,17 +57,6 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
   <div class="control"><label for="type">Restaurant type</label><select id="type"><option value="All">Any type</option></select></div>
   <div class="count" id="resultCount" aria-live="polite"></div>
  </div>
- <div class="map-panel" id="mapPanel">
-   <div class="map-head"><div><div class="badge">WALKING DIRECTIONS</div><h3 id="mapDestination">Destination</h3></div><button class="action" id="closeMap" type="button">Close</button></div>
-   <p id="mapFrom"></p>
-   <div class="route-box">
-    <div class="route-line"><div class="route-dot"></div><div><strong data-hotel="name"></strong><br><span style="color:var(--muted)" data-hotel="start"></span></div></div>
-    <div class="route-line"><div class="route-path"></div><div id="mapSummary">Walking route</div></div>
-    <div class="route-line"><div class="route-dot" style="background:var(--gold)"></div><div><strong id="mapEndName">Destination</strong><br><span id="mapEndAddress" style="color:var(--muted)"></span></div></div>
-   </div>
-   <div class="map-actions"><button class="action primary" id="openGoogleMap" type="button">Open Live Walking Map</button><button class="action" id="printRoute" type="button">Print Walking Directions</button></div>
-   <p class="print-only">For live turn-by-turn directions, please ask the Front Desk to open the digital walking map.</p>
-  </div>
  <div class="cards" id="restaurantCards"></div>
  </div>
 </section>
@@ -105,14 +95,11 @@ let selected="All";
 let selectedRegion=null;
 const menu=document.getElementById('cuisineMenu');
 const regionGrid=document.getElementById('regionGrid');
-function hotelAddress(){const a=hotel.address;return `${a.street}, ${a.locality}, ${a.region} ${a.postalCode}`;}
 function applyData({venues,taxonomy,hotel:h}){
  hotel=h;
  restaurants=venues.venues.filter(v=>v.category==='dining'&&v.status!=='closed');
  taxonomy.cuisineGroups.forEach(g=>{regions[g.name]=g.cuisines;regionText[g.name]=g.description;});
  document.querySelectorAll('[data-hotel="name"]').forEach(el=>el.textContent=hotel.name);
- document.querySelectorAll('[data-hotel="start"]').forEach(el=>el.textContent='Start at '+hotel.address.street);
- document.getElementById('mapFrom').innerHTML=`<strong>From:</strong> ${esc(hotel.name)}<br><span style="color:var(--muted)">${esc(hotelAddress())}</span>`;
  const price=document.getElementById('price'), type=document.getElementById('type');
  taxonomy.priceLevels.forEach(p=>price.add(new Option(p.label,p.value)));
  taxonomy.diningStyles.forEach(t=>type.add(new Option(t,t)));
@@ -150,26 +137,14 @@ function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.
 document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.view==='restaurants')resetRestaurantView();showView(b.dataset.view)}));
 document.getElementById('homeBtn').addEventListener('click',()=>showView('home'));document.getElementById('changeRegion').addEventListener('click',resetRestaurantView);
 function choose(value,el){selected=value;document.querySelectorAll('.cuisine').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');render()}
-document.addEventListener('click',e=>{const wb=e.target.closest('.walk-btn');if(wb){showWalkingMap(wb.dataset.id);return;}const rt=e.target.closest('[data-region-tile]');if(rt){openRegion(rt.dataset.regionTile);return;}const b=e.target.closest('[data-cuisine]');if(!b)return;choose(b.dataset.cuisine,b)});
+document.addEventListener('click',e=>{const rt=e.target.closest('[data-region-tile]');if(rt){openRegion(rt.dataset.regionTile);return;}const b=e.target.closest('[data-cuisine]');if(!b)return;choose(b.dataset.cuisine,b)});
 ['rating','price','type'].forEach(id=>document.getElementById(id).addEventListener('change',render));
-function showWalkingMap(id){
- const r=restaurants.find(x=>x.id===id); if(!r) return;
- const panel=document.getElementById('mapPanel');
- document.getElementById('mapDestination').textContent=r.name;
- document.getElementById('mapEndName').textContent=r.name;
- document.getElementById('mapEndAddress').textContent=r.address;
- document.getElementById('mapSummary').innerHTML=`Approximately <strong>${esc(r.walkMinutes)} minute walk</strong> based on the current curated estimate. Use the live map for the current pedestrian route.`;
- document.getElementById('openGoogleMap').onclick=()=>window.open('https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent(hotelAddress())+'&destination='+encodeURIComponent(r.address)+'&travelmode=walking','_blank');
- panel.classList.add('active'); panel.scrollIntoView({behavior:'smooth',block:'start'});
-}
-document.getElementById('closeMap').addEventListener('click',()=>document.getElementById('mapPanel').classList.remove('active'));
-document.getElementById('printRoute').addEventListener('click',()=>window.print());
 function render(){
  const minRating=Number(document.getElementById('rating').value),price=document.getElementById('price').value,type=document.getElementById('type').value;
  const regional=selectedRegion && selected===selectedRegion;
  const rows=restaurants.filter(r=>(selected==='All'||(regional?r.cuisineGroup===selectedRegion:r.cuisine===selected))&&(minRating===0 || (r.rating!==null && r.rating>=minRating))&&(price==='All'||r.priceLevel===price)&&(type==='All'||r.diningStyle===type)).sort((a,b)=>a.walkMinutes-b.walkMinutes||b.rating-a.rating);
  document.getElementById('resultCount').textContent=`${rows.length} result${rows.length===1?'':'s'} · closest first`;
- document.getElementById('restaurantCards').innerHTML=rows.length?rows.map(r=>`<article class="card"><div class="card-top"><div><h3>${esc(r.name)}</h3><span class="badge">${esc(r.cuisine)}</span></div><strong>🚶 ${esc(r.walkMinutes)} min</strong></div><div class="meta"><span>⭐ ${r.rating===null?'Not loaded':esc(r.rating)}</span><span>${esc(r.priceLevel)}</span><span>🍽️ ${esc(r.diningStyle)}</span></div><p class="desc">${esc(r.summary)}</p><div class="meta"><span>🕐 ${esc(r.hours??UNKNOWN_HOURS)}</span><span>📞 ${esc(r.phone??UNKNOWN_PHONE)}</span><span>✓ ${esc(r.verification.sourceLabel)}</span></div><div class="actions"><button class="action primary walk-btn" type="button" data-id="${esc(r.id)}">📍 Walking Map</button><button class="action" type="button" onclick="window.print()">🖨 Print</button><button class="action" type="button" onclick="alert('Restaurant details screen is planned for the next revision.')">Details</button></div></article>`).join(''):'<div class="empty">No restaurants match these filters.</div>';
+ document.getElementById('restaurantCards').innerHTML=rows.length?rows.map(r=>`<article class="card"><div class="card-top"><div><h3>${esc(r.name)}</h3><span class="badge">${esc(r.cuisine)}</span></div><strong>🚶 ${esc(r.walkMinutes)} min</strong></div><div class="meta"><span>⭐ ${r.rating===null?'Not loaded':esc(r.rating)}</span><span>${esc(r.priceLevel)}</span><span>🍽️ ${esc(r.diningStyle)}</span></div><p class="desc">${esc(r.summary)}</p><div class="meta"><span>🕐 ${esc(r.hours??UNKNOWN_HOURS)}</span><span>📞 ${esc(r.phone??UNKNOWN_PHONE)}</span><span>✓ ${esc(r.verification.sourceLabel)}</span></div><div class="actions"><a class="action primary walk-link" href="walk.html?id=${encodeURIComponent(r.id)}">📍 Walking Map</a><a class="action" href="walk.html?id=${encodeURIComponent(r.id)}&amp;print=1">🖨 Print directions</a><button class="action" type="button" onclick="alert('Restaurant details screen is planned for the next revision.')">Details</button></div></article>`).join(''):'<div class="empty">No restaurants match these filters.</div>';
 }
 loadData().then(data=>{applyData(data);render();}).catch(err=>{console.error('Failed to load guide data:',err);showLoadError();});
 </script>
