@@ -19,6 +19,10 @@
         "sourceLabel": "Marriott",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.764797,
+        "lng": -84.389224
       }
     },
     {
@@ -34,12 +38,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 6,
+      "walkMinutes": 8,
       "summary": "Downtown breakfast and brunch restaurant.",
       "verification": {
         "sourceLabel": "Discover Atlanta",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.764924,
+        "lng": -84.395474
       }
     },
     {
@@ -55,12 +63,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 8,
+      "walkMinutes": 3,
       "summary": "Contemporary American dining at TWELVE Centennial Park.",
       "verification": {
         "sourceLabel": "Discover Atlanta",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.765388,
+        "lng": -84.387963
       }
     },
     {
@@ -76,12 +88,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 13,
+      "walkMinutes": 11,
       "summary": "Contemporary Mexican cuisine in Downtown Atlanta.",
       "verification": {
         "sourceLabel": "Discover Atlanta",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.759007,
+        "lng": -84.386854
       }
     },
     {
@@ -97,12 +113,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 14,
+      "walkMinutes": 11,
       "summary": "Modern steakhouse at The Ritz-Carlton Atlanta.",
       "verification": {
         "sourceLabel": "Discover Atlanta",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.758633,
+        "lng": -84.387187
       }
     },
     {
@@ -118,12 +138,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 15,
+      "walkMinutes": 10,
       "summary": "Neapolitan pizza and Italian dishes Downtown.",
       "verification": {
         "sourceLabel": "Discover Atlanta",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.759621,
+        "lng": -84.387238
       }
     },
     {
@@ -139,12 +163,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 16,
+      "walkMinutes": 14,
       "summary": "Full-service Italian dining in a business-casual setting.",
       "verification": {
         "sourceLabel": "Discover Atlanta",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.756613,
+        "lng": -84.389091
       }
     },
     {
@@ -160,12 +188,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 16,
+      "walkMinutes": 8,
       "summary": "Downtown seafood and steak destination.",
       "verification": {
         "sourceLabel": "Official restaurant / Downtown directory",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.760862,
+        "lng": -84.387751
       }
     },
     {
@@ -181,12 +213,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 16,
+      "walkMinutes": 8,
       "summary": "Contemporary Southern-inspired food and cocktails.",
       "verification": {
         "sourceLabel": "Official restaurant / Atlanta visitor listings",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.760529,
+        "lng": -84.387669
       }
     },
     {
@@ -202,12 +238,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 17,
+      "walkMinutes": 5,
       "summary": "Downtown brewpub with wood-fired American fare.",
       "verification": {
         "sourceLabel": "Official restaurant / Atlanta visitor listings",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.763271,
+        "lng": -84.38697
       }
     },
     {
@@ -223,12 +263,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 17,
+      "walkMinutes": 10,
       "summary": "Casual American classics and live-music memorabilia.",
       "verification": {
         "sourceLabel": "Official restaurant",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.75993,
+        "lng": -84.387163
       }
     },
     {
@@ -244,12 +288,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 18,
+      "walkMinutes": 10,
       "summary": "Southern food with live music and a lively atmosphere.",
       "verification": {
         "sourceLabel": "Official restaurant / Atlanta visitor listings",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.759242,
+        "lng": -84.387691
       }
     },
     {
@@ -265,12 +313,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 18,
+      "walkMinutes": 11,
       "summary": "American grill known for burgers, steaks, and bison.",
       "verification": {
         "sourceLabel": "Official restaurant",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.758681,
+        "lng": -84.390623
       }
     },
     {
@@ -286,12 +338,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 18,
+      "walkMinutes": 13,
       "summary": "German beer hall and restaurant near Centennial Park.",
       "verification": {
         "sourceLabel": "Official restaurant / Atlanta visitor listings",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.761552,
+        "lng": -84.396458
       }
     },
     {
@@ -307,12 +363,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 18,
+      "walkMinutes": 13,
       "summary": "Downtown barbecue restaurant serving smoked meats and sides.",
       "verification": {
         "sourceLabel": "Official restaurant / Atlanta visitor listings",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.761552,
+        "lng": -84.396458
       }
     },
     {
@@ -349,12 +409,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 20,
+      "walkMinutes": 7,
       "summary": "Rotating rooftop restaurant at Hyatt Regency Atlanta.",
       "verification": {
         "sourceLabel": "Official hotel dining page",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.76163,
+        "lng": -84.386636
       }
     },
     {
@@ -370,12 +434,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 20,
+      "walkMinutes": 7,
       "summary": "Southern-inspired restaurant inside Hyatt Regency Atlanta.",
       "verification": {
         "sourceLabel": "Official hotel dining page",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.76163,
+        "lng": -84.386636
       }
     },
     {
@@ -391,12 +459,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 21,
+      "walkMinutes": 12,
       "summary": "Downtown steakhouse serving steaks and seafood.",
       "verification": {
         "sourceLabel": "Official restaurant / Atlanta visitor listings",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.759845,
+        "lng": -84.385768
       }
     },
     {
@@ -412,12 +484,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 21,
+      "walkMinutes": 13,
       "summary": "Casual bar and grill near Centennial Olympic Park.",
       "verification": {
         "sourceLabel": "Official restaurant / Downtown listings",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.758155,
+        "lng": -84.392903
       }
     },
     {
@@ -433,12 +509,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 22,
+      "walkMinutes": 14,
       "summary": "Modern American restaurant inside Glenn Hotel.",
       "verification": {
         "sourceLabel": "Official hotel dining page",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.757013,
+        "lng": -84.39298
       }
     },
     {
@@ -454,12 +534,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 22,
+      "walkMinutes": 13,
       "summary": "Sports-focused brewpub near Downtown venues.",
       "verification": {
         "sourceLabel": "Official restaurant / Atlanta visitor listings",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.761552,
+        "lng": -84.396458
       }
     },
     {
@@ -475,12 +559,16 @@
       "phone": null,
       "hours": null,
       "rating": null,
-      "walkMinutes": 23,
+      "walkMinutes": 13,
       "summary": "Casual American and island-inspired restaurant near Centennial Park.",
       "verification": {
         "sourceLabel": "Official restaurant",
         "sourceUrls": [],
         "lastVerified": null
+      },
+      "coordinates": {
+        "lat": 33.758451,
+        "lng": -84.392375
       }
     }
   ]

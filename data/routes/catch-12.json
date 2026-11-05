@@ -1,0 +1,141 @@
+{
+  "venueId": "catch-12",
+  "sameBuilding": false,
+  "distanceMeters": 217,
+  "durationMinutes": 3,
+  "geometry": [
+    [
+      -84.389225,
+      33.764746
+    ],
+    [
+      -84.389109,
+      33.764744
+    ],
+    [
+      -84.38909,
+      33.764745
+    ],
+    [
+      -84.389079,
+      33.764754
+    ],
+    [
+      -84.389073,
+      33.764765
+    ],
+    [
+      -84.389059,
+      33.76476
+    ],
+    [
+      -84.388987,
+      33.764757
+    ],
+    [
+      -84.388902,
+      33.764753
+    ],
+    [
+      -84.38888,
+      33.764757
+    ],
+    [
+      -84.388867,
+      33.764766
+    ],
+    [
+      -84.388851,
+      33.764759
+    ],
+    [
+      -84.388787,
+      33.764759
+    ],
+    [
+      -84.38865,
+      33.764759
+    ],
+    [
+      -84.388501,
+      33.764761
+    ],
+    [
+      -84.388282,
+      33.764775
+    ],
+    [
+      -84.388091,
+      33.764799
+    ],
+    [
+      -84.387858,
+      33.764842
+    ],
+    [
+      -84.387735,
+      33.764871
+    ],
+    [
+      -84.38768,
+      33.764883
+    ],
+    [
+      -84.387649,
+      33.764902
+    ],
+    [
+      -84.387645,
+      33.764917
+    ],
+    [
+      -84.387647,
+      33.764938
+    ],
+    [
+      -84.387651,
+      33.765207
+    ],
+    [
+      -84.38751,
+      33.765206
+    ],
+    [
+      -84.387508,
+      33.765304
+    ],
+    [
+      -84.387507,
+      33.765383
+    ]
+  ],
+  "steps": [
+    {
+      "instruction": "Leave the hotel and head east on Ivan Allen Jr Blvd.",
+      "distanceMeters": 150,
+      "startMeters": 0,
+      "passing": []
+    },
+    {
+      "instruction": "Bear left onto West Peachtree St NW, heading north.",
+      "distanceMeters": 67,
+      "startMeters": 150,
+      "passing": []
+    },
+    {
+      "instruction": "Arrive at Catch 12.",
+      "distanceMeters": 0,
+      "startMeters": 217,
+      "passing": []
+    }
+  ],
+  "landmarks": [],
+  "from": "jw-marriott-atlanta-downtown",
+  "to": {
+    "lat": 33.765388,
+    "lng": -84.387963
+  },
+  "source": "OpenStreetMap: route by OSRM (routing.openstreetmap.de), street names and coordinates by Nominatim",
+  "computedAt": "2026-11-05",
+  "reviewed": false
+}

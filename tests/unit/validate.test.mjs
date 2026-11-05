@@ -3,11 +3,12 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { validateData } from "../../scripts/lib/validate.mjs";
 
 const read = (p) => JSON.parse(readFileSync(new URL(`../../${p}`, import.meta.url), "utf8"));
-const TODAY = "2026-11-04";
+const TODAY = new Date().toISOString().slice(0, 10);
+const FUTURE = `${Number(TODAY.slice(0, 4)) + 1}-01-01`;
 
 /** Fresh deep copy of the committed data so each test can break one thing. */
 function data() {
@@ -16,6 +17,11 @@ function data() {
     taxonomy: read("data/taxonomy.json"),
     hotel: read("data/hotel.json"),
     schema: read("schema/venue.schema.json"),
+    landmarksDoc: read("data/landmarks.json"),
+    routeSchema: read("schema/route.schema.json"),
+    routes: Object.fromEntries(
+      readdirSync(new URL("../../data/routes/", import.meta.url)).filter((f) => f.endsWith(".json")).map((f) => [f, read(`data/routes/${f}`)]),
+    ),
   });
 }
 
@@ -98,7 +104,7 @@ test("malformed URL is reported", () => {
 });
 
 test("lastVerified in the future is reported", () => {
-  const errors = errorsAfter((d) => (d.venuesDoc.venues[0].verification.lastVerified = "2026-12-01"));
+  const errors = errorsAfter((d) => (d.venuesDoc.venues[0].verification.lastVerified = FUTURE));
   assertFlags(errors, { field: "verification.lastVerified", match: /future/ });
 });
 
@@ -107,20 +113,34 @@ test("lastVerified must be a real date", () => {
   assertFlags(errors, { field: "verification.lastVerified", match: /real date/ });
 });
 
-test("walking route fields are checked when present", () => {
-  const errors = errorsAfter(
-    (d) =>
-      (d.venuesDoc.venues[0].walkingRoute = {
-        distanceMeters: 650,
-        durationMinutes: 8,
-        polyline: "abc",
-        steps: [{ instruction: "Head north", distanceMeters: "far" }],
-        source: "Google Routes API",
-        computedAt: "2027-01-01",
-      }),
-  );
-  assertFlags(errors, { field: "walkingRoute.steps[0].distanceMeters", match: /expected integer/ });
-  assertFlags(errors, { field: "walkingRoute.computedAt", match: /future/ });
+test("route file must belong to a real venue and match its file name", () => {
+  const errors = errorsAfter((d) => (d.routes["catch-12.json"].venueId = "polaris"));
+  assert.ok(errors.some((e) => e.file === "data/routes/catch-12.json" && e.field === "venueId" && /match the file name/.test(e.message)));
+  const orphan = errorsAfter((d) => (d.routes["ghost.json"] = { ...d.routes["catch-12.json"], venueId: "ghost" }));
+  assert.ok(orphan.some((e) => e.file === "data/routes/ghost.json" && /no venue "ghost"/.test(e.message)));
+});
+
+test("route file: unknown landmark, bad side and future date are reported", () => {
+  const errors = errorsAfter((d) => {
+    const r = d.routes["catch-12.json"];
+    r.landmarks = [{ landmarkId: "eiffel-tower", side: "left", atMeters: 10, metersFromRoute: 5 }];
+    r.steps[0].passing = [{ landmarkId: "eiffel-tower", side: "behind" }];
+    r.computedAt = FUTURE;
+  });
+  const f = errors.filter((e) => e.file === "data/routes/catch-12.json");
+  assert.ok(f.some((e) => /unknown landmark "eiffel-tower"/.test(e.message)));
+  assert.ok(f.some((e) => e.field === "steps[0].passing[0].side" && /one of/.test(e.message)));
+  assert.ok(f.some((e) => e.field === "computedAt" && /future/.test(e.message)));
+});
+
+test("route file: malformed geometry is reported", () => {
+  const errors = errorsAfter((d) => (d.routes["catch-12.json"].geometry[1] = [-84.39]));
+  assert.ok(errors.some((e) => e.field === "geometry[1]" && /\[lng, lat\] pair/.test(e.message)));
+});
+
+test("landmark without an outline is reported", () => {
+  const errors = errorsAfter((d) => (d.landmarksDoc.landmarks[0].outline = [[-84.39, 33.76]]));
+  assert.ok(errors.some((e) => e.file === "data/landmarks.json" && /at least 3/.test(e.message)));
 });
 
 test("a cuisine listed under two groups is reported", () => {

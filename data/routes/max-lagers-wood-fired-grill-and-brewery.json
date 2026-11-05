@@ -1,0 +1,195 @@
+{
+  "venueId": "max-lagers-wood-fired-grill-and-brewery",
+  "sameBuilding": false,
+  "distanceMeters": 374,
+  "durationMinutes": 5,
+  "geometry": [
+    [
+      -84.389225,
+      33.764746
+    ],
+    [
+      -84.389109,
+      33.764744
+    ],
+    [
+      -84.38909,
+      33.764745
+    ],
+    [
+      -84.38908,
+      33.764737
+    ],
+    [
+      -84.389079,
+      33.764651
+    ],
+    [
+      -84.389078,
+      33.76457
+    ],
+    [
+      -84.389083,
+      33.764546
+    ],
+    [
+      -84.389066,
+      33.764548
+    ],
+    [
+      -84.38899,
+      33.764549
+    ],
+    [
+      -84.388913,
+      33.76455
+    ],
+    [
+      -84.388894,
+      33.764546
+    ],
+    [
+      -84.388891,
+      33.764429
+    ],
+    [
+      -84.388892,
+      33.764125
+    ],
+    [
+      -84.388888,
+      33.764106
+    ],
+    [
+      -84.388871,
+      33.764095
+    ],
+    [
+      -84.388863,
+      33.764034
+    ],
+    [
+      -84.388863,
+      33.763999
+    ],
+    [
+      -84.388864,
+      33.763957
+    ],
+    [
+      -84.388323,
+      33.763953
+    ],
+    [
+      -84.38766,
+      33.763945
+    ],
+    [
+      -84.387651,
+      33.763945
+    ],
+    [
+      -84.387643,
+      33.763943
+    ],
+    [
+      -84.38764,
+      33.763939
+    ],
+    [
+      -84.387636,
+      33.763931
+    ],
+    [
+      -84.387636,
+      33.763922
+    ],
+    [
+      -84.387599,
+      33.76392
+    ],
+    [
+      -84.387523,
+      33.763913
+    ],
+    [
+      -84.387446,
+      33.763905
+    ],
+    [
+      -84.387449,
+      33.763573
+    ],
+    [
+      -84.387449,
+      33.763514
+    ],
+    [
+      -84.38745,
+      33.763478
+    ],
+    [
+      -84.38744,
+      33.763454
+    ],
+    [
+      -84.387422,
+      33.763437
+    ],
+    [
+      -84.387382,
+      33.763411
+    ],
+    [
+      -84.386979,
+      33.763189
+    ],
+    [
+      -84.386954,
+      33.763176
+    ],
+    [
+      -84.386881,
+      33.763128
+    ],
+    [
+      -84.386829,
+      33.76319
+    ]
+  ],
+  "steps": [
+    {
+      "instruction": "Leave the hotel and head south on Ted Turner Dr NW.",
+      "distanceMeters": 119,
+      "startMeters": 0,
+      "passing": []
+    },
+    {
+      "instruction": "Bear left onto West Peachtree Pl NW, heading east.",
+      "distanceMeters": 133,
+      "startMeters": 119,
+      "passing": []
+    },
+    {
+      "instruction": "Bear right onto West Peachtree St NW, heading southeast.",
+      "distanceMeters": 122,
+      "startMeters": 252,
+      "passing": []
+    },
+    {
+      "instruction": "Arrive at Max Lager's Wood-Fired Grill & Brewery.",
+      "distanceMeters": 0,
+      "startMeters": 374,
+      "passing": []
+    }
+  ],
+  "landmarks": [],
+  "from": "jw-marriott-atlanta-downtown",
+  "to": {
+    "lat": 33.763271,
+    "lng": -84.38697
+  },
+  "source": "OpenStreetMap: route by OSRM (routing.openstreetmap.de), street names and coordinates by Nominatim",
+  "computedAt": "2026-11-05",
+  "reviewed": false
+}

@@ -11,11 +11,14 @@ const PLACEHOLDER = /^\s*check\b/i; // e.g. "Check current hours", "Check offici
  * @param {object} data.taxonomy   parsed data/taxonomy.json
  * @param {object} data.hotel      parsed data/hotel.json
  * @param {object} data.schema     parsed schema/venue.schema.json
+ * @param {object} [data.landmarksDoc]  parsed data/landmarks.json
+ * @param {Record<string, object>} [data.routes]  parsed data/routes/*.json, keyed by file name
+ * @param {object} [data.routeSchema]  parsed schema/route.schema.json
  * @param {object} [options]
  * @param {string} [options.today] ISO date used for "not in the future" checks (default: today, UTC)
  * @returns {{file: string, id?: string, field: string, message: string}[]}
  */
-export function validateData({ venuesDoc, taxonomy, hotel, schema }, { today } = {}) {
+export function validateData({ venuesDoc, taxonomy, hotel, schema, landmarksDoc, routes, routeSchema }, { today } = {}) {
   const errors = [];
   const todayIso = today ?? new Date().toISOString().slice(0, 10);
 
@@ -76,12 +79,57 @@ export function validateData({ venuesDoc, taxonomy, hotel, schema }, { today } =
     if (typeof lastVerified === "string" && lastVerified > todayIso) {
       add("verification.lastVerified", `${lastVerified} is in the future`);
     }
-    const computedAt = v.walkingRoute?.computedAt;
-    if (typeof computedAt === "string" && computedAt > todayIso) {
-      add("walkingRoute.computedAt", `${computedAt} is in the future`);
-    }
   });
 
+  const landmarkIds = landmarksDoc ? checkLandmarks(landmarksDoc, errors) : null;
+  if (routes) {
+    const venueIds = new Set(venues.map((v) => v?.id));
+    for (const [file, route] of Object.entries(routes)) {
+      errors.push(...checkRoute(file, route, { routeSchema, venueIds, landmarkIds, hotel, todayIso }));
+    }
+  }
+  return errors;
+}
+
+function checkLandmarks(doc, errors) {
+  const add = (field, message) => errors.push({ file: "data/landmarks.json", field, message });
+  const ids = new Set();
+  if (!Array.isArray(doc?.landmarks)) { add("landmarks", "must be a list"); return ids; }
+  doc.landmarks.forEach((l, i) => {
+    const f = `landmarks[${i}]`;
+    if (typeof l?.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(l.id)) add(`${f}.id`, "must be a kebab-case id");
+    else if (ids.has(l.id)) add(`${f}.id`, `duplicate id "${l.id}"`);
+    else ids.add(l.id);
+    for (const k of ["name", "line"]) if (typeof l?.[k] !== "string" || !l[k]) add(`${f}.${k}`, "is required");
+    if (!["park", "building"].includes(l?.kind)) add(`${f}.kind`, 'must be "park" or "building"');
+    const ok = Array.isArray(l?.outline) && l.outline.length >= 3 &&
+      l.outline.every((p) => Array.isArray(p) && p.length === 2 && p.every(Number.isFinite));
+    if (!ok) add(`${f}.outline`, "must be at least 3 [lng, lat] points");
+  });
+  return ids;
+}
+
+function checkRoute(file, route, { routeSchema, venueIds, landmarkIds, hotel, todayIso }) {
+  const errors = [];
+  const where = `data/routes/${file}`;
+  const add = (field, message) => errors.push({ file: where, field, message });
+  if (routeSchema) for (const e of checkSchema(route, routeSchema)) add(e.path, e.message);
+  if (!route || typeof route !== "object") return errors;
+  const expected = file.replace(/\.json$/, "");
+  if (route.venueId !== expected) add("venueId", `must match the file name ("${expected}")`);
+  else if (!venueIds.has(route.venueId)) add("venueId", `no venue "${route.venueId}" in data/venues.json`);
+  if (hotel?.id && route.from !== hotel.id) add("from", `must be the hotel id "${hotel.id}"`);
+  if (typeof route.computedAt === "string" && route.computedAt > todayIso) add("computedAt", `${route.computedAt} is in the future`);
+  if (Array.isArray(route.geometry)) {
+    const bad = route.geometry.findIndex((p) => !Array.isArray(p) || p.length !== 2 || !p.every(Number.isFinite));
+    if (bad >= 0) add(`geometry[${bad}]`, "must be a [lng, lat] pair");
+    if (!route.sameBuilding && route.geometry.length < 2) add("geometry", "needs at least 2 points");
+  }
+  if (Array.isArray(route.steps) && route.steps.length === 0) add("steps", "must not be empty");
+  if (landmarkIds) {
+    const refs = [...(route.landmarks ?? []).map((l) => l.landmarkId), ...(route.steps ?? []).flatMap((s) => (s.passing ?? []).map((p) => p.landmarkId))];
+    for (const ref of new Set(refs)) if (!landmarkIds.has(ref)) add("landmarks", `unknown landmark "${ref}" (not in data/landmarks.json)`);
+  }
   return errors;
 }
 
