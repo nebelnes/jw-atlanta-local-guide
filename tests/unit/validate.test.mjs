@@ -152,3 +152,18 @@ test("hotel without a street address is reported", () => {
   const errors = errorsAfter((d) => delete d.hotel.address.street);
   assert.ok(errors.some((e) => e.file === "data/hotel.json" && e.field === "address.street"));
 });
+
+test("dining venues need cuisine and price; other categories don't", () => {
+  const errors = errorsAfter((d) => {
+    delete d.venuesDoc.venues[0].priceLevel; // a restaurant
+    const park = d.venuesDoc.venues.find((v) => v.category === "outdoors");
+    assert.ok(park && park.cuisine === undefined);
+  });
+  assertFlags(errors, { id: "fiora-cucina-italiana", field: "priceLevel", match: /required for dining/ });
+  assert.equal(errors.filter((e) => /required for dining/.test(e.message)).length, 1);
+});
+
+test("unknown category is reported", () => {
+  const errors = errorsAfter((d) => (d.venuesDoc.venues[0].category = "nightclubs"));
+  assertFlags(errors, { field: "category", match: /one of/ });
+});

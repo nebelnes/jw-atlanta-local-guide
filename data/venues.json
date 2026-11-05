@@ -23,7 +23,8 @@
       "coordinates": {
         "lat": 33.764797,
         "lng": -84.389224
-      }
+      },
+      "walkable": true
     },
     {
       "id": "atlanta-breakfast-club",
@@ -48,7 +49,8 @@
       "coordinates": {
         "lat": 33.764924,
         "lng": -84.395474
-      }
+      },
+      "walkable": true
     },
     {
       "id": "catch-12",
@@ -73,7 +75,8 @@
       "coordinates": {
         "lat": 33.765388,
         "lng": -84.387963
-      }
+      },
+      "walkable": true
     },
     {
       "id": "alma-cocina",
@@ -98,7 +101,8 @@
       "coordinates": {
         "lat": 33.759007,
         "lng": -84.386854
-      }
+      },
+      "walkable": true
     },
     {
       "id": "ag-steakhouse",
@@ -123,7 +127,8 @@
       "coordinates": {
         "lat": 33.758633,
         "lng": -84.387187
-      }
+      },
+      "walkable": true
     },
     {
       "id": "amalfi-cucina-and-mercato",
@@ -148,7 +153,8 @@
       "coordinates": {
         "lat": 33.759621,
         "lng": -84.387238
-      }
+      },
+      "walkable": true
     },
     {
       "id": "atalian-kitchen-and-bar",
@@ -173,7 +179,8 @@
       "coordinates": {
         "lat": 33.756613,
         "lng": -84.389091
-      }
+      },
+      "walkable": true
     },
     {
       "id": "rays-in-the-city",
@@ -198,7 +205,8 @@
       "coordinates": {
         "lat": 33.760862,
         "lng": -84.387751
-      }
+      },
+      "walkable": true
     },
     {
       "id": "white-oak-kitchen-and-cocktails",
@@ -223,7 +231,8 @@
       "coordinates": {
         "lat": 33.760529,
         "lng": -84.387669
-      }
+      },
+      "walkable": true
     },
     {
       "id": "max-lagers-wood-fired-grill-and-brewery",
@@ -248,7 +257,8 @@
       "coordinates": {
         "lat": 33.763271,
         "lng": -84.38697
-      }
+      },
+      "walkable": true
     },
     {
       "id": "hard-rock-cafe-atlanta",
@@ -273,7 +283,8 @@
       "coordinates": {
         "lat": 33.75993,
         "lng": -84.387163
-      }
+      },
+      "walkable": true
     },
     {
       "id": "sweet-georgias-juke-joint",
@@ -298,7 +309,8 @@
       "coordinates": {
         "lat": 33.759242,
         "lng": -84.387691
-      }
+      },
+      "walkable": true
     },
     {
       "id": "teds-montana-grill-luckie-street",
@@ -323,7 +335,8 @@
       "coordinates": {
         "lat": 33.758681,
         "lng": -84.390623
-      }
+      },
+      "walkable": true
     },
     {
       "id": "der-biergarten",
@@ -348,7 +361,8 @@
       "coordinates": {
         "lat": 33.761552,
         "lng": -84.396458
-      }
+      },
+      "walkable": true
     },
     {
       "id": "twin-smokers-bbq",
@@ -373,7 +387,8 @@
       "coordinates": {
         "lat": 33.761552,
         "lng": -84.396458
-      }
+      },
+      "walkable": true
     },
     {
       "id": "pittypats-porch",
@@ -419,7 +434,8 @@
       "coordinates": {
         "lat": 33.76163,
         "lng": -84.386636
-      }
+      },
+      "walkable": true
     },
     {
       "id": "sway",
@@ -444,7 +460,8 @@
       "coordinates": {
         "lat": 33.76163,
         "lng": -84.386636
-      }
+      },
+      "walkable": true
     },
     {
       "id": "cuts-steakhouse",
@@ -469,7 +486,8 @@
       "coordinates": {
         "lat": 33.759845,
         "lng": -84.385768
-      }
+      },
+      "walkable": true
     },
     {
       "id": "park-bar",
@@ -494,7 +512,8 @@
       "coordinates": {
         "lat": 33.758155,
         "lng": -84.392903
-      }
+      },
+      "walkable": true
     },
     {
       "id": "glenns-kitchen",
@@ -519,7 +538,8 @@
       "coordinates": {
         "lat": 33.757013,
         "lng": -84.39298
-      }
+      },
+      "walkable": true
     },
     {
       "id": "stats-brewpub",
@@ -544,7 +564,8 @@
       "coordinates": {
         "lat": 33.761552,
         "lng": -84.396458
-      }
+      },
+      "walkable": true
     },
     {
       "id": "margaritaville-atlanta",
@@ -569,7 +590,800 @@
       "coordinates": {
         "lat": 33.758451,
         "lng": -84.392375
-      }
+      },
+      "walkable": true
+    },
+    {
+      "id": "georgia-aquarium",
+      "name": "Georgia Aquarium",
+      "status": "active",
+      "category": "attractions",
+      "subcategories": [
+        "Aquarium"
+      ],
+      "address": "225 Baker St NW, Atlanta, GA 30313",
+      "coordinates": {
+        "lat": 33.763267,
+        "lng": -84.395117
+      },
+      "website": "https://www.georgiaaquarium.org/",
+      "phone": "404-581-4000",
+      "hours": null,
+      "walkMinutes": 10,
+      "bestFor": [
+        "families",
+        "rainy day"
+      ],
+      "summary": "Aquarium at Pemberton Place, next door to World of Coca-Cola.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/georgia-aquarium/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "world-of-coca-cola",
+      "name": "World of Coca-Cola",
+      "status": "active",
+      "category": "attractions",
+      "subcategories": [
+        "Museum"
+      ],
+      "address": "121 Baker St NW, Atlanta, GA 30313",
+      "coordinates": {
+        "lat": 33.762898,
+        "lng": -84.392552
+      },
+      "website": "https://www.worldofcoca-cola.com/",
+      "phone": null,
+      "hours": null,
+      "walkMinutes": 7,
+      "bestFor": [
+        "families",
+        "rainy day"
+      ],
+      "summary": "The Coca-Cola Company's museum at Pemberton Place.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/world-of-coca-cola/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "national-center-for-civil-and-human-rights",
+      "name": "National Center for Civil and Human Rights",
+      "status": "active",
+      "category": "attractions",
+      "subcategories": [
+        "Museum",
+        "History"
+      ],
+      "address": "100 Ivan Allen Jr Blvd NW, Atlanta, GA 30313",
+      "coordinates": {
+        "lat": 33.764049,
+        "lng": -84.39304
+      },
+      "website": "https://www.civilandhumanrights.org/",
+      "phone": null,
+      "hours": null,
+      "walkMinutes": 5,
+      "bestFor": [
+        "history",
+        "rainy day"
+      ],
+      "summary": "Museum connecting the American civil rights movement to human rights today, at Pemberton Place.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/things-to-do/history/center-for-civil-and-human-rights/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "college-football-hall-of-fame",
+      "name": "College Football Hall of Fame",
+      "status": "active",
+      "category": "attractions",
+      "subcategories": [
+        "Museum",
+        "Sports"
+      ],
+      "address": "250 Marietta St NW, Atlanta, GA 30313",
+      "coordinates": {
+        "lat": 33.760084,
+        "lng": -84.395396
+      },
+      "website": "https://www.cfbhall.com/",
+      "phone": "404-880-4800",
+      "hours": null,
+      "walkMinutes": 13,
+      "bestFor": [
+        "families",
+        "sports fans",
+        "rainy day"
+      ],
+      "summary": "Interactive college football museum beside Centennial Olympic Park.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/chick-fil-a-college-football-hall-of-fame/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "skyview-atlanta",
+      "name": "SkyView Atlanta",
+      "status": "active",
+      "category": "attractions",
+      "subcategories": [
+        "Observation wheel"
+      ],
+      "address": "168 Luckie St NW, Atlanta, GA 30303",
+      "coordinates": {
+        "lat": 33.758831,
+        "lng": -84.391852
+      },
+      "website": "https://www.skyviewatlanta.com/",
+      "phone": null,
+      "hours": null,
+      "walkMinutes": 11,
+      "bestFor": [
+        "views",
+        "couples",
+        "families"
+      ],
+      "summary": "Ferris wheel overlooking Centennial Olympic Park, with views across Downtown.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/skyview-atlanta/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "mercedes-benz-stadium",
+      "name": "Mercedes-Benz Stadium",
+      "status": "active",
+      "category": "events",
+      "subcategories": [
+        "Stadium"
+      ],
+      "address": "1 AMB Dr NW, Atlanta, GA 30313",
+      "coordinates": {
+        "lat": 33.755412,
+        "lng": -84.400849
+      },
+      "website": null,
+      "phone": "470-341-7500",
+      "hours": null,
+      "walkMinutes": 25,
+      "bestFor": [
+        "game day",
+        "concerts"
+      ],
+      "summary": "Home of the Atlanta Falcons and Atlanta United; also hosts major concerts and events.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/mercedes-benz-stadium/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "state-farm-arena",
+      "name": "State Farm Arena",
+      "status": "active",
+      "category": "events",
+      "subcategories": [
+        "Arena"
+      ],
+      "address": "1 State Farm Dr, Atlanta, GA 30303",
+      "coordinates": {
+        "lat": 33.75737,
+        "lng": -84.396385
+      },
+      "website": null,
+      "phone": "404-878-3000",
+      "hours": null,
+      "walkMinutes": 19,
+      "bestFor": [
+        "game day",
+        "concerts"
+      ],
+      "summary": "Home of the Atlanta Hawks; also hosts concerts and touring shows.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/state-farm-arena/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "georgia-world-congress-center",
+      "name": "Georgia World Congress Center",
+      "status": "active",
+      "category": "events",
+      "subcategories": [
+        "Convention center"
+      ],
+      "address": "285 Andrew Young International Blvd NW, Atlanta, GA 30313",
+      "coordinates": {
+        "lat": 33.760768,
+        "lng": -84.401255
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": 21,
+      "bestFor": [
+        "conventions",
+        "trade shows"
+      ],
+      "summary": "Downtown's convention center campus, beside Centennial Olympic Park and Mercedes-Benz Stadium.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/things-to-do/outdoors/centennial-park/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "truist-park",
+      "name": "Truist Park",
+      "status": "active",
+      "category": "events",
+      "subcategories": [
+        "Ballpark"
+      ],
+      "address": "755 Battery Ave, Atlanta, GA 30339",
+      "coordinates": {
+        "lat": 33.890738,
+        "lng": -84.467616
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "game day"
+      ],
+      "summary": "Home of the Atlanta Braves, at The Battery Atlanta in Cobb County, northwest of the city.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/meetings/partner/truist-park-at-the-battery-atlanta/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 17
+    },
+    {
+      "id": "bobby-dodd-stadium",
+      "name": "Bobby Dodd Stadium",
+      "status": "active",
+      "category": "events",
+      "subcategories": [
+        "Stadium",
+        "College football"
+      ],
+      "address": "150 Bobby Dodd Way, Atlanta, GA 30332",
+      "coordinates": {
+        "lat": 33.772476,
+        "lng": -84.392959
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": 15,
+      "bestFor": [
+        "game day"
+      ],
+      "summary": "Georgia Tech's football stadium, on campus in Midtown.",
+      "verification": {
+        "sourceLabel": "Georgia Tech Athletics",
+        "sourceUrls": [
+          "https://ramblinwreck.com/directions-to-bobby-dodd-stadium"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "the-tabernacle",
+      "name": "The Tabernacle",
+      "status": "active",
+      "category": "entertainment",
+      "subcategories": [
+        "Concert venue"
+      ],
+      "address": "152 Luckie St NW, Atlanta, GA 30303",
+      "coordinates": {
+        "lat": 33.758713,
+        "lng": -84.391422
+      },
+      "website": null,
+      "phone": "404-577-4855",
+      "hours": null,
+      "walkMinutes": 11,
+      "bestFor": [
+        "concerts",
+        "nightlife"
+      ],
+      "summary": "Concert venue in a former church, a block from Centennial Olympic Park.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/tabernacle/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "fox-theatre",
+      "name": "Fox Theatre",
+      "status": "active",
+      "category": "entertainment",
+      "subcategories": [
+        "Theatre"
+      ],
+      "address": "660 Peachtree St NE, Atlanta, GA 30308",
+      "coordinates": {
+        "lat": 33.772643,
+        "lng": -84.385562
+      },
+      "website": "https://www.foxtheatre.org/",
+      "phone": null,
+      "hours": null,
+      "walkMinutes": 15,
+      "bestFor": [
+        "Broadway",
+        "concerts",
+        "date night"
+      ],
+      "summary": "Historic 1929 theatre on Peachtree Street, hosting Broadway tours and concerts.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/meetings/partner/fox-theatre/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "woodruff-arts-center",
+      "name": "Woodruff Arts Center",
+      "status": "active",
+      "category": "entertainment",
+      "subcategories": [
+        "Performing arts",
+        "Museum"
+      ],
+      "address": "1280 Peachtree St NE, Atlanta, GA 30309",
+      "coordinates": {
+        "lat": 33.789175,
+        "lng": -84.385189
+      },
+      "website": "https://woodruffcenter.org/",
+      "phone": "404-733-4200",
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "arts",
+        "date night"
+      ],
+      "summary": "Midtown arts campus with the High Museum of Art, the Alliance Theatre and the Atlanta Symphony Orchestra.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/the-woodruff-arts-center/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "center-for-puppetry-arts",
+      "name": "Center for Puppetry Arts",
+      "status": "active",
+      "category": "entertainment",
+      "subcategories": [
+        "Family theatre",
+        "Museum"
+      ],
+      "address": "1404 Spring St NW, Atlanta, GA 30309",
+      "coordinates": {
+        "lat": 33.792758,
+        "lng": -84.389814
+      },
+      "website": "https://puppet.org/",
+      "phone": "404-873-3391",
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "families",
+        "rainy day"
+      ],
+      "summary": "Puppet shows and a puppetry museum in Midtown.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/center-for-puppetry-arts/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "dads-garage",
+      "name": "Dad's Garage",
+      "status": "active",
+      "category": "entertainment",
+      "subcategories": [
+        "Comedy",
+        "Improv"
+      ],
+      "address": "569 Ezzard St SE, Atlanta, GA 30312",
+      "coordinates": {
+        "lat": 33.753055,
+        "lng": -84.368655
+      },
+      "website": "https://dadsgarage.com/",
+      "phone": "404-523-3141",
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "groups",
+        "nightlife"
+      ],
+      "summary": "Improv and comedy theatre in Old Fourth Ward.",
+      "verification": {
+        "sourceLabel": "Dad's Garage",
+        "sourceUrls": [
+          "https://www.dadsgarage.com/venue-info"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 4
+    },
+    {
+      "id": "ponce-city-market",
+      "name": "Ponce City Market",
+      "status": "active",
+      "category": "shopping",
+      "subcategories": [
+        "Food hall",
+        "Shopping"
+      ],
+      "address": "675 Ponce de Leon Ave NE, Atlanta, GA 30308",
+      "coordinates": {
+        "lat": 33.77244,
+        "lng": -84.365203
+      },
+      "website": "https://poncecitymarket.com/",
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "groups",
+        "local experience"
+      ],
+      "summary": "Shops, food hall and rooftop in a restored historic building on the BeltLine Eastside Trail.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/things-to-do/shopping/ponce-city-market/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 4
+    },
+    {
+      "id": "lenox-square",
+      "name": "Lenox Square",
+      "status": "active",
+      "category": "shopping",
+      "subcategories": [
+        "Mall"
+      ],
+      "address": "3393 Peachtree Rd NE, Atlanta, GA 30326",
+      "coordinates": {
+        "lat": 33.846683,
+        "lng": -84.362856
+      },
+      "website": "https://www.lenox-square.com/",
+      "phone": "404-233-7575",
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "shopping"
+      ],
+      "summary": "Major Buckhead shopping mall.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/lenox-square/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 13
+    },
+    {
+      "id": "phipps-plaza",
+      "name": "Phipps Plaza",
+      "status": "active",
+      "category": "shopping",
+      "subcategories": [
+        "Luxury mall"
+      ],
+      "address": "3500 Peachtree Rd NE, Atlanta, GA 30326",
+      "coordinates": {
+        "lat": 33.852675,
+        "lng": -84.362139
+      },
+      "website": null,
+      "phone": "404-261-7910",
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "luxury shopping"
+      ],
+      "summary": "Upscale Buckhead mall across Peachtree Road from Lenox Square.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/phipps-plaza/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 13
+    },
+    {
+      "id": "atlantic-station",
+      "name": "Atlantic Station",
+      "status": "active",
+      "category": "shopping",
+      "subcategories": [
+        "Shopping district"
+      ],
+      "address": "1371 Market St NW, Atlanta, GA 30363",
+      "coordinates": {
+        "lat": 33.791241,
+        "lng": -84.398037
+      },
+      "website": null,
+      "phone": "404-410-4010",
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "shopping",
+        "families"
+      ],
+      "summary": "Walkable shopping, dining and entertainment district in Midtown.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/atlantic-station/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "krog-street-market",
+      "name": "Krog Street Market",
+      "status": "active",
+      "category": "shopping",
+      "subcategories": [
+        "Food hall"
+      ],
+      "address": "99 Krog St NE, Atlanta, GA 30307",
+      "coordinates": {
+        "lat": 33.756992,
+        "lng": -84.364015
+      },
+      "website": "https://www.krogstreetmarket.com/",
+      "phone": "404-574-1097",
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "groups",
+        "local experience"
+      ],
+      "summary": "Food hall and shops in Inman Park, beside the BeltLine Eastside Trail.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/krog-street-market/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 4
+    },
+    {
+      "id": "centennial-olympic-park",
+      "name": "Centennial Olympic Park",
+      "status": "active",
+      "category": "outdoors",
+      "subcategories": [
+        "Park"
+      ],
+      "address": "Centennial Olympic Park, Atlanta, GA 30313",
+      "coordinates": {
+        "lat": 33.760144,
+        "lng": -84.393453
+      },
+      "website": "https://www.centennialpark.com/",
+      "phone": null,
+      "hours": null,
+      "walkMinutes": 12,
+      "bestFor": [
+        "families",
+        "walkable"
+      ],
+      "summary": "Downtown park built for the 1996 Olympic Games.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/things-to-do/outdoors/centennial-park/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "woodruff-park",
+      "name": "Woodruff Park",
+      "status": "active",
+      "category": "outdoors",
+      "subcategories": [
+        "Park"
+      ],
+      "address": "Woodruff Park, Atlanta, GA 30303",
+      "coordinates": {
+        "lat": 33.755426,
+        "lng": -84.388486
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": 16,
+      "bestFor": [
+        "walkable"
+      ],
+      "summary": "Downtown park near Five Points.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/woodruff-park/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": true
+    },
+    {
+      "id": "piedmont-park",
+      "name": "Piedmont Park",
+      "status": "active",
+      "category": "outdoors",
+      "subcategories": [
+        "Park"
+      ],
+      "address": "1320 Monroe Dr, Atlanta, GA 30309",
+      "coordinates": {
+        "lat": 33.789048,
+        "lng": -84.371886
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "families",
+        "outdoors"
+      ],
+      "summary": "Large Midtown park where the BeltLine Eastside Trail begins.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/things-to-do/outdoors/piedmont-park/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 9
+    },
+    {
+      "id": "atlanta-beltline-eastside-trail",
+      "name": "Atlanta BeltLine Eastside Trail",
+      "status": "active",
+      "category": "outdoors",
+      "subcategories": [
+        "Trail"
+      ],
+      "address": "675 Ponce de Leon Ave NE, Atlanta, GA 30308",
+      "coordinates": {
+        "lat": 33.77244,
+        "lng": -84.365203
+      },
+      "website": "https://beltline.org/parks-trails/eastside-trail/",
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "outdoors",
+        "local experience"
+      ],
+      "summary": "Multi-use trail and greenspace from Piedmont Park to Reynoldstown, past Ponce City Market and Krog Street Market. Easiest access: at Ponce City Market (address shown).",
+      "verification": {
+        "sourceLabel": "Atlanta BeltLine",
+        "sourceUrls": [
+          "https://beltline.org/parks-trails/eastside-trail/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 4
+    },
+    {
+      "id": "historic-fourth-ward-park",
+      "name": "Historic Fourth Ward Park",
+      "status": "active",
+      "category": "outdoors",
+      "subcategories": [
+        "Park"
+      ],
+      "address": "680 Dallas St NE, Atlanta, GA 30308",
+      "coordinates": {
+        "lat": 33.768082,
+        "lng": -84.365051
+      },
+      "website": "https://beltline.org/parks-trails/historic-fourth-ward-park/",
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "bestFor": [
+        "families",
+        "outdoors"
+      ],
+      "summary": "Old Fourth Ward park beside the BeltLine Eastside Trail, with a skatepark.",
+      "verification": {
+        "sourceLabel": "Discover Atlanta",
+        "sourceUrls": [
+          "https://discoveratlanta.com/partner/historic-fourth-ward-park/"
+        ],
+        "lastVerified": "2026-11-05"
+      },
+      "walkable": false,
+      "driveMinutes": 4
     }
   ]
 }
