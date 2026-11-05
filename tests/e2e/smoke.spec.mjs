@@ -177,3 +177,38 @@ test("on a phone, pages fit the screen and the card map is drawn at phone size",
   expect(Math.abs(sizes.map - sizes.wrap)).toBeLessThanOrEqual(2); // drawn 1:1, not a shrunken desktop map
   expect(await noSideScroll()).toBe(0);
 });
+
+test("Closest to the hotel lists every restaurant, nearest first", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Closest to the hotel/ }).click();
+  await expect(page.locator("#restaurantTitle")).toHaveText("Closest to the hotel");
+  await expect(page.locator("#resultCount")).toHaveText("23 results · closest first");
+  await expect(page.locator(".card h3").first()).toHaveText("Fiora Cucina Italiana"); // inside the hotel
+  const minutes = await page.locator(".card-top strong").allInnerTexts();
+  const nums = minutes.map((t) => Number(t.match(/\d+/)[0]));
+  expect(nums).toEqual([...nums].sort((a, b) => a - b));
+  // going into a region afterwards brings the cuisine buttons back
+  await page.getByRole("button", { name: /Change region/ }).click();
+  await page.locator('[data-region-tile="American"]').click();
+  await expect(page.locator(".subcategory-bar")).toBeVisible();
+});
+
+test("no dead controls: no rating filter, no placeholder Details button, empty sections marked", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".tile", { hasText: "Attractions" })).toContainText("Coming soon");
+  await expect(page.locator(".tile", { hasText: "Restaurants" })).not.toContainText("Coming soon");
+  await expect(page.locator(".pill")).toHaveCount(1);
+  await openRestaurants(page, "American");
+  await expect(page.locator("#rating")).toHaveCount(0);
+  await expect(page.locator(".cards")).not.toContainText("Not loaded");
+  await expect(page.getByRole("button", { name: "Details" })).toHaveCount(0);
+});
+
+test("a restaurant inside the hotel says so instead of offering walking directions", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Closest to the hotel/ }).click();
+  const fiora = page.locator(".card", { hasText: "Fiora Cucina Italiana" });
+  await expect(fiora).toContainText("In the hotel");
+  await expect(fiora.getByRole("link", { name: /Walking Map/ })).toHaveCount(0);
+  await expect(fiora.getByRole("link", { name: /Print directions/ })).toHaveCount(1);
+});
