@@ -69,6 +69,7 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 </main>
 <footer>JW Atlanta Local Guide · Working prototype · Designed for desktop, tablet, and phone</footer>
 </div>
+<script src="assets/live-directions.js"></script>
 <script>
 // Venue content lives in data/*.json (see docs/DATA_MODEL.md). This script only presents it.
 const DATA_FILES={venues:'data/venues.json',taxonomy:'data/taxonomy.json',hotel:'data/hotel.json'};
@@ -95,6 +96,7 @@ let selected="All";
 let selectedRegion=null;
 const menu=document.getElementById('cuisineMenu');
 const regionGrid=document.getElementById('regionGrid');
+function hotelAddress(){const a=hotel.address;return `${a.street}, ${a.locality}, ${a.region} ${a.postalCode}`;}
 function applyData({venues,taxonomy,hotel:h}){
  hotel=h;
  restaurants=venues.venues.filter(v=>v.category==='dining'&&v.status!=='closed');
@@ -144,7 +146,7 @@ function render(){
  const regional=selectedRegion && selected===selectedRegion;
  const rows=restaurants.filter(r=>(selected==='All'||(regional?r.cuisineGroup===selectedRegion:r.cuisine===selected))&&(minRating===0 || (r.rating!==null && r.rating>=minRating))&&(price==='All'||r.priceLevel===price)&&(type==='All'||r.diningStyle===type)).sort((a,b)=>a.walkMinutes-b.walkMinutes||b.rating-a.rating);
  document.getElementById('resultCount').textContent=`${rows.length} result${rows.length===1?'':'s'} · closest first`;
- document.getElementById('restaurantCards').innerHTML=rows.length?rows.map(r=>`<article class="card"><div class="card-top"><div><h3>${esc(r.name)}</h3><span class="badge">${esc(r.cuisine)}</span></div><strong>🚶 ${esc(r.walkMinutes)} min</strong></div><div class="meta"><span>⭐ ${r.rating===null?'Not loaded':esc(r.rating)}</span><span>${esc(r.priceLevel)}</span><span>🍽️ ${esc(r.diningStyle)}</span></div><p class="desc">${esc(r.summary)}</p><div class="meta"><span>🕐 ${esc(r.hours??UNKNOWN_HOURS)}</span><span>📞 ${esc(r.phone??UNKNOWN_PHONE)}</span><span>✓ ${esc(r.verification.sourceLabel)}</span></div><div class="actions"><a class="action primary walk-link" href="walk.html?id=${encodeURIComponent(r.id)}">📍 Walking Map</a><a class="action" href="walk.html?id=${encodeURIComponent(r.id)}&amp;print=1">🖨 Print directions</a><button class="action" type="button" onclick="alert('Restaurant details screen is planned for the next revision.')">Details</button></div></article>`).join(''):'<div class="empty">No restaurants match these filters.</div>';
+ document.getElementById('restaurantCards').innerHTML=rows.length?rows.map(r=>`<article class="card"><div class="card-top"><div><h3>${esc(r.name)}</h3><span class="badge">${esc(r.cuisine)}</span></div><strong>🚶 ${esc(r.walkMinutes)} min</strong></div><div class="meta"><span>⭐ ${r.rating===null?'Not loaded':esc(r.rating)}</span><span>${esc(r.priceLevel)}</span><span>🍽️ ${esc(r.diningStyle)}</span></div><p class="desc">${esc(r.summary)}</p><div class="meta"><span>🕐 ${esc(r.hours??UNKNOWN_HOURS)}</span><span>📞 ${esc(r.phone??UNKNOWN_PHONE)}</span><span>✓ ${esc(r.verification.sourceLabel)}</span></div><div class="actions"><a class="action primary walk-link" href="${esc(liveDirections(hotelAddress(),r.address).url)}" target="_blank" rel="noopener" aria-label="Walking Map: live directions to ${esc(r.name)} (opens maps)">📍 Walking Map</a><a class="action print-link" href="walk.html?id=${encodeURIComponent(r.id)}&amp;print=1">🖨 Print directions</a><button class="action" type="button" onclick="alert('Restaurant details screen is planned for the next revision.')">Details</button></div></article>`).join(''):'<div class="empty">No restaurants match these filters.</div>';
 }
 loadData().then(data=>{applyData(data);render();}).catch(err=>{console.error('Failed to load guide data:',err);showLoadError();});
 </script>

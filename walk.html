@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <link rel="icon" href="data:,">
+<script src="assets/live-directions.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Walking directions · JW Atlanta Local Guide</title>
 <style>
@@ -114,8 +115,12 @@ function distanceText(m) {
   return ft < 1000 ? `${Math.max(50, Math.round(ft / 50) * 50)} ft` : `${(m / 1609.34).toFixed(1)} mi`;
 }
 const hotelAddress = (h) => `${h.address.street}, ${h.address.locality}, ${h.address.region} ${h.address.postalCode}`;
-const googleWalkUrl = (from, to) =>
-  `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(from)}&destination=${encodeURIComponent(to)}&travelmode=walking`;
+function setLiveLink(from, to) {
+  const live = window.liveDirections(from, to);
+  const a = document.getElementById("gmaps");
+  a.href = live.url; a.textContent = `Open in ${live.app}`;
+  return live;
+}
 
 async function getJson(url) {
   const res = await fetch(url, { cache: "no-cache" });
@@ -167,7 +172,7 @@ function placeLabels(labels, obstacles) {
 function render({ venue, hotel, route, landmarks }) {
   document.title = `Walking directions · ${venue.name}`;
   const hotelAddr = hotelAddress(hotel);
-  document.getElementById("gmaps").href = googleWalkUrl(hotelAddr, venue.address);
+  setLiveLink(hotelAddr, venue.address);
   const lmById = Object.fromEntries(landmarks.map((l) => [l.id, l]));
   const mi = route.distanceMeters / 1609.34;
 
@@ -181,7 +186,7 @@ function render({ venue, hotel, route, landmarks }) {
   const before = [
     `<p><span class="k">Before you go</span>${venue.hours ? esc(venue.hours) : "Hours change. Check current hours before you go."}${venue.phone ? ` · ${esc(venue.phone)}` : ""}</p>`,
     `<p><span class="k">Rather not walk?</span>Ask the front desk to arrange a car or rideshare.</p>`,
-    `<p><span class="k">Live directions</span>Open the guide on your phone and tap “Open in Google Maps”.</p>`,
+    `<p><span class="k">Live directions</span>On your phone, tap “Walking Map” in the guide for turn-by-turn directions.</p>`,
   ].join("");
 
   page.innerHTML = `
@@ -295,11 +300,11 @@ document.getElementById("print").addEventListener("click", () => window.print())
     const [venuesDoc, hotel, landmarksDoc] = await Promise.all([getJson("data/venues.json"), getJson("data/hotel.json"), getJson("data/landmarks.json")]);
     const venue = venuesDoc.venues.find((v) => v.id === id);
     if (!venue) return showMessage('That venue isn’t in the guide. <a href="./">Back to the guide</a>');
-    document.getElementById("gmaps").href = googleWalkUrl(hotelAddress(hotel), venue.address);
+    const live = setLiveLink(hotelAddress(hotel), venue.address);
     let route;
     try { route = await getJson(`data/routes/${id}.json`); }
     catch (err) {
-      if (err.status === 404) return showMessage(`Walking directions for <strong>${esc(venue.name)}</strong> haven’t been generated yet. Use “Open in Google Maps” above for live directions.`);
+      if (err.status === 404) return showMessage(`Walking directions for <strong>${esc(venue.name)}</strong> haven’t been generated yet. Use “Open in ${live.app}” above for live directions.`);
       throw err;
     }
     render({ venue, hotel, route, landmarks: landmarksDoc.landmarks });
@@ -310,7 +315,7 @@ document.getElementById("print").addEventListener("click", () => window.print())
     }
   } catch (err) {
     console.error("Walking card failed to load:", err);
-    showMessage('The walking directions could not be loaded. Please refresh, or use “Open in Google Maps” above.');
+    showMessage('The walking directions could not be loaded. Please refresh, or use the live map link above.');
   }
 })();
 </script>
