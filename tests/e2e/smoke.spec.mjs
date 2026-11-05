@@ -71,12 +71,24 @@ async function stubTiles(page) {
   await page.route("https://tile.openstreetmap.org/**", (route) => route.fulfill({ status: 200, contentType: "image/png", body: BLANK_PNG }));
 }
 
-test("Walking Map opens the printable card for that restaurant", async ({ page }) => {
+test("Walking Map opens live walking directions in Google Maps", async ({ page }) => {
+  await openRestaurants(page, "American");
+  const link = page.locator(".card", { hasText: "Catch 12" }).getByRole("link", { name: /Walking Map/ });
+  await expect(link).toHaveAttribute("target", "_blank");
+  const url = new URL(await link.getAttribute("href"));
+  expect(url.hostname).toBe("www.google.com");
+  expect(url.searchParams.get("origin")).toBe(HOTEL_ADDRESS);
+  expect(url.searchParams.get("destination")).toBe("400 W Peachtree St NW, Atlanta, GA 30308");
+  expect(url.searchParams.get("travelmode")).toBe("walking");
+});
+
+test("Print directions opens the printable card for that restaurant", async ({ page }) => {
   await stubTiles(page);
   const errors = trackErrors(page);
   await openRestaurants(page, "American");
-  await page.locator(".card", { hasText: "Catch 12" }).getByRole("link", { name: /Walking Map/ }).click();
-  await expect(page).toHaveURL(/walk\.html\?id=catch-12$/);
+  const print = page.locator(".card", { hasText: "Catch 12" }).getByRole("link", { name: /Print directions/ });
+  await expect(print).toHaveAttribute("href", "walk.html?id=catch-12&print=1");
+  await page.goto("/walk.html?id=catch-12");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Catch 12");
   await expect(page.locator("header .addr")).toHaveText("400 W Peachtree St NW, Atlanta, GA 30308");
   await expect(page.locator("ol li").first()).toContainText("Leave the hotel");
@@ -84,12 +96,26 @@ test("Walking Map opens the printable card for that restaurant", async ({ page }
   await expect(page.locator(".map svg .route")).toHaveCount(1);
   await expect(page.locator(".map")).toContainText("© OpenStreetMap contributors");
   await expect(page.locator("footer")).toContainText(HOTEL_ADDRESS);
-
-  const gmaps = new URL(await page.getByRole("link", { name: "Open in Google Maps" }).getAttribute("href"));
-  expect(gmaps.searchParams.get("origin")).toBe(HOTEL_ADDRESS);
-  expect(gmaps.searchParams.get("destination")).toBe("400 W Peachtree St NW, Atlanta, GA 30308");
-  expect(gmaps.searchParams.get("travelmode")).toBe("walking");
+  const live = new URL(await page.getByRole("link", { name: "Open in Google Maps" }).getAttribute("href"));
+  expect(live.searchParams.get("destination")).toBe("400 W Peachtree St NW, Atlanta, GA 30308");
   expect(errors).toEqual([]);
+});
+
+test.describe("on an iPhone", () => {
+  test.use({ userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1" });
+
+  test("Walking Map and the card's live link open Apple Maps", async ({ page }) => {
+    await stubTiles(page);
+    await openRestaurants(page, "American");
+    const href = await page.locator(".card", { hasText: "Catch 12" }).getByRole("link", { name: /Walking Map/ }).getAttribute("href");
+    const url = new URL(href);
+    expect(url.hostname).toBe("maps.apple.com");
+    expect(url.searchParams.get("saddr")).toBe(HOTEL_ADDRESS);
+    expect(url.searchParams.get("daddr")).toBe("400 W Peachtree St NW, Atlanta, GA 30308");
+    expect(url.searchParams.get("dirflg")).toBe("w");
+    await page.goto("/walk.html?id=catch-12");
+    await expect(page.getByRole("link", { name: "Open in Apple Maps" })).toHaveAttribute("href", /^https:\/\/maps\.apple\.com\//);
+  });
 });
 
 test("walking card prints on one page without the on-screen buttons", async ({ page }) => {
@@ -129,4 +155,25 @@ test("a failed data load shows an accessible error, not a blank page", async ({ 
   await page.route("**/data/venues.json", (route) => route.fulfill({ status: 500, body: "boom" }));
   await page.goto("/");
   await expect(page.getByRole("alert")).toContainText("could not load its recommendations");
+});
+
+test("on a phone, pages fit the screen and the card map is drawn at phone size", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "phone", "phone layout only");
+  await stubTiles(page);
+  const noSideScroll = () => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  await page.goto("/");
+  expect(await noSideScroll()).toBe(0);
+  await page.getByRole("button", { name: /Restaurants/ }).click();
+  const cols = await page.locator("#regionGrid").evaluate((el) => getComputedStyle(el).gridTemplateColumns.split(" ").length);
+  expect(cols).toBe(1);
+  expect(await noSideScroll()).toBe(0);
+
+  await page.goto("/walk.html?id=der-biergarten");
+  await expect(page.locator(".map svg .route")).toHaveCount(1);
+  const sizes = await page.evaluate(() => ({
+    wrap: document.getElementById("mapWrap").clientWidth,
+    map: parseFloat(document.getElementById("map").style.width),
+  }));
+  expect(Math.abs(sizes.map - sizes.wrap)).toBeLessThanOrEqual(2); // drawn 1:1, not a shrunken desktop map
+  expect(await noSideScroll()).toBe(0);
 });

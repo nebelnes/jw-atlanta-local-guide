@@ -19,8 +19,21 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:20px 0}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:var(--shadow)}.card-top{display:flex;justify-content:space-between;gap:12px}.card h3{font-family:Georgia,serif;font-size:24px;font-weight:500;margin:0 0 5px}.badge{display:inline-block;background:#f2eadc;color:#6f5427;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:700}.meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:12px 0}.desc{line-height:1.45}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.action{border:1px solid var(--line);background:white;border-radius:10px;padding:9px 11px;cursor:pointer}.action.primary{background:var(--wine);color:#fff;border-color:var(--wine)}a.action{text-decoration:none;display:inline-block;color:inherit}a.action.primary{color:#fff}
 .placeholder{border:1px dashed var(--line);border-radius:18px;padding:30px;background:#fff;color:var(--muted)}.notice{background:#fff8e7;border:1px solid #ecd9a8;padding:12px 14px;border-radius:12px;color:#6c5528;margin:16px 0}.empty{grid-column:1/-1;padding:25px;background:#fff;border-radius:16px;text-align:center;color:var(--muted)}.load-error{margin:24px 0}
 .map-panel{display:none;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0;box-shadow:var(--shadow)}.map-panel.active{display:block}.map-head{display:flex;justify-content:space-between;gap:12px;align-items:start}.map-head h3{font-family:Georgia,serif;font-size:27px;font-weight:500;margin:0}.route-box{margin-top:16px;padding:18px;border-radius:14px;background:#f5f0e7;border:1px solid var(--line)}.route-line{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;margin:10px 0}.route-dot{width:14px;height:14px;border-radius:50%;background:var(--wine);margin:auto}.route-path{width:3px;height:24px;background:var(--gold);margin:auto}.map-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.print-only{display:none} footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0;color:var(--muted);font-size:13px}
-@media(max-width:760px){.tiles,.region-grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.count{width:100%;margin:0}.topbar{align-items:flex-start}.tile{min-height:120px;padding:16px}.tile strong{font-size:20px;margin-top:12px}}
-@media(max-width:420px){.shell{padding:12px}.tiles,.region-grid{grid-template-columns:1fr 1fr;gap:9px}.tile{min-height:105px}.tile span{display:none}.hero{padding-top:28px}.controls{position:static}.control{width:100%}select{width:100%}}
+@media(max-width:760px){.tiles,.region-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cards{grid-template-columns:1fr}.count{width:100%;margin:0}.topbar{align-items:flex-start}.tile{min-height:120px;padding:16px}.tile strong{font-size:20px;margin-top:12px}}
+@media(max-width:560px){
+.shell{padding:12px 16px}
+.topbar{align-items:center;padding:10px 0 14px}.brand small{font-size:10px;letter-spacing:.12em}.brand h1{font-size:24px}.home-btn{padding:8px 13px;font-size:14px;white-space:nowrap;flex:none}
+.hero{padding:22px 0 16px}.hero h2{font-size:28px;line-height:1.15}.hero p{font-size:15px}
+.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{min-height:0;padding:14px;display:flex;flex-direction:column;justify-content:center;border-radius:14px}.tile .icon{display:block;font-size:22px;line-height:1}.tile strong{font-size:16px;margin-top:8px;line-height:1.2;overflow-wrap:anywhere}.tile span:not(.icon){display:none}
+.quick{flex-wrap:nowrap;overflow-x:auto;margin:18px -16px;padding:0 16px 4px;-webkit-overflow-scrolling:touch}.pill{white-space:nowrap;font-size:14px;flex:none}
+.section-head{margin:18px 0 12px;flex-wrap:wrap}.section-head h2{font-size:28px}
+.region-grid{grid-template-columns:1fr;gap:8px;margin:12px 0 20px}.region-tile{min-height:0;padding:13px 16px;border-radius:14px}.region-tile strong{font-size:18px;margin-bottom:2px;overflow-wrap:anywhere}.region-tile span{font-size:13.5px}
+.cuisines{gap:8px}.cuisine{padding:9px 12px;font-size:14px}
+.notice{font-size:13px;padding:10px 12px;margin:12px 0}
+.controls{position:static;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px 0}.control label{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}select{min-width:0;width:100%;padding:9px 6px;font-size:14px}.count{grid-column:1/-1;font-size:13px}
+.cards{gap:12px;margin:14px 0}.card{padding:16px;border-radius:14px}.card h3{font-size:21px}.card-top strong{white-space:nowrap}.meta{font-size:13.5px;margin:10px 0}.desc{font-size:15px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.action{text-align:center;padding:11px 8px;font-size:15px}.actions .action:nth-child(3){grid-column:1/-1}
+}
 @media print{body{background:#fff}.topbar,.controls,.quick,.actions,footer,.notice,.section-head,.subcategory-bar,.cards{display:none!important}.map-panel.active{display:block!important;border:0;box-shadow:none;padding:0}.map-actions{display:none}.print-only{display:block}.shell{max-width:none}.card{box-shadow:none;break-inside:avoid}.cards{display:block}.card{margin-bottom:14px}}
 </style>
 </head>
@@ -32,12 +45,12 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 <section id="home" class="view active">
  <div class="hero"><h2>What is your guest looking for?</h2><p>Curated Atlanta recommendations, routes, and guest-ready information.</p></div>
  <div class="tiles">
-  <button class="tile" data-view="restaurants" type="button"><span class="icon">🍽️</span><strong>Restaurants</strong><span>Browse by region and cuisine</span></button>
-  <button class="tile" data-view="attractions" type="button"><span class="icon">🏛️</span><strong>Attractions</strong><span>Family, culture, and must-see places</span></button>
-  <button class="tile" data-view="events" type="button"><span class="icon">🏟️</span><strong>Sports & Events</strong><span>Venues and upcoming events</span></button>
-  <button class="tile" data-view="entertainment" type="button"><span class="icon">🎭</span><strong>Entertainment</strong><span>Theater, music, and nightlife</span></button>
-  <button class="tile" data-view="shopping" type="button"><span class="icon">🛍️</span><strong>Shopping</strong><span>Markets, malls, and boutiques</span></button>
-  <button class="tile" data-view="outdoors" type="button"><span class="icon">🌳</span><strong>Parks & Outdoors</strong><span>Green spaces and outdoor activities</span></button>
+  <button class="tile" data-view="restaurants" type="button"><span class="icon" aria-hidden="true">🍽️</span><strong>Restaurants</strong><span>Browse by region and cuisine</span></button>
+  <button class="tile" data-view="attractions" type="button"><span class="icon" aria-hidden="true">🏛️</span><strong>Attractions</strong><span>Family, culture, and must-see places</span></button>
+  <button class="tile" data-view="events" type="button"><span class="icon" aria-hidden="true">🏟️</span><strong>Sports & Events</strong><span>Venues and upcoming events</span></button>
+  <button class="tile" data-view="entertainment" type="button"><span class="icon" aria-hidden="true">🎭</span><strong>Entertainment</strong><span>Theater, music, and nightlife</span></button>
+  <button class="tile" data-view="shopping" type="button"><span class="icon" aria-hidden="true">🛍️</span><strong>Shopping</strong><span>Markets, malls, and boutiques</span></button>
+  <button class="tile" data-view="outdoors" type="button"><span class="icon" aria-hidden="true">🌳</span><strong>Parks & Outdoors</strong><span>Green spaces and outdoor activities</span></button>
  </div>
  <div class="quick"><button class="pill" type="button">⭐ JW Recommended</button><button class="pill" type="button">📍 Closest to Hotel</button><button class="pill" type="button">🕐 Open Now</button><button class="pill" type="button">🎟️ What's Happening Today</button></div>
 </section>
@@ -69,6 +82,7 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 </main>
 <footer>JW Atlanta Local Guide · Working prototype · Designed for desktop, tablet, and phone</footer>
 </div>
+<script src="assets/live-directions.js"></script>
 <script>
 // Venue content lives in data/*.json (see docs/DATA_MODEL.md). This script only presents it.
 const DATA_FILES={venues:'data/venues.json',taxonomy:'data/taxonomy.json',hotel:'data/hotel.json'};
@@ -95,6 +109,7 @@ let selected="All";
 let selectedRegion=null;
 const menu=document.getElementById('cuisineMenu');
 const regionGrid=document.getElementById('regionGrid');
+function hotelAddress(){const a=hotel.address;return `${a.street}, ${a.locality}, ${a.region} ${a.postalCode}`;}
 function applyData({venues,taxonomy,hotel:h}){
  hotel=h;
  restaurants=venues.venues.filter(v=>v.category==='dining'&&v.status!=='closed');
@@ -144,7 +159,7 @@ function render(){
  const regional=selectedRegion && selected===selectedRegion;
  const rows=restaurants.filter(r=>(selected==='All'||(regional?r.cuisineGroup===selectedRegion:r.cuisine===selected))&&(minRating===0 || (r.rating!==null && r.rating>=minRating))&&(price==='All'||r.priceLevel===price)&&(type==='All'||r.diningStyle===type)).sort((a,b)=>a.walkMinutes-b.walkMinutes||b.rating-a.rating);
  document.getElementById('resultCount').textContent=`${rows.length} result${rows.length===1?'':'s'} · closest first`;
- document.getElementById('restaurantCards').innerHTML=rows.length?rows.map(r=>`<article class="card"><div class="card-top"><div><h3>${esc(r.name)}</h3><span class="badge">${esc(r.cuisine)}</span></div><strong>🚶 ${esc(r.walkMinutes)} min</strong></div><div class="meta"><span>⭐ ${r.rating===null?'Not loaded':esc(r.rating)}</span><span>${esc(r.priceLevel)}</span><span>🍽️ ${esc(r.diningStyle)}</span></div><p class="desc">${esc(r.summary)}</p><div class="meta"><span>🕐 ${esc(r.hours??UNKNOWN_HOURS)}</span><span>📞 ${esc(r.phone??UNKNOWN_PHONE)}</span><span>✓ ${esc(r.verification.sourceLabel)}</span></div><div class="actions"><a class="action primary walk-link" href="walk.html?id=${encodeURIComponent(r.id)}">📍 Walking Map</a><a class="action" href="walk.html?id=${encodeURIComponent(r.id)}&amp;print=1">🖨 Print directions</a><button class="action" type="button" onclick="alert('Restaurant details screen is planned for the next revision.')">Details</button></div></article>`).join(''):'<div class="empty">No restaurants match these filters.</div>';
+ document.getElementById('restaurantCards').innerHTML=rows.length?rows.map(r=>`<article class="card"><div class="card-top"><div><h3>${esc(r.name)}</h3><span class="badge">${esc(r.cuisine)}</span></div><strong>🚶 ${esc(r.walkMinutes)} min</strong></div><div class="meta"><span>⭐ ${r.rating===null?'Not loaded':esc(r.rating)}</span><span>${esc(r.priceLevel)}</span><span>🍽️ ${esc(r.diningStyle)}</span></div><p class="desc">${esc(r.summary)}</p><div class="meta"><span>🕐 ${esc(r.hours??UNKNOWN_HOURS)}</span><span>📞 ${esc(r.phone??UNKNOWN_PHONE)}</span><span>✓ ${esc(r.verification.sourceLabel)}</span></div><div class="actions"><a class="action primary walk-link" href="${esc(liveDirections(hotelAddress(),r.address).url)}" target="_blank" rel="noopener" aria-label="Walking Map: live directions to ${esc(r.name)} (opens maps)">📍 Walking Map</a><a class="action print-link" href="walk.html?id=${encodeURIComponent(r.id)}&amp;print=1">🖨 Print directions</a><button class="action" type="button" onclick="alert('Restaurant details screen is planned for the next revision.')">Details</button></div></article>`).join(''):'<div class="empty">No restaurants match these filters.</div>';
 }
 loadData().then(data=>{applyData(data);render();}).catch(err=>{console.error('Failed to load guide data:',err);showLoadError();});
 </script>
