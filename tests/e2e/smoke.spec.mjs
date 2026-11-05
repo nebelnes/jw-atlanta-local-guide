@@ -156,3 +156,24 @@ test("a failed data load shows an accessible error, not a blank page", async ({ 
   await page.goto("/");
   await expect(page.getByRole("alert")).toContainText("could not load its recommendations");
 });
+
+test("on a phone, pages fit the screen and the card map is drawn at phone size", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "phone", "phone layout only");
+  await stubTiles(page);
+  const noSideScroll = () => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  await page.goto("/");
+  expect(await noSideScroll()).toBe(0);
+  await page.getByRole("button", { name: /Restaurants/ }).click();
+  const cols = await page.locator("#regionGrid").evaluate((el) => getComputedStyle(el).gridTemplateColumns.split(" ").length);
+  expect(cols).toBe(1);
+  expect(await noSideScroll()).toBe(0);
+
+  await page.goto("/walk.html?id=der-biergarten");
+  await expect(page.locator(".map svg .route")).toHaveCount(1);
+  const sizes = await page.evaluate(() => ({
+    wrap: document.getElementById("mapWrap").clientWidth,
+    map: parseFloat(document.getElementById("map").style.width),
+  }));
+  expect(Math.abs(sizes.map - sizes.wrap)).toBeLessThanOrEqual(2); // drawn 1:1, not a shrunken desktop map
+  expect(await noSideScroll()).toBe(0);
+});

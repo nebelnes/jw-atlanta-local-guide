@@ -17,6 +17,7 @@ body { background:#e9e5de; color:var(--ink); font-family:Inter, Arial, Helvetica
 .toolbar .primary { background:var(--wine); border-color:var(--wine); color:#fff }
 .toolbar a:focus-visible, .toolbar button:focus-visible { outline:3px solid var(--gold); outline-offset:2px }
 .toolbar .spacer { flex:1 }
+.short { display:none }
 .page { width:min(8.5in, 100%); min-height:11in; margin:0 auto 24px; background:#fff; padding:0.4in 0.5in 0.34in; display:flex; flex-direction:column; gap:11px; box-shadow:0 8px 30px rgba(29,37,40,.12) }
 header { display:flex; justify-content:space-between; align-items:flex-end; gap:18px; padding-bottom:12px; border-bottom:1px solid var(--line); flex-wrap:wrap }
 .eyebrow { font-size:9.5px; letter-spacing:.18em; font-weight:700; color:var(--gold); text-transform:uppercase }
@@ -28,10 +29,10 @@ h1 { font-family:Lora, Georgia, serif; font-weight:500; font-size:31px; line-hei
 .stat b { display:block; font-family:Lora, Georgia, serif; font-size:19px; font-weight:600; color:var(--wine) }
 .stat span { font-size:9.5px; color:var(--muted); letter-spacing:.04em; text-transform:uppercase }
 .map-wrap { position:relative; width:100%; aspect-ratio:720/507; border-radius:14px; overflow:hidden; border:1px solid var(--line); background:#f1eee8 }
-.map { position:absolute; left:0; top:0; width:720px; height:507px; transform-origin:0 0 }
+.map { position:absolute; left:0; top:0; transform-origin:0 0 }
 .tiles { position:absolute; inset:0; filter:saturate(.42) contrast(.93) brightness(1.03) sepia(.06) }
 .tiles img { position:absolute; width:256px; height:256px; user-select:none }
-.map > svg { position:absolute; inset:0; width:720px; height:507px; overflow:visible }
+.map > svg { position:absolute; left:0; top:0; overflow:visible }
 svg .route-casing { fill:none; stroke:#fff; stroke-width:9; stroke-linejoin:round; stroke-linecap:round; opacity:.95 }
 svg .route { fill:none; stroke:var(--wine); stroke-width:4.6; stroke-linejoin:round; stroke-linecap:round }
 svg .passed { fill:rgba(155,122,60,.16); stroke:var(--gold); stroke-width:1.4 }
@@ -42,7 +43,7 @@ svg .badge text, svg .pin text { fill:#fff; font:700 10.5px Inter, Arial, sans-s
 svg .pin circle { stroke:#fff; stroke-width:2.5 }
 .label { position:absolute; background:rgba(255,255,255,.96); border:1px solid var(--line); border-radius:8px; padding:5px 8px; line-height:1.25; box-shadow:0 2px 8px rgba(29,37,40,.12); white-space:nowrap; font-size:10px }
 .label b { display:block; font-size:10.5px }
-.label.callout { display:flex; gap:6px; align-items:center; border-left:3px solid var(--gold); padding:4px 8px 4px 7px; white-space:normal; width:172px; font-size:8.6px; color:var(--muted) }
+.label.callout { display:flex; gap:6px; align-items:center; border-left:3px solid var(--gold); padding:4px 8px 4px 7px; white-space:normal; font-size:8.6px; color:var(--muted) }
 .label.callout.park { border-left-color:var(--sage) }
 .label.callout b { color:var(--ink); font-size:9.6px }
 .label.callout svg { width:17px; height:17px; flex:none; fill:var(--gold); background:#f3ecdf; border-radius:50%; padding:3px }
@@ -71,12 +72,18 @@ aside .k { display:block; font-size:9px; letter-spacing:.12em; text-transform:up
 footer { margin-top:auto; display:flex; justify-content:space-between; gap:16px; font-size:8.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:7px }
 .message { padding:28px; background:var(--paper); border-radius:12px; font-size:14px; line-height:1.5 }
 @media (max-width:640px) {
+  .toolbar { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; padding:10px 16px }
+  .toolbar .spacer, .long { display:none } .short { display:inline }
+  .toolbar a, .toolbar button { text-align:center; padding:10px 6px; font-size:14px }
   .page { padding:20px 16px; min-height:0; box-shadow:none }
+  .label { font-size:10.5px } .label b { font-size:11px }
+  .label.callout { font-size:9.5px } .label.callout b { font-size:10.5px }
+  .legend { font-size:10px }
+  .map-wrap .attrib { top:5px; bottom:auto }
   .body { grid-template-columns:1fr }
   h1 { font-size:26px }
   li { font-size:13px } .pass { font-size:12px } .dist { font-size:12px }
   aside { font-size:13px }
-  .label { font-size:11px }
 }
 @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important } }
 @media print {
@@ -89,17 +96,35 @@ footer { margin-top:auto; display:flex; justify-content:space-between; gap:16px;
 </head>
 <body>
 <nav class="toolbar" aria-label="Card actions">
-  <a href="./">← Back to guide</a>
+  <a href="./" aria-label="Back to guide">← <span class="long">Back to guide</span><span class="short">Guide</span></a>
   <span class="spacer"></span>
-  <a id="gmaps" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
-  <button id="print" class="primary" type="button">Print directions</button>
+  <a id="gmaps" href="#" target="_blank" rel="noopener" aria-label="Open in Google Maps"><span class="long">Open in </span>Google Maps</a>
+  <button id="print" class="primary" type="button" aria-label="Print directions"><span class="long">Print directions</span><span class="short">Print</span></button>
 </nav>
 <main class="page" id="page" aria-live="polite"><p class="message">Loading walking directions…</p></main>
 
 <script type="module">
 import { cumulative, pointAt, project } from "./scripts/lib/geo.mjs";
 
-const MAP_W = 720, MAP_H = 507, TILE = 256;
+const TILE = 256;
+const PRINT_SIZE = { w: 720, h: 507 };       // 7.5 in wide at 96 dpi: the printed card
+let MAP_W = PRINT_SIZE.w, MAP_H = PRINT_SIZE.h; // current drawing size
+let mapCtx = null, printing = false;
+
+/** On phones the map is drawn at the screen's own width so street names stay readable. */
+function screenSize() {
+  const w = document.getElementById("mapWrap")?.clientWidth ?? PRINT_SIZE.w;
+  if (w >= 600) return PRINT_SIZE;
+  // height follows the route's shape: wide routes get a shorter map, tall ones a taller map
+  let ratio = 1.1;
+  if (mapCtx) {
+    const pts = [...mapCtx.route.geometry, [mapCtx.venue.coordinates.lng, mapCtx.venue.coordinates.lat]].map((c) => project(c, 16));
+    const xs = pts.map((p) => p[0]), ys = pts.map((p) => p[1]);
+    const bw = Math.max(...xs) - Math.min(...xs) || 1, bh = Math.max(...ys) - Math.min(...ys) || 1;
+    ratio = Math.min(1.3, Math.max(0.85, bh / bw + 0.3));
+  }
+  return { w: Math.round(w), h: Math.round(w * ratio) };
+}
 const esc = (v) => String(v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const page = document.getElementById("page");
 const params = new URLSearchParams(location.search);
@@ -118,7 +143,8 @@ const hotelAddress = (h) => `${h.address.street}, ${h.address.locality}, ${h.add
 function setLiveLink(from, to) {
   const live = window.liveDirections(from, to);
   const a = document.getElementById("gmaps");
-  a.href = live.url; a.textContent = `Open in ${live.app}`;
+  a.href = live.url; a.setAttribute("aria-label", `Open in ${live.app}`);
+  a.innerHTML = `<span class="long">Open in </span>${live.app}`;
   return live;
 }
 
@@ -147,11 +173,12 @@ function frame(points) {
 
 /** Greedy label placement: try spots around each anchor, keep the one that covers the least. */
 function placeLabels(labels, obstacles) {
+  const RADII = { tag: [10, 24, 42, 64], callout: [16, 46, 80, 120, 165] }; // start/arrival labels stay beside their pin
   const placed = [];
   const overlap = (a, b) => Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x)) * Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y));
   for (const lab of labels) {
     let best = null;
-    for (const r of [16, 46, 80, 120, 165]) {
+    for (const r of RADII[lab.kind] ?? RADII.callout) {
       for (let k = 0; k < 16; k++) {
         const ang = (k / 16) * 2 * Math.PI;
         const cx = lab.ax + Math.cos(ang) * (r + lab.w / 2), cy = lab.ay + Math.sin(ang) * (r + lab.h / 2);
@@ -159,11 +186,16 @@ function placeLabels(labels, obstacles) {
         if (box.x < 4 || box.y < 4 || box.x + box.w > MAP_W - 4 || box.y + box.h > MAP_H - 4) continue;
         let cost = r * 0.6;
         for (const o of obstacles) cost += overlap(box, o) * (o.weight ?? 1);
-        for (const p of placed) cost += overlap(box, p) * 50;
-        if (!best || cost < best.cost) best = { ...box, cost };
+        let clash = 0;
+        for (const p of placed) clash += overlap(box, p);
+        cost += clash * 50;
+        if (!best || cost < best.cost) best = { ...box, cost, clash };
       }
     }
+    if (!best && lab.kind === "callout") { lab.dropped = true; continue; }
     best ??= { x: Math.min(Math.max(lab.ax, 4), MAP_W - lab.w - 4), y: Math.min(Math.max(lab.ay, 4), MAP_H - lab.h - 4), w: lab.w, h: lab.h };
+    // a landmark label that can only go on top of another label is left off (it's still named in the steps)
+    if (lab.kind === "callout" && best.clash > 0) { lab.dropped = true; continue; }
     placed.push(best);
     lab.box = best;
   }
@@ -210,11 +242,56 @@ function render({ venue, hotel, route, landmarks }) {
     <span>${route.sameBuilding ? "" : `Route calculated ${esc(new Date(route.computedAt + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }))} from OpenStreetMap. Walking time is an estimate at an average pace.`}</span>
   </footer>`;
 
-  if (!route.sameBuilding) drawMap({ venue, hotel, route, lmById });
+  if (!route.sameBuilding) {
+    mapCtx = { venue, hotel, route, lmById };
+    drawMap(mapCtx, screenSize());
+    const wrap = document.getElementById("mapWrap");
+    new ResizeObserver(() => {
+      const want = printing ? PRINT_SIZE : screenSize();
+      if (Math.abs(want.w - MAP_W) > 8 || Math.abs(want.h - MAP_H) > 8) drawMap(mapCtx, want);
+      else fitMap();
+    }).observe(wrap);
+  }
 }
 
-function drawMap({ venue, hotel, route, lmById }) {
+function fitMap() {
+  const wrap = document.getElementById("mapWrap"), map = document.getElementById("map");
+  if (wrap && map) map.style.transform = `scale(${wrap.clientWidth / MAP_W})`;
+}
+
+function tilesLoaded(timeoutMs = 4000) {
+  const imgs = [...document.querySelectorAll(".tiles img")];
+  return Promise.race([
+    Promise.all(imgs.map((i) => (i.complete ? 0 : new Promise((r) => { i.addEventListener("load", r); i.addEventListener("error", r); })))),
+    new Promise((r) => setTimeout(r, timeoutMs)),
+  ]);
+}
+
+/** Print always uses the full-size layout, whatever screen it's printed from. */
+async function printCard() {
+  if (mapCtx && (MAP_W !== PRINT_SIZE.w || MAP_H !== PRINT_SIZE.h)) {
+    printing = true;
+    drawMap(mapCtx, PRINT_SIZE);
+    await tilesLoaded();
+  }
+  window.print();
+}
+window.addEventListener("beforeprint", () => {
+  printing = true;
+  if (mapCtx && MAP_W !== PRINT_SIZE.w) drawMap(mapCtx, PRINT_SIZE);
+});
+window.addEventListener("afterprint", () => {
+  printing = false;
+  if (mapCtx) drawMap(mapCtx, screenSize());
+});
+
+function drawMap({ venue, hotel, route, lmById }, size) {
+  MAP_W = size.w; MAP_H = size.h;
+  const compact = MAP_W < 600;
   const map = document.getElementById("map");
+  const wrap = document.getElementById("mapWrap");
+  wrap.style.aspectRatio = `${MAP_W} / ${MAP_H}`;
+  map.style.width = `${MAP_W}px`; map.style.height = `${MAP_H}px`;
   const coords = route.geometry;
   const dest = [venue.coordinates.lng, venue.coordinates.lat];
   const { z, x0, y0 } = frame([...coords, dest]);
@@ -242,30 +319,37 @@ function drawMap({ venue, hotel, route, lmById }) {
 
   // labels: start, destination, then up to 4 landmarks (closest to the route first)
   const labels = [
-    { kind: "tag", html: `<b>Start · ${esc(hotel.name.replace(/ Atlanta Downtown$/, ""))}</b>${esc(hotel.address.street)}`, ax: sx, ay: sy, w: 150, h: 34 },
-    { kind: "tag", html: `<b>${esc(venue.name)}</b>Arrive here`, ax: ex, ay: ey, w: Math.max(110, venue.name.length * 6.4 + 20), h: 34 },
+    compact
+      ? { kind: "tag", html: `<b>Start</b>${esc(hotel.name.replace(/ Atlanta Downtown$/, ""))}`, ax: sx, ay: sy, w: 96, h: 34 }
+      : { kind: "tag", html: `<b>Start · ${esc(hotel.name.replace(/ Atlanta Downtown$/, ""))}</b>${esc(hotel.address.street)}`, ax: sx, ay: sy, w: 150, h: 34 },
+    { kind: "tag", html: `<b>${esc(venue.name)}</b>Arrive here`, ax: ex, ay: ey,
+      w: Math.min(compact ? MAP_W * 0.62 : 260, Math.max(compact ? 90 : 110, venue.name.length * (compact ? 6.8 : 6.4) + 20)), h: compact && venue.name.length > 24 ? 46 : 34 },
   ];
-  const calloutLms = [...route.landmarks].sort((a, b) => a.metersFromRoute - b.metersFromRoute).slice(0, 4).map((p) => lmById[p.landmarkId]).filter(Boolean);
+  const calloutLms = [...route.landmarks].sort((a, b) => a.metersFromRoute - b.metersFromRoute).slice(0, compact ? 2 : 4).map((p) => lmById[p.landmarkId]).filter(Boolean);
   for (const l of calloutLms) {
     const c = l.outline.map(P); const ax = c.reduce((s, p) => s + p[0], 0) / c.length, ay = c.reduce((s, p) => s + p[1], 0) / c.length;
-    labels.push({ kind: "callout", lm: l, ax, ay, w: 172, h: 38, html: `<svg viewBox="0 0 24 24">${ICONS[l.kind === "park" ? "park" : "building"]}</svg><div><b>${esc(l.name)}</b>${esc(l.line)}</div>` });
+    // on phones just the name; the full line is in the step list and on the printed card
+    const twoLines = compact && l.name.length * 6.3 > 138 - 40;
+    labels.push({ kind: "callout", lm: l, ax, ay, w: compact ? 138 : 172, h: compact ? (twoLines ? 40 : 28) : 38,
+      html: `<svg viewBox="0 0 24 24">${ICONS[l.kind === "park" ? "park" : "building"]}</svg><div><b>${esc(l.name)}</b>${compact ? "" : esc(l.line)}</div>` });
   }
   const obstacles = [
     ...route2d.filter((_, i) => i % 1 === 0).map(([x, y]) => ({ x: x - 7, y: y - 7, w: 14, h: 14, weight: 3 })),
     ...badges.map((b) => ({ x: b.x - 12, y: b.y - 12, w: 24, h: 24, weight: 6 })),
     { x: sx - 13, y: sy - 13, w: 26, h: 26, weight: 6 }, { x: ex - 13, y: ey - 13, w: 26, h: 26, weight: 6 },
-    { x: 0, y: MAP_H - 36, w: 260, h: 36, weight: 4 }, { x: MAP_W - 200, y: MAP_H - 22, w: 200, h: 22, weight: 4 },
+    { x: 0, y: MAP_H - 36, w: compact ? 230 : 260, h: 36, weight: 4 }, { x: MAP_W - 200, y: compact ? 0 : MAP_H - 22, w: 200, h: 22, weight: 4 },
   ];
   placeLabels(labels, obstacles);
 
-  const leaders = labels.filter((l) => l.kind === "callout").map((l) => {
+  const shown = labels.filter((l) => !l.dropped);
+  const leaders = shown.filter((l) => l.kind === "callout").map((l) => {
     const b = l.box, tx = Math.min(Math.max(l.ax, b.x), b.x + b.w), ty = Math.min(Math.max(l.ay, b.y), b.y + b.h);
     const color = l.lm.kind === "park" ? "#5f7f68" : "#9b7a3c";
     return `<line x1="${tx.toFixed(1)}" y1="${ty.toFixed(1)}" x2="${l.ax.toFixed(1)}" y2="${l.ay.toFixed(1)}" stroke="${color}" stroke-width="1.1" opacity=".85"/><circle cx="${l.ax.toFixed(1)}" cy="${l.ay.toFixed(1)}" r="2.8" fill="${color}" stroke="#fff" stroke-width="1.2"/>`;
   }).join("");
 
   map.innerHTML = `<div class="tiles">${tiles}</div>
-  <svg viewBox="0 0 ${MAP_W} ${MAP_H}" aria-hidden="true">
+  <svg viewBox="0 0 ${MAP_W} ${MAP_H}" width="${MAP_W}" height="${MAP_H}" aria-hidden="true">
     ${destLm ? poly(destLm, "dest") : ""}
     ${passed.map((l) => poly(l, l.kind === "park" ? "passed park" : "passed")).join("")}
     ${leaders}
@@ -274,13 +358,11 @@ function drawMap({ venue, hotel, route, lmById }) {
     <g class="pin" transform="translate(${sx.toFixed(1)},${sy.toFixed(1)})"><circle r="11" fill="#1d2528"/><text dy="3.5">1</text></g>
     <g class="pin" transform="translate(${ex.toFixed(1)},${ey.toFixed(1)})"><circle r="11" fill="#9b7a3c"/><text dy="3.5">${n}</text></g>
   </svg>
-  ${labels.map((l) => `<div class="label ${l.kind === "callout" ? `callout ${l.lm.kind === "park" ? "park" : ""}` : ""}" style="left:${l.box.x.toFixed(1)}px;top:${l.box.y.toFixed(1)}px;${l.kind === "callout" ? "" : `min-width:${l.w}px`}">${l.html}</div>`).join("")}
+  ${shown.map((l) => `<div class="label ${l.kind === "callout" ? `callout ${l.lm.kind === "park" ? "park" : ""}` : ""}" style="left:${l.box.x.toFixed(1)}px;top:${l.box.y.toFixed(1)}px;${l.kind === "callout" ? `width:${l.w}px` : `min-width:${Math.min(l.w, 150)}px;max-width:${l.w}px;white-space:normal`}">${l.html}</div>`).join("")}
   <div class="legend"><span><i class="lg-route"></i>Walking route</span><span><i class="lg-badge"></i>Step</span>${passed.length ? '<span><i class="lg-pass"></i>You pass</span>' : ""}</div>
   <div class="attrib">Map data © OpenStreetMap contributors</div>`;
 
-  const wrap = document.getElementById("mapWrap");
-  const fit = () => { map.style.transform = `scale(${wrap.clientWidth / MAP_W})`; };
-  fit(); new ResizeObserver(fit).observe(wrap);
+  fitMap();
 }
 
 function insideRing(p, ring) {
@@ -292,7 +374,7 @@ function insideRing(p, ring) {
   return inside;
 }
 
-document.getElementById("print").addEventListener("click", () => window.print());
+document.getElementById("print").addEventListener("click", () => printCard());
 
 (async () => {
   if (!id || !/^[a-z0-9-]+$/.test(id)) return showMessage('No venue selected. <a href="./">Back to the guide</a>');
@@ -309,9 +391,8 @@ document.getElementById("print").addEventListener("click", () => window.print())
     }
     render({ venue, hotel, route, landmarks: landmarksDoc.landmarks });
     if (params.get("print") === "1") {
-      const imgs = [...document.querySelectorAll(".tiles img")];
-      await Promise.race([Promise.all(imgs.map((i) => (i.complete ? 0 : new Promise((r) => { i.onload = i.onerror = r; })))), new Promise((r) => setTimeout(r, 4000))]);
-      window.print();
+      await tilesLoaded();
+      await printCard();
     }
   } catch (err) {
     console.error("Walking card failed to load:", err);
