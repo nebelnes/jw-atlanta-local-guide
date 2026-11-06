@@ -14,15 +14,49 @@
       "hours": null,
       "rating": null,
       "walkMinutes": 0,
-      "summary": "Italian-inspired dining inside JW Marriott Atlanta Downtown.",
+      "summary": "The hotel's own Italian restaurant on the lobby level, serving an elevated Italian breakfast. The easiest answer for a guest who wants a sit-down breakfast without leaving the building.",
       "verification": {
-        "sourceLabel": "Marriott",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Marriott.com / hotel outlet times",
+        "sourceUrls": [
+          "https://www.marriott.com/en-us/hotels/atljd-jw-marriott-atlanta-downtown/dining/"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.764797,
         "lng": -84.389224
+      },
+      "walkable": true,
+      "website": "https://www.marriott.com/en-us/hotels/atljd-jw-marriott-atlanta-downtown/dining/",
+      "dressCode": "Casual"
+    },
+    {
+      "id": "the-ledger-bar",
+      "name": "The Ledger Bar",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Southern",
+      "cuisineGroup": "Southern & BBQ",
+      "priceLevel": "$$",
+      "diningStyle": "Upscale",
+      "address": "45 Ivan Allen Jr Blvd NW, Atlanta, GA 30308",
+      "coordinates": {
+        "lat": 33.764797,
+        "lng": -84.389224
+      },
+      "website": "https://www.marriott.com/en-us/hotels/atljd-jw-marriott-atlanta-downtown/dining/",
+      "phone": "(404) 582-5800",
+      "hours": null,
+      "walkMinutes": 0,
+      "dressCode": "Smart casual",
+      "summary": "The hotel's lobby-level cocktail lounge with a Southern American menu. Calm and conversation-friendly, the natural first suggestion for a drink, a late bite or an informal meeting. Kitchen closes an hour before the bar.",
+      "verification": {
+        "sourceLabel": "Marriott.com / hotel outlet times",
+        "sourceUrls": [
+          "https://www.marriott.com/en-us/hotels/atljd-jw-marriott-atlanta-downtown/dining/",
+          "https://joinpearl.co/bars/atlanta/the-ledger-bar"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "walkable": true
     },
@@ -36,21 +70,24 @@
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "249 Ivan Allen Jr Blvd NW, Atlanta, GA 30313",
-      "phone": null,
-      "hours": null,
+      "phone": "(470) 420-3825",
+      "hours": "Daily 6:30 AM – 3:00 PM",
       "rating": null,
       "walkMinutes": 8,
-      "summary": "Downtown breakfast and brunch restaurant.",
+      "summary": "Southern breakfast and lunch (chicken and waffles, shrimp and grits) a short walk toward Centennial Olympic Park. Opens at 6:30 AM, so it works for an early start before meetings or the Aquarium.",
       "verification": {
-        "sourceLabel": "Discover Atlanta",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/casual-full-service/atlanta-breakfast-club"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.764924,
         "lng": -84.395474
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://atlantabreakfastclub.com/"
     },
     {
       "id": "catch-12",
@@ -62,21 +99,25 @@
       "priceLevel": "$$$",
       "diningStyle": "Upscale",
       "address": "400 W Peachtree St NW, Atlanta, GA 30308",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 418-1250",
+      "hours": "Dinner daily 4–10 PM · weekday breakfast & lunch 7 AM–2 PM · weekend brunch 9 AM–2 PM",
       "rating": null,
       "walkMinutes": 3,
-      "summary": "Contemporary American dining at TWELVE Centennial Park.",
+      "summary": "Seafood, steaks and contemporary Southern dishes at the TWELVE hotel, with a skyline-view patio. Casual dress; a relaxed dinner that still feels like a night out.",
       "verification": {
-        "sourceLabel": "Discover Atlanta",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "OpenTable",
+        "sourceUrls": [
+          "https://www.opentable.com/restaurant/profile/15946"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.765388,
         "lng": -84.387963
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://twelvehotels.com/hotels/downtown/restaurants-in-atlanta",
+      "dressCode": "Casual"
     },
     {
       "id": "alma-cocina",
@@ -88,25 +129,29 @@
       "priceLevel": "$$$",
       "diningStyle": "Upscale",
       "address": "191 Peachtree St NE, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 968-9662",
+      "hours": "Lunch Mon–Fri 11:30 AM–3 PM · dinner Mon–Thu 5–9:30 PM, Fri–Sat 5–10 PM, Sun 5–9 PM",
       "rating": null,
       "walkMinutes": 11,
-      "summary": "Contemporary Mexican cuisine in Downtown Atlanta.",
+      "summary": "Lively contemporary Mexican with shareable plates and a deep tequila and mezcal list. Good for groups, celebrations and a business dinner that shouldn't feel stiff.",
       "verification": {
-        "sourceLabel": "Discover Atlanta",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "OpenTable",
+        "sourceUrls": [
+          "https://www.opentable.com/alma-cocina"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.759007,
         "lng": -84.386854
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.alma-atlanta.com/",
+      "dressCode": "Casual"
     },
     {
       "id": "ag-steakhouse",
-      "name": "AG Steakhouse",
+      "name": "AG Modern Bar & Steakhouse",
       "status": "active",
       "category": "dining",
       "cuisine": "Steakhouse",
@@ -114,21 +159,25 @@
       "priceLevel": "$$$$",
       "diningStyle": "Fine Dining",
       "address": "181 Peachtree St NE, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 221-6550",
+      "hours": "Dinner daily 5:30–9:45 PM · also breakfast, weekday lunch and weekend brunch",
       "rating": null,
       "walkMinutes": 11,
-      "summary": "Modern steakhouse at The Ritz-Carlton Atlanta.",
+      "summary": "The Ritz-Carlton's steakhouse on the hotel's second level: grilled steaks and seafood with Southern touches. A polished, dependable choice for a client dinner, a short walk away.",
       "verification": {
-        "sourceLabel": "Discover Atlanta",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "OpenTable",
+        "sourceUrls": [
+          "https://www.opentable.co.uk/restaurant/profile/2392"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.758633,
         "lng": -84.387187
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.ritzcarlton.com/ag",
+      "dressCode": "Business casual"
     },
     {
       "id": "amalfi-cucina-and-mercato",
@@ -140,21 +189,25 @@
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "17 Andrew Young International Blvd NE, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 228-7528",
+      "hours": "Mon–Sat 11:30 AM–9:30 PM (Wed until 9 PM) · Sun 4–9 PM",
       "rating": null,
       "walkMinutes": 10,
-      "summary": "Neapolitan pizza and Italian dishes Downtown.",
+      "summary": "Neapolitan pizza, pasta and salads in a big, buzzy room at the 207 Peachtree complex. Easy for families and groups, and open Sunday evening.",
       "verification": {
-        "sourceLabel": "Discover Atlanta",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/casual-full-service/amalfi-cucina-mercato-downtown-atlanta",
+          "https://metroatlantaceo.com/features/2026/02/historic-peachtree-street-landmark-reimagined-207-peachtree-open-multi-venue-dining-entertainment-campus-downtown-atlanta-spring-2026"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.759621,
         "lng": -84.387238
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.amalfiatl.com/"
     },
     {
       "id": "atalian-kitchen-and-bar",
@@ -165,22 +218,26 @@
       "cuisineGroup": "European & Mediterranean",
       "priceLevel": "$$$",
       "diningStyle": "Upscale",
-      "address": "60 Luckie St NW, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "address": "60 Andrew Young International Blvd NE, Suite B, Atlanta, GA 30303",
+      "phone": "(404) 577-8788",
+      "hours": "Dinner daily 4–10 PM",
       "rating": null,
-      "walkMinutes": 14,
-      "summary": "Full-service Italian dining in a business-casual setting.",
+      "walkMinutes": 11,
+      "summary": "Traditional Italian and seafood with full table service, a large bar and semi-private areas. A quieter choice for a business dinner or a date; dinner only.",
       "verification": {
         "sourceLabel": "Discover Atlanta",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceUrls": [
+          "https://discoveratlanta.com/?p=197612",
+          "https://discoveratlanta.com/stories/eat/where-to-eat-on-sunday-or-monday-in-downtown-atlanta/"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
-        "lat": 33.756613,
-        "lng": -84.389091
+        "lat": 33.759978,
+        "lng": -84.385925
       },
-      "walkable": true
+      "walkable": true,
+      "dressCode": "Business casual"
     },
     {
       "id": "rays-in-the-city",
@@ -192,21 +249,24 @@
       "priceLevel": "$$$$",
       "diningStyle": "Fine Dining",
       "address": "240 Peachtree St NW, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 524-9224",
+      "hours": "Mon–Thu 11 AM–10 PM · Fri 11 AM–11 PM · Sat 11:30 AM–midnight · Sun 11:30 AM–9 PM",
       "rating": null,
       "walkMinutes": 8,
-      "summary": "Downtown seafood and steak destination.",
+      "summary": "Seafood flown in daily, custom-cut steaks and sushi in a relaxed-upscale room. Dependable for a business lunch or dinner, and one of the later kitchens on Saturdays.",
       "verification": {
-        "sourceLabel": "Official restaurant / Downtown directory",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/steakhouses-seafood/rays-in-the-city"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.760862,
         "lng": -84.387751
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.raysrestaurants.com/"
     },
     {
       "id": "white-oak-kitchen-and-cocktails",
@@ -217,22 +277,25 @@
       "cuisineGroup": "Southern & BBQ",
       "priceLevel": "$$$",
       "diningStyle": "Upscale",
-      "address": "270 Peachtree St NW, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "address": "270 Peachtree St NW, Suite 100, Atlanta, GA 30303",
+      "phone": "(404) 524-7200",
+      "hours": "Mon–Fri 11:30 AM–10:30 PM · Sat 4–10:30 PM · Sunday not listed, call ahead",
       "rating": null,
       "walkMinutes": 8,
-      "summary": "Contemporary Southern-inspired food and cocktails.",
+      "summary": "Modern Southern cooking and cocktails in a handsome room on Peachtree. The pick when a guest wants Southern food with some polish.",
       "verification": {
-        "sourceLabel": "Official restaurant / Atlanta visitor listings",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/casual-full-service/white-oak-kitchen-cocktails"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.760529,
         "lng": -84.387669
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://whiteoakkitchen.com/"
     },
     {
       "id": "max-lagers-wood-fired-grill-and-brewery",
@@ -244,21 +307,25 @@
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "320 Peachtree St NE, Atlanta, GA 30308",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 525-4400",
+      "hours": "Mon–Sat 11 AM–10:30 PM · Sun 4–10:30 PM",
       "rating": null,
       "walkMinutes": 5,
-      "summary": "Downtown brewpub with wood-fired American fare.",
+      "summary": "Georgia's oldest brewpub: wood-fired grill, pizzas and house-brewed beer, with an upstairs patio overlooking Downtown. Casual and good for groups and game days.",
       "verification": {
-        "sourceLabel": "Official restaurant / Atlanta visitor listings",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/sports-bar-pubs/max-lagers-wood-fired-grill-brewery",
+          "https://discoveratlanta.com/stories/eat/where-to-eat-on-sunday-or-monday-in-downtown-atlanta/"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.763271,
         "lng": -84.38697
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.maxlagers.com/"
     },
     {
       "id": "hard-rock-cafe-atlanta",
@@ -270,21 +337,24 @@
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "215 Peachtree St NE, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 688-7625",
+      "hours": "Sun–Thu 11 AM–midnight · Fri–Sat 11 AM–1 AM",
       "rating": null,
       "walkMinutes": 10,
-      "summary": "Casual American classics and live-music memorabilia.",
+      "summary": "Burgers and music memorabilia, open late. Familiar and easy for families or a meal after the Aquarium or World of Coca-Cola.",
       "verification": {
-        "sourceLabel": "Official restaurant",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/casual-full-service/hard-rock-cafe"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.75993,
         "lng": -84.387163
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.hardrock.com/cafes/atlanta/"
     },
     {
       "id": "sweet-georgias-juke-joint",
@@ -295,22 +365,26 @@
       "cuisineGroup": "Southern & BBQ",
       "priceLevel": "$$$",
       "diningStyle": "Casual",
-      "address": "200 Peachtree St NW, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "address": "200 Peachtree St NW, Suite L05, Atlanta, GA 30303",
+      "phone": "(470) 419-5853",
+      "hours": "Tue–Thu 5–10 PM · Fri–Sat 5–11 PM",
       "rating": null,
       "walkMinutes": 10,
-      "summary": "Southern food with live music and a lively atmosphere.",
+      "summary": "Southern food with live jazz and blues, dinner Tuesday to Saturday. A fun night out; mention that a per-person entertainment fee is added to the bill.",
       "verification": {
-        "sourceLabel": "Official restaurant / Atlanta visitor listings",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "OpenTable",
+        "sourceUrls": [
+          "https://www.opentable.co.uk/restaurant/profile/58330"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.759242,
         "lng": -84.387691
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.sweetgeorgiasjukejoint.com/",
+      "dressCode": "Casual"
     },
     {
       "id": "teds-montana-grill-luckie-street",
@@ -322,15 +396,17 @@
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "133 Luckie St NW, Atlanta, GA 30303",
-      "phone": null,
+      "phone": "(404) 521-9796",
       "hours": null,
       "rating": null,
       "walkMinutes": 11,
-      "summary": "American grill known for burgers, steaks, and bison.",
+      "summary": "Burgers, steaks and bison in a relaxed American grill on Luckie Street. A dependable, kid-friendly choice near the Centennial Park attractions.",
       "verification": {
-        "sourceLabel": "Official restaurant",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/steakhouses-seafood/teds-montana-grill"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.758681,
@@ -348,21 +424,24 @@
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "300 Marietta St NW, Atlanta, GA 30313",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 521-2728",
+      "hours": "Mon 5–9 PM · Tue–Thu 5–10 PM · Fri 5 PM–midnight · Sat noon–midnight · Sun noon–9 PM",
       "rating": null,
       "walkMinutes": 13,
-      "summary": "German beer hall and restaurant near Centennial Park.",
+      "summary": "German beer hall with schnitzel, sausages and German draft beer beside Centennial Olympic Park. Fun for groups; evenings only on weekdays.",
       "verification": {
-        "sourceLabel": "Official restaurant / Atlanta visitor listings",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/casual-full-service/der-biergarten"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.761552,
         "lng": -84.396458
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.derbiergarten.com/"
     },
     {
       "id": "twin-smokers-bbq",
@@ -374,26 +453,29 @@
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "300 Marietta St NW, Atlanta, GA 30313",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 801-3258",
+      "hours": "Daily 11:30 AM–9 PM",
       "rating": null,
       "walkMinutes": 13,
-      "summary": "Downtown barbecue restaurant serving smoked meats and sides.",
+      "summary": "Barbecue mixing Texas, Carolina, Kansas City and Memphis styles, a short walk from the Aquarium and World of Coca-Cola. Casual and quick for families.",
       "verification": {
-        "sourceLabel": "Official restaurant / Atlanta visitor listings",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/casual-full-service/twin-smokers-bbq"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.761552,
         "lng": -84.396458
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.twinsmokersbbq.com/"
     },
     {
       "id": "pittypats-porch",
       "name": "Pittypat's Porch",
-      "status": "active",
+      "status": "temporarily_unavailable",
       "category": "dining",
       "cuisine": "Southern",
       "cuisineGroup": "Southern & BBQ",
@@ -404,12 +486,16 @@
       "hours": null,
       "rating": null,
       "walkMinutes": 19,
-      "summary": "Long-running Atlanta restaurant focused on Southern cooking.",
+      "summary": "Long-running Atlanta restaurant focused on Southern cooking. Hidden from the guide until someone confirms it is open: OpenTable no longer takes bookings and recent Downtown dining guides leave it out.",
       "verification": {
-        "sourceLabel": "Official restaurant / Atlanta visitor listings",
-        "sourceUrls": [],
+        "sourceLabel": "OpenTable (status unconfirmed)",
+        "sourceUrls": [
+          "https://www.opentable.com/r/pittypats-porch-restaurant",
+          "https://www.ajc.com/food-and-dining/2026/06/downtown-atlanta-restaurant-list-where-to-eat-near-mercedes-benz-stadium/"
+        ],
         "lastVerified": null
-      }
+      },
+      "website": "http://www.pittypatsrestaurant.com/"
     },
     {
       "id": "polaris",
@@ -421,21 +507,26 @@
       "priceLevel": "$$$$",
       "diningStyle": "Fine Dining",
       "address": "265 Peachtree St NE, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 460-6425",
+      "hours": "Wed–Thu 5–10 PM · Fri–Sat 5–11 PM",
       "rating": null,
       "walkMinutes": 7,
-      "summary": "Rotating rooftop restaurant at Hyatt Regency Atlanta.",
+      "summary": "The blue-domed rotating restaurant atop the Hyatt Regency: shared plates and cocktails with 360° city views. Dinner Wednesday to Saturday; reservations encouraged; cashless.",
       "verification": {
-        "sourceLabel": "Official hotel dining page",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "OpenTable / Hyatt",
+        "sourceUrls": [
+          "https://www.opentable.com/restaurant/profile/141013",
+          "https://www.hyatt.com/corporate/restaurants/Polaris/en/Polaris.html"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.76163,
         "lng": -84.386636
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.polarisatlanta.com/",
+      "dressCode": "Business casual"
     },
     {
       "id": "sway",
@@ -448,20 +539,25 @@
       "diningStyle": "Upscale",
       "address": "265 Peachtree St NE, Atlanta, GA 30303",
       "phone": null,
-      "hours": null,
+      "hours": "Breakfast daily 6:30–11 AM · lunch 11:30 AM–2 PM · dinner 5–9 PM",
       "rating": null,
       "walkMinutes": 7,
-      "summary": "Southern-inspired restaurant inside Hyatt Regency Atlanta.",
+      "summary": "The Hyatt Regency's Southern restaurant, sourcing from more than 70 local farms and purveyors. A dependable breakfast, lunch or dinner a few blocks away, with a private room for groups.",
       "verification": {
-        "sourceLabel": "Official hotel dining page",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "OpenTable / Hyatt",
+        "sourceUrls": [
+          "https://www.opentable.co.uk/r/sway-hyatt-regency-atlanta",
+          "https://www.hyatt.com/corporate/restaurants/Polaris/en/Polaris.html"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.76163,
         "lng": -84.386636
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.hyatt.com/en-US/hotel/georgia/hyatt-regency-atlanta/atlra/dining",
+      "dressCode": "Casual"
     },
     {
       "id": "cuts-steakhouse",
@@ -473,21 +569,25 @@
       "priceLevel": "$$$$",
       "diningStyle": "Fine Dining",
       "address": "60 Andrew Young International Blvd NE, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 525-3399",
+      "hours": "Mon–Fri 11 AM–10 PM · Sat–Sun noon–10 PM",
       "rating": null,
       "walkMinutes": 12,
-      "summary": "Downtown steakhouse serving steaks and seafood.",
+      "summary": "Downtown steakhouse with steaks, fried lobster tail and shrimp and grits, plus a fireplace room, patio and private rooms. Good for client groups and celebrations.",
       "verification": {
-        "sourceLabel": "Official restaurant / Atlanta visitor listings",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "OpenTable",
+        "sourceUrls": [
+          "https://opentable.co.uk/restaurant/profile/117112"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.759845,
         "lng": -84.385768
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.cutsatlanta.com/",
+      "dressCode": "Business casual"
     },
     {
       "id": "park-bar",
@@ -499,21 +599,24 @@
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "150 Walton St NW, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 524-0444",
+      "hours": "Daily 11:30 AM–midnight",
       "rating": null,
       "walkMinutes": 13,
-      "summary": "Casual bar and grill near Centennial Olympic Park.",
+      "summary": "Long-standing neighborhood bar with pub food, local craft beer and more than 50 bourbons and whiskeys. A relaxed stop before or after a game, concert or convention.",
       "verification": {
-        "sourceLabel": "Official restaurant / Downtown listings",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/casual-full-service/park-bar"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.758155,
         "lng": -84.392903
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.parkbaratlanta.com/"
     },
     {
       "id": "glenns-kitchen",
@@ -525,21 +628,25 @@
       "priceLevel": "$$$",
       "diningStyle": "Upscale",
       "address": "110 Marietta St NW, Atlanta, GA 30303",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 469-0700",
+      "hours": "Mon–Thu 6 AM–10 PM · Fri 6 AM–11 PM · Sat 7 AM–11 PM · Sun 5:30–10 PM",
       "rating": null,
       "walkMinutes": 14,
-      "summary": "Modern American restaurant inside Glenn Hotel.",
+      "summary": "American comfort food with Southern touches (shrimp and grits, fried chicken) in the Glenn Hotel, open from early breakfast. Convenient and unfussy.",
       "verification": {
-        "sourceLabel": "Official hotel dining page",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia / Discover Atlanta",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/casual-full-service/glenns-kitchen",
+          "https://discoveratlanta.com/stories/eat/where-to-eat-on-sunday-or-monday-in-downtown-atlanta/"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.757013,
         "lng": -84.39298
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.glennskitchenatl.com/"
     },
     {
       "id": "stats-brewpub",
@@ -551,21 +658,24 @@
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "300 Marietta St NW, Atlanta, GA 30313",
-      "phone": null,
-      "hours": null,
+      "phone": "(404) 885-1472",
+      "hours": "Mon–Thu 11 AM–11 PM · Fri–Sat 11 AM–1 AM · Sun noon–11 PM",
       "rating": null,
       "walkMinutes": 13,
-      "summary": "Sports-focused brewpub near Downtown venues.",
+      "summary": "Huge sports bar by Centennial Olympic Park: five bars, about 70 TVs and pour-your-own beer tables. The place to send a guest who wants to watch the game.",
       "verification": {
-        "sourceLabel": "Official restaurant / Atlanta visitor listings",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://www.exploregeorgia.org/atlanta/food-drink/bar-grills/stats"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.761552,
         "lng": -84.396458
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.statsatl.com/"
     },
     {
       "id": "margaritaville-atlanta",
@@ -577,21 +687,24 @@
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "155 Centennial Olympic Park Dr NW, Atlanta, GA 30313",
-      "phone": null,
-      "hours": null,
+      "phone": "(470) 781-2336",
+      "hours": "Sun–Thu 11 AM–9 PM · Fri–Sat 11 AM–11 PM",
       "rating": null,
       "walkMinutes": 13,
-      "summary": "Casual American and island-inspired restaurant near Centennial Park.",
+      "summary": "Island-themed American food with live music, themed bars and a patio across two levels near the Aquarium. Fun and family-friendly.",
       "verification": {
-        "sourceLabel": "Official restaurant",
-        "sourceUrls": [],
-        "lastVerified": null
+        "sourceLabel": "OpenTable",
+        "sourceUrls": [
+          "https://www.opentable.ie/r/margaritaville-atlanta"
+        ],
+        "lastVerified": "2026-11-06"
       },
       "coordinates": {
         "lat": 33.758451,
         "lng": -84.392375
       },
-      "walkable": true
+      "walkable": true,
+      "website": "https://www.margaritavilleatlanta.com/"
     },
     {
       "id": "georgia-aquarium",

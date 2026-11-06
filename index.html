@@ -99,8 +99,9 @@ function applyData({venues,taxonomy,hotel:h,hotelHours}){
  // A venue inside the hotel (e.g. Fiora) shows the outlet's hours on its card
  hoursDoc.outlets.filter(o=>o.venueId).forEach(o=>{venueHours[o.venueId]=outletHoursText(o)});
  renderHours();
- restaurants=venues.venues.filter(v=>v.category==='dining'&&v.status!=='closed');
- venues.venues.filter(v=>v.category!=='dining'&&v.status!=='closed').forEach(v=>(byCategory[v.category]??=[]).push(v));
+ const shown=v=>v.status==='active'; // closed and temporarily unavailable places stay in the data but off the page
+ restaurants=venues.venues.filter(v=>v.category==='dining'&&shown(v));
+ venues.venues.filter(v=>v.category!=='dining'&&shown(v)).forEach(v=>(byCategory[v.category]??=[]).push(v));
  document.querySelectorAll('.tile[data-view]').forEach(t=>{
   const cat=t.dataset.view; if(cat==='restaurants') return;
   if(!(byCategory[cat]||[]).length) t.querySelector('strong').insertAdjacentHTML('afterend','<em class="soon">Coming soon</em>');

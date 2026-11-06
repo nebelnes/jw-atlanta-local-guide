@@ -12,8 +12,25 @@
       "description": "Italian American cuisine",
       "venueId": "fiora-cucina-italiana",
       "periods": [
-        { "days": ["mon", "tue", "wed", "thu", "fri"], "open": "07:00", "close": "11:00" },
-        { "days": ["sat", "sun"], "open": "08:00", "close": "12:00" }
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "open": "07:00",
+          "close": "11:00"
+        },
+        {
+          "days": [
+            "sat",
+            "sun"
+          ],
+          "open": "08:00",
+          "close": "12:00"
+        }
       ]
     },
     {
@@ -21,8 +38,32 @@
       "name": "Executive Lounge",
       "location": "2nd Floor",
       "periods": [
-        { "days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "open": "06:30", "close": "09:30" },
-        { "days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "open": "17:30", "close": "20:30" }
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "06:30",
+          "close": "09:30"
+        },
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "17:30",
+          "close": "20:30"
+        }
       ]
     },
     {
@@ -30,7 +71,19 @@
       "name": "JW Market",
       "location": "Lobby Level",
       "periods": [
-        { "days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "open": "06:30", "close": "20:00" }
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "06:30",
+          "close": "20:00"
+        }
       ]
     },
     {
@@ -39,20 +92,50 @@
       "location": "Lobby Level",
       "description": "Southern American cuisine",
       "periods": [
-        { "days": ["sun", "mon", "tue", "wed", "thu"], "open": "12:00", "close": "23:00" },
-        { "days": ["fri", "sat"], "open": "12:00", "close": "24:00" }
+        {
+          "days": [
+            "sun",
+            "mon",
+            "tue",
+            "wed",
+            "thu"
+          ],
+          "open": "12:00",
+          "close": "23:00"
+        },
+        {
+          "days": [
+            "fri",
+            "sat"
+          ],
+          "open": "12:00",
+          "close": "24:00"
+        }
       ],
       "notes": [
         "Kitchen closes 1 hour before the bar closes.",
         "Last call 30 minutes before the bar closes."
-      ]
+      ],
+      "venueId": "the-ledger-bar"
     },
     {
       "id": "nest-wellness-spa",
       "name": "Nest Wellness Spa",
       "location": "16th Floor",
       "periods": [
-        { "days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "open": "10:00", "close": "18:00" }
+        {
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "10:00",
+          "close": "18:00"
+        }
       ]
     },
     {
@@ -65,9 +148,41 @@
       "id": "in-room-dining",
       "name": "In-Room Dining",
       "periods": [
-        { "label": "Breakfast", "days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "open": "07:00", "close": "11:00" },
-        { "label": "Dinner", "days": ["sun", "mon", "tue", "wed", "thu"], "open": "17:00", "close": "22:00" },
-        { "label": "Dinner", "days": ["fri", "sat"], "open": "17:00", "close": "23:00" }
+        {
+          "label": "Breakfast",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ],
+          "open": "07:00",
+          "close": "11:00"
+        },
+        {
+          "label": "Dinner",
+          "days": [
+            "sun",
+            "mon",
+            "tue",
+            "wed",
+            "thu"
+          ],
+          "open": "17:00",
+          "close": "22:00"
+        },
+        {
+          "label": "Dinner",
+          "days": [
+            "fri",
+            "sat"
+          ],
+          "open": "17:00",
+          "close": "23:00"
+        }
       ]
     }
   ]

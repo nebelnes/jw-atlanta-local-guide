@@ -16,7 +16,7 @@ Fields are marked **stable** (rarely changes once correct) or **volatile** (can 
 |---|---|---|---|---|
 | `id` | string | yes | stable | Kebab-case, e.g. `catch-12`. Permanent: never reuse or rename once published, because links and Quick Picks will point at it. |
 | `name` | string | yes | stable | |
-| `status` | `active` · `temporarily_unavailable` · `closed` | yes | volatile | Closed venues are hidden from the page. |
+| `status` | `active` · `temporarily_unavailable` · `closed` | yes | volatile | Only `active` venues are shown. Use `temporarily_unavailable` when a place may be closed but it isn't confirmed (it stays in the data, off the page). |
 | `category` | `dining` · `attractions` · `events` · `entertainment` · `shopping` · `outdoors` | yes | stable | The home-screen section the venue appears in. |
 | `cuisine` | string | dining | stable | Must be listed under `cuisineGroup` in `data/taxonomy.json`. Required for dining venues only. |
 | `cuisineGroup` | string | dining | stable | A group name from `data/taxonomy.json`. Not geography. Required for dining venues only. |
@@ -29,7 +29,8 @@ Fields are marked **stable** (rarely changes once correct) or **volatile** (can 
 | `rating` | number or `null` | no | volatile | Legacy, always `null`. Kept so behavior is unchanged; slated for removal (the guide recommends by judgment, not ratings). |
 | `walkMinutes` | integer or `null` | no | stable | Walking minutes from the hotel in `data/hotel.json`. Set by `npm run routes` from the generated route (average pace ≈ 4.5 km/h); `0` for venues inside the hotel. |
 | `coordinates` | `{lat, lng}` or `null` | no | stable | Venue pin. Filled in by `npm run routes` from OpenStreetMap. If the address can't be found, add it by hand (see "Routes" below). |
-| `summary` | string | no | stable | Short card description. |
+| `summary` | string | no | stable | Short card description: what it is, then who or what occasion it suits. |
+| `dressCode` | string or `null` | no | volatile | As the restaurant or OpenTable states it, e.g. "Business casual". Not shown on cards yet. |
 | `subcategories` | string list | no | stable | Type labels, e.g. "Museum", "Stadium". Non-dining sections use them as filter chips and the card badge. |
 | `website` | URL or `null` | no | stable | Official site, shown as a "Website" link. |
 | `bestFor` | string list | no | stable | Occasions or guests it suits, e.g. "families", "rainy day". Shown as "Good for …" on non-dining cards. |
@@ -47,7 +48,6 @@ These are in the schema so new content has a home. The page ignores them until f
 |---|---|---|
 | `neighborhood` | string or `null` | e.g. "Downtown", "Midtown" (see the geographic tiers in the project brief) |
 | `reservations` | `{policy, notes}` | `policy`: `required` · `recommended` · `accepted` · `not_accepted` · `unknown` |
-| `dressCode` | string or `null` | |
 | `atmosphere` | string list | e.g. "quiet", "lively" |
 | `dietaryOptions` | string list | e.g. "vegetarian", "gluten-free" |
 | `whyWeRecommend` | string or `null` | The concierge reason to choose it. See the content standard in the project brief. |
