@@ -174,7 +174,7 @@ function venueCard(v){
  const longWalk=walk&&v.walkMinutes>LONG_WALK_MIN&&typeof v.driveMinutes==='number'; // offer both
  const time=inHotel?'🏨 In the hotel':longWalk?`🚶 ${esc(v.walkMinutes)} min · 🚗 ~${esc(v.driveMinutes)}`:walk?`🚶 ${esc(v.walkMinutes)} min`:drive?`🚗 ~${esc(v.driveMinutes)} min`:'';
  const badge=dining?v.cuisine:(v.subcategories||[])[0];
- const meta=dining?`<span>${esc(v.priceLevel)}</span><span>🍽️ ${esc(v.diningStyle)}</span>`:(v.bestFor||[]).length?`<span>Good for ${esc(v.bestFor.join(' · '))}</span>`:'';
+ const meta=dining?`${v.priceLevel?`<span>${esc(v.priceLevel)}</span>`:''}<span>🍽️ ${esc(v.diningStyle)}</span>`:(v.bestFor||[]).length?`<span>Good for ${esc(v.bestFor.join(' · '))}</span>`:'';
  const info=[`<span>🕐 ${esc(v.hours??venueHours[v.id]??UNKNOWN_HOURS)}</span>`,v.phone?`<span>📞 ${esc(v.phone)}</span>`:(dining?`<span>📞 ${esc(UNKNOWN_PHONE)}</span>`:''),v.website?`<span>🌐 <a href="${esc(v.website)}" target="_blank" rel="noopener">Website</a></span>`:'',`<span>✓ ${esc(v.verification.sourceLabel)}</span>`].join('');
  const live=(mode)=>esc(liveDirections(hotelAddress(),v.address,mode).url);
  const actions=inHotel?`<span class="action in-hotel">🏨 In the hotel</span><a class="action print-link" href="walk.html?id=${encodeURIComponent(v.id)}">🖨 Print directions</a>`
