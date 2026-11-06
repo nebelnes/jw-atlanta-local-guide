@@ -87,7 +87,11 @@
         "lng": -84.395474
       },
       "walkable": true,
-      "website": "https://atlantabreakfastclub.com/"
+      "website": "https://atlantabreakfastclub.com/",
+      "occasions": [
+        "brunch",
+        "atlanta-original"
+      ]
     },
     {
       "id": "catch-12",
@@ -117,7 +121,10 @@
       },
       "walkable": true,
       "website": "https://twelvehotels.com/hotels/downtown/restaurants-in-atlanta",
-      "dressCode": "Casual"
+      "dressCode": "Casual",
+      "occasions": [
+        "brunch"
+      ]
     },
     {
       "id": "alma-cocina",
@@ -177,7 +184,10 @@
       },
       "walkable": true,
       "website": "https://www.ritzcarlton.com/ag",
-      "dressCode": "Business casual"
+      "dressCode": "Business casual",
+      "occasions": [
+        "brunch"
+      ]
     },
     {
       "id": "amalfi-cucina-and-mercato",
@@ -302,8 +312,8 @@
       "name": "Max Lager's Wood-Fired Grill & Brewery",
       "status": "active",
       "category": "dining",
-      "cuisine": "American",
-      "cuisineGroup": "American",
+      "cuisine": "Brewpub",
+      "cuisineGroup": "Pubs & Sports Bars",
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "320 Peachtree St NE, Atlanta, GA 30308",
@@ -325,15 +335,18 @@
         "lng": -84.38697
       },
       "walkable": true,
-      "website": "https://www.maxlagers.com/"
+      "website": "https://www.maxlagers.com/",
+      "occasions": [
+        "atlanta-original"
+      ]
     },
     {
       "id": "hard-rock-cafe-atlanta",
       "name": "Hard Rock Cafe Atlanta",
       "status": "active",
       "category": "dining",
-      "cuisine": "Burgers",
-      "cuisineGroup": "American",
+      "cuisine": "Bar & Grill",
+      "cuisineGroup": "Pubs & Sports Bars",
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "215 Peachtree St NE, Atlanta, GA 30303",
@@ -470,7 +483,10 @@
         "lng": -84.396458
       },
       "walkable": true,
-      "website": "https://www.twinsmokersbbq.com/"
+      "website": "https://www.twinsmokersbbq.com/",
+      "occasions": [
+        "quick-bite"
+      ]
     },
     {
       "id": "pittypats-porch",
@@ -526,7 +542,10 @@
       },
       "walkable": true,
       "website": "https://www.polarisatlanta.com/",
-      "dressCode": "Business casual"
+      "dressCode": "Business casual",
+      "occasions": [
+        "atlanta-original"
+      ]
     },
     {
       "id": "sway",
@@ -594,8 +613,8 @@
       "name": "Park Bar",
       "status": "active",
       "category": "dining",
-      "cuisine": "American",
-      "cuisineGroup": "American",
+      "cuisine": "Pub",
+      "cuisineGroup": "Pubs & Sports Bars",
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "150 Walton St NW, Atlanta, GA 30303",
@@ -653,8 +672,8 @@
       "name": "Stats Brewpub",
       "status": "active",
       "category": "dining",
-      "cuisine": "American",
-      "cuisineGroup": "American",
+      "cuisine": "Sports Bar",
+      "cuisineGroup": "Pubs & Sports Bars",
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "300 Marietta St NW, Atlanta, GA 30313",
@@ -682,8 +701,8 @@
       "name": "Margaritaville Atlanta",
       "status": "active",
       "category": "dining",
-      "cuisine": "American",
-      "cuisineGroup": "American",
+      "cuisine": "Bar & Grill",
+      "cuisineGroup": "Pubs & Sports Bars",
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "155 Centennial Olympic Park Dr NW, Atlanta, GA 30313",
@@ -1568,7 +1587,10 @@
           "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
         ],
         "lastVerified": "2026-11-06"
-      }
+      },
+      "occasions": [
+        "atlanta-original"
+      ]
     },
     {
       "id": "hayakawa",
@@ -1877,7 +1899,11 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": false,
-      "driveMinutes": 3
+      "driveMinutes": 3,
+      "occasions": [
+        "quick-bite",
+        "brunch"
+      ]
     },
     {
       "id": "the-busy-bee",
@@ -1911,7 +1937,11 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": false,
-      "driveMinutes": 5
+      "driveMinutes": 5,
+      "occasions": [
+        "quick-bite",
+        "atlanta-original"
+      ]
     },
     {
       "id": "fishmonger",
@@ -1945,7 +1975,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": false,
-      "driveMinutes": 5
+      "driveMinutes": 5,
+      "occasions": [
+        "quick-bite"
+      ]
     },
     {
       "id": "freds-meat-and-bread",
@@ -1979,7 +2012,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": false,
-      "driveMinutes": 4
+      "driveMinutes": 4,
+      "occasions": [
+        "quick-bite"
+      ]
     },
     {
       "id": "little-bear",
@@ -2080,7 +2116,11 @@
         "lastVerified": null
       },
       "walkable": false,
-      "driveMinutes": 6
+      "driveMinutes": 6,
+      "occasions": [
+        "quick-bite",
+        "atlanta-original"
+      ]
     },
     {
       "id": "summerland",
@@ -2385,7 +2425,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": false,
-      "driveMinutes": 13
+      "driveMinutes": 13,
+      "occasions": [
+        "atlanta-original"
+      ]
     },
     {
       "id": "the-chastain",
@@ -2657,7 +2700,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": false,
-      "driveMinutes": 5
+      "driveMinutes": 5,
+      "occasions": [
+        "quick-bite"
+      ]
     },
     {
       "id": "poor-hendrix",
@@ -2725,7 +2771,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": false,
-      "driveMinutes": 5
+      "driveMinutes": 5,
+      "occasions": [
+        "quick-bite"
+      ]
     },
     {
       "id": "xian-gourmet-house",
@@ -2759,7 +2808,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": true,
-      "driveMinutes": 3
+      "driveMinutes": 3,
+      "occasions": [
+        "quick-bite"
+      ]
     },
     {
       "id": "home-grown",
@@ -2793,7 +2845,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": false,
-      "driveMinutes": 6
+      "driveMinutes": 6,
+      "occasions": [
+        "brunch"
+      ]
     },
     {
       "id": "the-general-muir",
@@ -3061,7 +3116,11 @@
       },
       "dressCode": "Business casual",
       "walkable": false,
-      "driveMinutes": 5
+      "driveMinutes": 5,
+      "occasions": [
+        "brunch",
+        "atlanta-original"
+      ]
     },
     {
       "id": "e-ramen",
@@ -3180,7 +3239,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": true,
-      "driveMinutes": 3
+      "driveMinutes": 3,
+      "occasions": [
+        "quick-bite"
+      ]
     },
     {
       "id": "rreal-tacos-midtown",
@@ -3209,7 +3271,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": true,
-      "driveMinutes": 3
+      "driveMinutes": 3,
+      "occasions": [
+        "quick-bite"
+      ]
     },
     {
       "id": "crescent-city-kitchen",
@@ -3239,7 +3304,10 @@
       },
       "dressCode": "Casual",
       "walkable": false,
-      "driveMinutes": 4
+      "driveMinutes": 4,
+      "occasions": [
+        "brunch"
+      ]
     },
     {
       "id": "poach-social",
@@ -3268,7 +3336,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": false,
-      "driveMinutes": 7
+      "driveMinutes": 7,
+      "occasions": [
+        "brunch"
+      ]
     },
     {
       "id": "bread-and-butterfly",
@@ -3297,7 +3368,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": false,
-      "driveMinutes": 4
+      "driveMinutes": 4,
+      "occasions": [
+        "brunch"
+      ]
     },
     {
       "id": "tyde-tate-kitchen",
@@ -3327,7 +3401,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": true,
-      "driveMinutes": 4
+      "driveMinutes": 4,
+      "occasions": [
+        "quick-bite"
+      ]
     },
     {
       "id": "blossom-tree",
@@ -3357,7 +3434,10 @@
         "lastVerified": "2026-11-06"
       },
       "walkable": true,
-      "driveMinutes": 2
+      "driveMinutes": 2,
+      "occasions": [
+        "quick-bite"
+      ]
     }
   ]
 }
