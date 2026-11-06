@@ -894,7 +894,8 @@
         ],
         "lastVerified": "2026-11-05"
       },
-      "walkable": true
+      "walkable": true,
+      "driveMinutes": 3
     },
     {
       "id": "state-farm-arena",
@@ -925,7 +926,8 @@
         ],
         "lastVerified": "2026-11-05"
       },
-      "walkable": true
+      "walkable": true,
+      "driveMinutes": 4
     },
     {
       "id": "georgia-world-congress-center",
@@ -956,7 +958,8 @@
         ],
         "lastVerified": "2026-11-05"
       },
-      "walkable": true
+      "walkable": true,
+      "driveMinutes": 3
     },
     {
       "id": "truist-park",
@@ -1400,7 +1403,8 @@
         ],
         "lastVerified": "2026-11-05"
       },
-      "walkable": true
+      "walkable": true,
+      "driveMinutes": 2
     },
     {
       "id": "piedmont-park",
@@ -2176,7 +2180,8 @@
         ],
         "lastVerified": "2026-11-06"
       },
-      "walkable": true
+      "walkable": true,
+      "driveMinutes": 2
     },
     {
       "id": "tomo",
@@ -2753,7 +2758,8 @@
         ],
         "lastVerified": "2026-11-06"
       },
-      "walkable": true
+      "walkable": true,
+      "driveMinutes": 3
     },
     {
       "id": "home-grown",
