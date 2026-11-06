@@ -87,7 +87,7 @@ test("Print directions opens the printable card for that restaurant", async ({ p
   const errors = trackErrors(page);
   await openRestaurants(page, "American");
   const print = page.locator(".card", { hasText: "Catch 12" }).getByRole("link", { name: /Print directions/ });
-  await expect(print).toHaveAttribute("href", "walk.html?id=catch-12&print=1");
+  await expect(print).toHaveAttribute("href", "walk.html?id=catch-12");
   await page.goto("/walk.html?id=catch-12");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Catch 12");
   await expect(page.locator("header .addr")).toHaveText("400 W Peachtree St NW, Atlanta, GA 30308");
@@ -218,7 +218,7 @@ test("Attractions lists walkable places with walking map and printable card", as
   await expect(page.locator('[data-count="attractions"]')).toHaveText("5 places · closest first");
   const aquarium = page.locator('[data-cards="attractions"] .card', { hasText: "Georgia Aquarium" });
   await expect(aquarium).toContainText("🚶");
-  await expect(aquarium.getByRole("link", { name: /Print directions/ })).toHaveAttribute("href", "walk.html?id=georgia-aquarium&print=1");
+  await expect(aquarium.getByRole("link", { name: /Print directions/ })).toHaveAttribute("href", "walk.html?id=georgia-aquarium");
   const walk = new URL(await aquarium.getByRole("link", { name: /Walking Map/ }).getAttribute("href"));
   expect(walk.searchParams.get("destination")).toBe("225 Baker St NW, Atlanta, GA 30313");
   expect(walk.searchParams.get("travelmode")).toBe("walking");
@@ -241,4 +241,15 @@ test("section chips filter by type", async ({ page }) => {
   await page.locator('[data-chips="events"] [data-sub="Stadium"]').click();
   await expect(page.locator('[data-count="events"]')).toHaveText("2 places · closest first");
   await expect(page.locator('[data-cards="events"] .card h3')).toHaveText(["Bobby Dodd Stadium", "Mercedes-Benz Stadium"]);
+});
+
+test("the walking card never prints by itself; the Print button does", async ({ page }) => {
+  await stubTiles(page);
+  await page.addInitScript(() => { window.__prints = 0; window.print = () => { window.__prints++; }; });
+  await page.goto("/walk.html?id=catch-12&print=1"); // old links still carry print=1
+  await expect(page.locator(".map svg .route")).toHaveCount(1);
+  await page.waitForTimeout(1500);
+  expect(await page.evaluate(() => window.__prints)).toBe(0);
+  await page.getByRole("button", { name: "Print directions" }).click();
+  await expect.poll(() => page.evaluate(() => window.__prints)).toBe(1);
 });
