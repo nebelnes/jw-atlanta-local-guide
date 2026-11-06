@@ -72,7 +72,7 @@ test("Fine Dining tab: MICHELIN-starred and fine dining, walkable first, then by
   await expect(page.locator("#price")).toBeHidden(); // everything here is $$$$
   const times = await page.locator("#restaurantCards .card-top strong").allInnerTexts();
   const walk = times.filter((t) => /🚶/.test(t)).map((t) => Number(t.match(/\d+/)[0]));
-  const drive = times.filter((t) => /🚗/.test(t)).map((t) => Number(t.match(/\d+/)[0]));
+  const drive = times.filter((t) => /🚗/.test(t) && !/🚶/.test(t)).map((t) => Number(t.match(/\d+/)[0])); // longer walks show both
   expect(times.slice(0, walk.length).every((t) => /🚶/.test(t))).toBe(true);
   expect(walk).toEqual([...walk].sort((a, b) => a - b));
   expect(drive).toEqual([...drive].sort((a, b) => a - b));
@@ -373,4 +373,18 @@ test("verified restaurants show phone and website", async ({ page }) => {
   const ag = page.locator(".card", { hasText: "AG Modern Bar & Steakhouse" });
   await expect(ag).toContainText("(404) 221-6550");
   await expect(ag.getByRole("link", { name: "Website" })).toHaveAttribute("href", "https://www.ritzcarlton.com/ag");
+});
+
+test("walks over 15 minutes are labelled Longer walk and offer both walking and driving", async ({ page }) => {
+  await page.goto("/#restaurants/fine");
+  const lyla = page.locator(".card", { hasText: "Lyla Lila" });
+  await expect(lyla.locator(".card-top strong")).toHaveText(/🚶 17 min · 🚗 ~\d+/);
+  await expect(lyla.locator(".long-walk")).toContainText("Longer walk");
+  await expect(lyla.getByRole("link", { name: /Walking Map/ })).toHaveCount(1);
+  await expect(lyla.getByRole("link", { name: /Print directions/ })).toHaveCount(1);
+  await expect(lyla.getByRole("link", { name: /driving directions/i })).toHaveAttribute("href", /travelmode=driving|dirflg=d/);
+  // a short walk has neither the label nor a driving button
+  const polaris = page.locator(".card", { hasText: "Polaris" });
+  await expect(polaris.locator(".long-walk")).toHaveCount(0);
+  await expect(polaris.getByRole("link", { name: /driving directions/i })).toHaveCount(0);
 });

@@ -171,15 +171,16 @@ const byDistance=(a,b)=>(a.walkMinutes??1e3+(a.driveMinutes??1e3))-(b.walkMinute
 function venueCard(v){
  const dining=v.category==='dining';
  const inHotel=v.walkMinutes===0, walk=typeof v.walkMinutes==='number'&&v.walkMinutes>0, drive=!walk&&!inHotel&&typeof v.driveMinutes==='number';
- const time=inHotel?'🏨 In the hotel':walk?`🚶 ${esc(v.walkMinutes)} min`:drive?`🚗 ~${esc(v.driveMinutes)} min`:'';
+ const longWalk=walk&&v.walkMinutes>LONG_WALK_MIN&&typeof v.driveMinutes==='number'; // offer both
+ const time=inHotel?'🏨 In the hotel':longWalk?`🚶 ${esc(v.walkMinutes)} min · 🚗 ~${esc(v.driveMinutes)}`:walk?`🚶 ${esc(v.walkMinutes)} min`:drive?`🚗 ~${esc(v.driveMinutes)} min`:'';
  const badge=dining?v.cuisine:(v.subcategories||[])[0];
  const meta=dining?`<span>${esc(v.priceLevel)}</span><span>🍽️ ${esc(v.diningStyle)}</span>`:(v.bestFor||[]).length?`<span>Good for ${esc(v.bestFor.join(' · '))}</span>`:'';
  const info=[`<span>🕐 ${esc(v.hours??venueHours[v.id]??UNKNOWN_HOURS)}</span>`,v.phone?`<span>📞 ${esc(v.phone)}</span>`:(dining?`<span>📞 ${esc(UNKNOWN_PHONE)}</span>`:''),v.website?`<span>🌐 <a href="${esc(v.website)}" target="_blank" rel="noopener">Website</a></span>`:'',`<span>✓ ${esc(v.verification.sourceLabel)}</span>`].join('');
  const live=(mode)=>esc(liveDirections(hotelAddress(),v.address,mode).url);
  const actions=inHotel?`<span class="action in-hotel">🏨 In the hotel</span><a class="action print-link" href="walk.html?id=${encodeURIComponent(v.id)}">🖨 Print directions</a>`
-  :walk?`<a class="action primary walk-link" href="${live('walk')}" target="_blank" rel="noopener" aria-label="Walking Map: live directions to ${esc(v.name)} (opens maps)">📍 Walking Map</a><a class="action print-link" href="walk.html?id=${encodeURIComponent(v.id)}">🖨 Print directions</a>`
+  :walk?`<a class="action primary walk-link" href="${live('walk')}" target="_blank" rel="noopener" aria-label="Walking Map: live directions to ${esc(v.name)} (opens maps)">📍 Walking Map</a><a class="action print-link" href="walk.html?id=${encodeURIComponent(v.id)}">🖨 Print directions</a>${longWalk?`<a class="action drive-link" href="${live('drive')}" target="_blank" rel="noopener" aria-label="Driving directions to ${esc(v.name)} (opens maps)">🚗 Directions</a>`:''}`
   :`<a class="action primary drive-link" href="${live('drive')}" target="_blank" rel="noopener" aria-label="Driving directions to ${esc(v.name)} (opens maps)">🚗 Directions</a>${v.website?`<a class="action" href="${esc(v.website)}" target="_blank" rel="noopener">🌐 Website</a>`:''}`;
- return `<article class="card" data-venue="${esc(v.id)}"><div class="card-top"><div><h3>${esc(v.name)}</h3>${badge?`<span class="badge">${esc(badge)}</span>`:''}${v.michelin?`<span class="badge michelin${isStarred(v)?'':' listed'}">${isStarred(v)?'★ ':''}MICHELIN ${esc(v.michelin.distinction)} ${esc(v.michelin.year)}</span>`:''}</div><strong>${time}</strong></div>${meta?`<div class="meta">${meta}</div>`:''}<p class="desc">${esc(v.summary)}</p><div class="meta">${info}</div>${drive?'<p class="drive-note">Too far to walk comfortably. Drive time is an estimate without traffic.</p>':''}<div class="actions">${actions}</div></article>`;
+ return `<article class="card" data-venue="${esc(v.id)}"><div class="card-top"><div><h3>${esc(v.name)}</h3>${badge?`<span class="badge">${esc(badge)}</span>`:''}${v.michelin?`<span class="badge michelin${isStarred(v)?'':' listed'}">${isStarred(v)?'★ ':''}MICHELIN ${esc(v.michelin.distinction)} ${esc(v.michelin.year)}</span>`:''}</div><strong>${time}</strong></div>${meta?`<div class="meta">${meta}</div>`:''}<p class="desc">${esc(v.summary)}</p><div class="meta">${info}</div>${drive?'<p class="drive-note">Too far to walk comfortably. Drive time is an estimate without traffic.</p>':''}${longWalk?`<p class="drive-note long-walk"><strong>Longer walk:</strong> about ${esc(v.walkMinutes)} min on foot, or ~${esc(v.driveMinutes)} min by car (without traffic).</p>`:''}<div class="actions">${actions}</div></article>`;
 }
 function renderSection(cat,sub){
  const all=(byCategory[cat]||[]).slice().sort(byDistance);
@@ -192,6 +193,7 @@ function renderSection(cat,sub){
 }
 // Restaurants: two tabs. "All" filters by condensed cuisine type; "Fine Dining" lists
 // MICHELIN-starred and fine-dining places. Both are sorted closest first (walks before drives).
+const LONG_WALK_MIN=15; // matches scripts/build-walking-routes.mjs
 const isStarred=r=>/Star/.test(r.michelin?.distinction||'');
 const isFine=r=>r.diningStyle==='Fine Dining'||isStarred(r);
 const FINE_FILTERS=[['All','All',()=>true],['michelin','★ MICHELIN Star',isStarred],['walk','Walkable',r=>typeof r.walkMinutes==='number']];

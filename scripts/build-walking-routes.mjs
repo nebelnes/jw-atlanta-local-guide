@@ -30,6 +30,7 @@ const SAMPLE_EVERY_M = 40;
 const SAME_BUILDING_M = 60;
 const WALK_LIMIT_M = 2400;   // straight-line pre-check: farther than this is never offered as a walk
 const WALK_LIMIT_MIN = 30;   // and a walk longer than this is too long to recommend: drive time instead
+const LONG_WALK_MIN = 15;    // walks longer than this are labelled "Longer walk" and also get a drive time
 const OSRM_CAR = "https://routing.openstreetmap.de/routed-car/route/v1/driving";
 
 const args = process.argv.slice(2);
@@ -217,7 +218,7 @@ for (const venue of venuesDoc.venues) {
     console.log(`✓ ${venue.id}: ${note.result}${note.flags.length ? `  ⚠ ${note.flags.join("; ")}` : ""}`);
     continue;
   }
-  if (venue.walkable !== true || venue.driveMinutes !== undefined) { venue.walkable = true; delete venue.driveMinutes; venuesChanged = true; }
+  if (venue.walkable !== true) { venue.walkable = true; venuesChanged = true; }
 
   let routeFile;
   if (straight < SAME_BUILDING_M) {
@@ -285,6 +286,23 @@ for (const venue of venuesDoc.venues) {
   if (venue.walkMinutes !== minutes) { note.walkMinutes = `${venue.walkMinutes} → ${minutes}`; venue.walkMinutes = minutes; venuesChanged = true; }
   note.result = routeFile.sameBuilding ? "inside the hotel" : `${routeFile.distanceMeters} m, ${routeFile.durationMinutes} min, ${routeFile.steps.length} steps (curated estimate: ${venue.walkMinutes ?? "—"} min)`;
   console.log(`✓ ${venue.id}: ${note.result}${note.flags.length ? `  ⚠ ${note.flags.join("; ")}` : ""}`);
+}
+
+// Longer walks also get a drive time, so the card can offer both; short walks don't need one.
+for (const venue of venuesDoc.venues) {
+  if (venue.status === "closed" || venue.walkable !== true || !venue.coordinates) continue;
+  if (only && !only.has(venue.id)) continue;
+  if (!(venue.walkMinutes > LONG_WALK_MIN)) {
+    if (venue.driveMinutes !== undefined) { delete venue.driveMinutes; venuesChanged = true; }
+    continue;
+  }
+  if (!force && venue.driveMinutes != null) continue;
+  const dest = [venue.coordinates.lng, venue.coordinates.lat];
+  const car = await getJson(`${OSRM_CAR}/${origin[0]},${origin[1]};${dest[0]},${dest[1]}?overview=false`, "osrm");
+  if (car.code !== "Ok" || !car.routes?.length) { console.log(`⚠ ${venue.id}: no driving route found (${car.code})`); continue; }
+  venue.driveMinutes = Math.max(1, Math.round(car.routes[0].duration / 60));
+  venuesChanged = true;
+  console.log(`✓ ${venue.id}: longer walk (${venue.walkMinutes} min), ~${venue.driveMinutes} min by car without traffic`);
 }
 
 if (venuesChanged) await writeJson("data/venues.json", venuesDoc);

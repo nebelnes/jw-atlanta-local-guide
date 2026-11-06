@@ -165,7 +165,7 @@
             "null"
           ],
           "minimum": 0,
-          "description": "Set by npm run routes for places too far to walk: drive time without traffic, from OpenStreetMap."
+          "description": "Set by npm run routes: drive time without traffic, from OpenStreetMap. For places too far to walk, and for walks longer than 15 minutes (shown as \"Longer walk\" with both times)."
         },
         "reservations": {
           "type": [
