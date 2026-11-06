@@ -1,0 +1,29 @@
+{
+  "venueId": "the-ledger-bar",
+  "sameBuilding": true,
+  "distanceMeters": 0,
+  "durationMinutes": 0,
+  "geometry": [
+    [
+      -84.389224,
+      33.764797
+    ]
+  ],
+  "steps": [
+    {
+      "instruction": "The Ledger Bar is inside the hotel building.",
+      "distanceMeters": 0,
+      "startMeters": 0,
+      "passing": []
+    }
+  ],
+  "landmarks": [],
+  "from": "jw-marriott-atlanta-downtown",
+  "to": {
+    "lat": 33.764797,
+    "lng": -84.389224
+  },
+  "source": "OpenStreetMap: route by OSRM (routing.openstreetmap.de), street names and coordinates by Nominatim",
+  "computedAt": "2026-11-06",
+  "reviewed": false
+}

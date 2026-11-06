@@ -88,7 +88,7 @@ test("Fine Dining tab: MICHELIN-starred and fine dining, walkable first, then by
 
 test("unknown hours and phone show the placeholder text", async ({ page }) => {
   await openRestaurants(page, "American");
-  const card = page.locator(".card", { hasText: "Catch 12" });
+  const card = page.locator(".card", { hasText: "Summerland" }); // no verified hours or phone yet
   await expect(card).toContainText("Check current hours");
   await expect(card).toContainText("Check official site");
 });
@@ -357,4 +357,20 @@ test("MICHELIN filter on All restaurants lists starred, Bib Gourmand and Recomme
   await expect(page.locator(".card", { hasText: "Estrellita" })).toContainText("MICHELIN Bib Gourmand 2026");
   await expect(page.locator(".card", { hasText: "Estrellita" }).locator(".badge.michelin.listed")).toHaveCount(1);
   await expect(page.locator(".card", { hasText: "Atlas" }).locator(".badge.michelin:not(.listed)")).toHaveText("★ MICHELIN 1 Star 2026");
+});
+
+test("The Ledger is listed as an in-hotel restaurant with the hotel's hours; unconfirmed places are hidden", async ({ page }) => {
+  await page.goto("/#restaurants/Southern & BBQ");
+  const ledger = page.locator(".card", { hasText: "The Ledger Bar" });
+  await expect(ledger).toContainText("In the hotel");
+  await expect(ledger).toContainText("Sun–Thu 12:00 PM – 11:00 PM · Fri & Sat 12:00 PM – 12:00 AM");
+  await page.goto("/#restaurants");
+  await expect(page.locator(".card", { hasText: "Pittypat's Porch" })).toHaveCount(0);
+});
+
+test("verified restaurants show phone and website", async ({ page }) => {
+  await page.goto("/#restaurants/Steak & Seafood");
+  const ag = page.locator(".card", { hasText: "AG Modern Bar & Steakhouse" });
+  await expect(ag).toContainText("(404) 221-6550");
+  await expect(ag.getByRole("link", { name: "Website" })).toHaveAttribute("href", "https://www.ritzcarlton.com/ag");
 });
