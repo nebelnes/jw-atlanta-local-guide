@@ -196,7 +196,7 @@ test("Closest to the hotel lists every restaurant, nearest first", async ({ page
 test("no dead controls: no rating filter, no placeholder Details button, empty sections marked", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator(".soon")).toHaveCount(0); // every section now has places
-  await expect(page.locator(".pill")).toHaveCount(1);
+  await expect(page.locator(".pill")).toHaveText(["📍 Closest to the hotel", "🕘 Hotel hours"]); // both work
   await openRestaurants(page, "American");
   await expect(page.locator("#rating")).toHaveCount(0);
   await expect(page.locator("#restaurantCards")).not.toContainText("Not loaded");
@@ -284,4 +284,33 @@ test("returning from a walking card lands on the same list, and links to a scree
   await page.goBack();
   await expect(page.locator("#restaurantTitle")).toHaveText("American Restaurants");
   await expect(page.locator(".card", { hasText: "Catch 12" })).toBeInViewport(); // same spot in the list
+});
+
+test("Hotel hours lists every outlet with open/closed status in Atlanta time", async ({ page }) => {
+  const errors = trackErrors(page);
+  await page.clock.setFixedTime(new Date("2026-11-06T09:00:00-05:00")); // Friday 9:00 AM in Atlanta
+  await page.goto("/");
+  await page.getByRole("button", { name: /Hotel hours/ }).click();
+  await expect(page).toHaveURL(/#hours$/);
+  await expect(page.locator(".hours-card h3")).toHaveText([
+    "Fiora Restaurant", "Executive Lounge", "JW Market", "The Ledger Bar", "Nest Wellness Spa", "Fitness Center", "In-Room Dining",
+  ]);
+  const card = (id) => page.locator(`[data-outlet="${id}"]`);
+  await expect(card("fiora").locator(".hours-status")).toHaveText("Open now · until 11:00 AM");
+  await expect(card("fiora")).toContainText("Mon–Fri");
+  await expect(card("fiora")).toContainText("Sat & Sun");
+  await expect(card("executive-lounge").locator(".hours-status")).toHaveText("Open now · until 9:30 AM");
+  await expect(card("nest-wellness-spa").locator(".hours-status")).toHaveText("Closed · opens 10:00 AM");
+  await expect(card("the-ledger")).toContainText("Kitchen closes 1 hour before the bar closes.");
+  await expect(card("fitness-center").locator(".hours-status")).toHaveText("Open 24 hours");
+  await expect(card("in-room-dining")).toContainText("Dinner · Fri & Sat");
+  await expect(page.locator("#hoursSource")).toContainText("Hotel outlet times sheet");
+  await page.goBack();
+  await expect(page.locator("#home")).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("Fiora's restaurant card shows the hotel hours", async ({ page }) => {
+  await openRestaurants(page, "European");
+  await expect(page.locator(".card", { hasText: "Fiora" })).toContainText("Mon–Fri 7:00 AM – 11:00 AM · Sat & Sun 8:00 AM – 12:00 PM");
 });

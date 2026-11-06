@@ -19,6 +19,8 @@ function data() {
     schema: read("schema/venue.schema.json"),
     landmarksDoc: read("data/landmarks.json"),
     routeSchema: read("schema/route.schema.json"),
+    hotelHours: read("data/hotel-hours.json"),
+    hoursSchema: read("schema/hotel-hours.schema.json"),
     routes: Object.fromEntries(
       readdirSync(new URL("../../data/routes/", import.meta.url)).filter((f) => f.endsWith(".json")).map((f) => [f, read(`data/routes/${f}`)]),
     ),
@@ -166,4 +168,29 @@ test("dining venues need cuisine and price; other categories don't", () => {
 test("unknown category is reported", () => {
   const errors = errorsAfter((d) => (d.venuesDoc.venues[0].category = "nightclubs"));
   assertFlags(errors, { field: "category", match: /one of/ });
+});
+
+test("hotel hours: close before open, bad time, unknown day and unknown venue are reported", () => {
+  const errors = errorsAfter((d) => {
+    const o = d.hotelHours.outlets;
+    o[0].periods[0].close = "06:00";
+    o[1].periods[0].open = "25:00";
+    o[2].periods[0].days = ["funday"];
+    o[0].venueId = "nowhere";
+  });
+  const f = errors.filter((e) => e.file === "data/hotel-hours.json");
+  assert.ok(f.some((e) => e.id === "fiora" && /before it opens/.test(e.message)));
+  assert.ok(f.some((e) => e.id === "executive-lounge" && /pattern/.test(e.message)));
+  assert.ok(f.some((e) => e.id === "jw-market" && /one of/.test(e.message)));
+  assert.ok(f.some((e) => e.id === "fiora" && e.field === "venueId"));
+});
+
+test("hotel hours: an outlet needs periods or open24h, and ids are unique", () => {
+  const errors = errorsAfter((d) => {
+    delete d.hotelHours.outlets[2].periods;
+    d.hotelHours.outlets[3].id = d.hotelHours.outlets[4].id;
+  });
+  const f = errors.filter((e) => e.file === "data/hotel-hours.json");
+  assert.ok(f.some((e) => e.id === "jw-market" && /at least one period/.test(e.message)));
+  assert.ok(f.some((e) => e.field === "id" && /duplicate/.test(e.message)));
 });

@@ -15,6 +15,8 @@ const files = {
   schema: "schema/venue.schema.json",
   landmarksDoc: "data/landmarks.json",
   routeSchema: "schema/route.schema.json",
+  hotelHours: "data/hotel-hours.json",
+  hoursSchema: "schema/hotel-hours.schema.json",
 };
 
 const data = {};
@@ -54,4 +56,4 @@ if (errors.length) {
 
 const count = data.venuesDoc.venues.length;
 const routeCount = Object.keys(data.routes).length;
-console.log(`✓ Data is valid: ${count} venue${count === 1 ? "" : "s"}, ${data.taxonomy.cuisineGroups.length} cuisine groups, ${data.landmarksDoc.landmarks.length} landmarks, ${routeCount} walking route${routeCount === 1 ? "" : "s"}.`);
+console.log(`✓ Data is valid: ${count} venue${count === 1 ? "" : "s"}, ${data.taxonomy.cuisineGroups.length} cuisine groups, ${data.landmarksDoc.landmarks.length} landmarks, ${data.hotelHours.outlets.length} hotel outlets, ${routeCount} walking route${routeCount === 1 ? "" : "s"}.`);

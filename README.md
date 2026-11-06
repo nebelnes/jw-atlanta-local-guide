@@ -13,6 +13,7 @@ A static website: plain HTML, CSS and JavaScript, hosted free on GitHub Pages, w
 | `index.html` | The page: layout, styling and behavior |
 | `data/venues.json` | Venue recommendations: 23 restaurants plus attractions, sports & events, entertainment, shopping, and parks & outdoors |
 | `data/taxonomy.json` | Cuisine groups, price levels and dining styles used by filters |
+| `data/hotel-hours.json` | Hours for the hotel's restaurants, bar, lounge, spa and other outlets |
 | `data/hotel.json` | The hotel the guide is centered on (origin for walking routes) |
 | `data/routes/` | One generated walking route per venue (from OpenStreetMap) |
 | `data/landmarks.json` | Landmarks the walking cards can point out |
