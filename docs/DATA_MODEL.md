@@ -22,6 +22,7 @@ Fields are marked **stable** (rarely changes once correct) or **volatile** (can 
 | `cuisineGroup` | string | dining | stable | A group name from `data/taxonomy.json`. Not geography. Required for dining venues only. |
 | `priceLevel` | `$`–`$$$$` or `null` | dining | volatile | Must exist in `taxonomy.priceLevels`. Required for dining venues, but use `null` when no source states a price; never estimate it, and don't copy Google's price level (its terms don't allow storing it). |
 | `diningStyle` | string | no | stable | Must exist in `taxonomy.diningStyles`. `Fine Dining` puts the restaurant on the Fine Dining tab. |
+| `occasions` | string list | no | stable | Concierge tags: `quick-bite`, `brunch`, `atlanta-original` (listed in `taxonomy.occasions`). Each is a filter on the Restaurants screen. This is judgment, not a fact from a source, so tag only places you'd actually send a guest for that. |
 | `michelin` | `{distinction, year}` | no | volatile | MICHELIN Guide distinction (`1 Star`, `2 Stars`, `3 Stars`, `Bib Gourmand`, `Recommended`) and guide year. Shown as a badge (filled for Stars, outlined for Bib Gourmand and Recommended). Starred restaurants always appear on the Fine Dining tab; Bib Gourmand and Recommended places appear there only if their `diningStyle` is `Fine Dining`. Re-check every fall when the guide is announced. |
 | `address` | string | yes | stable | Full street address as guests would type it into a map. |
 | `phone` | string or `null` | no | volatile | `null` = unknown; the page shows "Check official site". |
@@ -130,6 +131,7 @@ Places a walking card can point out. A landmark is mentioned only when a route p
 | `cuisineGroups[]` | `{name, description, cuisines[]}`. Each group is one type button on the Restaurants screen (e.g. "Steak & Seafood"); groups with no restaurants are hidden. A cuisine may belong to only one group. |
 | `priceLevels[]` | `{value, label}`, e.g. `{"value": "$$", "label": "$$ · $25–$50"}`. Drives the price filter. |
 | `diningStyles[]` | Allowed `diningStyle` values. |
+| `occasions[]` | `{value, label, description}`. The occasion filters on the Restaurants screen, shown in this order. |
 
 ## `data/hotel.json`
 

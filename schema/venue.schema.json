@@ -273,6 +273,19 @@
               "minimum": 2023
             }
           }
+        },
+        "occasions": {
+          "description": "Concierge tags shown as filters on the Restaurants screen. Values must be listed in taxonomy.occasions.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "quick-bite",
+              "brunch",
+              "atlanta-original"
+            ]
+          }
         }
       }
     }

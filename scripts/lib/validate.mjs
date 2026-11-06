@@ -45,6 +45,7 @@ export function validateData({ venuesDoc, taxonomy, hotel, schema, landmarksDoc,
   const groups = new Map((taxonomy?.cuisineGroups ?? []).map((g) => [g.name, new Set(g.cuisines ?? [])]));
   const prices = new Set((taxonomy?.priceLevels ?? []).map((p) => p.value));
   const styles = new Set(taxonomy?.diningStyles ?? []);
+  const occasions = new Set((taxonomy?.occasions ?? []).map((o) => o.value));
   const seenIds = new Map();
 
   venues.forEach((v, i) => {
@@ -75,6 +76,9 @@ export function validateData({ venuesDoc, taxonomy, hotel, schema, landmarksDoc,
     if (typeof v.diningStyle === "string" && !styles.has(v.diningStyle)) {
       add("diningStyle", `"${v.diningStyle}" is not a dining style in data/taxonomy.json`);
     }
+    (Array.isArray(v.occasions) ? v.occasions : []).forEach((o, j) => {
+      if (typeof o === "string" && !occasions.has(o)) add(`occasions[${j}]`, `"${o}" is not an occasion in data/taxonomy.json`);
+    });
 
     for (const [field, value] of walkStrings(v)) {
       if (PLACEHOLDER.test(value)) {

@@ -20,6 +20,12 @@ function trackErrors(page) {
   return errors;
 }
 
+/** Restaurant rows start collapsed; open them all so tests can reach the links inside. */
+async function expandAll(page) {
+  await page.locator("#restaurantCards .vrow-btn").first().waitFor();
+  await page.evaluate(() => document.querySelectorAll('#restaurantCards .vrow-btn[aria-expanded="false"]').forEach((b) => b.click()));
+}
+
 async function openRestaurants(page, type) {
   await page.goto("/");
   await page.getByRole("button", { name: /Restaurants/ }).click();
@@ -34,16 +40,17 @@ test("home loads with hotel name from data and no errors", async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-test("American shows 26 restaurants, closest first", async ({ page }) => {
+test("American shows 21 restaurants, closest first", async ({ page }) => {
   await openRestaurants(page, "American");
-  await expect(page.locator("#resultCount")).toHaveText("26 restaurants · closest first");
-  await expect(page.locator(".card h3").first()).toHaveText("Catch 12");
+  await expect(page.locator("#resultCount")).toHaveText("21 restaurants · closest first");
+  await expect(page.locator(".vname").first()).toHaveText("Catch 12");
 });
 
 test("restaurant types are condensed: one row of types, empty types hidden", async ({ page }) => {
   await page.goto("/#restaurants");
+  await expect(page.locator("#occChips .cuisine")).toHaveText(["All79", "Quick bites13", "Brunch9", "Atlanta originals8", "MICHELIN Guide45"]);
   await expect(page.locator("#typeChips .cuisine")).toHaveText([
-    "All79", "MICHELIN Guide45", "American26", "Southern & BBQ9", "Steak & Seafood5", "European & Mediterranean10", "Latin3", "Asian & Sushi18", "Breakfast & Casual8",
+    "American21", "Southern & BBQ9", "Steak & Seafood5", "Pubs & Sports Bars5", "European & Mediterranean10", "Latin3", "Asian & Sushi18", "Breakfast & Casual8",
   ]);
   await page.locator('[data-rfilter="European & Mediterranean"]').click();
   await expect(page.locator("#resultCount")).toHaveText("10 restaurants · closest first");
@@ -81,6 +88,7 @@ test("Fine Dining tab: MICHELIN-starred and fine dining, walkable first, then by
   await expect(page.locator("#restaurantCards .badge.michelin")).toHaveCount(9);
   await expect(page.locator(".card", { hasText: "Lazy Betty" })).toContainText("MICHELIN 1 Star 2026");
   await page.locator('[data-rfilter="All"]').click();
+  await expandAll(page);
   await expect(page.locator(".card", { hasText: "Miller Union" }).locator(".badge.michelin.listed")).toHaveText("MICHELIN Recommended 2026");
   await expect(page.locator(".card", { hasText: "Lazy Betty" }).getByRole("link", { name: /driving directions/i })).toHaveCount(1);
   expect(errors).toEqual([]);
@@ -101,6 +109,7 @@ async function stubTiles(page) {
 
 test("Walking Map opens live walking directions in Google Maps", async ({ page }) => {
   await openRestaurants(page, "American");
+  await expandAll(page);
   const link = page.locator(".card", { hasText: "Catch 12" }).getByRole("link", { name: /Walking Map/ });
   await expect(link).toHaveAttribute("target", "_blank");
   const url = new URL(await link.getAttribute("href"));
@@ -114,6 +123,7 @@ test("Print directions opens the printable card for that restaurant", async ({ p
   await stubTiles(page);
   const errors = trackErrors(page);
   await openRestaurants(page, "American");
+  await expandAll(page);
   const print = page.locator(".card", { hasText: "Catch 12" }).getByRole("link", { name: /Print directions/ });
   await expect(print).toHaveAttribute("href", "walk.html?id=catch-12");
   await page.goto("/walk.html?id=catch-12");
@@ -135,6 +145,7 @@ test.describe("on an iPhone", () => {
   test("Walking Map and the card's live link open Apple Maps", async ({ page }) => {
     await stubTiles(page);
     await openRestaurants(page, "American");
+    await expandAll(page);
     const href = await page.locator(".card", { hasText: "Catch 12" }).getByRole("link", { name: /Walking Map/ }).getAttribute("href");
     const url = new URL(href);
     expect(url.hostname).toBe("maps.apple.com");
@@ -210,7 +221,7 @@ test("Closest to the hotel lists every restaurant, nearest first", async ({ page
   await page.goto("/");
   await page.getByRole("button", { name: /Closest to the hotel/ }).click();
   await expect(page.locator("#resultCount")).toHaveText("79 restaurants · closest first");
-  await expect(page.locator(".card h3").first()).toHaveText("Fiora Cucina Italiana"); // inside the hotel
+  await expect(page.locator(".vname").first()).toHaveText("Fiora Cucina Italiana"); // inside the hotel
   const minutes = await page.locator("#restaurantCards .card-top strong").allInnerTexts();
   const nums = minutes.filter((t) => !/🚗/.test(t)).map((t) => (/In the hotel/.test(t) ? 0 : Number(t.match(/\d+/)[0])));
   expect(nums).toEqual([...nums].sort((a, b) => a - b));
@@ -229,6 +240,7 @@ test("no dead controls: no rating filter, no placeholder Details button, empty s
 test("a restaurant inside the hotel says so instead of offering walking directions", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Closest to the hotel/ }).click();
+  await expandAll(page);
   const fiora = page.locator(".card", { hasText: "Fiora Cucina Italiana" });
   await expect(fiora).toContainText("In the hotel");
   await expect(fiora.getByRole("link", { name: /Walking Map/ })).toHaveCount(0);
@@ -291,7 +303,7 @@ test("the phone's Back button steps back through screens instead of leaving the 
   expect(await active()).toBe("home");
   await page.goForward();
   expect(await active()).toBe("restaurants");
-  await page.getByRole("button", { name: /Home/ }).click();
+  await page.locator("#homeBtn").click();
   await page.getByRole("button", { name: /Attractions/ }).click();
   expect(await active()).toBe("attractions");
   await page.goBack();
@@ -303,6 +315,7 @@ test("returning from a walking card lands on the same list, and links to a scree
   await stubTiles(page);
   await page.goto("/#restaurants/American"); // a screen can be opened (or refreshed) directly
   await expect(page.locator('[data-rfilter="American"]')).toHaveAttribute("aria-pressed", "true");
+  await page.locator('[data-venue="catch-12"] .vrow-btn').click();
   await page.locator(".card", { hasText: "Catch 12" }).getByRole("link", { name: /Print directions/ }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Catch 12");
   await page.goBack();
@@ -315,6 +328,7 @@ test("a chosen type is kept when coming back from a walking card", async ({ page
   await page.goto("/#restaurants/fine");
   await page.locator('[data-rfilter="walk"]').click();
   await expect(page).toHaveURL(/#restaurants\/fine\/walk$/);
+  await page.locator('[data-venue="polaris"] .vrow-btn').click();
   await page.locator(".card", { hasText: "Polaris" }).getByRole("link", { name: /Print directions/ }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Polaris");
   await page.goBack();
@@ -370,6 +384,7 @@ test("The Ledger is listed as an in-hotel restaurant with the hotel's hours; unc
 
 test("verified restaurants show phone and website", async ({ page }) => {
   await page.goto("/#restaurants/Steak & Seafood");
+  await expandAll(page);
   const ag = page.locator(".card", { hasText: "AG Modern Bar & Steakhouse" });
   await expect(ag).toContainText("(404) 221-6550");
   await expect(ag.getByRole("link", { name: "Website" })).toHaveAttribute("href", "https://www.ritzcarlton.com/ag");
@@ -377,6 +392,7 @@ test("verified restaurants show phone and website", async ({ page }) => {
 
 test("walks over 15 minutes are labelled Longer walk and offer both walking and driving", async ({ page }) => {
   await page.goto("/#restaurants/fine");
+  await expandAll(page);
   const lyla = page.locator(".card", { hasText: "Lyla Lila" });
   await expect(lyla.locator(".card-top strong")).toHaveText(/🚶 17 min · 🚗 ~\d+/);
   await expect(lyla.locator(".long-walk")).toContainText("Longer walk");
@@ -394,4 +410,29 @@ test("a restaurant with no published price shows no price instead of a guess", a
   const card = page.locator('[data-venue="blossom-tree"]');
   await expect(card).toBeVisible();
   await expect(card.locator(".meta").first()).not.toContainText("$");
+});
+
+test("restaurant rows start collapsed and open on tap to show details and actions", async ({ page }) => {
+  await page.goto("/#restaurants");
+  const row = page.locator('[data-venue="catch-12"]');
+  const btn = row.locator(".vrow-btn");
+  await expect(btn).toHaveAttribute("aria-expanded", "false");
+  await expect(row.getByRole("link", { name: /Walking Map/ })).toHaveCount(0); // hidden until opened
+  await btn.click();
+  await expect(btn).toHaveAttribute("aria-expanded", "true");
+  await expect(row.locator(".vdetails")).toBeVisible();
+  await expect(row.getByRole("link", { name: /Walking Map/ })).toHaveCount(1);
+  await btn.press("Enter"); // keyboard closes it again
+  await expect(btn).toHaveAttribute("aria-expanded", "false");
+});
+
+test("occasion filters: Quick bites, Brunch and Atlanta originals", async ({ page }) => {
+  await page.goto("/#restaurants");
+  await page.locator('[data-rfilter="quick-bite"]').click();
+  await expect(page).toHaveURL(/#restaurants\/quick-bite$/);
+  await expect(page.locator("#resultCount")).toHaveText("13 restaurants · closest first");
+  await expect(page.locator('[data-venue="freds-meat-and-bread"]')).toBeVisible();
+  await page.locator('[data-rfilter="atlanta-original"]').click();
+  await expect(page.locator('[data-venue="polaris"]')).toBeVisible();
+  await expect(page.locator('[data-venue="freds-meat-and-bread"]')).toHaveCount(0);
 });

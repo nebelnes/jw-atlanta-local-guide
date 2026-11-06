@@ -26,6 +26,16 @@
       ]
     },
     {
+      "name": "Pubs & Sports Bars",
+      "description": "Brewpubs, sports bars and bar-and-grills",
+      "cuisines": [
+        "Brewpub",
+        "Sports Bar",
+        "Pub",
+        "Bar & Grill"
+      ]
+    },
+    {
       "name": "European & Mediterranean",
       "description": "Italian, French, European, Mediterranean and Middle Eastern",
       "cuisines": [
@@ -101,5 +111,22 @@
     "Casual",
     "Upscale",
     "Fine Dining"
+  ],
+  "occasions": [
+    {
+      "value": "quick-bite",
+      "label": "Quick bites",
+      "description": "Counter service or fast; in and out in about 30 minutes"
+    },
+    {
+      "value": "brunch",
+      "label": "Brunch",
+      "description": "Breakfast or weekend brunch worth recommending"
+    },
+    {
+      "value": "atlanta-original",
+      "label": "Atlanta originals",
+      "description": "Long-running or only-in-Atlanta places guests can't get at home"
+    }
   ]
 }
