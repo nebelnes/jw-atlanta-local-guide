@@ -84,8 +84,12 @@
           "minLength": 1
         },
         "priceLevel": {
-          "type": "string",
-          "pattern": "^\\${1,4}$"
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^\\${1,4}$",
+          "description": "Required for dining venues, but may be null when no source states a price (never estimated)."
         },
         "diningStyle": {
           "type": "string",

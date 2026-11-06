@@ -43,10 +43,10 @@ test("American shows 26 restaurants, closest first", async ({ page }) => {
 test("restaurant types are condensed: one row of types, empty types hidden", async ({ page }) => {
   await page.goto("/#restaurants");
   await expect(page.locator("#typeChips .cuisine")).toHaveText([
-    "All68", "MICHELIN Guide45", "American26", "Southern & BBQ8", "Steak & Seafood5", "European & Mediterranean9", "Latin2", "Asian & Sushi12", "Breakfast & Casual6",
+    "All79", "MICHELIN Guide45", "American26", "Southern & BBQ9", "Steak & Seafood5", "European & Mediterranean10", "Latin3", "Asian & Sushi18", "Breakfast & Casual8",
   ]);
   await page.locator('[data-rfilter="European & Mediterranean"]').click();
-  await expect(page.locator("#resultCount")).toHaveText("9 restaurants · closest first");
+  await expect(page.locator("#resultCount")).toHaveText("10 restaurants · closest first");
   await expect(page.locator('[data-rfilter="European & Mediterranean"]')).toHaveAttribute("aria-pressed", "true");
 });
 
@@ -209,7 +209,7 @@ test("on a phone, pages fit the screen and the card map is drawn at phone size",
 test("Closest to the hotel lists every restaurant, nearest first", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Closest to the hotel/ }).click();
-  await expect(page.locator("#resultCount")).toHaveText("68 restaurants · closest first");
+  await expect(page.locator("#resultCount")).toHaveText("79 restaurants · closest first");
   await expect(page.locator(".card h3").first()).toHaveText("Fiora Cucina Italiana"); // inside the hotel
   const minutes = await page.locator("#restaurantCards .card-top strong").allInnerTexts();
   const nums = minutes.filter((t) => !/🚗/.test(t)).map((t) => (/In the hotel/.test(t) ? 0 : Number(t.match(/\d+/)[0])));
@@ -387,4 +387,11 @@ test("walks over 15 minutes are labelled Longer walk and offer both walking and 
   const polaris = page.locator(".card", { hasText: "Polaris" });
   await expect(polaris.locator(".long-walk")).toHaveCount(0);
   await expect(polaris.getByRole("link", { name: /driving directions/i })).toHaveCount(0);
+});
+
+test("a restaurant with no published price shows no price instead of a guess", async ({ page }) => {
+  await page.goto("/#restaurants/Asian & Sushi");
+  const card = page.locator('[data-venue="blossom-tree"]');
+  await expect(card).toBeVisible();
+  await expect(card.locator(".meta").first()).not.toContainText("$");
 });

@@ -20,7 +20,7 @@ Fields are marked **stable** (rarely changes once correct) or **volatile** (can 
 | `category` | `dining` · `attractions` · `events` · `entertainment` · `shopping` · `outdoors` | yes | stable | The home-screen section the venue appears in. |
 | `cuisine` | string | dining | stable | Must be listed under `cuisineGroup` in `data/taxonomy.json`. Required for dining venues only. |
 | `cuisineGroup` | string | dining | stable | A group name from `data/taxonomy.json`. Not geography. Required for dining venues only. |
-| `priceLevel` | `$`–`$$$$` | dining | volatile | Must exist in `taxonomy.priceLevels`. Required for dining venues only. |
+| `priceLevel` | `$`–`$$$$` or `null` | dining | volatile | Must exist in `taxonomy.priceLevels`. Required for dining venues, but use `null` when no source states a price; never estimate it, and don't copy Google's price level (its terms don't allow storing it). |
 | `diningStyle` | string | no | stable | Must exist in `taxonomy.diningStyles`. `Fine Dining` puts the restaurant on the Fine Dining tab. |
 | `michelin` | `{distinction, year}` | no | volatile | MICHELIN Guide distinction (`1 Star`, `2 Stars`, `3 Stars`, `Bib Gourmand`, `Recommended`) and guide year. Shown as a badge (filled for Stars, outlined for Bib Gourmand and Recommended). Starred restaurants always appear on the Fine Dining tab; Bib Gourmand and Recommended places appear there only if their `diningStyle` is `Fine Dining`. Re-check every fall when the guide is announced. |
 | `address` | string | yes | stable | Full street address as guests would type it into a map. |

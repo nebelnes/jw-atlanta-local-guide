@@ -52,7 +52,7 @@
     },
     {
       "name": "Asian & Sushi",
-      "description": "Japanese and sushi, Chinese, Thai, Korean, Vietnamese and Indian",
+      "description": "Japanese and sushi, Chinese, Thai, Korean, Vietnamese and Indian, ramen",
       "cuisines": [
         "Japanese / Sushi",
         "Chinese",
@@ -62,7 +62,8 @@
         "Indian",
         "Filipino",
         "Taiwanese",
-        "Malaysian"
+        "Malaysian",
+        "Ramen"
       ]
     },
     {

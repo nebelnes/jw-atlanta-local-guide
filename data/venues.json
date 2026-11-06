@@ -3031,6 +3031,333 @@
       },
       "walkable": false,
       "driveMinutes": 5
+    },
+    {
+      "id": "south-city-kitchen-midtown",
+      "name": "South City Kitchen Midtown",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Southern",
+      "cuisineGroup": "Southern & BBQ",
+      "priceLevel": "$$",
+      "diningStyle": "Upscale",
+      "address": "1144 Crescent Ave NE, Atlanta, GA 30309",
+      "coordinates": {
+        "lat": 33.786012,
+        "lng": -84.384436
+      },
+      "website": "https://www.southcitykitchen.com/",
+      "phone": "(404) 873-7358",
+      "hours": "Lunch Mon–Fri 11 AM–2:30 PM · brunch Sat–Sun 10 AM–3 PM · dinner nightly from 5 PM",
+      "walkMinutes": null,
+      "summary": "Midtown's long-running upscale Southern restaurant, with an open kitchen and weekend brunch. The classic answer when a guest wants Southern food done well. Business casual.",
+      "verification": {
+        "sourceLabel": "Official site / OpenTable",
+        "sourceUrls": [
+          "https://www.southcitykitchen.com/midtown-hours-and-location/",
+          "https://opentable.com/restaurant/profile/1642"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "dressCode": "Business casual",
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "e-ramen",
+      "name": "E Ramen+",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Ramen",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": null,
+      "diningStyle": "Casual",
+      "address": "1110 W Peachtree St NW, Suite 300, Atlanta, GA 30309",
+      "coordinates": {
+        "lat": 33.785111,
+        "lng": -84.388015
+      },
+      "website": "https://eramenatl.com/",
+      "phone": "(404) 913-4142",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Ramen shop in Midtown. A quick, warming bowl a short ride from the hotel.",
+      "verification": {
+        "sourceLabel": "Midtown Alliance",
+        "sourceUrls": [
+          "https://www.midtownatl.com/go/e-ramen",
+          "https://www.theinfatuation.com/atlanta/reviews/e-ramen-atlanta"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 4
+    },
+    {
+      "id": "northern-china-eatery-beltline",
+      "name": "Northern China Eatery",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Chinese",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "665 Auburn Ave NE, Atlanta, GA 30312",
+      "coordinates": {
+        "lat": 33.754698,
+        "lng": -84.365743
+      },
+      "website": "https://northernchinaeatery.com/",
+      "phone": "(229) 258-8832",
+      "hours": "Mon and Wed–Sun 11 AM–10 PM (Tuesday not listed)",
+      "walkMinutes": null,
+      "summary": "Dumplings and Northern Chinese classics (soup dumplings, scallion pancakes, mapo tofu) beside the BeltLine Eastside Trail. Best ordered family-style; no reservations.",
+      "verification": {
+        "sourceLabel": "AJC review",
+        "sourceUrls": [
+          "https://www.ajc.com/food-and-dining/2025/10/northern-china-eaterys-classic-chinese-cuisine-feels-at-home-on-the-beltline"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "ghee-indian-kitchen",
+      "name": "Ghee Indian Kitchen",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Indian",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": "$$",
+      "diningStyle": "Upscale",
+      "address": "1050 Howell Mill Rd, Atlanta, GA 30318",
+      "coordinates": {
+        "lat": 33.783451,
+        "lng": -84.411893
+      },
+      "website": "https://www.gheeindiankitchen.com/",
+      "phone": "(404) 201-2581",
+      "hours": "Sun–Thu 5–10 PM · Fri–Sat 5–11 PM",
+      "walkMinutes": null,
+      "summary": "Indian home cooking made with local ingredients, the Atlanta sister of a well-known Miami restaurant, in West Midtown's Star Metals building. Dinner only; a good pick for a relaxed group dinner.",
+      "verification": {
+        "sourceLabel": "OpenTable",
+        "sourceUrls": [
+          "https://www.opentable.com/r/ghee-indian-kitchen-atlanta",
+          "https://www.ajc.com/food-and-dining/2025/12/miami-based-ghee-indian-kitchen-finds-warm-welcome-in-atlanta"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "dressCode": "Business casual",
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "sankranti-indian-kitchen",
+      "name": "Sankranti Indian Kitchen",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Indian",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": null,
+      "diningStyle": "Casual",
+      "address": "85 5th St NW, Suite A, Atlanta, GA 30308",
+      "coordinates": {
+        "lat": 33.777023,
+        "lng": -84.390258
+      },
+      "website": "https://www.sankranti.com/",
+      "phone": "(404) 689-6719",
+      "hours": null,
+      "walkMinutes": 21,
+      "summary": "Casual Indian kitchen at Georgia Tech's Tech Square in Midtown. A quick curry or biryani, close to the hotel.",
+      "verification": {
+        "sourceLabel": "Midtown Alliance",
+        "sourceUrls": [
+          "https://www.midtownatl.com/go/sankranti-indian-kitchen"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": true,
+      "driveMinutes": 3
+    },
+    {
+      "id": "rreal-tacos-midtown",
+      "name": "Rreal Tacos Midtown",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Mexican",
+      "cuisineGroup": "Latin",
+      "priceLevel": null,
+      "diningStyle": "Casual",
+      "address": "100 6th St NE, Suite 110, Atlanta, GA 30308",
+      "coordinates": {
+        "lat": 33.777417,
+        "lng": -84.383475
+      },
+      "website": "https://www.rrealtacos.com/",
+      "phone": "(404) 458-5887",
+      "hours": "Daily 11 AM–10 PM",
+      "walkMinutes": 23,
+      "summary": "Lively Midtown taqueria with a fresh, seasonal take on Mexican favorites. Easy for groups and open daily.",
+      "verification": {
+        "sourceLabel": "Explore Georgia",
+        "sourceUrls": [
+          "https://exploregeorgia.org/atlanta/food-drink/casual-full-service/rreal-tacos"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": true,
+      "driveMinutes": 3
+    },
+    {
+      "id": "crescent-city-kitchen",
+      "name": "Crescent City Kitchen",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Breakfast / Brunch",
+      "cuisineGroup": "Breakfast & Casual",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "address": "1080 Crescent Ave NE, Suite 6, Atlanta, GA 30309",
+      "coordinates": {
+        "lat": 33.783809,
+        "lng": -84.384358
+      },
+      "website": "https://crescentcityga.com/",
+      "phone": "(404) 549-9585",
+      "hours": "Mon 10 AM–5 PM · Tue–Fri 10 AM–8 PM · Sat–Sun 9 AM–8 PM",
+      "walkMinutes": null,
+      "summary": "New Orleans-inspired all-day brunch spot in Midtown, known for its croffles (croissant-waffles). Casual and easy for a late-morning meal.",
+      "verification": {
+        "sourceLabel": "OpenTable",
+        "sourceUrls": [
+          "https://opentable.co.uk/restaurant/profile/1346629"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "dressCode": "Casual",
+      "walkable": false,
+      "driveMinutes": 4
+    },
+    {
+      "id": "poach-social",
+      "name": "Poach Social",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Breakfast / Brunch",
+      "cuisineGroup": "Breakfast & Casual",
+      "priceLevel": null,
+      "diningStyle": "Casual",
+      "address": "112 Ormond St SE, Atlanta, GA 30315",
+      "coordinates": {
+        "lat": 33.731807,
+        "lng": -84.383962
+      },
+      "website": "https://www.poachsocial.com/",
+      "phone": "(404) 963-2617",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Breakfast, brunch and lunch in Summerhill: Southern comfort food with lighter, health-conscious options. Reopened in fall 2026.",
+      "verification": {
+        "sourceLabel": "Atlanta News First",
+        "sourceUrls": [
+          "https://www.atlantanewsfirst.com/2026/10/06/poach-social-brings-health-conscious-brunch-summerhill/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 7
+    },
+    {
+      "id": "bread-and-butterfly",
+      "name": "Bread & Butterfly",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "French",
+      "cuisineGroup": "European & Mediterranean",
+      "priceLevel": null,
+      "diningStyle": "Casual",
+      "address": "290 Elizabeth St NE, Atlanta, GA 30307",
+      "coordinates": {
+        "lat": 33.762419,
+        "lng": -84.358182
+      },
+      "website": "https://bread-and-butterfly.com/",
+      "phone": "(678) 515-4536",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Inman Park café serving French breakfast and lunch, with a Haitian-inspired dinner menu. A charming brunch near the BeltLine.",
+      "verification": {
+        "sourceLabel": "The Infatuation",
+        "sourceUrls": [
+          "https://theinfatuation.com/atlanta/reviews/bread-and-butterfly"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 4
+    },
+    {
+      "id": "tyde-tate-kitchen",
+      "name": "Tyde Tate Kitchen",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Thai",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": null,
+      "diningStyle": "Casual",
+      "address": "229 Mitchell St SW, Atlanta, GA 30303",
+      "coordinates": {
+        "lat": 33.752238,
+        "lng": -84.395172
+      },
+      "website": "https://www.tydetatekitchen.com/",
+      "phone": null,
+      "hours": null,
+      "walkMinutes": 22,
+      "summary": "Homestyle Thai comfort food (pad Thai, panang curry, curry puffs) in South Downtown. Order at the counter or sit down; good for takeout too.",
+      "verification": {
+        "sourceLabel": "The Infatuation / AJC",
+        "sourceUrls": [
+          "https://www.theinfatuation.com/atlanta/reviews/tydetate-kitchen",
+          "https://www.ajc.com/food-and-dining/2026/06/downtown-atlanta-restaurant-list-where-to-eat-near-mercedes-benz-stadium/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": true,
+      "driveMinutes": 4
+    },
+    {
+      "id": "blossom-tree",
+      "name": "Blossom Tree",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Korean",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": null,
+      "diningStyle": "Casual",
+      "address": "64 Peachtree St NW, Atlanta, GA 30303",
+      "coordinates": {
+        "lat": 33.755355,
+        "lng": -84.389127
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": 16,
+      "summary": "Fast-casual Korean bowls, wraps and Korean tacos in Fairlie-Poplar, with vegetarian and gluten-free options. A quick, easy lunch close to the hotel.",
+      "verification": {
+        "sourceLabel": "AJC Downtown list",
+        "sourceUrls": [
+          "https://www.ajc.com/food-and-dining/2026/06/downtown-atlanta-restaurant-list-where-to-eat-near-mercedes-benz-stadium/",
+          "https://atlanta.com/restaurants-food/korean/blossom-tree"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": true,
+      "driveMinutes": 2
     }
   ]
 }
