@@ -14,11 +14,13 @@ const PLACEHOLDER = /^\s*check\b/i; // e.g. "Check current hours", "Check offici
  * @param {object} [data.landmarksDoc]  parsed data/landmarks.json
  * @param {Record<string, object>} [data.routes]  parsed data/routes/*.json, keyed by file name
  * @param {object} [data.routeSchema]  parsed schema/route.schema.json
+ * @param {object} [data.hotelHours]  parsed data/hotel-hours.json
+ * @param {object} [data.hoursSchema]  parsed schema/hotel-hours.schema.json
  * @param {object} [options]
  * @param {string} [options.today] ISO date used for "not in the future" checks (default: today, UTC)
  * @returns {{file: string, id?: string, field: string, message: string}[]}
  */
-export function validateData({ venuesDoc, taxonomy, hotel, schema, landmarksDoc, routes, routeSchema }, { today } = {}) {
+export function validateData({ venuesDoc, taxonomy, hotel, schema, landmarksDoc, routes, routeSchema, hotelHours, hoursSchema }, { today } = {}) {
   const errors = [];
   const todayIso = today ?? new Date().toISOString().slice(0, 10);
 
@@ -92,6 +94,11 @@ export function validateData({ venuesDoc, taxonomy, hotel, schema, landmarksDoc,
     for (const [file, route] of Object.entries(routes)) {
       errors.push(...checkRoute(file, route, { routeSchema, venueIds, landmarkIds, hotel, todayIso }));
     }
+  }
+
+  // Hotel outlet hours
+  if (hotelHours !== undefined) {
+    errors.push(...checkHotelHours(hotelHours, { hoursSchema, venueIds: new Set(venues.map((v) => v?.id)), todayIso }));
   }
   return errors;
 }
@@ -190,6 +197,42 @@ function checkTaxonomy(taxonomy) {
   if (!Array.isArray(taxonomy.diningStyles) || taxonomy.diningStyles.length === 0) {
     add("diningStyles", "must be a non-empty list");
   }
+  return errors;
+}
+
+const toMinutes = (t) => Number(t.slice(0, 2)) * 60 + Number(t.slice(3));
+
+/** data/hotel-hours.json: structure, unique ids, open before close, links to real venues, date not in the future. */
+export function checkHotelHours(doc, { hoursSchema, venueIds, todayIso }) {
+  const file = "data/hotel-hours.json";
+  const errors = [];
+  if (hoursSchema) {
+    for (const e of checkSchema(doc, hoursSchema)) {
+      const m = /^outlets\[(\d+)\]\.?(.*)$/.exec(e.path);
+      errors.push({ file, id: m ? doc.outlets?.[Number(m[1])]?.id ?? `#${m[1]}` : undefined, field: m ? m[2] || "(record)" : e.path, message: e.message });
+    }
+  }
+  const lastVerified = doc?.verification?.lastVerified;
+  if (typeof lastVerified === "string" && lastVerified > todayIso) errors.push({ file, field: "verification.lastVerified", message: `${lastVerified} is in the future` });
+  const seen = new Set();
+  (Array.isArray(doc?.outlets) ? doc.outlets : []).forEach((o, i) => {
+    if (!o || typeof o !== "object") return;
+    const id = o.id ?? `#${i}`;
+    const add = (field, message) => errors.push({ file, id, field, message });
+    if (seen.has(o.id)) add("id", "duplicate id");
+    seen.add(o.id);
+    const periods = Array.isArray(o.periods) ? o.periods : [];
+    if (o.open24h === true && periods.length) add("periods", "an outlet open 24 hours should not also list periods");
+    if (o.open24h !== true && !periods.length) add("periods", "list at least one period, or set open24h");
+    periods.forEach((p, j) => {
+      if (Array.isArray(p?.days) && !p.days.length) add(`periods[${j}].days`, "must list at least one day");
+      if (typeof p?.open === "string" && typeof p?.close === "string" && /^\d\d:\d\d$/.test(p.open) && /^\d\d:\d\d$/.test(p.close)
+        && toMinutes(p.close) <= toMinutes(p.open)) {
+        add(`periods[${j}]`, `closes (${p.close}) before it opens (${p.open}); for past midnight, end at 24:00 and add the early hours to the next day`);
+      }
+    });
+    if (o.venueId !== undefined && venueIds && !venueIds.has(o.venueId)) add("venueId", `no venue "${o.venueId}" in data/venues.json`);
+  });
   return errors;
 }
 

@@ -35,6 +35,8 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.action{text-align:center;padding:11px 8px;font-size:15px}
 }
 @media print{body{background:#fff}.topbar,.controls,.quick,.actions,footer,.notice,.section-head,.subcategory-bar,.cards{display:none!important}.map-panel.active{display:block!important;border:0;box-shadow:none;padding:0}.map-actions{display:none}.print-only{display:block}.shell{max-width:none}.card{box-shadow:none;break-inside:avoid}.cards{display:block}.card{margin-bottom:14px}}
+.hours-list{display:grid;gap:14px}.hours-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}.hours-top{display:flex;justify-content:space-between;align-items:start;gap:12px}.hours-top h3{font-family:Georgia,serif;font-size:22px;font-weight:500;margin:0}.hours-where{display:block;color:var(--muted);font-size:14px;margin-top:3px}.hours-status{flex:none;font-size:13px;font-weight:600;padding:5px 10px;border-radius:999px;background:#efebe4;color:var(--muted);text-align:right}.hours-status.open{background:#e3efe9;color:var(--green)}.hours-status::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:1px}.hours-rows{margin:14px 0 0;display:grid;gap:6px}.hours-rows div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:6px}.hours-rows dt{color:var(--muted)}.hours-rows dd{margin:0;font-variant-numeric:tabular-nums;text-align:right}.hours-notes{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:14px}.hours-source{color:var(--muted);font-size:13px;margin-top:18px}
+@media (max-width:560px){.hours-top{flex-direction:column;gap:8px}.hours-status{text-align:left}}
 </style>
 </head>
 <body>
@@ -52,7 +54,7 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
   <button class="tile" data-view="shopping" type="button"><span class="icon" aria-hidden="true">🛍️</span><strong>Shopping</strong><span>Markets, malls, and boutiques</span></button>
   <button class="tile" data-view="outdoors" type="button"><span class="icon" aria-hidden="true">🌳</span><strong>Parks & Outdoors</strong><span>Green spaces and outdoor activities</span></button>
  </div>
- <div class="quick"><button class="pill" type="button" id="closestBtn">📍 Closest to the hotel</button></div>
+ <div class="quick"><button class="pill" type="button" id="closestBtn">📍 Closest to the hotel</button><button class="pill" type="button" id="hoursBtn">🕘 Hotel hours</button></div>
 </section>
 
 <section id="restaurants" class="view">
@@ -73,6 +75,7 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
  </div>
 </section>
 
+<section id="hours" class="view"><div class="section-head"><div><h2>Hotel Hours</h2><p>Restaurants, bars and amenities inside the hotel.</p></div></div><div class="hours-list" id="hoursList"></div><p class="hours-source" id="hoursSource"></p></section>
 <section id="attractions" class="view"><div class="section-head"><div><h2>Attractions</h2><p>Museums and must-sees, most within walking distance of the hotel.</p></div></div><div class="cuisines section-chips" data-chips="attractions" aria-label="Filter Attractions"></div><div class="count" data-count="attractions" aria-live="polite"></div><div class="cards" data-cards="attractions"></div></section>
 <section id="events" class="view"><div class="section-head"><div><h2>Sports & Events</h2><p>Stadiums, arenas and the convention center.</p></div></div><div class="cuisines section-chips" data-chips="events" aria-label="Filter Sports & Events"></div><div class="count" data-count="events" aria-live="polite"></div><div class="cards" data-cards="events"></div></section>
 <section id="entertainment" class="view"><div class="section-head"><div><h2>Entertainment</h2><p>Theatre, concerts, comedy and the arts.</p></div></div><div class="cuisines section-chips" data-chips="entertainment" aria-label="Filter Entertainment"></div><div class="count" data-count="entertainment" aria-live="polite"></div><div class="cards" data-cards="entertainment"></div></section>
@@ -82,9 +85,10 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 <footer>JW Atlanta Local Guide · Working prototype · Designed for desktop, tablet, and phone</footer>
 </div>
 <script src="assets/live-directions.js"></script>
+<script src="assets/hotel-hours.js"></script>
 <script>
 // Venue content lives in data/*.json (see docs/DATA_MODEL.md). This script only presents it.
-const DATA_FILES={venues:'data/venues.json',taxonomy:'data/taxonomy.json',hotel:'data/hotel.json'};
+const DATA_FILES={venues:'data/venues.json',taxonomy:'data/taxonomy.json',hotel:'data/hotel.json',hotelHours:'data/hotel-hours.json'};
 const UNKNOWN_HOURS='Check current hours', UNKNOWN_PHONE='Check official site';
 const flagSvg={
  "Italian":"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'><path fill='#009246' d='M0 0h1v2H0z'/><path fill='#fff' d='M1 0h1v2H1z'/><path fill='#ce2b37' d='M2 0h1v2H2z'/></svg>",
@@ -103,15 +107,18 @@ const flagSvg={
 };
 function flagImg(name){const svg=flagSvg[name];return svg?`<img class="flag-img" alt="" aria-hidden="true" src="data:image/svg+xml,${encodeURIComponent(svg)}">`:'';}
 function esc(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-let restaurants=[], regions={}, regionText={}, hotel=null;
+let restaurants=[], regions={}, regionText={}, hotel=null, hoursDoc=null, venueHours={};
 let selected="All";
 let selectedRegion=null;
 const byCategory={};
 const menu=document.getElementById('cuisineMenu');
 const regionGrid=document.getElementById('regionGrid');
 function hotelAddress(){const a=hotel.address;return `${a.street}, ${a.locality}, ${a.region} ${a.postalCode}`;}
-function applyData({venues,taxonomy,hotel:h}){
- hotel=h;
+function applyData({venues,taxonomy,hotel:h,hotelHours}){
+ hotel=h; hoursDoc=hotelHours;
+ // A venue inside the hotel (e.g. Fiora) shows the outlet's hours on its card
+ hoursDoc.outlets.filter(o=>o.venueId).forEach(o=>{venueHours[o.venueId]=outletHoursText(o)});
+ renderHours();
  restaurants=venues.venues.filter(v=>v.category==='dining'&&v.status!=='closed');
  venues.venues.filter(v=>v.category!=='dining'&&v.status!=='closed').forEach(v=>(byCategory[v.category]??=[]).push(v));
  document.querySelectorAll('.tile[data-view]').forEach(t=>{
@@ -129,6 +136,21 @@ function applyData({venues,taxonomy,hotel:h}){
   b.innerHTML=`<strong>${esc(region)}</strong><span>${esc(regionText[region]||'')}</span>`; regionGrid.appendChild(b);
  });
 }
+function outletHoursText(o){return window.hotelHours.lines(o).map(l=>`${l.label?l.label+' ':''}${l.days} ${l.time}`).join(' · ')}
+function renderHours(){
+ if(!hoursDoc) return;
+ const H=window.hotelHours, now=new Date();
+ document.getElementById('hoursList').innerHTML=hoursDoc.outlets.map(o=>{
+  const st=H.status(o,now,hoursDoc.timeZone);
+  const where=[o.location,o.description].filter(Boolean).join(' · ');
+  const rows=H.lines(o).map(l=>`<div><dt>${l.label?esc(l.label)+' · ':''}${esc(l.days)}</dt><dd>${esc(l.time)}</dd></div>`).join('');
+  const notes=(o.notes||[]).length?`<ul class="hours-notes">${o.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:'';
+  return `<article class="hours-card" data-outlet="${esc(o.id)}"><div class="hours-top"><div><h3>${esc(o.name)}</h3>${where?`<span class="hours-where">${esc(where)}</span>`:''}</div><span class="hours-status${st.open?' open':''}">${esc(st.text)}</span></div><dl class="hours-rows">${rows}</dl>${notes}</article>`;
+ }).join('');
+ const d=new Date(hoursDoc.verification.lastVerified+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+ document.getElementById('hoursSource').textContent=`Source: ${hoursDoc.verification.sourceLabel}, last checked ${d}. "Open now" uses Atlanta time. Hours can change, so confirm with the outlet when it matters.`;
+}
+setInterval(()=>{if(document.getElementById('hours').classList.contains('active'))renderHours()},60000);
 function showLoadError(){
  const box=document.createElement('div');
  box.className='notice load-error'; box.setAttribute('role','alert');
@@ -166,6 +188,7 @@ function openClosest(){
  render();
 }
 document.getElementById('closestBtn').addEventListener('click',()=>go('#closest'));
+document.getElementById('hoursBtn').addEventListener('click',()=>go('#hours'));
 function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id))}
 document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>go('#'+b.dataset.view)));
 document.getElementById('homeBtn').addEventListener('click',()=>go(''));document.getElementById('changeRegion').addEventListener('click',()=>go('#restaurants'));
@@ -183,6 +206,7 @@ function route(){
  const [view,arg]=decodeURIComponent(location.hash.slice(1)).split('/');
  if(view==='closest'){openClosest();return;}
  if(view==='restaurants'){showView('restaurants');if(arg&&regions[arg])openRegion(arg);else resetRestaurantView();return;}
+ if(view==='hours') renderHours();
  showView(view&&document.getElementById(view)?.classList.contains('view')?view:'home');
 }
 window.addEventListener('popstate',e=>{route();window.scrollTo(0,e.state?.y??0);});
@@ -198,7 +222,7 @@ function venueCard(v){
  const time=inHotel?'🏨 In the hotel':walk?`🚶 ${esc(v.walkMinutes)} min`:drive?`🚗 ~${esc(v.driveMinutes)} min`:'';
  const badge=dining?v.cuisine:(v.subcategories||[])[0];
  const meta=dining?`<span>${esc(v.priceLevel)}</span><span>🍽️ ${esc(v.diningStyle)}</span>`:(v.bestFor||[]).length?`<span>Good for ${esc(v.bestFor.join(' · '))}</span>`:'';
- const info=[`<span>🕐 ${esc(v.hours??UNKNOWN_HOURS)}</span>`,v.phone?`<span>📞 ${esc(v.phone)}</span>`:(dining?`<span>📞 ${esc(UNKNOWN_PHONE)}</span>`:''),v.website?`<span>🌐 <a href="${esc(v.website)}" target="_blank" rel="noopener">Website</a></span>`:'',`<span>✓ ${esc(v.verification.sourceLabel)}</span>`].join('');
+ const info=[`<span>🕐 ${esc(v.hours??venueHours[v.id]??UNKNOWN_HOURS)}</span>`,v.phone?`<span>📞 ${esc(v.phone)}</span>`:(dining?`<span>📞 ${esc(UNKNOWN_PHONE)}</span>`:''),v.website?`<span>🌐 <a href="${esc(v.website)}" target="_blank" rel="noopener">Website</a></span>`:'',`<span>✓ ${esc(v.verification.sourceLabel)}</span>`].join('');
  const live=(mode)=>esc(liveDirections(hotelAddress(),v.address,mode).url);
  const actions=inHotel?`<span class="action in-hotel">🏨 In the hotel</span><a class="action print-link" href="walk.html?id=${encodeURIComponent(v.id)}">🖨 Print directions</a>`
   :walk?`<a class="action primary walk-link" href="${live('walk')}" target="_blank" rel="noopener" aria-label="Walking Map: live directions to ${esc(v.name)} (opens maps)">📍 Walking Map</a><a class="action print-link" href="walk.html?id=${encodeURIComponent(v.id)}">🖨 Print directions</a>`
