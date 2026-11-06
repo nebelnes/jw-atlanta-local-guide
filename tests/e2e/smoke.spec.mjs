@@ -34,26 +34,26 @@ test("home loads with hotel name from data and no errors", async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-test("American shows 14 restaurants, closest first", async ({ page }) => {
+test("American shows 26 restaurants, closest first", async ({ page }) => {
   await openRestaurants(page, "American");
-  await expect(page.locator("#resultCount")).toHaveText("14 restaurants · closest first");
+  await expect(page.locator("#resultCount")).toHaveText("26 restaurants · closest first");
   await expect(page.locator(".card h3").first()).toHaveText("Catch 12");
 });
 
 test("restaurant types are condensed: one row of types, empty types hidden", async ({ page }) => {
   await page.goto("/#restaurants");
   await expect(page.locator("#typeChips .cuisine")).toHaveText([
-    "All32", "American14", "Southern & BBQ5", "Steak & Seafood3", "Italian & European4", "Latin1", "Asian & Sushi4", "Breakfast & Casual1",
+    "All68", "MICHELIN Guide45", "American26", "Southern & BBQ8", "Steak & Seafood5", "European & Mediterranean9", "Latin2", "Asian & Sushi12", "Breakfast & Casual6",
   ]);
-  await page.locator('[data-rfilter="Italian & European"]').click();
-  await expect(page.locator("#resultCount")).toHaveText("4 restaurants · closest first");
-  await expect(page.locator('[data-rfilter="Italian & European"]')).toHaveAttribute("aria-pressed", "true");
+  await page.locator('[data-rfilter="European & Mediterranean"]').click();
+  await expect(page.locator("#resultCount")).toHaveText("9 restaurants · closest first");
+  await expect(page.locator('[data-rfilter="European & Mediterranean"]')).toHaveAttribute("aria-pressed", "true");
 });
 
-test("price filter: American at $$$$ shows 6", async ({ page }) => {
+test("price filter: American at $$$$ shows 8", async ({ page }) => {
   await openRestaurants(page, "American");
   await page.selectOption("#price", "$$$$");
-  await expect(page.locator("#resultCount")).toHaveText("6 restaurants · closest first");
+  await expect(page.locator("#resultCount")).toHaveText("8 restaurants · closest first");
 });
 
 test("price options come from the taxonomy; the old restaurant-type filter is gone", async ({ page }) => {
@@ -68,7 +68,7 @@ test("Fine Dining tab: MICHELIN-starred and fine dining, walkable first, then by
   await page.getByRole("tab", { name: /Fine Dining/ }).click();
   await expect(page).toHaveURL(/#restaurants\/fine$/);
   await expect(page.getByRole("tab", { name: /Fine Dining/ })).toHaveAttribute("aria-selected", "true");
-  await expect(page.locator("#resultCount")).toHaveText("13 restaurants · closest first");
+  await expect(page.locator("#resultCount")).toHaveText("21 restaurants · closest first");
   await expect(page.locator("#price")).toBeHidden(); // everything here is $$$$
   const times = await page.locator("#restaurantCards .card-top strong").allInnerTexts();
   const walk = times.filter((t) => /🚶/.test(t)).map((t) => Number(t.match(/\d+/)[0]));
@@ -80,6 +80,8 @@ test("Fine Dining tab: MICHELIN-starred and fine dining, walkable first, then by
   await expect(page.locator("#restaurantCards .card")).toHaveCount(9);
   await expect(page.locator("#restaurantCards .badge.michelin")).toHaveCount(9);
   await expect(page.locator(".card", { hasText: "Lazy Betty" })).toContainText("MICHELIN 1 Star 2026");
+  await page.locator('[data-rfilter="All"]').click();
+  await expect(page.locator(".card", { hasText: "Miller Union" }).locator(".badge.michelin.listed")).toHaveText("MICHELIN Recommended 2026");
   await expect(page.locator(".card", { hasText: "Lazy Betty" }).getByRole("link", { name: /driving directions/i })).toHaveCount(1);
   expect(errors).toEqual([]);
 });
@@ -207,7 +209,7 @@ test("on a phone, pages fit the screen and the card map is drawn at phone size",
 test("Closest to the hotel lists every restaurant, nearest first", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Closest to the hotel/ }).click();
-  await expect(page.locator("#resultCount")).toHaveText("32 restaurants · closest first");
+  await expect(page.locator("#resultCount")).toHaveText("68 restaurants · closest first");
   await expect(page.locator(".card h3").first()).toHaveText("Fiora Cucina Italiana"); // inside the hotel
   const minutes = await page.locator("#restaurantCards .card-top strong").allInnerTexts();
   const nums = minutes.filter((t) => !/🚗/.test(t)).map((t) => (/In the hotel/.test(t) ? 0 : Number(t.match(/\d+/)[0])));
@@ -281,7 +283,7 @@ test("the phone's Back button steps back through screens instead of leaving the 
   const active = () => page.locator(".view.active").getAttribute("id");
   await page.getByRole("button", { name: /Restaurants/ }).click();
   await page.getByRole("tab", { name: /Fine Dining/ }).click();
-  await expect(page.locator("#resultCount")).toHaveText("13 restaurants · closest first");
+  await expect(page.locator("#resultCount")).toHaveText("21 restaurants · closest first");
   await page.locator('[data-rfilter="michelin"]').click(); // filters don't add history steps
   await page.goBack(); // to All restaurants
   await expect(page.getByRole("tab", { name: /All restaurants/ })).toHaveAttribute("aria-selected", "true");
@@ -317,7 +319,7 @@ test("a chosen type is kept when coming back from a walking card", async ({ page
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Polaris");
   await page.goBack();
   await expect(page.locator('[data-rfilter="walk"]')).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator("#restaurantCards .card")).toHaveCount(4);
+  await expect(page.locator("#restaurantCards .card")).toHaveCount(5);
 });
 
 test("Hotel hours lists every outlet with open/closed status in Atlanta time", async ({ page }) => {
@@ -345,6 +347,14 @@ test("Hotel hours lists every outlet with open/closed status in Atlanta time", a
 });
 
 test("Fiora's restaurant card shows the hotel hours", async ({ page }) => {
-  await openRestaurants(page, "Italian & European");
+  await openRestaurants(page, "European & Mediterranean");
   await expect(page.locator(".card", { hasText: "Fiora" })).toContainText("Mon–Fri 7:00 AM – 11:00 AM · Sat & Sun 8:00 AM – 12:00 PM");
+});
+
+test("MICHELIN filter on All restaurants lists starred, Bib Gourmand and Recommended places", async ({ page }) => {
+  await page.goto("/#restaurants/michelin");
+  await expect(page.locator("#resultCount")).toHaveText("45 restaurants · closest first");
+  await expect(page.locator(".card", { hasText: "Estrellita" })).toContainText("MICHELIN Bib Gourmand 2026");
+  await expect(page.locator(".card", { hasText: "Estrellita" }).locator(".badge.michelin.listed")).toHaveCount(1);
+  await expect(page.locator(".card", { hasText: "Atlas" }).locator(".badge.michelin:not(.listed)")).toHaveText("★ MICHELIN 1 Star 2026");
 });

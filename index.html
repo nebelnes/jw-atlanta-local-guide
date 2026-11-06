@@ -37,7 +37,7 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 @media print{body{background:#fff}.topbar,.controls,.quick,.actions,footer,.notice,.section-head,.subcategory-bar,.cards{display:none!important}.map-panel.active{display:block!important;border:0;box-shadow:none;padding:0}.map-actions{display:none}.print-only{display:block}.shell{max-width:none}.card{box-shadow:none;break-inside:avoid}.cards{display:block}.card{margin-bottom:14px}}
 .hours-list{display:grid;gap:14px}.hours-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}.hours-top{display:flex;justify-content:space-between;align-items:start;gap:12px}.hours-top h3{font-family:Georgia,serif;font-size:22px;font-weight:500;margin:0}.hours-where{display:block;color:var(--muted);font-size:14px;margin-top:3px}.hours-status{flex:none;font-size:13px;font-weight:600;padding:5px 10px;border-radius:999px;background:#efebe4;color:var(--muted);text-align:right}.hours-status.open{background:#e3efe9;color:var(--green)}.hours-status::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:1px}.hours-rows{margin:14px 0 0;display:grid;gap:6px}.hours-rows div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:6px}.hours-rows dt{color:var(--muted)}.hours-rows dd{margin:0;font-variant-numeric:tabular-nums;text-align:right}.hours-notes{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:14px}.hours-source{color:var(--muted);font-size:13px;margin-top:18px}
 @media (max-width:560px){.hours-top{flex-direction:column;gap:8px}.hours-status{text-align:left}}
-.tabs{display:flex;gap:4px;padding:4px;background:#ece6dc;border-radius:14px;margin:0 0 16px;max-width:420px}.tab{flex:1;border:0;background:transparent;padding:11px 12px;border-radius:10px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer}.tab[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(29,37,40,.12)}.type-chips{margin:0 0 6px}.cuisine .n{opacity:.6;margin-left:6px;font-variant-numeric:tabular-nums}.badge.michelin{background:#7a1f2b;color:#fff}.card-top .badge+.badge{margin-left:6px}#restaurants.fine .controls .control{display:none}
+.tabs{display:flex;gap:4px;padding:4px;background:#ece6dc;border-radius:14px;margin:0 0 16px;max-width:420px}.tab{flex:1;border:0;background:transparent;padding:11px 12px;border-radius:10px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer}.tab[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(29,37,40,.12)}.type-chips{margin:0 0 6px}.cuisine .n{opacity:.6;margin-left:6px;font-variant-numeric:tabular-nums}.badge.michelin{background:#7a1f2b;color:#fff}.badge.michelin.listed{background:#fff;color:#7a1f2b;box-shadow:inset 0 0 0 1px #7a1f2b}.card-top .badge+.badge{margin-left:6px}#restaurants.fine .controls .control{display:none}
 @media (max-width:560px){.type-chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px 6px;padding:2px 16px 6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.type-chips .cuisine{flex:none;white-space:nowrap}.card-top .badge+.badge{margin:6px 0 0}}#restaurantNote{margin-top:22px}
 </style>
 </head>
@@ -178,7 +178,7 @@ function venueCard(v){
  const actions=inHotel?`<span class="action in-hotel">🏨 In the hotel</span><a class="action print-link" href="walk.html?id=${encodeURIComponent(v.id)}">🖨 Print directions</a>`
   :walk?`<a class="action primary walk-link" href="${live('walk')}" target="_blank" rel="noopener" aria-label="Walking Map: live directions to ${esc(v.name)} (opens maps)">📍 Walking Map</a><a class="action print-link" href="walk.html?id=${encodeURIComponent(v.id)}">🖨 Print directions</a>`
   :`<a class="action primary drive-link" href="${live('drive')}" target="_blank" rel="noopener" aria-label="Driving directions to ${esc(v.name)} (opens maps)">🚗 Directions</a>${v.website?`<a class="action" href="${esc(v.website)}" target="_blank" rel="noopener">🌐 Website</a>`:''}`;
- return `<article class="card" data-venue="${esc(v.id)}"><div class="card-top"><div><h3>${esc(v.name)}</h3>${badge?`<span class="badge">${esc(badge)}</span>`:''}${v.michelin?`<span class="badge michelin">★ MICHELIN ${esc(v.michelin.distinction)} ${esc(v.michelin.year)}</span>`:''}</div><strong>${time}</strong></div>${meta?`<div class="meta">${meta}</div>`:''}<p class="desc">${esc(v.summary)}</p><div class="meta">${info}</div>${drive?'<p class="drive-note">Too far to walk comfortably. Drive time is an estimate without traffic.</p>':''}<div class="actions">${actions}</div></article>`;
+ return `<article class="card" data-venue="${esc(v.id)}"><div class="card-top"><div><h3>${esc(v.name)}</h3>${badge?`<span class="badge">${esc(badge)}</span>`:''}${v.michelin?`<span class="badge michelin${isStarred(v)?'':' listed'}">${isStarred(v)?'★ ':''}MICHELIN ${esc(v.michelin.distinction)} ${esc(v.michelin.year)}</span>`:''}</div><strong>${time}</strong></div>${meta?`<div class="meta">${meta}</div>`:''}<p class="desc">${esc(v.summary)}</p><div class="meta">${info}</div>${drive?'<p class="drive-note">Too far to walk comfortably. Drive time is an estimate without traffic.</p>':''}<div class="actions">${actions}</div></article>`;
 }
 function renderSection(cat,sub){
  const all=(byCategory[cat]||[]).slice().sort(byDistance);
@@ -191,8 +191,9 @@ function renderSection(cat,sub){
 }
 // Restaurants: two tabs. "All" filters by condensed cuisine type; "Fine Dining" lists
 // MICHELIN-starred and fine-dining places. Both are sorted closest first (walks before drives).
-const isFine=r=>r.diningStyle==='Fine Dining'||!!r.michelin;
-const FINE_FILTERS=[['All','All',()=>true],['michelin','★ MICHELIN Star',r=>!!r.michelin],['walk','Walkable',r=>typeof r.walkMinutes==='number']];
+const isStarred=r=>/Star/.test(r.michelin?.distinction||'');
+const isFine=r=>r.diningStyle==='Fine Dining'||isStarred(r);
+const FINE_FILTERS=[['All','All',()=>true],['michelin','★ MICHELIN Star',isStarred],['walk','Walkable',r=>typeof r.walkMinutes==='number']];
 function openRestaurantTab(tab,filter){rTab=tab;rFilter=filter||'All';document.getElementById('price').value='All';render();}
 function render(){
  const fine=rTab==='fine', price=document.getElementById('price').value;
@@ -200,7 +201,7 @@ function render(){
  document.getElementById('restaurants').classList.toggle('fine',fine);
  document.getElementById('restaurantIntro').textContent=fine?'MICHELIN-starred and special-occasion restaurants, closest first. Most are a short drive; suggest booking well ahead.':'Every restaurant in the guide, closest first. Tap a type to narrow the list.';
  const pool=fine?restaurants.filter(isFine):restaurants;
- const filters=fine?FINE_FILTERS:[['All','All',()=>true],...Object.keys(regions).map(g=>[g,g,r=>r.cuisineGroup===g])];
+ const filters=fine?FINE_FILTERS:[['All','All',()=>true],['michelin','MICHELIN Guide',r=>!!r.michelin],...Object.keys(regions).map(g=>[g,g,r=>r.cuisineGroup===g])];
  const counted=filters.map(([k,label,fn])=>[k,label,fn,pool.filter(fn).length]).filter(f=>f[0]==='All'||f[3]>0); // hide empty types
  if(!counted.some(f=>f[0]===rFilter)) rFilter='All';
  document.getElementById('typeChips').innerHTML=counted.map(([k,label,,n])=>`<button type="button" class="cuisine${k===rFilter?' selected':''}" data-rfilter="${esc(k)}" aria-pressed="${k===rFilter}">${esc(label)}<span class="n">${n}</span></button>`).join('');
@@ -208,7 +209,7 @@ function render(){
  const rows=pool.filter(r=>fn(r)&&(price==='All'||r.priceLevel===price)).sort(byDistance);
  document.getElementById('resultCount').textContent=`${rows.length} restaurant${rows.length===1?'':'s'} · closest first`;
  document.getElementById('restaurantCards').innerHTML=rows.length?rows.map(venueCard).join(''):'<div class="empty">No restaurants match these filters.</div>';
- document.getElementById('restaurantNote').textContent=fine?'MICHELIN distinctions are from the 2026 MICHELIN Guide American South. Hours and booking policies change, so check before sending a guest.':'These are listings, not yet curated recommendations. Check current hours before sending a guest. Walking times are measured from the hotel.';
+ document.getElementById('restaurantNote').textContent=fine?'MICHELIN distinctions are from the 2026 MICHELIN Guide American South. Hours and booking policies change, so check before sending a guest.':'MICHELIN distinctions are from the 2026 MICHELIN Guide American South. Other listings are not yet curated recommendations. Check current hours before sending a guest. Walking times are measured from the hotel.';
 }
 loadData().then(data=>{applyData(data);render();route();if(history.state?.y)window.scrollTo(0,history.state.y);}).catch(err=>{console.error('Failed to load guide data:',err);showLoadError();});
 </script>
