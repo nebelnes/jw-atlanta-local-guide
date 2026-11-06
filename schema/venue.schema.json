@@ -244,6 +244,31 @@
               "format": "date"
             }
           }
+        },
+        "michelin": {
+          "description": "MICHELIN Guide distinction, shown as a badge. Re-check every year when the guide is announced.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "distinction",
+            "year"
+          ],
+          "properties": {
+            "distinction": {
+              "type": "string",
+              "enum": [
+                "3 Stars",
+                "2 Stars",
+                "1 Star",
+                "Bib Gourmand",
+                "Recommended"
+              ]
+            },
+            "year": {
+              "type": "integer",
+              "minimum": 2023
+            }
+          }
         }
       }
     }

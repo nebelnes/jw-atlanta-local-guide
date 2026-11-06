@@ -20,42 +20,68 @@ function trackErrors(page) {
   return errors;
 }
 
-async function openRestaurants(page, group) {
+async function openRestaurants(page, type) {
   await page.goto("/");
   await page.getByRole("button", { name: /Restaurants/ }).click();
-  await page.locator(`[data-region-tile="${group}"]`).click();
+  await page.locator(`[data-rfilter="${type}"]`).click();
 }
 
 test("home loads with hotel name from data and no errors", async ({ page }) => {
   const errors = trackErrors(page);
   await page.goto("/");
   await expect(page.locator(".brand small")).toHaveText("JW Marriott Atlanta Downtown");
-  await expect(page.locator(".region-tile")).toHaveCount(6);
+  await expect(page.locator(".tile")).toHaveCount(6);
   expect(errors).toEqual([]);
 });
 
-test("American shows 17 restaurants, closest first", async ({ page }) => {
+test("American shows 14 restaurants, closest first", async ({ page }) => {
   await openRestaurants(page, "American");
-  await expect(page.locator("#resultCount")).toHaveText("17 results · closest first");
+  await expect(page.locator("#resultCount")).toHaveText("14 restaurants · closest first");
   await expect(page.locator(".card h3").first()).toHaveText("Catch 12");
 });
 
-test("Italian subcategory shows 3", async ({ page }) => {
-  await openRestaurants(page, "European");
-  await page.locator('[data-cuisine="Italian"]').click();
-  await expect(page.locator("#resultCount")).toHaveText("3 results · closest first");
+test("restaurant types are condensed: one row of types, empty types hidden", async ({ page }) => {
+  await page.goto("/#restaurants");
+  await expect(page.locator("#typeChips .cuisine")).toHaveText([
+    "All32", "American14", "Southern & BBQ5", "Steak & Seafood3", "Italian & European4", "Latin1", "Asian & Sushi4", "Breakfast & Casual1",
+  ]);
+  await page.locator('[data-rfilter="Italian & European"]').click();
+  await expect(page.locator("#resultCount")).toHaveText("4 restaurants · closest first");
+  await expect(page.locator('[data-rfilter="Italian & European"]')).toHaveAttribute("aria-pressed", "true");
 });
 
-test("price filter: American at $$$$ shows 4", async ({ page }) => {
+test("price filter: American at $$$$ shows 6", async ({ page }) => {
   await openRestaurants(page, "American");
   await page.selectOption("#price", "$$$$");
-  await expect(page.locator("#resultCount")).toHaveText("4 results · closest first");
+  await expect(page.locator("#resultCount")).toHaveText("6 restaurants · closest first");
 });
 
-test("dining-style filter options come from the taxonomy", async ({ page }) => {
+test("price options come from the taxonomy; the old restaurant-type filter is gone", async ({ page }) => {
   await openRestaurants(page, "American");
-  await expect(page.locator("#type option")).toHaveText(["Any type", "Casual", "Upscale", "Fine Dining"]);
   await expect(page.locator("#price option")).toHaveCount(5);
+  await expect(page.locator("#type")).toHaveCount(0);
+});
+
+test("Fine Dining tab: MICHELIN-starred and fine dining, walkable first, then by drive time", async ({ page }) => {
+  const errors = trackErrors(page);
+  await page.goto("/#restaurants");
+  await page.getByRole("tab", { name: /Fine Dining/ }).click();
+  await expect(page).toHaveURL(/#restaurants\/fine$/);
+  await expect(page.getByRole("tab", { name: /Fine Dining/ })).toHaveAttribute("aria-selected", "true");
+  await expect(page.locator("#resultCount")).toHaveText("13 restaurants · closest first");
+  await expect(page.locator("#price")).toBeHidden(); // everything here is $$$$
+  const times = await page.locator("#restaurantCards .card-top strong").allInnerTexts();
+  const walk = times.filter((t) => /🚶/.test(t)).map((t) => Number(t.match(/\d+/)[0]));
+  const drive = times.filter((t) => /🚗/.test(t)).map((t) => Number(t.match(/\d+/)[0]));
+  expect(times.slice(0, walk.length).every((t) => /🚶/.test(t))).toBe(true);
+  expect(walk).toEqual([...walk].sort((a, b) => a - b));
+  expect(drive).toEqual([...drive].sort((a, b) => a - b));
+  await page.locator('[data-rfilter="michelin"]').click();
+  await expect(page.locator("#restaurantCards .card")).toHaveCount(9);
+  await expect(page.locator("#restaurantCards .badge.michelin")).toHaveCount(9);
+  await expect(page.locator(".card", { hasText: "Lazy Betty" })).toContainText("MICHELIN 1 Star 2026");
+  await expect(page.locator(".card", { hasText: "Lazy Betty" }).getByRole("link", { name: /driving directions/i })).toHaveCount(1);
+  expect(errors).toEqual([]);
 });
 
 test("unknown hours and phone show the placeholder text", async ({ page }) => {
@@ -164,8 +190,8 @@ test("on a phone, pages fit the screen and the card map is drawn at phone size",
   await page.goto("/");
   expect(await noSideScroll()).toBe(0);
   await page.getByRole("button", { name: /Restaurants/ }).click();
-  const cols = await page.locator("#regionGrid").evaluate((el) => getComputedStyle(el).gridTemplateColumns.split(" ").length);
-  expect(cols).toBe(1);
+  const chipRows = await page.locator("#typeChips .cuisine").evaluateAll((els) => new Set(els.map((e) => e.offsetTop)).size);
+  expect(chipRows).toBe(1); // types swipe sideways instead of wrapping
   expect(await noSideScroll()).toBe(0);
 
   await page.goto("/walk.html?id=der-biergarten");
@@ -181,16 +207,11 @@ test("on a phone, pages fit the screen and the card map is drawn at phone size",
 test("Closest to the hotel lists every restaurant, nearest first", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Closest to the hotel/ }).click();
-  await expect(page.locator("#restaurantTitle")).toHaveText("Closest to the hotel");
-  await expect(page.locator("#resultCount")).toHaveText("23 results · closest first");
+  await expect(page.locator("#resultCount")).toHaveText("32 restaurants · closest first");
   await expect(page.locator(".card h3").first()).toHaveText("Fiora Cucina Italiana"); // inside the hotel
   const minutes = await page.locator("#restaurantCards .card-top strong").allInnerTexts();
-  const nums = minutes.map((t) => (/In the hotel/.test(t) ? 0 : Number(t.match(/\d+/)[0])));
+  const nums = minutes.filter((t) => !/🚗/.test(t)).map((t) => (/In the hotel/.test(t) ? 0 : Number(t.match(/\d+/)[0])));
   expect(nums).toEqual([...nums].sort((a, b) => a - b));
-  // going into a region afterwards brings the cuisine buttons back
-  await page.getByRole("button", { name: /Change region/ }).click();
-  await page.locator('[data-region-tile="American"]').click();
-  await expect(page.locator(".subcategory-bar")).toBeVisible();
 });
 
 test("no dead controls: no rating filter, no placeholder Details button, empty sections marked", async ({ page }) => {
@@ -259,10 +280,11 @@ test("the phone's Back button steps back through screens instead of leaving the 
   await page.goto("/");
   const active = () => page.locator(".view.active").getAttribute("id");
   await page.getByRole("button", { name: /Restaurants/ }).click();
-  await page.locator('[data-region-tile="American"]').click();
-  await expect(page.locator("#restaurantTitle")).toHaveText("American Restaurants");
-  await page.goBack(); // to the region chooser
-  await expect(page.locator("#regionChooser")).toBeVisible();
+  await page.getByRole("tab", { name: /Fine Dining/ }).click();
+  await expect(page.locator("#resultCount")).toHaveText("13 restaurants · closest first");
+  await page.locator('[data-rfilter="michelin"]').click(); // filters don't add history steps
+  await page.goBack(); // to All restaurants
+  await expect(page.getByRole("tab", { name: /All restaurants/ })).toHaveAttribute("aria-selected", "true");
   await page.goBack(); // to home
   expect(await active()).toBe("home");
   await page.goForward();
@@ -278,12 +300,24 @@ test("the phone's Back button steps back through screens instead of leaving the 
 test("returning from a walking card lands on the same list, and links to a screen work", async ({ page }) => {
   await stubTiles(page);
   await page.goto("/#restaurants/American"); // a screen can be opened (or refreshed) directly
-  await expect(page.locator("#restaurantTitle")).toHaveText("American Restaurants");
+  await expect(page.locator('[data-rfilter="American"]')).toHaveAttribute("aria-pressed", "true");
   await page.locator(".card", { hasText: "Catch 12" }).getByRole("link", { name: /Print directions/ }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Catch 12");
   await page.goBack();
-  await expect(page.locator("#restaurantTitle")).toHaveText("American Restaurants");
+  await expect(page.locator('[data-rfilter="American"]')).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator(".card", { hasText: "Catch 12" })).toBeInViewport(); // same spot in the list
+});
+
+test("a chosen type is kept when coming back from a walking card", async ({ page }) => {
+  await stubTiles(page);
+  await page.goto("/#restaurants/fine");
+  await page.locator('[data-rfilter="walk"]').click();
+  await expect(page).toHaveURL(/#restaurants\/fine\/walk$/);
+  await page.locator(".card", { hasText: "Polaris" }).getByRole("link", { name: /Print directions/ }).click();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Polaris");
+  await page.goBack();
+  await expect(page.locator('[data-rfilter="walk"]')).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#restaurantCards .card")).toHaveCount(4);
 });
 
 test("Hotel hours lists every outlet with open/closed status in Atlanta time", async ({ page }) => {
@@ -311,6 +345,6 @@ test("Hotel hours lists every outlet with open/closed status in Atlanta time", a
 });
 
 test("Fiora's restaurant card shows the hotel hours", async ({ page }) => {
-  await openRestaurants(page, "European");
+  await openRestaurants(page, "Italian & European");
   await expect(page.locator(".card", { hasText: "Fiora" })).toContainText("Mon–Fri 7:00 AM – 11:00 AM · Sat & Sun 8:00 AM – 12:00 PM");
 });
