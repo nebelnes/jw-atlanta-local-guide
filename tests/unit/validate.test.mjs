@@ -77,7 +77,7 @@ test("cuisine group not in taxonomy is reported", () => {
 
 test("cuisine not listed under its group is reported", () => {
   const errors = errorsAfter((d) => (d.venuesDoc.venues[0].cuisine = "Steakhouse")); // Steak & Seafood, not Italian & European
-  assertFlags(errors, { field: "cuisine", match: /not listed under "Italian & European"/ });
+  assertFlags(errors, { field: "cuisine", match: /not listed under "European & Mediterranean"/ });
 });
 
 test("price level not in taxonomy is reported", () => {

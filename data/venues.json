@@ -6,7 +6,7 @@
       "status": "active",
       "category": "dining",
       "cuisine": "Italian",
-      "cuisineGroup": "Italian & European",
+      "cuisineGroup": "European & Mediterranean",
       "priceLevel": "$$$",
       "diningStyle": "Upscale",
       "address": "45 Ivan Allen Jr Blvd NW, Atlanta, GA 30308",
@@ -136,7 +136,7 @@
       "status": "active",
       "category": "dining",
       "cuisine": "Italian",
-      "cuisineGroup": "Italian & European",
+      "cuisineGroup": "European & Mediterranean",
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "17 Andrew Young International Blvd NE, Atlanta, GA 30303",
@@ -162,7 +162,7 @@
       "status": "active",
       "category": "dining",
       "cuisine": "Italian",
-      "cuisineGroup": "Italian & European",
+      "cuisineGroup": "European & Mediterranean",
       "priceLevel": "$$$",
       "diningStyle": "Upscale",
       "address": "60 Luckie St NW, Atlanta, GA 30303",
@@ -344,7 +344,7 @@
       "status": "active",
       "category": "dining",
       "cuisine": "German",
-      "cuisineGroup": "Italian & European",
+      "cuisineGroup": "European & Mediterranean",
       "priceLevel": "$$",
       "diningStyle": "Casual",
       "address": "300 Marietta St NW, Atlanta, GA 30313",
@@ -1409,14 +1409,14 @@
       "walkMinutes": null,
       "walkable": false,
       "driveMinutes": 11,
-      "summary": "Seasonal American menu with European touches, à la carte or tasting menu, inside The St. Regis in Buckhead.",
+      "summary": "Polished, art-filled dining room inside The St. Regis in Buckhead; seasonal American cooking with European touches, à la carte or tasting menu. A strong pick for a celebration or an important client dinner.",
       "verification": {
-        "sourceLabel": "MICHELIN Guide",
+        "sourceLabel": "MICHELIN Guide / official site",
         "sourceUrls": [
           "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/atlas",
-          "https://guide.michelin.com/en/article/michelin-guide-ceremony/all-the-stars-in-the-michelin-guide-to-the-american-south"
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
         ],
-        "lastVerified": null
+        "lastVerified": "2026-11-06"
       }
     },
     {
@@ -1432,24 +1432,25 @@
         "distinction": "1 Star",
         "year": 2026
       },
-      "address": "1460 Ellsworth Industrial Dr NW, Atlanta, GA 30318",
+      "address": "1460 Ellsworth Industrial Blvd NW, Ste A, Atlanta, GA 30318",
       "coordinates": {
-        "lat": 33.7947137,
-        "lng": -84.4272646
+        "lat": 33.794714,
+        "lng": -84.427265
       },
-      "website": null,
-      "phone": null,
+      "website": "https://www.starprovisions.com/bacchanalia",
+      "phone": "+1 404-365-0410",
       "hours": null,
       "walkMinutes": null,
       "walkable": false,
       "driveMinutes": 9,
-      "summary": "Long-running Westside tasting-menu restaurant, one of Atlanta's best-known special-occasion dinners.",
+      "summary": "Anne Quatrano's long-running Westside restaurant and one of Atlanta's classic special-occasion dinners. Choose it for guests who want an established, refined evening.",
       "verification": {
-        "sourceLabel": "MICHELIN Guide",
+        "sourceLabel": "MICHELIN Guide / official site",
         "sourceUrls": [
-          "https://guide.michelin.com/en/article/michelin-guide-ceremony/all-the-stars-in-the-michelin-guide-to-the-american-south"
+          "https://guide.michelin.com/th/th/georgia/atlanta_2884144/restaurant/bacchanalia-1196004",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
         ],
-        "lastVerified": null
+        "lastVerified": "2026-11-06"
       }
     },
     {
@@ -1470,19 +1471,20 @@
         "lat": 33.7835497,
         "lng": -84.4111632
       },
-      "website": null,
+      "website": "https://www.hayakawaatl.com/",
       "phone": null,
-      "hours": null,
+      "hours": "Wed–Sat · seatings at 6:00 PM and 8:30 PM",
       "walkMinutes": null,
       "walkable": false,
       "driveMinutes": 6,
-      "summary": "Chef Atsushi Hayakawa's omakase sushi counter in West Midtown.",
+      "summary": "Chef Atsushi Hayakawa's omakase sushi counter on the second floor of the Star Metals office building in West Midtown. Book on Resy; parking is validated at the end of dinner.",
       "verification": {
-        "sourceLabel": "MICHELIN Guide",
+        "sourceLabel": "MICHELIN Guide / official site",
         "sourceUrls": [
-          "https://guide.michelin.com/en/article/michelin-guide-ceremony/all-the-stars-in-the-michelin-guide-to-the-american-south"
+          "https://hayakawaatl.com/location",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
         ],
-        "lastVerified": null
+        "lastVerified": "2026-11-06"
       }
     },
     {
@@ -1498,24 +1500,25 @@
         "distinction": "1 Star",
         "year": 2026
       },
-      "address": "999 Peachtree St NE, Atlanta, GA 30308",
+      "address": "999 Peachtree St NE, Atlanta, GA 30309",
       "coordinates": {
         "lat": 33.781343,
         "lng": -84.3837207
       },
-      "website": null,
-      "phone": null,
-      "hours": null,
+      "website": "https://www.lazybettyatl.com/",
+      "phone": "(470) 851-1199",
+      "hours": "Tue–Thu 5:00–8:30 PM · Fri–Sat 5:00–9:00 PM · closed Sun–Mon",
       "walkMinutes": null,
       "walkable": false,
       "driveMinutes": 4,
-      "summary": "Tasting-menu restaurant in Midtown, the closest MICHELIN-starred dinner to the hotel.",
+      "summary": "Tasting-menu restaurant in Midtown and the closest MICHELIN-starred dinner to the hotel, a few minutes by car. Parking validation for the deck behind the building.",
       "verification": {
-        "sourceLabel": "MICHELIN Guide",
+        "sourceLabel": "MICHELIN Guide / official site",
         "sourceUrls": [
-          "https://guide.michelin.com/en/article/michelin-guide-ceremony/all-the-stars-in-the-michelin-guide-to-the-american-south"
+          "https://www.lazybettyatl.com/info",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
         ],
-        "lastVerified": null
+        "lastVerified": "2026-11-06"
       }
     },
     {
@@ -1531,24 +1534,25 @@
         "distinction": "1 Star",
         "year": 2026
       },
-      "address": "691 14th St NW, Atlanta, GA 30318",
+      "address": "691 14th St NW, Ste C, Atlanta, GA 30318",
       "coordinates": {
         "lat": 33.7861565,
         "lng": -84.4114037
       },
-      "website": null,
-      "phone": null,
+      "website": "https://www.mujoatl.com/",
+      "phone": "+1 404-400-6832",
       "hours": null,
       "walkMinutes": null,
       "walkable": false,
       "driveMinutes": 6,
-      "summary": "Intimate omakase counter in West Midtown.",
+      "summary": "Intimate omakase sushi counter in West Midtown. Best for a small party that wants a quiet, chef-led evening.",
       "verification": {
-        "sourceLabel": "MICHELIN Guide",
+        "sourceLabel": "MICHELIN Guide / official site",
         "sourceUrls": [
-          "https://guide.michelin.com/en/article/michelin-guide-ceremony/all-the-stars-in-the-michelin-guide-to-the-american-south"
+          "https://guide.michelin.com/ee/en/georgia/atlanta_2884144/restaurant/mujo",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
         ],
-        "lastVerified": null
+        "lastVerified": "2026-11-06"
       }
     },
     {
@@ -1575,14 +1579,14 @@
       "walkMinutes": null,
       "walkable": false,
       "driveMinutes": 9,
-      "summary": "Omakase counter in Buckhead from the team behind Brush Sushi Izakaya.",
+      "summary": "Omakase counter in Buckhead from the team behind Brush Sushi Izakaya. A quieter, more intimate alternative to a big Buckhead dining room.",
       "verification": {
-        "sourceLabel": "MICHELIN Guide",
+        "sourceLabel": "MICHELIN Guide / official site",
         "sourceUrls": [
           "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/o-by-brush",
-          "https://guide.michelin.com/en/article/michelin-guide-ceremony/all-the-stars-in-the-michelin-guide-to-the-american-south"
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
         ],
-        "lastVerified": null
+        "lastVerified": "2026-11-06"
       }
     },
     {
@@ -1609,14 +1613,15 @@
       "walkMinutes": null,
       "walkable": false,
       "driveMinutes": 12,
-      "summary": "Chef Leonard Yu's omakase counter, now in Buckhead.",
+      "summary": "Chef Leonard Yu's omakase counter, now in Buckhead. Small and seat-limited, so book well ahead.",
       "verification": {
-        "sourceLabel": "MICHELIN Guide",
+        "sourceLabel": "MICHELIN Guide / official site",
         "sourceUrls": [
           "https://guide.michelin.com/kr/en/georgia/atlanta_2884144/restaurant/omakase-table",
-          "https://guide.michelin.com/en/article/michelin-guide-ceremony/all-the-stars-in-the-michelin-guide-to-the-american-south"
+          "https://metroatlantaceo.com/news/2025/02/michelin-star-omakase-table-moving-buckhead",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
         ],
-        "lastVerified": null
+        "lastVerified": "2026-11-06"
       }
     },
     {
@@ -1632,22 +1637,24 @@
         "distinction": "1 Star",
         "year": 2026
       },
-      "address": "1017 Virginia Ave NE, Atlanta, GA 30306",
+      "address": "1017 N Highland Ave NE, Atlanta, GA 30306",
       "coordinates": {
-        "lat": 33.7821484,
-        "lng": -84.3539163
+        "lat": 33.78228,
+        "lng": -84.354202
       },
-      "website": null,
+      "website": "https://www.sofoxatl.com/",
       "phone": null,
       "hours": null,
       "walkMinutes": null,
       "walkable": false,
       "driveMinutes": 7,
-      "summary": "Virginia-Highland restaurant, newly MICHELIN-starred in 2026.",
+      "summary": "Wine-focused Virginia-Highland restaurant from chef Myles Moody and sommelier Rachael Pack (Kinship): a short, often-changing à la carte menu, dinner only. Newly starred in 2026, so a good choice for guests who want something current.",
       "verification": {
-        "sourceLabel": "MICHELIN Guide",
+        "sourceLabel": "MICHELIN Guide / official site",
         "sourceUrls": [
-          "https://guide.michelin.com/en/article/michelin-guide-ceremony/all-the-stars-in-the-michelin-guide-to-the-american-south"
+          "https://www.atlantamagazine.com/dining-news/so-fox-opens-july-2-in-virginia-highland/",
+          "https://www.theinfatuation.com/atlanta/reviews/so-fox",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
         ],
         "lastVerified": null
       }
@@ -1670,20 +1677,1241 @@
         "lat": 33.9536059,
         "lng": -84.5509315
       },
+      "website": "https://www.springmarietta.com",
+      "phone": "+1 678-540-2777",
+      "hours": "Tue–Thu 5–9 PM · Fri–Sat 5–10 PM · closed Sun–Mon",
+      "walkMinutes": null,
+      "walkable": false,
+      "driveMinutes": 25,
+      "summary": "Small, ingredient-driven MICHELIN-starred restaurant just off Marietta Square, about 25 minutes' drive. Reopened in 2026 after renovations with fewer seats, so book ahead. Worth the trip for a special occasion.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide / official site",
+        "sourceUrls": [
+          "https://guide.michelin.com/us/en/georgia/marietta_2884138/restaurant/spring-1210096",
+          "https://www.ajc.com/food-and-dining/2026/04/michelin-starred-springs-limited-reopening-more-from-atlantas-dining-scene/",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      }
+    },
+    {
+      "id": "estrellita",
+      "name": "Estrellita",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Filipino",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Bib Gourmand",
+        "year": 2026
+      },
+      "address": "580 Woodward Ave SE, Atlanta, GA 30312",
+      "coordinates": {
+        "lat": 33.745608,
+        "lng": -84.368508
+      },
+      "website": "https://www.estrellitafilipino.com/",
+      "phone": "+1 404-390-3038",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Filipino cooking in Grant Park, known for its Cebu-style lechon. Walk-in only, so no reservations.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/estrellita",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "bomb-biscuit-co",
+      "name": "Bomb Biscuit Co.",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Breakfast / Brunch",
+      "cuisineGroup": "Breakfast & Casual",
+      "priceLevel": "$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Bib Gourmand",
+        "year": 2026
+      },
+      "address": "519 Memorial Dr SE, Ste B-02, Atlanta, GA 30312",
+      "coordinates": {
+        "lat": 33.761441,
+        "lng": -84.365352
+      },
+      "website": "https://www.bombbiscuitatl.com/",
+      "phone": "+1 678-949-9439",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Breakfast and brunch built around biscuit sandwiches. A quick, inexpensive morning option a few minutes from the hotel.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/bomb-biscuit-co",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 3
+    },
+    {
+      "id": "the-busy-bee",
+      "name": "The Busy Bee Cafe",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Southern",
+      "cuisineGroup": "Southern & BBQ",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Bib Gourmand",
+        "year": 2026
+      },
+      "address": "810 Martin Luther King Jr Dr SW, Atlanta, GA 30314",
+      "coordinates": {
+        "lat": 33.75441,
+        "lng": -84.413978
+      },
+      "website": "https://www.thebusybee.com",
+      "phone": "+1 404-525-9212",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Historic Southern soul-food institution on the Westside, famous for fried chicken. MICHELIN lists it as takeout only, so set expectations.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/ch/fr/georgia/atlanta_2884144/restaurant/the-busy-bee",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "fishmonger",
+      "name": "Fishmonger",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Seafood",
+      "cuisineGroup": "Steak & Seafood",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Bib Gourmand",
+        "year": 2026
+      },
+      "address": "674 N Highland Ave NE, Ste A, Atlanta, GA 30306",
+      "coordinates": {
+        "lat": 33.772801,
+        "lng": -84.352686
+      },
+      "website": "https://fishmongergroup.com",
+      "phone": "+1 678-705-9358",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Order-at-the-counter seafood spot in Poncey-Highland; the blackened grouper sandwich is the staple. Casual lunch, not a sit-down dinner.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/fishmonger",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "freds-meat-and-bread",
+      "name": "Fred's Meat & Bread",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Sandwiches",
+      "cuisineGroup": "Breakfast & Casual",
+      "priceLevel": "$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Bib Gourmand",
+        "year": 2026
+      },
+      "address": "99 Krog St NE, Atlanta, GA 30307",
+      "coordinates": {
+        "lat": 33.756992,
+        "lng": -84.364015
+      },
+      "website": "https://www.fredsmeatandbread.com/",
+      "phone": "+1 404-688-3733",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Burgers, cheesesteaks and po'boys inside Krog Street Market. An easy, inexpensive lunch near the BeltLine.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/fred-s-meat-bread",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 4
+    },
+    {
+      "id": "little-bear",
+      "name": "Little Bear",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Contemporary",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Bib Gourmand",
+        "year": 2026
+      },
+      "address": "71-A Georgia Ave SE, Ste A, Atlanta, GA 30312",
+      "coordinates": {
+        "lat": 33.73669,
+        "lng": -84.385442
+      },
+      "website": "https://littlebearatl.com/",
+      "phone": "+1 404-500-5396",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Chef Jarrett Stieber's open-kitchen restaurant in Summerhill with a frequently changing menu; the prix fixe includes dishes not on the à la carte. Good for adventurous eaters.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/little-bear",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "whoopsies",
+      "name": "Whoopsie's",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Bib Gourmand",
+        "year": 2026
+      },
+      "address": "1 Moreland Ave SE, Ste C, Atlanta, GA 30316",
+      "coordinates": {
+        "lat": 33.753463,
+        "lng": -84.349368
+      },
+      "website": null,
+      "phone": "+1 404-254-1279",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Casual neighborhood spot with an often-changing menu, a daily sandwich and a Southern snack tray.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/whoopsie-s",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 8
+    },
+    {
+      "id": "antico-pizza",
+      "name": "Antico Pizza Napoletana",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Pizza",
+      "cuisineGroup": "Breakfast & Casual",
+      "priceLevel": "$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Bib Gourmand",
+        "year": 2026
+      },
+      "address": "1093 Hemphill Ave NW, Atlanta, GA 30318",
+      "coordinates": {
+        "lat": 33.784655,
+        "lng": -84.405616
+      },
       "website": null,
       "phone": null,
       "hours": null,
       "walkMinutes": null,
+      "summary": "Neapolitan pizza on Atlanta's Westside. A relaxed, inexpensive option for families and groups.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide 2026 list (address from OpenStreetMap)",
+        "sourceUrls": [
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": null
+      },
       "walkable": false,
-      "driveMinutes": 25,
-      "summary": "MICHELIN-starred restaurant near Marietta Square, about 25 minutes' drive. Worth it for a special occasion.",
+      "driveMinutes": 6
+    },
+    {
+      "id": "summerland",
+      "name": "Summerland",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Bib Gourmand",
+        "year": 2026
+      },
+      "address": "1385 Collier Rd NW, Atlanta, GA 30318",
+      "coordinates": {
+        "lat": 33.8109,
+        "lng": -84.433799
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Chef Anne Quatrano's newer casual restaurant at Upper West Market, a 2026 Bib Gourmand.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide 2026 list (address from OpenStreetMap)",
+        "sourceUrls": [
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": null
+      },
+      "walkable": false,
+      "driveMinutes": 10
+    },
+    {
+      "id": "miller-union",
+      "name": "Miller Union",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Fine Dining",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "999 Brady Ave NW, Atlanta, GA 30318",
+      "coordinates": {
+        "lat": 33.781993,
+        "lng": -84.413014
+      },
+      "website": "https://millerunion.com/",
+      "phone": "+1 678-733-8550",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Seasonal American cooking with Southern roots in a converted Westside warehouse. A reliable, grown-up dinner for clients or a celebration.",
       "verification": {
         "sourceLabel": "MICHELIN Guide",
         "sourceUrls": [
-          "https://guide.michelin.com/en/article/michelin-guide-ceremony/all-the-stars-in-the-michelin-guide-to-the-american-south"
+          "https://guide.michelin.com/us/en/georgia/atlanta_2884144/restaurant/miller-union",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 6
+    },
+    {
+      "id": "lyla-lila",
+      "name": "Lyla Lila",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Contemporary",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$",
+      "diningStyle": "Fine Dining",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "693 Peachtree St NE, Ste 118, Atlanta, GA 30308",
+      "coordinates": {
+        "lat": 33.773569,
+        "lng": -84.384617
+      },
+      "website": "https://www.lylalilaatl.com/",
+      "phone": "+1 404-963-2637",
+      "hours": null,
+      "walkMinutes": 17,
+      "summary": "Seasonal, pasta-focused Midtown restaurant made for sharing (the crispy duck lasagna is a signature). The nearest MICHELIN-recognized dinner to the hotel.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.Michelin.com/ch/de/georgia/atlanta_2884144/restaurant/lyla-lila",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": true
+    },
+    {
+      "id": "tomo",
+      "name": "Tomo",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Japanese / Sushi",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": "$$$$",
+      "diningStyle": "Fine Dining",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "3630 Peachtree Rd NE, Ste 140, Atlanta, GA 30326",
+      "coordinates": {
+        "lat": 33.85408,
+        "lng": -84.358533
+      },
+      "website": "https://tomorestaurant.com",
+      "phone": "+1 404-835-2708",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Long-standing Buckhead sushi restaurant; the chef's omakase has only four seats, so book ahead for it.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/tomo-1195996",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 13
+    },
+    {
+      "id": "avize",
+      "name": "Avize",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "European",
+      "cuisineGroup": "European & Mediterranean",
+      "priceLevel": "$$$$",
+      "diningStyle": "Fine Dining",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "956 Brady Ave NW, Atlanta, GA 30318",
+      "coordinates": {
+        "lat": 33.781108,
+        "lng": -84.413122
+      },
+      "website": "https://avizeatlanta.com/",
+      "phone": "+1 404-879-1713",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Modern alpine European cooking (French, Italian, German and Swiss influences) in West Midtown. A distinctive special-occasion dinner.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/us/en/georgia/atlanta_2884144/restaurant/avize",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "georgia-boy",
+      "name": "Georgia Boy",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Contemporary",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$$",
+      "diningStyle": "Fine Dining",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "1043 Ponce de Leon Ave NE, Atlanta, GA 30306",
+      "coordinates": {
+        "lat": 33.773749,
+        "lng": -84.353052
+      },
+      "website": "https://www.georgiaboyatl.com/",
+      "phone": "+1 404-698-3961",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Chef Joey Ward's playful tasting experience: guests wait in a library lounge, then go through a hidden door to the kitchen. Memorable for a celebration.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/th/th/georgia/atlanta_2884144/restaurant/georgia-boy",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "southern-belle",
+      "name": "Southern Belle",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Southern",
+      "cuisineGroup": "Southern & BBQ",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "1043 Ponce de Leon Ave NE, Atlanta, GA 30306",
+      "coordinates": {
+        "lat": 33.773749,
+        "lng": -84.353052
+      },
+      "website": "https://southernbelleatl.com/",
+      "phone": "+1 404-698-3961",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Chef Joey Ward's more relaxed Southern restaurant, sharing a building with Georgia Boy on Ponce.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/us/en/georgia/atlanta_2884144/restaurant/southern-belle",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "ryokou",
+      "name": "Ryokou",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Japanese / Sushi",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": "$$$$",
+      "diningStyle": "Fine Dining",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "565 Northside Dr SW, #A101, Atlanta, GA 30310",
+      "coordinates": {
+        "lat": 33.740634,
+        "lng": -84.408073
+      },
+      "website": "https://www.ryokouatl.com/",
+      "phone": "+1 470-403-9018",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Counter tasting menu for about a dozen guests that travels through Japan's regional cooking. Few seats, so book well ahead.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/ryokou",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "kimball-house",
+      "name": "Kimball House",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Seafood",
+      "cuisineGroup": "Steak & Seafood",
+      "priceLevel": "$$$$",
+      "diningStyle": "Fine Dining",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "303 E Howard Ave, Decatur, GA 30030",
+      "coordinates": {
+        "lat": 33.771537,
+        "lng": -84.292356
+      },
+      "website": "https://www.kimball-house.com/",
+      "phone": "+1 404-378-3502",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Oyster bar and restaurant in a restored Decatur rail depot, with more than 20 kinds of oysters and well-known cocktails and desserts.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/ch/it/georgia/decatur_2884157/ristorante/kimball-house",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 13
+    },
+    {
+      "id": "the-chastain",
+      "name": "The Chastain",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$$",
+      "diningStyle": "Fine Dining",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "4320 Powers Ferry Rd NW, Atlanta, GA 30342",
+      "coordinates": {
+        "lat": 33.872786,
+        "lng": -84.396392
+      },
+      "website": "https://thechastainatl.com",
+      "phone": "+1 404-257-6416",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Seasonal American cooking with Southern touches across from Chastain Park in north Buckhead; the roasted chicken is the dish to order.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/gr/en/georgia/atlanta_2884144/restaurant/the-chastain",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 16
+    },
+    {
+      "id": "little-sparrow",
+      "name": "Little Sparrow",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "French",
+      "cuisineGroup": "European & Mediterranean",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "1198 Howell Mill Rd NW, Atlanta, GA 30318",
+      "coordinates": {
+        "lat": 33.787134,
+        "lng": -84.41266
+      },
+      "website": "https://www.littlesparrowatl.com/",
+      "phone": "+1 404-355-2252",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Compact French bistro in West Midtown, known for its triple-fried fries and chocolate soufflé.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/us/en/georgia/atlanta_2884144/restaurant/little-sparrow",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 6
+    },
+    {
+      "id": "boccalupo",
+      "name": "BoccaLupo",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Italian",
+      "cuisineGroup": "European & Mediterranean",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "753 Edgewood Ave NE, Atlanta, GA 30307",
+      "coordinates": {
+        "lat": 33.754759,
+        "lng": -84.36277
+      },
+      "website": "https://boccalupoatl.com/",
+      "phone": "+1 404-577-2332",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Inman Park pasta restaurant; order à la carte or the four-course tasting menu.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/boccalupo",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "storico-fresco",
+      "name": "Storico Fresco Alimentari",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Italian",
+      "cuisineGroup": "European & Mediterranean",
+      "priceLevel": "$$",
+      "diningStyle": "Upscale",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "3167 Peachtree Rd NE, Atlanta, GA 30305",
+      "coordinates": {
+        "lat": 33.84105,
+        "lng": -84.37593
+      },
+      "website": "https://www.storicofresco.com/",
+      "phone": "+1 470-665-3921",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Buckhead Italian market and restaurant with nearly a dozen house-made pastas; open for lunch and dinner.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/ca/en/georgia/atlanta_2884144/restaurant/storico-fresco-alimentari",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 10
+    },
+    {
+      "id": "banshee",
+      "name": "Banshee",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "American",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "1271 Glenwood Ave SE, Atlanta, GA 30316",
+      "coordinates": {
+        "lat": 33.740028,
+        "lng": -84.345955
+      },
+      "website": "https://www.banshee-atl.com/",
+      "phone": "+1 470-428-2034",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "East Atlanta Village restaurant with a short menu of small plates and mains.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/gr/en/georgia/atlanta_2884144/restaurant/banshee",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 8
+    },
+    {
+      "id": "madeira-park",
+      "name": "Madeira Park",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Contemporary",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "640 N Highland Ave NE, Atlanta, GA 30306",
+      "coordinates": {
+        "lat": 33.771818,
+        "lng": -84.352728
+      },
+      "website": "https://www.madeiraparkatl.com/",
+      "phone": "+1 404-228-2058",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Wine bar first, with shareable seasonal plates and indoor or outdoor seating, at Otto's Apartment Hotel in Poncey-Highland.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/jp/ja/georgia/atlanta_2884144/restaurant/madeira-park",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "talat-market",
+      "name": "Talat Market",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Thai",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "112 Ormond St SE, Ste A, Atlanta, GA 30315",
+      "coordinates": {
+        "lat": 33.731757,
+        "lng": -84.383974
+      },
+      "website": "https://talatmarketatl.com/",
+      "phone": "+1 404-257-6255",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Inventive Thai cooking in Summerhill, from oysters and crudo to small plates like crispy rice salad.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/ch/de/georgia/atlanta_2884144/restaurant/talat-market",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 7
+    },
+    {
+      "id": "staplehouse",
+      "name": "Staplehouse",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Contemporary",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "541 Edgewood Ave SE, Atlanta, GA 30312",
+      "coordinates": {
+        "lat": 33.754112,
+        "lng": -84.369871
+      },
+      "website": "https://www.staplehouse.com/",
+      "phone": "+1 404-524-5005",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Now a casual order-at-the-counter spot in Old Fourth Ward, with pizzas, sandwiches and seasonal specials.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/staplehouse",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "poor-hendrix",
+      "name": "Poor Hendrix",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Contemporary",
+      "cuisineGroup": "American",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "2371 Hosea L Williams Dr NE, Atlanta, GA 30317",
+      "coordinates": {
+        "lat": 33.751001,
+        "lng": -84.30952
+      },
+      "website": "https://www.poorhendrix.com/",
+      "phone": "+1 404-549-8756",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Kirkwood neighborhood bar with a daily-changing menu of updated bar food with Southern and Asian touches.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/cz/en/georgia/atlanta_2884144/restaurant/poor-hendrix",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 11
+    },
+    {
+      "id": "lucky-star",
+      "name": "Lucky Star",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Taiwanese",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": "$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "1050 Howell Mill Rd, Ste 110, Atlanta, GA 30318",
+      "coordinates": {
+        "lat": 33.783349,
+        "lng": -84.411496
+      },
+      "website": "https://www.luckystaratl.com/",
+      "phone": "+1 678-994-6016",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Modern Taiwanese café by day and cocktail bar by night, in an office lobby in West Midtown.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/ch/de/georgia/atlanta_2884144/restaurant/lucky-star",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "xian-gourmet-house",
+      "name": "Xi'an Gourmet House",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Chinese",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "955 Spring St NW, #C, Atlanta, GA 30309",
+      "coordinates": {
+        "lat": 33.78131,
+        "lng": -84.388577
+      },
+      "website": null,
+      "phone": "+1 404-228-4995",
+      "hours": null,
+      "walkMinutes": 26,
+      "summary": "Counter-service noodles and dishes from China's Xi'an region in Midtown. Quick, casual and inexpensive.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/us/en/georgia/atlanta_2884144/restaurant/xi-an-gourmet-house",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": true
+    },
+    {
+      "id": "home-grown",
+      "name": "Home Grown",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Breakfast / Brunch",
+      "cuisineGroup": "Breakfast & Casual",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "968 Memorial Dr SE, Atlanta, GA 30316",
+      "coordinates": {
+        "lat": 33.746739,
+        "lng": -84.355943
+      },
+      "website": "https://www.homegrownga.com/",
+      "phone": "+1 404-222-0455",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Classic breakfast and lunch spot in Reynoldstown, known for its open-faced biscuit with fried chicken and sausage gravy.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/home-grown",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 6
+    },
+    {
+      "id": "the-general-muir",
+      "name": "The General Muir",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Deli",
+      "cuisineGroup": "Breakfast & Casual",
+      "priceLevel": "$$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "1540 Avenue Pl, Ste B-230, Atlanta, GA 30329",
+      "coordinates": {
+        "lat": 33.80124,
+        "lng": -84.327087
+      },
+      "website": "https://www.thegeneralmuir.com/",
+      "phone": "+1 678-927-9131",
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Jewish-style deli and dining room near Emory: matzo ball soup, bagels and smoked fish.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide",
+        "sourceUrls": [
+          "https://guide.Michelin.com/tr/tr/georgia/atlanta_2884144/restaurant/the-general-muir",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": "2026-11-06"
+      },
+      "walkable": false,
+      "driveMinutes": 13
+    },
+    {
+      "id": "superica-krog",
+      "name": "Superica",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Tex-Mex",
+      "cuisineGroup": "Latin",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "99 Krog St NE, Atlanta, GA 30307",
+      "coordinates": {
+        "lat": 33.756992,
+        "lng": -84.364015
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Ford Fry's Tex-Mex restaurant in Krog Street Market. Lively and good for groups.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide 2026 list (address from OpenStreetMap)",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/article/travel/michelin-star-beltline-best-restaurants-atlanta-georgia-ponce-city-market-krog-street",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
         ],
         "lastVerified": null
-      }
+      },
+      "walkable": false,
+      "driveMinutes": 4
+    },
+    {
+      "id": "ticonderoga-club",
+      "name": "Ticonderoga Club",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Contemporary",
+      "cuisineGroup": "American",
+      "priceLevel": "$$$",
+      "diningStyle": "Upscale",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "99 Krog St NE, Atlanta, GA 30307",
+      "coordinates": {
+        "lat": 33.756992,
+        "lng": -84.364015
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Cocktail-driven restaurant tucked inside Krog Street Market.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide 2026 list (address from OpenStreetMap)",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/article/travel/michelin-star-beltline-best-restaurants-atlanta-georgia-ponce-city-market-krog-street",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": null
+      },
+      "walkable": false,
+      "driveMinutes": 4
+    },
+    {
+      "id": "delbar",
+      "name": "Delbar",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Middle Eastern",
+      "cuisineGroup": "European & Mediterranean",
+      "priceLevel": "$$",
+      "diningStyle": "Upscale",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "870 Inman Village Pkwy NE, Atlanta, GA 30307",
+      "coordinates": {
+        "lat": 33.761138,
+        "lng": -84.360757
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Chef Fares Kargar's Middle Eastern restaurant beside the BeltLine Eastside Trail in Inman Park.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide 2026 list (address from OpenStreetMap)",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/article/travel/michelin-star-beltline-best-restaurants-atlanta-georgia-ponce-city-market-krog-street",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": null
+      },
+      "walkable": false,
+      "driveMinutes": 6
+    },
+    {
+      "id": "food-terminal",
+      "name": "Food Terminal",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Malaysian",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "1000 Marietta St NW, Atlanta, GA 30318",
+      "coordinates": {
+        "lat": 33.778471,
+        "lng": -84.410556
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Large, casual Southeast Asian street-food menu on the Westside.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide 2026 list (address from OpenStreetMap)",
+        "sourceUrls": [
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": null
+      },
+      "walkable": false,
+      "driveMinutes": 5
+    },
+    {
+      "id": "twisted-soul",
+      "name": "Twisted Soul Cookhouse & Pours",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Southern",
+      "cuisineGroup": "Southern & BBQ",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "1133 Huff Rd NW, Atlanta, GA 30318",
+      "coordinates": {
+        "lat": 33.789128,
+        "lng": -84.426118
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Chef Deborah VanTrece's global take on soul food, near the BeltLine Westside Trail.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide 2026 list (address from OpenStreetMap)",
+        "sourceUrls": [
+          "https://guide.michelin.com/en/article/travel/michelin-star-beltline-best-restaurants-atlanta-georgia-ponce-city-market-krog-street",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": null
+      },
+      "walkable": false,
+      "driveMinutes": 8
+    },
+    {
+      "id": "pink-lotus",
+      "name": "Pink Lotus",
+      "status": "active",
+      "category": "dining",
+      "cuisine": "Thai",
+      "cuisineGroup": "Asian & Sushi",
+      "priceLevel": "$$",
+      "diningStyle": "Casual",
+      "michelin": {
+        "distinction": "Recommended",
+        "year": 2026
+      },
+      "address": "976 Brady Ave NW, Atlanta, GA 30318",
+      "coordinates": {
+        "lat": 33.781478,
+        "lng": -84.413635
+      },
+      "website": null,
+      "phone": null,
+      "hours": null,
+      "walkMinutes": null,
+      "summary": "Thai restaurant in West Midtown, new to the MICHELIN list in 2026.",
+      "verification": {
+        "sourceLabel": "MICHELIN Guide 2026 list (address from OpenStreetMap)",
+        "sourceUrls": [
+          "https://www.ajc.com/food-and-dining/2026/10/georgia-michelin-star-restaurants/",
+          "https://roughdraftatlanta.com/2026/10/21/2026-michelin-guide-american-south-atlanta-restaurants/"
+        ],
+        "lastVerified": null
+      },
+      "walkable": false,
+      "driveMinutes": 5
     }
   ]
 }

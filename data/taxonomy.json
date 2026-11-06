@@ -26,16 +26,17 @@
       ]
     },
     {
-      "name": "Italian & European",
-      "description": "Italian, French, German, Spanish, Greek and Mediterranean",
+      "name": "European & Mediterranean",
+      "description": "Italian, French, European, Mediterranean and Middle Eastern",
       "cuisines": [
         "Italian",
         "French",
+        "European",
         "German",
         "Spanish / Tapas",
         "Greek / Mediterranean",
         "Mediterranean",
-        "Lebanese / Middle Eastern"
+        "Middle Eastern"
       ]
     },
     {
@@ -45,7 +46,8 @@
         "Mexican",
         "Cuban",
         "Brazilian",
-        "Latin American"
+        "Latin American",
+        "Tex-Mex"
       ]
     },
     {
@@ -57,7 +59,10 @@
         "Thai",
         "Korean",
         "Vietnamese",
-        "Indian"
+        "Indian",
+        "Filipino",
+        "Taiwanese",
+        "Malaysian"
       ]
     },
     {
@@ -67,7 +72,9 @@
         "Breakfast / Brunch",
         "Pizza",
         "Café / Bakery",
-        "Vegetarian / Healthy"
+        "Vegetarian / Healthy",
+        "Deli",
+        "Sandwiches"
       ]
     }
   ],
