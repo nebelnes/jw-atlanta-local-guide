@@ -21,7 +21,8 @@ Fields are marked **stable** (rarely changes once correct) or **volatile** (can 
 | `cuisine` | string | dining | stable | Must be listed under `cuisineGroup` in `data/taxonomy.json`. Required for dining venues only. |
 | `cuisineGroup` | string | dining | stable | A group name from `data/taxonomy.json`. Not geography. Required for dining venues only. |
 | `priceLevel` | `$`–`$$$$` | dining | volatile | Must exist in `taxonomy.priceLevels`. Required for dining venues only. |
-| `diningStyle` | string | no | stable | Must exist in `taxonomy.diningStyles`. |
+| `diningStyle` | string | no | stable | Must exist in `taxonomy.diningStyles`. `Fine Dining` puts the restaurant on the Fine Dining tab. |
+| `michelin` | `{distinction, year}` | no | volatile | MICHELIN Guide distinction (`1 Star`, `2 Stars`, `3 Stars`, `Bib Gourmand`, `Recommended`) and guide year. Shown as a badge; any distinction also puts the restaurant on the Fine Dining tab. Re-check every fall when the guide is announced. |
 | `address` | string | yes | stable | Full street address as guests would type it into a map. |
 | `phone` | string or `null` | no | volatile | `null` = unknown; the page shows "Check official site". |
 | `hours` | string or `null` | no | volatile | `null` = unknown; the page shows "Check current hours". |
@@ -126,9 +127,9 @@ Places a walking card can point out. A landmark is mentioned only when a route p
 
 | Field | Notes |
 |---|---|
-| `cuisineGroups[]` | `{name, description, cuisines[]}`. Drives the region tiles and subcategory buttons. A cuisine may belong to only one group. |
+| `cuisineGroups[]` | `{name, description, cuisines[]}`. Each group is one type button on the Restaurants screen (e.g. "Steak & Seafood"); groups with no restaurants are hidden. A cuisine may belong to only one group. |
 | `priceLevels[]` | `{value, label}`, e.g. `{"value": "$$", "label": "$$ · $25–$50"}`. Drives the price filter. |
-| `diningStyles[]` | Drives the "Restaurant type" filter. |
+| `diningStyles[]` | Allowed `diningStyle` values. |
 
 ## `data/hotel.json`
 

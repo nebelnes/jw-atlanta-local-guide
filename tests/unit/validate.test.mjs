@@ -76,8 +76,8 @@ test("cuisine group not in taxonomy is reported", () => {
 });
 
 test("cuisine not listed under its group is reported", () => {
-  const errors = errorsAfter((d) => (d.venuesDoc.venues[0].cuisine = "Steakhouse")); // American, not European
-  assertFlags(errors, { field: "cuisine", match: /not listed under "European"/ });
+  const errors = errorsAfter((d) => (d.venuesDoc.venues[0].cuisine = "Steakhouse")); // Steak & Seafood, not Italian & European
+  assertFlags(errors, { field: "cuisine", match: /not listed under "Italian & European"/ });
 });
 
 test("price level not in taxonomy is reported", () => {
@@ -146,8 +146,8 @@ test("landmark without an outline is reported", () => {
 });
 
 test("a cuisine listed under two groups is reported", () => {
-  const errors = errorsAfter((d) => d.taxonomy.cuisineGroups[1].cuisines.push("Southern"));
-  assert.ok(errors.some((e) => e.file === "data/taxonomy.json" && /also listed under "American"/.test(e.message)));
+  const errors = errorsAfter((d) => d.taxonomy.cuisineGroups[3].cuisines.push("Southern"));
+  assert.ok(errors.some((e) => e.file === "data/taxonomy.json" && /also listed under "Southern & BBQ"/.test(e.message)));
 });
 
 test("hotel without a street address is reported", () => {

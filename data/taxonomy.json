@@ -2,30 +2,45 @@
   "cuisineGroups": [
     {
       "name": "American",
-      "description": "American, Southern, Steakhouse, Seafood, Burgers & BBQ",
+      "description": "American, contemporary and burgers",
       "cuisines": [
         "American",
+        "Contemporary",
+        "Burgers"
+      ]
+    },
+    {
+      "name": "Southern & BBQ",
+      "description": "Southern cooking and barbecue",
+      "cuisines": [
         "Southern",
-        "Steakhouse",
-        "Seafood",
-        "Burgers",
         "BBQ"
       ]
     },
     {
-      "name": "European",
-      "description": "Italian, French, Greek, Spanish, German & more",
+      "name": "Steak & Seafood",
+      "description": "Steakhouses and seafood",
       "cuisines": [
-        "Italian",
-        "French",
-        "Greek / Mediterranean",
-        "Spanish / Tapas",
-        "German"
+        "Steakhouse",
+        "Seafood"
       ]
     },
     {
-      "name": "Latin American",
-      "description": "Mexican, Cuban, Brazilian & Latin American",
+      "name": "Italian & European",
+      "description": "Italian, French, German, Spanish, Greek and Mediterranean",
+      "cuisines": [
+        "Italian",
+        "French",
+        "German",
+        "Spanish / Tapas",
+        "Greek / Mediterranean",
+        "Mediterranean",
+        "Lebanese / Middle Eastern"
+      ]
+    },
+    {
+      "name": "Latin",
+      "description": "Mexican, Cuban, Brazilian and Latin American",
       "cuisines": [
         "Mexican",
         "Cuban",
@@ -34,8 +49,8 @@
       ]
     },
     {
-      "name": "Asian",
-      "description": "Japanese, Chinese, Thai, Korean, Vietnamese & Indian",
+      "name": "Asian & Sushi",
+      "description": "Japanese and sushi, Chinese, Thai, Korean, Vietnamese and Indian",
       "cuisines": [
         "Japanese / Sushi",
         "Chinese",
@@ -46,16 +61,8 @@
       ]
     },
     {
-      "name": "Middle Eastern & Mediterranean",
-      "description": "Middle Eastern and Mediterranean cuisines",
-      "cuisines": [
-        "Lebanese / Middle Eastern",
-        "Mediterranean"
-      ]
-    },
-    {
       "name": "Breakfast & Casual",
-      "description": "Breakfast, brunch, pizza, cafés & healthy choices",
+      "description": "Breakfast, brunch, pizza, cafés and healthy choices",
       "cuisines": [
         "Breakfast / Brunch",
         "Pizza",
