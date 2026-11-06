@@ -152,7 +152,7 @@ function openRegion(region){
  menu.innerHTML='';
  const all=document.createElement('button'); all.type='button'; all.className='cuisine selected'; all.dataset.cuisine=region; all.textContent='All '+region; menu.appendChild(all);
  (regions[region]||[]).forEach(item=>{const clean=item.replace(/^[^A-Za-z]+/,'');const b=document.createElement('button');b.type='button';b.className='cuisine';b.dataset.cuisine=clean;b.innerHTML=flagImg(clean)+esc(clean);menu.appendChild(b)});
- render(); window.scrollTo({top:0,behavior:'smooth'});
+ render();
 }
 function resetRestaurantView(){document.getElementById('regionChooser').style.display='block';document.getElementById('restaurantResults').style.display='none';document.querySelector('.subcategory-bar').style.display='';selected='All';selectedRegion=null;}
 function openClosest(){
@@ -165,12 +165,31 @@ function openClosest(){
  menu.innerHTML='';
  render();
 }
-document.getElementById('closestBtn').addEventListener('click',openClosest);
-function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));window.scrollTo({top:0,behavior:'smooth'})}
-document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.view==='restaurants')resetRestaurantView();showView(b.dataset.view)}));
-document.getElementById('homeBtn').addEventListener('click',()=>showView('home'));document.getElementById('changeRegion').addEventListener('click',resetRestaurantView);
+document.getElementById('closestBtn').addEventListener('click',()=>go('#closest'));
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id))}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>go('#'+b.dataset.view)));
+document.getElementById('homeBtn').addEventListener('click',()=>go(''));document.getElementById('changeRegion').addEventListener('click',()=>go('#restaurants'));
+// Each screen has its own address (#attractions, #restaurants/American, #closest…) so the
+// phone's Back button steps back through screens instead of leaving the guide.
+// Filters and chips inside a screen don't add history entries.
+if('scrollRestoration' in history) history.scrollRestoration='manual';
+function go(hash){
+ if(hash===location.hash) return;
+ history.replaceState({y:window.scrollY},''); // remember where we were on this screen
+ history.pushState(null,'',hash||location.pathname+location.search);
+ route(); window.scrollTo(0,0);
+}
+function route(){
+ const [view,arg]=decodeURIComponent(location.hash.slice(1)).split('/');
+ if(view==='closest'){openClosest();return;}
+ if(view==='restaurants'){showView('restaurants');if(arg&&regions[arg])openRegion(arg);else resetRestaurantView();return;}
+ showView(view&&document.getElementById(view)?.classList.contains('view')?view:'home');
+}
+window.addEventListener('popstate',e=>{route();window.scrollTo(0,e.state?.y??0);});
+// Leaving for a walking card: remember the scroll position so Back returns to the same spot
+window.addEventListener('pagehide',()=>history.replaceState({y:window.scrollY},''));
 function choose(value,el){selected=value;document.querySelectorAll('.cuisine').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');render()}
-document.addEventListener('click',e=>{const rt=e.target.closest('[data-region-tile]');if(rt){openRegion(rt.dataset.regionTile);return;}const sc=e.target.closest('[data-sub]');if(sc){renderSection(sc.closest('[data-chips]').dataset.chips,sc.dataset.sub);return;}const b=e.target.closest('[data-cuisine]');if(!b)return;choose(b.dataset.cuisine,b)});
+document.addEventListener('click',e=>{const rt=e.target.closest('[data-region-tile]');if(rt){go('#restaurants/'+encodeURIComponent(rt.dataset.regionTile));return;}const sc=e.target.closest('[data-sub]');if(sc){renderSection(sc.closest('[data-chips]').dataset.chips,sc.dataset.sub);return;}const b=e.target.closest('[data-cuisine]');if(!b)return;choose(b.dataset.cuisine,b)});
 ['price','type'].forEach(id=>document.getElementById(id).addEventListener('change',render));
 const byDistance=(a,b)=>(a.walkMinutes??1e3+(a.driveMinutes??1e3))-(b.walkMinutes??1e3+(b.driveMinutes??1e3))||a.name.localeCompare(b.name);
 function venueCard(v){
@@ -202,7 +221,7 @@ function render(){
  document.getElementById('resultCount').textContent=`${rows.length} result${rows.length===1?'':'s'} · closest first`;
  document.getElementById('restaurantCards').innerHTML=rows.length?rows.map(venueCard).join(''):'<div class="empty">No restaurants match these filters.</div>';
 }
-loadData().then(data=>{applyData(data);render();}).catch(err=>{console.error('Failed to load guide data:',err);showLoadError();});
+loadData().then(data=>{applyData(data);render();route();if(history.state?.y)window.scrollTo(0,history.state.y);}).catch(err=>{console.error('Failed to load guide data:',err);showLoadError();});
 </script>
 </body>
 </html>

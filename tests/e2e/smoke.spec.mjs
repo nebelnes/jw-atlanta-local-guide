@@ -253,3 +253,35 @@ test("the walking card never prints by itself; the Print button does", async ({ 
   await page.getByRole("button", { name: "Print directions" }).click();
   await expect.poll(() => page.evaluate(() => window.__prints)).toBe(1);
 });
+
+test("the phone's Back button steps back through screens instead of leaving the guide", async ({ page }) => {
+  const errors = trackErrors(page);
+  await page.goto("/");
+  const active = () => page.locator(".view.active").getAttribute("id");
+  await page.getByRole("button", { name: /Restaurants/ }).click();
+  await page.locator('[data-region-tile="American"]').click();
+  await expect(page.locator("#restaurantTitle")).toHaveText("American Restaurants");
+  await page.goBack(); // to the region chooser
+  await expect(page.locator("#regionChooser")).toBeVisible();
+  await page.goBack(); // to home
+  expect(await active()).toBe("home");
+  await page.goForward();
+  expect(await active()).toBe("restaurants");
+  await page.getByRole("button", { name: /Home/ }).click();
+  await page.getByRole("button", { name: /Attractions/ }).click();
+  expect(await active()).toBe("attractions");
+  await page.goBack();
+  expect(await active()).toBe("home");
+  expect(errors).toEqual([]);
+});
+
+test("returning from a walking card lands on the same list, and links to a screen work", async ({ page }) => {
+  await stubTiles(page);
+  await page.goto("/#restaurants/American"); // a screen can be opened (or refreshed) directly
+  await expect(page.locator("#restaurantTitle")).toHaveText("American Restaurants");
+  await page.locator(".card", { hasText: "Catch 12" }).getByRole("link", { name: /Print directions/ }).click();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Catch 12");
+  await page.goBack();
+  await expect(page.locator("#restaurantTitle")).toHaveText("American Restaurants");
+  await expect(page.locator(".card", { hasText: "Catch 12" })).toBeInViewport(); // same spot in the list
+});
