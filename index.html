@@ -52,8 +52,7 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 .linkish{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}.ev{margin:10px 0 4px;padding:10px 12px;background:#f7f4ef;border-radius:10px}.ev-h{display:block;font-size:13px;margin-bottom:4px}.ev ul{list-style:none;margin:0;padding:0;font-size:14px}.ev li{padding:3px 0}.ev .ev-when{display:inline-block;min-width:0;margin-right:6px}.ev-status{color:#8a2433;font-style:normal}
 .top-actions{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px;padding-bottom:20px;border-bottom:1px solid var(--line)}
 .pill.top{background:#ece5da;border-color:#ddd2c2}.pill.top:hover{background:#e4dbcd}.pill-note{color:var(--muted);font-weight:400}
-@media (max-width:560px){.top-actions{gap:8px;flex-wrap:nowrap;margin-bottom:18px;padding-bottom:16px}.top-actions .pill{flex:1 1 0;min-width:0;justify-content:center;text-align:center;white-space:nowrap;padding-left:8px;padding-right:8px}}
-#whatsOnBtn{flex-grow:1.45}
+@media (max-width:560px){.top-actions{gap:8px;flex-wrap:nowrap;margin-bottom:18px;padding-bottom:16px}.top-actions .pill{flex:1 1 0;min-width:0;justify-content:center;text-align:center;white-space:nowrap;padding-left:8px;padding-right:8px}.top-actions #whatsOnBtn{flex-grow:1.45}}
 @media (max-width:380px){.top-actions .pill{font-size:14px;padding-left:6px;padding-right:6px}}
 </style>
 </head>
@@ -66,7 +65,7 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
  <div class="hero"><h2>What is your guest looking for?</h2><p>Curated Atlanta recommendations, routes, and guest-ready information.</p></div>
  <div class="top-actions"><button class="pill top" type="button" id="whatsOnBtn">🎟 What's on<span class="pill-note" id="whatsOnHint"></span></button><button class="pill top" type="button" id="hoursBtn">🕘 Hotel hours</button></div>
  <div class="tiles">
-  <button class="tile" data-view="restaurants" type="button"><span class="icon" aria-hidden="true">🍽️</span><strong>Restaurants</strong><span>Browse by region and cuisine</span></button>
+  <button class="tile" data-view="restaurants" type="button"><span class="icon" aria-hidden="true">🍽️</span><strong>Restaurants</strong><span>Browse by cuisine, occasion and distance</span></button>
   <button class="tile" data-view="attractions" type="button"><span class="icon" aria-hidden="true">🏛️</span><strong>Attractions</strong><span>Family, culture, and must-see places</span></button>
   <button class="tile" data-view="events" type="button"><span class="icon" aria-hidden="true">🏟️</span><strong>Sports & Events</strong><span>Venues and upcoming events</span></button>
   <button class="tile" data-view="entertainment" type="button"><span class="icon" aria-hidden="true">🎭</span><strong>Entertainment</strong><span>Theater, music, and nightlife</span></button>
