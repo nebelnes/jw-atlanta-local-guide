@@ -17,7 +17,10 @@ const files = {
   routeSchema: "schema/route.schema.json",
   hotelHours: "data/hotel-hours.json",
   hoursSchema: "schema/hotel-hours.schema.json",
+  eventVenues: "data/event-venues.json",
+  eventsSchema: "schema/events.schema.json",
 };
+const optionalFiles = { eventsDoc: "data/events.json" }; // written by scripts/fetch-events.mjs once a Ticketmaster key is set
 
 const data = {};
 const readErrors = [];
@@ -27,6 +30,11 @@ for (const [key, rel] of Object.entries(files)) {
   } catch (err) {
     readErrors.push(`${rel}: ${err.code === "ENOENT" ? "file not found" : `not valid JSON (${err.message})`}`);
   }
+}
+
+for (const [key, rel] of Object.entries(optionalFiles)) {
+  try { data[key] = JSON.parse(await readFile(join(root, rel), "utf8")); }
+  catch (err) { if (err.code !== "ENOENT") readErrors.push(`${rel}: not valid JSON (${err.message})`); }
 }
 
 data.routes = {};
@@ -56,4 +64,4 @@ if (errors.length) {
 
 const count = data.venuesDoc.venues.length;
 const routeCount = Object.keys(data.routes).length;
-console.log(`✓ Data is valid: ${count} venue${count === 1 ? "" : "s"}, ${data.taxonomy.cuisineGroups.length} cuisine groups, ${data.landmarksDoc.landmarks.length} landmarks, ${data.hotelHours.outlets.length} hotel outlets, ${routeCount} walking route${routeCount === 1 ? "" : "s"}.`);
+console.log(`✓ Data is valid: ${count} venue${count === 1 ? "" : "s"}, ${data.taxonomy.cuisineGroups.length} cuisine groups, ${data.landmarksDoc.landmarks.length} landmarks, ${data.hotelHours.outlets.length} hotel outlets, ${routeCount} walking route${routeCount === 1 ? "" : "s"}${data.eventsDoc ? `, ${data.eventsDoc.events.length} upcoming events` : ""}.`);

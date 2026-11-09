@@ -436,3 +436,55 @@ test("occasion filters: Quick bites, Brunch and Atlanta originals", async ({ pag
   await expect(page.locator('[data-venue="polaris"]')).toBeVisible();
   await expect(page.locator('[data-venue="freds-meat-and-bread"]')).toHaveCount(0);
 });
+
+/** Today's and tomorrow's date at the hotel, as the page computes them. */
+function hotelDates() {
+  const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date());
+  const t = new Date(`${today}T12:00:00Z`); t.setUTCDate(t.getUTCDate() + 1);
+  return { today, tomorrow: t.toISOString().slice(0, 10) };
+}
+async function stubEvents(page, { ageHours = 1 } = {}) {
+  const { today, tomorrow } = hotelDates();
+  const doc = {
+    source: "Ticketmaster", timeZone: "America/New_York", days: 7,
+    generatedAt: new Date(Date.now() - ageHours * 3600e3).toISOString(),
+    events: [
+      { venueId: "state-farm-arena", name: "Atlanta Hawks vs. Boston Celtics", date: today, time: "19:30", status: "scheduled", url: "https://www.ticketmaster.com/event/1" },
+      { venueId: "fox-theatre", name: "Touring Musical", date: tomorrow, time: "20:00", status: "postponed", url: null },
+    ],
+  };
+  await page.route("**/data/events.json", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(doc) }));
+}
+
+test("Today Downtown lists today's events on the home screen and links to the venue", async ({ page }) => {
+  const errors = trackErrors(page);
+  await stubEvents(page);
+  await page.goto("/");
+  const box = page.locator("#today");
+  await expect(box).toBeVisible();
+  await expect(box.locator("li")).toHaveCount(1); // tomorrow's show isn't "today"
+  await expect(box).toContainText("7:30 PM");
+  await expect(box).toContainText("Atlanta Hawks vs. Boston Celtics");
+  await expect(box.getByRole("link", { name: "Atlanta Hawks vs. Boston Celtics" })).toHaveAttribute("href", "https://www.ticketmaster.com/event/1");
+  await box.getByRole("button", { name: "State Farm Arena" }).click();
+  await expect(page).toHaveURL(/#events$/);
+  expect(errors).toEqual([]);
+});
+
+test("venue cards show upcoming events and a What's on link", async ({ page }) => {
+  await stubEvents(page);
+  await page.goto("/#entertainment");
+  const fox = page.locator('[data-venue="fox-theatre"]');
+  await expect(fox.locator(".ev")).toContainText("Tomorrow · 8:00 PM");
+  await expect(fox.locator(".ev")).toContainText("(postponed)");
+  await expect(fox.getByRole("link", { name: /What's on at Fox Theatre/ })).toHaveAttribute("href", "https://www.foxtheatre.org/events");
+});
+
+test("without a fresh events file nothing event-related is shown, but What's on links remain", async ({ page }) => {
+  await stubEvents(page, { ageHours: 48 }); // stale
+  await page.goto("/");
+  await expect(page.locator("#today")).toBeHidden();
+  await page.goto("/#events");
+  await expect(page.locator(".ev")).toHaveCount(0);
+  await expect(page.locator('[data-venue="state-farm-arena"]').getByRole("link", { name: /What's on/ })).toHaveCount(1);
+});

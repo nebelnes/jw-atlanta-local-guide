@@ -46,6 +46,10 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 .vname{font:600 18px/1.25 Georgia,serif}.vrow-btn strong{font-size:14px;color:var(--green);white-space:nowrap}.vrow-btn strong.by-car{color:var(--muted)}.vsub{display:block;margin-top:3px;font-size:14px;color:var(--muted)}.vsub .badge{margin:0 0 0 8px;font-size:11px;padding:2px 7px;vertical-align:1px}
 .vrow-btn[aria-expanded="true"] .vname{color:var(--wine)}.vdetails{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 14px}.vdetails .desc{margin:0 0 8px}
 @media (max-width:560px){.vsub .badge{display:inline-block;margin:4px 0 0}.vname{font-size:17px}}
+.today{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:0 0 20px}.today h3{font:500 19px Georgia,serif;margin:0 0 8px}.today ul{list-style:none;margin:0;padding:0}.today li{display:flex;gap:12px;padding:7px 0;border-top:1px solid var(--line)}.today li:first-child{border-top:0}
+.ev-when{flex:none;min-width:72px;font-weight:600;color:var(--green);font-variant-numeric:tabular-nums}.ev-at{color:var(--muted)}.today-src{margin:8px 0 0;font-size:12.5px;color:var(--muted)}
+.today a,.ev a{color:var(--ink);text-decoration-color:var(--line);text-underline-offset:3px}.today a:hover,.ev a:hover{text-decoration-color:currentColor}
+.linkish{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}.ev{margin:10px 0 4px;padding:10px 12px;background:#f7f4ef;border-radius:10px}.ev-h{display:block;font-size:13px;margin-bottom:4px}.ev ul{list-style:none;margin:0;padding:0;font-size:14px}.ev li{padding:3px 0}.ev .ev-when{display:inline-block;min-width:0;margin-right:6px}.ev-status{color:#8a2433;font-style:normal}
 </style>
 </head>
 <body>
@@ -55,6 +59,7 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 <main>
 <section id="home" class="view active">
  <div class="hero"><h2>What is your guest looking for?</h2><p>Curated Atlanta recommendations, routes, and guest-ready information.</p></div>
+ <section class="today" id="today" aria-labelledby="todayTitle" hidden><h3 id="todayTitle">Today Downtown</h3><ul id="todayList"></ul><p class="today-src">Event times from <a href="https://www.ticketmaster.com" target="_blank" rel="noopener">Ticketmaster</a>. Expect heavier traffic and busier restaurants near these venues.</p></section>
  <div class="tiles">
   <button class="tile" data-view="restaurants" type="button"><span class="icon" aria-hidden="true">🍽️</span><strong>Restaurants</strong><span>Browse by region and cuisine</span></button>
   <button class="tile" data-view="attractions" type="button"><span class="icon" aria-hidden="true">🏛️</span><strong>Attractions</strong><span>Family, culture, and must-see places</span></button>
@@ -107,7 +112,8 @@ function applyData({venues,taxonomy,hotel:h,hotelHours}){
  // A venue inside the hotel (e.g. Fiora) shows the outlet's hours on its card
  hoursDoc.outlets.filter(o=>o.venueId).forEach(o=>{venueHours[o.venueId]=outletHoursText(o)});
  renderHours();
- const shown=v=>v.status==='active'; // closed and temporarily unavailable places stay in the data but off the page
+ const shown=v=>v.status==='active';
+ venues.venues.forEach(v=>{venueById[v.id]=v;}); // closed and temporarily unavailable places stay in the data but off the page
  restaurants=venues.venues.filter(v=>v.category==='dining'&&shown(v));
  venues.venues.filter(v=>v.category!=='dining'&&shown(v)).forEach(v=>(byCategory[v.category]??=[]).push(v));
  document.querySelectorAll('.tile[data-view]').forEach(t=>{
@@ -174,9 +180,42 @@ function route(){
 window.addEventListener('popstate',e=>{route();window.scrollTo(0,e.state?.y??0);});
 // Leaving for a walking card: remember the scroll position so Back returns to the same spot
 window.addEventListener('pagehide',()=>history.replaceState({y:window.scrollY},''));
-document.addEventListener('click',e=>{const sc=e.target.closest('[data-sub]');if(sc){renderSection(sc.closest('[data-chips]').dataset.chips,sc.dataset.sub);return;}const t=e.target.closest('[data-tab]');if(t){go(t.dataset.tab==='fine'?'#restaurants/fine':'#restaurants');return;}const vb=e.target.closest('.vrow-btn');if(vb){const open=vb.getAttribute('aria-expanded')!=='true';vb.setAttribute('aria-expanded',String(open));document.getElementById(vb.getAttribute('aria-controls')).hidden=!open;return;}const f=e.target.closest('[data-rfilter]');if(f){rFilter=f.dataset.rfilter;render();const base=rTab==='fine'?'#restaurants/fine':'#restaurants';history.replaceState(history.state,'',rFilter==='All'?base:base+'/'+encodeURIComponent(rFilter));}});
+document.addEventListener('click',e=>{const sc=e.target.closest('[data-sub]');if(sc){renderSection(sc.closest('[data-chips]').dataset.chips,sc.dataset.sub);return;}const t=e.target.closest('[data-tab]');if(t){go(t.dataset.tab==='fine'?'#restaurants/fine':'#restaurants');return;}const gt=e.target.closest('[data-goto]');if(gt){go('#'+gt.dataset.goto);return;}const vb=e.target.closest('.vrow-btn');if(vb){const open=vb.getAttribute('aria-expanded')!=='true';vb.setAttribute('aria-expanded',String(open));document.getElementById(vb.getAttribute('aria-controls')).hidden=!open;return;}const f=e.target.closest('[data-rfilter]');if(f){rFilter=f.dataset.rfilter;render();const base=rTab==='fine'?'#restaurants/fine':'#restaurants';history.replaceState(history.state,'',rFilter==='All'?base:base+'/'+encodeURIComponent(rFilter));}});
 document.getElementById('price').addEventListener('change',render);
 const byDistance=(a,b)=>(a.walkMinutes??1e3+(a.driveMinutes??1e3))-(b.walkMinutes??1e3+(b.driveMinutes??1e3))||a.name.localeCompare(b.name);
+// ---- Upcoming events (data/events.json, refreshed from Ticketmaster by a scheduled job) ----
+// Optional: without the file, or if it is more than 36 hours old, nothing event-related is shown.
+const EVENTS_MAX_AGE_H=36;
+let upcoming={}, venueById={};
+const hotelToday=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York'}).format(new Date());
+async function loadEvents(){
+ try{const r=await fetch('data/events.json',{cache:'no-cache'});if(!r.ok)return null;const doc=await r.json();
+  return Date.now()-Date.parse(doc.generatedAt)<=EVENTS_MAX_AGE_H*3600e3?doc:null;}catch{return null;}
+}
+function applyEvents(doc){
+ upcoming={};if(!doc)return;const today=hotelToday();
+ for(const e of doc.events){if(e.date>=today)(upcoming[e.venueId]??=[]).push(e);}
+}
+function eventTime(t){if(!t)return 'Time TBA';const[h,m]=t.split(':').map(Number);return `${h%12||12}:${String(m).padStart(2,'0')} ${h<12?'AM':'PM'}`;}
+function eventDay(d){
+ const today=hotelToday();if(d===today)return 'Today';
+ const t=new Date(today+'T12:00:00Z');t.setUTCDate(t.getUTCDate()+1);if(d===t.toISOString().slice(0,10))return 'Tomorrow';
+ return new Date(d+'T12:00:00Z').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',timeZone:'UTC'});
+}
+function eventName(e){const n=esc(e.name);return e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${n}</a>`:n;}
+function eventStatus(e){return e.status==='scheduled'?'':` <em class="ev-status">(${esc(e.status)})</em>`;}
+function venueEvents(v){
+ const list=(upcoming[v.id]||[]).slice(0,3);if(!list.length)return '';
+ return `<div class="ev"><strong class="ev-h">Coming up</strong><ul>${list.map(e=>`<li><span class="ev-when">${eventDay(e.date)} · ${eventTime(e.time)}</span> ${eventName(e)}${eventStatus(e)}</li>`).join('')}</ul></div>`;
+}
+function renderToday(){
+ const today=hotelToday(), box=document.getElementById('today');
+ const rows=Object.values(upcoming).flat().filter(e=>e.date===today).sort((a,b)=>(a.time??'99').localeCompare(b.time??'99'));
+ box.hidden=!rows.length;if(!rows.length)return;
+ document.getElementById('todayList').innerHTML=rows.map(e=>{const v=venueById[e.venueId];
+  return `<li><span class="ev-when">${eventTime(e.time)}</span> <span>${eventName(e)}${eventStatus(e)} <span class="ev-at">at <button type="button" class="linkish" data-goto="${esc(v.category)}">${esc(v.name)}</button></span></span></li>`;}).join('');
+}
+
 function venueParts(v){
  const dining=v.category==='dining';
  const inHotel=v.walkMinutes===0, walk=typeof v.walkMinutes==='number'&&v.walkMinutes>0, drive=!walk&&!inHotel&&typeof v.driveMinutes==='number';
@@ -189,9 +228,10 @@ function venueParts(v){
  const actions=inHotel?`<span class="action in-hotel">🏨 In the hotel</span><a class="action print-link" href="walk.html?id=${encodeURIComponent(v.id)}">🖨 Print directions</a>`
   :walk?`<a class="action primary walk-link" href="${live('walk')}" target="_blank" rel="noopener" aria-label="Walking Map: live directions to ${esc(v.name)} (opens maps)">📍 Walking Map</a><a class="action print-link" href="walk.html?id=${encodeURIComponent(v.id)}">🖨 Print directions</a>${longWalk?`<a class="action drive-link" href="${live('drive')}" target="_blank" rel="noopener" aria-label="Driving directions to ${esc(v.name)} (opens maps)">🚗 Directions</a>`:''}`
   :`<a class="action primary drive-link" href="${live('drive')}" target="_blank" rel="noopener" aria-label="Driving directions to ${esc(v.name)} (opens maps)">🚗 Directions</a>${v.website?`<a class="action" href="${esc(v.website)}" target="_blank" rel="noopener">🌐 Website</a>`:''}`;
+ const whatsOn=v.eventsUrl?`<a class="action whats-on" href="${esc(v.eventsUrl)}" target="_blank" rel="noopener" aria-label="What's on at ${esc(v.name)} (opens the venue's calendar)">📅 What's on</a>`:'';
  const mich=v.michelin?`<span class="badge michelin${isStarred(v)?'':' listed'}">${isStarred(v)?'★ ':''}MICHELIN ${esc(v.michelin.distinction)} ${esc(v.michelin.year)}</span>`:'';
  const notes=`${drive?'<p class="drive-note">Too far to walk comfortably. Drive time is an estimate without traffic.</p>':''}${longWalk?`<p class="drive-note long-walk"><strong>Longer walk:</strong> about ${esc(v.walkMinutes)} min on foot, or ~${esc(v.driveMinutes)} min by car (without traffic).</p>`:''}`;
- return {dining,time,badge,meta,info,actions,mich,notes,walk,drive,inHotel};
+ return {dining,time,badge,meta,info,actions:actions+whatsOn,mich,notes:venueEvents(v)+notes,walk,drive,inHotel};
 }
 function venueCard(v){
  const {time,badge,meta,info,actions,mich,notes}=venueParts(v);
@@ -238,7 +278,7 @@ function render(){
  document.getElementById('restaurantCards').innerHTML=rows.length?rows.map(venueRow).join(''):'<div class="empty">No restaurants match these filters.</div>';
  document.getElementById('restaurantNote').textContent=fine?'MICHELIN distinctions are from the 2026 MICHELIN Guide American South. Hours and booking policies change, so check before sending a guest.':'MICHELIN distinctions are from the 2026 MICHELIN Guide American South. Other listings are not yet curated recommendations. Check current hours before sending a guest. Walking times are measured from the hotel.';
 }
-loadData().then(data=>{applyData(data);render();route();if(history.state?.y)window.scrollTo(0,history.state.y);}).catch(err=>{console.error('Failed to load guide data:',err);showLoadError();});
+Promise.all([loadData(),loadEvents()]).then(([data,events])=>{applyEvents(events);applyData(data);renderToday();render();route();if(history.state?.y)window.scrollTo(0,history.state.y);}).catch(err=>{console.error('Failed to load guide data:',err);showLoadError();});
 </script>
 </body>
 </html>

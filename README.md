@@ -14,6 +14,7 @@ A static website: plain HTML, CSS and JavaScript, hosted free on GitHub Pages, w
 | `data/venues.json` | Venue recommendations: 23 restaurants plus attractions, sports & events, entertainment, shopping, and parks & outdoors |
 | `data/taxonomy.json` | Cuisine groups, price levels and dining styles used by filters |
 | `data/hotel-hours.json` | Hours for the hotel's restaurants, bar, lounge, spa and other outlets |
+| `data/events.json` | Upcoming events at the stadiums, arena and theatres, refreshed from Ticketmaster by a scheduled job (see ADR 0003) |
 | `data/hotel.json` | The hotel the guide is centered on (origin for walking routes) |
 | `data/routes/` | One generated walking route per venue (from OpenStreetMap) |
 | `data/landmarks.json` | Landmarks the walking cards can point out |
@@ -54,5 +55,6 @@ npm run routes     # needs internet; computes missing routes (~1 minute each)
 
 - [ADR 0001: Venue data in static JSON files](docs/adr/0001-static-json-data.md)
 - [ADR 0002: Prebuilt walking routes from OpenStreetMap](docs/adr/0002-walking-routes-openstreetmap.md)
+- [ADR 0003: Upcoming events from Ticketmaster, refreshed by a scheduled job](docs/adr/0003-events-from-ticketmaster.md)
 
 Map data © OpenStreetMap contributors.

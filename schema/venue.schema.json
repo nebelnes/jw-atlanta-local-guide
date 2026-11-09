@@ -286,6 +286,14 @@
               "atlanta-original"
             ]
           }
+        },
+        "eventsUrl": {
+          "description": "Official (or ticketing) calendar of upcoming events at this venue, shown as a \"What's on\" link.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
         }
       }
     }

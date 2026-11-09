@@ -1,0 +1,42 @@
+name: Refresh events
+
+# Fetches the next 7 days of events at the guide's event venues from Ticketmaster
+# and commits data/events.json when it changes. Needs the TICKETMASTER_API_KEY
+# repository secret; without it the job does nothing.
+on:
+  schedule:
+    # 5:17 AM, 11:17 AM and 4:17 PM Atlanta time (UTC-5; an hour later in summer)
+    - cron: "17 10,16,21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-events
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch events
+        env:
+          TICKETMASTER_API_KEY: ${{ secrets.TICKETMASTER_API_KEY }}
+        run: node scripts/fetch-events.mjs
+      - name: Check the data
+        run: node scripts/validate-data.mjs
+      - name: Commit if changed
+        run: |
+          [ -f data/events.json ] || { echo "No events file (no key yet)."; exit 0; }
+          git add data/events.json
+          if git diff --cached --quiet; then echo "No changes."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Refresh events from Ticketmaster"
+          git push
