@@ -50,6 +50,10 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 .ev-when{flex:none;min-width:72px;font-weight:600;color:var(--green);font-variant-numeric:tabular-nums}.ev-at{color:var(--muted)}.today-src{margin:8px 0 0;font-size:12.5px;color:var(--muted)}
 .day a,.ev a,.today-src a{color:var(--ink);text-decoration-color:var(--line);text-underline-offset:3px}.day a:hover,.ev a:hover{text-decoration-color:currentColor}
 .linkish{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}.ev{margin:10px 0 4px;padding:10px 12px;background:#f7f4ef;border-radius:10px}.ev-h{display:block;font-size:13px;margin-bottom:4px}.ev ul{list-style:none;margin:0;padding:0;font-size:14px}.ev li{padding:3px 0}.ev .ev-when{display:inline-block;min-width:0;margin-right:6px}.ev-status{color:#8a2433;font-style:normal}
+.whatson-cta{display:flex;align-items:center;gap:14px;width:100%;margin:4px 0 22px;padding:18px 20px;border:0;border-radius:18px;background:var(--wine);color:#fff;text-align:left;cursor:pointer;box-shadow:var(--shadow);font:inherit}
+.whatson-cta:hover{filter:brightness(1.08)}.whatson-cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.cta-icon{font-size:30px;line-height:1}.cta-text{flex:1;min-width:0}.cta-text strong{display:block;font:500 24px/1.15 Georgia,serif}
+#whatsOnHint{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:3px;font-size:15px;line-height:1.35;opacity:.88}.cta-arrow{font-size:30px;opacity:.75}
 </style>
 </head>
 <body>
@@ -59,6 +63,7 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 <main>
 <section id="home" class="view active">
  <div class="hero"><h2>What is your guest looking for?</h2><p>Curated Atlanta recommendations, routes, and guest-ready information.</p></div>
+ <button class="whatson-cta" id="whatsOnBtn" type="button"><span class="cta-icon" aria-hidden="true">🎟</span><span class="cta-text"><strong>What's on</strong><span id="whatsOnHint">Games, concerts and shows near the hotel</span></span><span class="cta-arrow" aria-hidden="true">›</span></button>
  <div class="tiles">
   <button class="tile" data-view="restaurants" type="button"><span class="icon" aria-hidden="true">🍽️</span><strong>Restaurants</strong><span>Browse by region and cuisine</span></button>
   <button class="tile" data-view="attractions" type="button"><span class="icon" aria-hidden="true">🏛️</span><strong>Attractions</strong><span>Family, culture, and must-see places</span></button>
@@ -67,7 +72,7 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
   <button class="tile" data-view="shopping" type="button"><span class="icon" aria-hidden="true">🛍️</span><strong>Shopping</strong><span>Markets, malls, and boutiques</span></button>
   <button class="tile" data-view="outdoors" type="button"><span class="icon" aria-hidden="true">🌳</span><strong>Parks & Outdoors</strong><span>Green spaces and outdoor activities</span></button>
  </div>
- <div class="quick"><button class="pill" type="button" id="closestBtn">📍 Closest to the hotel</button><button class="pill" type="button" id="hoursBtn">🕘 Hotel hours</button><button class="pill" type="button" id="whatsOnBtn">🎟 What's on</button></div>
+ <div class="quick"><button class="pill" type="button" id="closestBtn">📍 Closest to the hotel</button><button class="pill" type="button" id="hoursBtn">🕘 Hotel hours</button></div>
 </section>
 
 <section id="restaurants" class="view">
@@ -212,6 +217,12 @@ function venueEvents(v){
 }
 // The What's on screen: the next days of events, today first, grouped by day.
 // Without fresh data it says so and links to each venue's own calendar instead.
+function setWhatsOnHint(todays){
+ const h=document.getElementById('whatsOnHint');
+ if(!todays.length){h.textContent='Games, concerts and shows near the hotel';return;}
+ const e=todays[0], more=todays.length-1;
+ h.textContent=`Today ${eventTime(e.time)} · ${e.name}${more?` (+${more} more)`:''}`;
+}
 function renderWhatsOn(){
  const list=document.getElementById('whatsOnList'), src=document.getElementById('whatsOnSrc'), today=hotelToday();
  const all=Object.values(upcoming).flat().sort((a,b)=>a.date.localeCompare(b.date)||(a.time??'99').localeCompare(b.time??'99'));
@@ -224,6 +235,7 @@ function renderWhatsOn(){
  list.innerHTML=days.map(d=>{const rows=all.filter(e=>e.date===d);
   return `<section class="day" aria-label="${eventDay(d)}"><h3>${eventDay(d)}</h3>${rows.length?`<ul>${rows.map(e=>{const v=venueById[e.venueId];
    return `<li><span class="ev-when">${eventTime(e.time)}</span><span>${eventName(e)}${eventStatus(e)} <span class="ev-at">at <button type="button" class="linkish" data-goto="${esc(v.category)}">${esc(v.name)}</button></span></span></li>`;}).join('')}</ul>`:'<p class="empty-note">Nothing listed today at these venues.</p>'}</section>`;}).join('');
+ setWhatsOnHint(all.filter(e=>e.date===today));
  src.innerHTML='Event times from <a href="https://www.ticketmaster.com" target="_blank" rel="noopener">Ticketmaster</a>. On big event nights, expect heavier traffic and busier restaurants near these venues.';
 }
 
