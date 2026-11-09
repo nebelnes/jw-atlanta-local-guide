@@ -23,6 +23,7 @@ Fields are marked **stable** (rarely changes once correct) or **volatile** (can 
 | `priceLevel` | `$`–`$$$$` or `null` | dining | volatile | Must exist in `taxonomy.priceLevels`. Required for dining venues, but use `null` when no source states a price; never estimate it, and don't copy Google's price level (its terms don't allow storing it). |
 | `diningStyle` | string | no | stable | Must exist in `taxonomy.diningStyles`. `Fine Dining` puts the restaurant on the Fine Dining tab. |
 | `occasions` | string list | no | stable | Concierge tags: `quick-bite`, `brunch`, `atlanta-original` (listed in `taxonomy.occasions`). Each is a filter on the Restaurants screen. This is judgment, not a fact from a source, so tag only places you'd actually send a guest for that. |
+| `eventsUrl` | URL or `null` | no | stable | The venue's official (or ticketing) calendar, shown as a "What's on" button. |
 | `michelin` | `{distinction, year}` | no | volatile | MICHELIN Guide distinction (`1 Star`, `2 Stars`, `3 Stars`, `Bib Gourmand`, `Recommended`) and guide year. Shown as a badge (filled for Stars, outlined for Bib Gourmand and Recommended). Starred restaurants always appear on the Fine Dining tab; Bib Gourmand and Recommended places appear there only if their `diningStyle` is `Fine Dining`. Re-check every fall when the guide is announced. |
 | `address` | string | yes | stable | Full street address as guests would type it into a map. |
 | `phone` | string or `null` | no | volatile | `null` = unknown; the page shows "Check official site". |
@@ -111,6 +112,17 @@ Shown on the **Hotel hours** screen (`index.html#hours`), each with an "Open now
 | `outlets[].notes[]` | Optional short lines, e.g. "Last call 30 minutes before the bar closes." |
 
 **Editing hours:** change the times and update `lastVerified`. A close of `24:00` means midnight. For something open past midnight, end the day at `24:00` and add the early hours to the next day as a separate period. `npm run validate` rejects a period that closes before it opens.
+
+## `data/events.json` and `data/event-venues.json`: upcoming events
+
+`data/event-venues.json` lists which venues get a live event list and the name to look them up by in Ticketmaster's Discovery API (`ticketmasterVenueId` can be filled in to skip the lookup). `scripts/fetch-events.mjs` fetches the next `days` days of events for those venues and writes `data/events.json`. It runs from `.github/workflows/events.yml` three times a day and needs the `TICKETMASTER_API_KEY` repository secret; without it, nothing changes. See [ADR 0003](adr/0003-events-from-ticketmaster.md).
+
+| Field | Notes |
+|---|---|
+| `generatedAt` | When the file was fetched. The page ignores the file if it is more than 36 hours old, so stale events are never shown. The committed starter file uses 1970 to mean "never fetched". |
+| `events[]` | `venueId`, `name`, `date` (venue-local `YYYY-MM-DD`), `time` (`HH:MM` or `null` if TBA), `status` (`scheduled`, `postponed`, `rescheduled`; cancelled events are dropped), `url` (Ticketmaster event page or `null`) |
+
+The page shows today's events in a **Today Downtown** box on the home screen and up to three upcoming events on each venue's card. Don't edit `data/events.json` by hand; the next refresh overwrites it.
 
 ## `data/landmarks.json`
 

@@ -1,0 +1,12 @@
+{
+  "description": "Which guide venues get a live event list, and how to find each one in Ticketmaster's Discovery API. scripts/fetch-events.mjs looks the venue up by name in Atlanta, GA. Set ticketmasterVenueId once it is known to skip the lookup.",
+  "days": 7,
+  "venues": [
+    { "venueId": "mercedes-benz-stadium", "search": "Mercedes-Benz Stadium", "ticketmasterVenueId": null },
+    { "venueId": "state-farm-arena", "search": "State Farm Arena", "ticketmasterVenueId": null },
+    { "venueId": "fox-theatre", "search": "Fox Theatre", "ticketmasterVenueId": null },
+    { "venueId": "the-tabernacle", "search": "Tabernacle", "ticketmasterVenueId": null },
+    { "venueId": "truist-park", "search": "Truist Park", "ticketmasterVenueId": null },
+    { "venueId": "bobby-dodd-stadium", "search": "Bobby Dodd Stadium", "ticketmasterVenueId": null }
+  ]
+}

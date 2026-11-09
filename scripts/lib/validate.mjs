@@ -20,7 +20,7 @@ const PLACEHOLDER = /^\s*check\b/i; // e.g. "Check current hours", "Check offici
  * @param {string} [options.today] ISO date used for "not in the future" checks (default: today, UTC)
  * @returns {{file: string, id?: string, field: string, message: string}[]}
  */
-export function validateData({ venuesDoc, taxonomy, hotel, schema, landmarksDoc, routes, routeSchema, hotelHours, hoursSchema }, { today } = {}) {
+export function validateData({ venuesDoc, taxonomy, hotel, schema, landmarksDoc, routes, routeSchema, hotelHours, hoursSchema, eventsDoc, eventsSchema, eventVenues }, { today } = {}) {
   const errors = [];
   const todayIso = today ?? new Date().toISOString().slice(0, 10);
 
@@ -103,6 +103,19 @@ export function validateData({ venuesDoc, taxonomy, hotel, schema, landmarksDoc,
   // Hotel outlet hours
   if (hotelHours !== undefined) {
     errors.push(...checkHotelHours(hotelHours, { hoursSchema, venueIds: new Set(venues.map((v) => v?.id)), todayIso }));
+  }
+
+  // Event venues config and the (optional) fetched events
+  const venueIds = new Set(venues.map((v) => v?.id));
+  (eventVenues?.venues ?? []).forEach((v, i) => {
+    if (!venueIds.has(v?.venueId)) errors.push({ file: "data/event-venues.json", field: `venues[${i}].venueId`, message: `no venue "${v?.venueId}" in data/venues.json` });
+  });
+  if (eventsDoc !== undefined) {
+    const file = "data/events.json";
+    if (eventsSchema) for (const e of checkSchema(eventsDoc, eventsSchema)) errors.push({ file, field: e.path, message: e.message });
+    (Array.isArray(eventsDoc?.events) ? eventsDoc.events : []).forEach((ev, i) => {
+      if (ev && !venueIds.has(ev.venueId)) errors.push({ file, field: `events[${i}].venueId`, message: `no venue "${ev.venueId}" in data/venues.json` });
+    });
   }
   return errors;
 }

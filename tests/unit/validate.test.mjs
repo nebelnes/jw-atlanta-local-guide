@@ -21,6 +21,8 @@ function data() {
     routeSchema: read("schema/route.schema.json"),
     hotelHours: read("data/hotel-hours.json"),
     hoursSchema: read("schema/hotel-hours.schema.json"),
+    eventVenues: read("data/event-venues.json"),
+    eventsSchema: read("schema/events.schema.json"),
     routes: Object.fromEntries(
       readdirSync(new URL("../../data/routes/", import.meta.url)).filter((f) => f.endsWith(".json")).map((f) => [f, read(`data/routes/${f}`)]),
     ),
@@ -193,4 +195,25 @@ test("hotel hours: an outlet needs periods or open24h, and ids are unique", () =
   const f = errors.filter((e) => e.file === "data/hotel-hours.json");
   assert.ok(f.some((e) => e.id === "jw-market" && /at least one period/.test(e.message)));
   assert.ok(f.some((e) => e.field === "id" && /duplicate/.test(e.message)));
+});
+
+const sampleEvents = () => ({
+  source: "Ticketmaster", timeZone: "America/New_York", generatedAt: "2026-11-09T10:17:00Z", days: 7,
+  events: [{ venueId: "state-farm-arena", name: "Hawks vs. Celtics", date: "2026-11-09", time: "19:30", status: "scheduled", url: "https://www.ticketmaster.com/event/1" }],
+});
+
+test("events file: valid sample passes; unknown venue, bad time and bad link are reported", () => {
+  assert.deepEqual(errorsAfter((d) => (d.eventsDoc = sampleEvents())).filter((e) => e.file === "data/events.json"), []);
+  const errors = errorsAfter((d) => {
+    d.eventsDoc = sampleEvents();
+    d.eventsDoc.events.push({ venueId: "nowhere", name: "X", date: "2026-11-09", time: "7:30 PM", status: "scheduled", url: "ticketmaster" });
+  }).filter((e) => e.file === "data/events.json");
+  assert.ok(errors.some((e) => /no venue "nowhere"/.test(e.message)));
+  assert.ok(errors.some((e) => e.field === "events[1].time"));
+  assert.ok(errors.some((e) => e.field === "events[1].url"));
+});
+
+test("event venues config must point at real venues", () => {
+  const errors = errorsAfter((d) => (d.eventVenues.venues[0].venueId = "ghost-arena"));
+  assert.ok(errors.some((e) => e.file === "data/event-venues.json" && /ghost-arena/.test(e.message)));
 });

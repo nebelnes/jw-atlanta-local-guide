@@ -914,7 +914,8 @@
         "lastVerified": "2026-11-05"
       },
       "walkable": true,
-      "driveMinutes": 3
+      "driveMinutes": 3,
+      "eventsUrl": "https://www.ticketmaster.com/mercedesbenz-stadium-billets-atlanta/venue/115751"
     },
     {
       "id": "state-farm-arena",
@@ -946,7 +947,8 @@
         "lastVerified": "2026-11-05"
       },
       "walkable": true,
-      "driveMinutes": 4
+      "driveMinutes": 4,
+      "eventsUrl": "https://www.statefarmarena.com/events"
     },
     {
       "id": "georgia-world-congress-center",
@@ -1009,7 +1011,8 @@
         "lastVerified": "2026-11-05"
       },
       "walkable": false,
-      "driveMinutes": 17
+      "driveMinutes": 17,
+      "eventsUrl": "https://www.ticketmaster.com/truist-park-tickets-atlanta/venue/115786"
     },
     {
       "id": "bobby-dodd-stadium",
@@ -1040,7 +1043,8 @@
         ],
         "lastVerified": "2026-11-05"
       },
-      "walkable": true
+      "walkable": true,
+      "eventsUrl": "https://ramblinwreck.com/sports/m-footbl/schedule/"
     },
     {
       "id": "the-tabernacle",
@@ -1071,7 +1075,8 @@
         ],
         "lastVerified": "2026-11-05"
       },
-      "walkable": true
+      "walkable": true,
+      "eventsUrl": "https://www.tabernacleatl.com/shows"
     },
     {
       "id": "fox-theatre",
@@ -1103,7 +1108,8 @@
         ],
         "lastVerified": "2026-11-05"
       },
-      "walkable": true
+      "walkable": true,
+      "eventsUrl": "https://www.foxtheatre.org/events"
     },
     {
       "id": "woodruff-arts-center",
@@ -1202,7 +1208,8 @@
         "lastVerified": "2026-11-05"
       },
       "walkable": false,
-      "driveMinutes": 4
+      "driveMinutes": 4,
+      "eventsUrl": "https://dadsgarage.com/shows"
     },
     {
       "id": "ponce-city-market",

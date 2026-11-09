@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nebelnes.github.io/jw-atlanta-local-guide/schema/events.schema.json",
+  "title": "Upcoming events",
+  "description": "data/events.json, written by scripts/fetch-events.mjs. Optional: the site works without it.",
+  "type": "object",
+  "required": ["source", "timeZone", "generatedAt", "days", "events"],
+  "additionalProperties": false,
+  "properties": {
+    "source": { "type": "string", "enum": ["Ticketmaster"] },
+    "sourceUrl": { "type": "string", "format": "uri" },
+    "timeZone": { "type": "string", "enum": ["America/New_York"] },
+    "generatedAt": { "type": "string", "minLength": 20 },
+    "days": { "type": "integer", "minimum": 1, "maximum": 31 },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["venueId", "name", "date", "time", "status", "url"],
+        "additionalProperties": false,
+        "properties": {
+          "venueId": { "type": "string" },
+          "name": { "type": "string", "minLength": 1 },
+          "date": { "type": "string", "format": "date" },
+          "time": { "type": ["string", "null"], "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$" },
+          "status": { "type": "string", "enum": ["scheduled", "postponed", "rescheduled"] },
+          "url": { "type": ["string", "null"], "format": "uri" }
+        }
+      }
+    }
+  }
+}
