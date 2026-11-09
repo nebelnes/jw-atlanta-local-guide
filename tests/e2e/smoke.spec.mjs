@@ -230,7 +230,7 @@ test("Closest to the hotel lists every restaurant, nearest first", async ({ page
 test("no dead controls: no rating filter, no placeholder Details button, empty sections marked", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator(".soon")).toHaveCount(0); // every section now has places
-  await expect(page.locator(".pill")).toHaveText(["📍 Closest to the hotel", "🕘 Hotel hours"]); // both work
+  await expect(page.locator(".pill")).toHaveText(["📍 Closest to the hotel", "🕘 Hotel hours", "🎟 What's on"]); // all work
   await openRestaurants(page, "American");
   await expect(page.locator("#rating")).toHaveCount(0);
   await expect(page.locator("#restaurantCards")).not.toContainText("Not loaded");
@@ -456,17 +456,20 @@ async function stubEvents(page, { ageHours = 1 } = {}) {
   await page.route("**/data/events.json", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(doc) }));
 }
 
-test("Today Downtown lists today's events on the home screen and links to the venue", async ({ page }) => {
+test("What's on button opens a screen of events, today first, and links to the venue", async ({ page }) => {
   const errors = trackErrors(page);
   await stubEvents(page);
   await page.goto("/");
-  const box = page.locator("#today");
-  await expect(box).toBeVisible();
-  await expect(box.locator("li")).toHaveCount(1); // tomorrow's show isn't "today"
-  await expect(box).toContainText("7:30 PM");
-  await expect(box).toContainText("Atlanta Hawks vs. Boston Celtics");
-  await expect(box.getByRole("link", { name: "Atlanta Hawks vs. Boston Celtics" })).toHaveAttribute("href", "https://www.ticketmaster.com/event/1");
-  await box.getByRole("button", { name: "State Farm Arena" }).click();
+  await expect(page.locator("#today")).toHaveCount(0); // nothing extra on the home screen
+  await page.getByRole("button", { name: "🎟 What's on" }).click();
+  await expect(page).toHaveURL(/#whatson$/);
+  const days = page.locator("#whatsOnList .day");
+  await expect(days.locator("h3")).toHaveText(["Today", "Tomorrow"]);
+  await expect(days.first()).toContainText("7:30 PM");
+  await expect(days.first().getByRole("link", { name: "Atlanta Hawks vs. Boston Celtics" })).toHaveAttribute("href", "https://www.ticketmaster.com/event/1");
+  await expect(days.nth(1)).toContainText("(postponed)");
+  await expect(page.locator("#whatsOnSrc")).toContainText("Ticketmaster");
+  await days.first().getByRole("button", { name: "State Farm Arena" }).click();
   await expect(page).toHaveURL(/#events$/);
   expect(errors).toEqual([]);
 });
@@ -482,8 +485,10 @@ test("venue cards show upcoming events and a What's on link", async ({ page }) =
 
 test("without a fresh events file nothing event-related is shown, but What's on links remain", async ({ page }) => {
   await stubEvents(page, { ageHours: 48 }); // stale
-  await page.goto("/");
-  await expect(page.locator("#today")).toBeHidden();
+  await page.goto("/#whatson");
+  await expect(page.locator("#whatsOnList")).toContainText("Live event listings aren't available right now");
+  await expect(page.locator("#whatsOnList").getByRole("link", { name: "Fox Theatre" })).toHaveAttribute("href", "https://www.foxtheatre.org/events");
+  await expect(page.locator("#whatsOnList .day")).toHaveCount(0);
   await page.goto("/#events");
   await expect(page.locator(".ev")).toHaveCount(0);
   await expect(page.locator('[data-venue="state-farm-arena"]').getByRole("link", { name: /What's on/ })).toHaveCount(1);
