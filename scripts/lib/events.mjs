@@ -24,6 +24,12 @@ export function toEvents(response, venueId) {
     }));
 }
 
+/** Drop listings that aren't events (tours, parking, premium add-ons): names matching any pattern. */
+export function excludeEvents(events, patterns = []) {
+  const res = patterns.map((p) => new RegExp(p, "i"));
+  return events.filter((e) => !res.some((r) => r.test(e.name)));
+}
+
 /** Sort by date, then time (all-day/TBA last within a day), then name. */
 export function sortEvents(events) {
   return [...events].sort((a, b) =>

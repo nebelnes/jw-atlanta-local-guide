@@ -1,7 +1,8 @@
 // Unit tests for scripts/lib/events.mjs (Ticketmaster responses → data/events.json records).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { pickVenue, toEvents, sortEvents } from "../../scripts/lib/events.mjs";
+import { pickVenue, toEvents, sortEvents, excludeEvents } from "../../scripts/lib/events.mjs";
+import { readFileSync } from "node:fs";
 
 const venues = { _embedded: { venues: [
   { id: "KovZ-elsewhere", name: "State Farm Arena", city: { name: "Somewhere" }, state: { stateCode: "TX" } },
@@ -31,4 +32,12 @@ test("sortEvents orders by date, then time, with TBA last", () => {
     { name: "A", date: "2026-11-10", time: "13:00" }, { name: "D", date: "2026-11-09", time: "12:00" },
   ]);
   assert.deepEqual(s.map((e) => e.name), ["D", "C", "A", "B"]);
+});
+
+test("tours, club add-ons and parking are filtered out using the patterns in data/event-venues.json", () => {
+  const { exclude } = JSON.parse(readFileSync(new URL("../../data/event-venues.json", import.meta.url), "utf8"));
+  const names = ["Tours: Truist Park", "Delta Sky360 Club Experience: Olivia Rodrigo", "Parking: Falcons vs. Saints",
+    "Olivia Rodrigo: The Unraveled Tour", "Atlanta Hawks vs. Los Angeles Lakers", "The R&B Tour - Starring Usher Raymond & Chris Brown"];
+  const kept = excludeEvents(names.map((name) => ({ name })), exclude).map((e) => e.name);
+  assert.deepEqual(kept, ["Olivia Rodrigo: The Unraveled Tour", "Atlanta Hawks vs. Los Angeles Lakers", "The R&B Tour - Starring Usher Raymond & Chris Brown"]);
 });

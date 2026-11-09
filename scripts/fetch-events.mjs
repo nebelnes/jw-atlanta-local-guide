@@ -8,7 +8,7 @@
 // "for reasonable periods" to provide the service; we refresh several times a day).
 
 import { readFile, writeFile } from "node:fs/promises";
-import { pickVenue, toEvents, sortEvents } from "./lib/events.mjs";
+import { pickVenue, toEvents, sortEvents, excludeEvents } from "./lib/events.mjs";
 
 const KEY = process.env.TICKETMASTER_API_KEY;
 const API = "https://app.ticketmaster.com/discovery/v2";
@@ -59,7 +59,7 @@ const doc = {
   timeZone: "America/New_York",
   generatedAt: new Date().toISOString(),
   days: config.days,
-  events: sortEvents(events),
+  events: sortEvents(excludeEvents(events, config.exclude)),
 };
 await writeFile(new URL("../data/events.json", import.meta.url), JSON.stringify(doc, null, 2) + "\n");
 console.log(`Wrote data/events.json: ${doc.events.length} events.`);

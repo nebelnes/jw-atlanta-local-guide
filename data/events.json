@@ -14,14 +14,6 @@
       "url": "https://www.ticketmaster.com/atlanta-hawks-vs-los-angeles-lakers-atlanta-georgia-11-09-2026/event/0E006505924C523E"
     },
     {
-      "venueId": "truist-park",
-      "name": "Tours: Truist Park",
-      "date": "2026-11-10",
-      "time": "14:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/tours-truist-park-atlanta-georgia-11-10-2026/event/0E00651195296381"
-    },
-    {
       "venueId": "state-farm-arena",
       "name": "The Neighbourhood: THE WOURLD TOUR",
       "date": "2026-11-10",
@@ -36,22 +28,6 @@
       "time": "19:30",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/the-rb-tour-starring-usher-raymond-atlanta-georgia-11-10-2026/event/0E006494E279F124"
-    },
-    {
-      "venueId": "truist-park",
-      "name": "Tours: Truist Park",
-      "date": "2026-11-11",
-      "time": "14:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/tours-truist-park-atlanta-georgia-11-11-2026/event/0E006511952E6392"
-    },
-    {
-      "venueId": "state-farm-arena",
-      "name": "Delta Sky360 Club Experience: Olivia Rodrigo",
-      "date": "2026-11-11",
-      "time": "19:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/delta-sky360-club-experience-olivia-rodrigo-atlanta-georgia-11-11-2026/event/0E0064A5F8127270"
     },
     {
       "venueId": "state-farm-arena",
@@ -78,22 +54,6 @@
       "url": "https://www.ticketmaster.com/the-rb-tour-starring-usher-raymond-atlanta-georgia-11-11-2026/event/0E006494E283F132"
     },
     {
-      "venueId": "truist-park",
-      "name": "Tours: Truist Park",
-      "date": "2026-11-12",
-      "time": "14:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/tours-truist-park-atlanta-georgia-11-12-2026/event/0E006511953263B4"
-    },
-    {
-      "venueId": "state-farm-arena",
-      "name": "Delta Sky360 Club Experience: Olivia Rodrigo",
-      "date": "2026-11-12",
-      "time": "19:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/delta-sky360-club-experience-olivia-rodrigo-atlanta-georgia-11-12-2026/event/0E0064A5F8157290"
-    },
-    {
       "venueId": "state-farm-arena",
       "name": "Olivia Rodrigo: The Unraveled Tour",
       "date": "2026-11-12",
@@ -110,14 +70,6 @@
       "url": "https://www.ticketmaster.com/judah-the-lion-atlanta-georgia-11-12-2026/event/0E0064CAEDCFA6E0"
     },
     {
-      "venueId": "truist-park",
-      "name": "Tours: Truist Park",
-      "date": "2026-11-13",
-      "time": "14:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/tours-truist-park-atlanta-georgia-11-13-2026/event/0E006511953763D6"
-    },
-    {
       "venueId": "state-farm-arena",
       "name": "The Red Clay Strays",
       "date": "2026-11-13",
@@ -132,14 +84,6 @@
       "time": "20:00",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/orville-peck-man-turned-mule-tour-atlanta-georgia-11-13-2026/event/0E0064EF97CB7162"
-    },
-    {
-      "venueId": "truist-park",
-      "name": "Tours: Truist Park",
-      "date": "2026-11-14",
-      "time": "14:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/tours-truist-park-atlanta-georgia-11-14-2026/event/0E006511953C63E8"
     },
     {
       "venueId": "fox-theatre",
@@ -164,14 +108,6 @@
       "time": "19:00",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-atlanta-georgia-11-15-2026/event/0E0064B3C4C2EDAC"
-    },
-    {
-      "venueId": "truist-park",
-      "name": "Tours: Truist Park",
-      "date": "2026-11-16",
-      "time": "14:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/tours-truist-park-atlanta-georgia-11-16-2026/event/0E006511954163FC"
     }
   ]
 }
