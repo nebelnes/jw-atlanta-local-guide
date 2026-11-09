@@ -230,8 +230,8 @@ test("Closest to the hotel lists every restaurant, nearest first", async ({ page
 test("no dead controls: no rating filter, no placeholder Details button, empty sections marked", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator(".soon")).toHaveCount(0); // every section now has places
-  await expect(page.locator(".pill")).toHaveText(["📍 Closest to the hotel", "🕘 Hotel hours"]); // both work
-  await expect(page.locator("#whatsOnBtn")).toBeVisible(); // the big What's on button above the tiles
+  await expect(page.locator(".top-actions .pill")).toHaveText([/^🎟 What's on/, "🕘 Hotel hours"]); // above the tiles (may add "· N today")
+  await expect(page.locator(".quick .pill")).toHaveText(["📍 Closest to the hotel"]);
   await openRestaurants(page, "American");
   await expect(page.locator("#rating")).toHaveCount(0);
   await expect(page.locator("#restaurantCards")).not.toContainText("Not loaded");
@@ -462,7 +462,7 @@ test("What's on button opens a screen of events, today first, and links to the v
   await stubEvents(page);
   await page.goto("/");
   await expect(page.locator("#today")).toHaveCount(0); // nothing extra on the home screen
-  await expect(page.locator("#whatsOnHint")).toHaveText("Today 7:30 PM · Atlanta Hawks vs. Boston Celtics");
+  await expect(page.locator("#whatsOnBtn")).toHaveText("🎟 What's on · 1 today");
   await page.locator("#whatsOnBtn").click();
   await expect(page).toHaveURL(/#whatson$/);
   const days = page.locator("#whatsOnList .day");
