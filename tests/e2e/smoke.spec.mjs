@@ -495,3 +495,13 @@ test("without a fresh events file nothing event-related is shown, but What's on 
   await expect(page.locator(".ev")).toHaveCount(0);
   await expect(page.locator('[data-venue="state-farm-arena"]').getByRole("link", { name: /What's on/ })).toHaveCount(1);
 });
+
+test("restaurant cards show a one-line teaser; opening the card shows the rest without repeating it", async ({ page }) => {
+  await page.goto("/#restaurants");
+  const card = page.locator('[data-venue="catch-12"]');
+  const teaser = card.locator(".vteaser");
+  await expect(teaser).toHaveText(/^Seafood, steaks and contemporary Southern dishes at the TWELVE hotel, with a skyline-view patio\.$/);
+  await card.locator(".vrow-btn").click();
+  await expect(card.locator(".vdetails .desc")).toHaveText(/^Casual dress/);
+  await expect(card.locator(".vdetails")).not.toContainText("skyline-view patio");
+});
