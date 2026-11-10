@@ -41,11 +41,14 @@ button,select,input{font:inherit}.shell{max-width:1180px;margin:auto;padding:18p
 @media (max-width:560px){.type-chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px 6px;padding:2px 16px 6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.type-chips .cuisine{flex:none;white-space:nowrap}.card-top .badge+.badge{margin:6px 0 0}}#restaurantNote{margin-top:22px}
 .occ-chips .cuisine{background:transparent;border-color:var(--gold);color:#6d5426}.occ-chips .cuisine.selected{background:var(--wine);border-color:var(--wine);color:#fff}.occ-chips{margin-bottom:2px}
 #restaurants .controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap;margin:8px 0 4px}#restaurants .control{display:flex;align-items:center;gap:8px;margin:0}#restaurants .control label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}#restaurants .control select{width:auto;padding:7px 30px 7px 10px;font-size:14px}#restaurants .count{margin:0;text-align:right}
-#restaurantCards{display:block;max-width:760px}.vrow{background:transparent;border:0;border-top:1px solid var(--line);border-radius:0;box-shadow:none;padding:0}.vrow:first-child{border-top:0}.vrow:last-child{border-bottom:1px solid var(--line)}
-.vrow-btn{display:block;width:100%;text-align:left;background:none;border:0;padding:13px 2px;color:var(--ink);cursor:pointer}.vrow-btn .card-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0}
-.vname{font:600 18px/1.25 Georgia,serif}.vrow-btn strong{font-size:14px;color:var(--green);white-space:nowrap}.vrow-btn strong.by-car{color:var(--muted)}.vsub{display:block;margin-top:3px;font-size:14px;color:var(--muted)}.vsub .badge{margin:0 0 0 8px;font-size:11px;padding:2px 7px;vertical-align:1px}
-.vrow-btn[aria-expanded="true"] .vname{color:var(--wine)}.vdetails{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 14px}.vdetails .desc{margin:0 0 8px}
-@media (max-width:560px){.vsub .badge{display:inline-block;margin:4px 0 0}.vname{font-size:17px}}
+#restaurantCards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0;align-items:start}.vrow{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:0;overflow:hidden;transition:.2s}.vrow:hover,.vrow:focus-within{border-color:var(--gold);transform:translateY(-1px)}
+.vrow-btn{display:block;width:100%;text-align:left;background:none;border:0;padding:16px 18px;color:var(--ink);cursor:pointer}.vrow-btn:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;border-radius:16px}.vrow-btn .card-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0}
+.vname{font:600 19px/1.25 Georgia,serif}.vrow-btn strong{font-size:14px;color:var(--green);white-space:nowrap}.vrow-btn strong.by-car{color:var(--muted)}.vsub{display:block;margin-top:3px;font-size:14px;color:var(--muted)}.vsub .badge{margin:0 0 0 8px;font-size:11px;padding:2px 7px;vertical-align:1px}
+.vteaser{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:8px;font-size:14.5px;line-height:1.45;color:#3b464b}
+.vrow-btn[aria-expanded="true"] .vname{color:var(--wine)}.vdetails{border-top:1px solid var(--line);padding:12px 18px 16px;background:#fcfaf7}.vdetails .desc{margin:0 0 8px}
+@media (prefers-reduced-motion:reduce){.vrow,.tile,.region-tile{transition:none}.vrow:hover{transform:none}}
+@media (max-width:760px){#restaurantCards{grid-template-columns:1fr}}
+@media (max-width:560px){.vsub .badge{display:inline-block;margin:4px 0 0}.vname{font-size:17px}.vrow-btn{padding:14px 15px}.vdetails{padding:10px 15px 14px}}
 .day{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:0 0 14px;max-width:760px}.day h3{font:500 20px Georgia,serif;margin:0 0 6px}.day ul,.cal-list{list-style:none;margin:0;padding:0}.day li{display:flex;gap:12px;padding:8px 0;border-top:1px solid var(--line)}.day li:first-child{border-top:0}.empty-note{color:var(--muted);margin:4px 0}.cal-list li{padding:8px 0;border-top:1px solid var(--line)}.cal-list a{color:var(--ink)}
 .ev-when{flex:none;min-width:72px;font-weight:600;color:var(--green);font-variant-numeric:tabular-nums}.ev-at{color:var(--muted)}.today-src{margin:8px 0 0;font-size:12.5px;color:var(--muted)}
 .day a,.ev a,.today-src a{color:var(--ink);text-decoration-color:var(--line);text-underline-offset:3px}.day a:hover,.ev a:hover{text-decoration-color:currentColor}
@@ -257,11 +260,13 @@ function venueCard(v){
  const {time,badge,meta,info,actions,mich,notes}=venueParts(v);
  return `<article class="card" data-venue="${esc(v.id)}"><div class="card-top"><div><h3>${esc(v.name)}</h3>${badge?`<span class="badge">${esc(badge)}</span>`:''}${mich}</div><strong>${time}</strong></div>${meta?`<div class="meta">${meta}</div>`:''}<p class="desc">${esc(v.summary)}</p><div class="meta">${info}</div>${notes}<div class="actions">${actions}</div></article>`;
 }
-// Restaurants: a compact row (name, time, cuisine, price) that opens to the full details on tap
+// Restaurants: a card button (name, time, cuisine, price, one-line teaser) that opens to the full details on tap
 function venueRow(v){
  const {time,info,actions,mich,notes,walk,drive}=venueParts(v);
  const id='d-'+v.id, sub=[v.cuisine,v.priceLevel].filter(Boolean).map(esc).join(' · ');
- return `<article class="card vrow" data-venue="${esc(v.id)}"><button type="button" class="vrow-btn" aria-expanded="false" aria-controls="${id}"><span class="card-top"><span class="vname">${esc(v.name)}</span><strong class="${drive&&!walk?'by-car':''}">${time}</strong></span><span class="vsub">${sub}${mich}</span></button><div class="vdetails" id="${id}" hidden><p class="desc">${esc(v.summary)}</p><div class="meta">${info}</div>${notes}<div class="actions">${actions}</div></div></article>`;
+ const [teaser,...restSummary]=(v.summary||'').split(/(?<=[.!?])\s+/); // first sentence on the card; the rest when it opens
+ const more=restSummary.join(' ');
+ return `<article class="card vrow" data-venue="${esc(v.id)}"><button type="button" class="vrow-btn" aria-expanded="false" aria-controls="${id}"><span class="card-top"><span class="vname">${esc(v.name)}</span><strong class="${drive&&!walk?'by-car':''}">${time}</strong></span><span class="vsub">${sub}${mich}</span>${teaser?`<span class="vteaser">${esc(teaser)}</span>`:''}</button><div class="vdetails" id="${id}" hidden>${more?`<p class="desc">${esc(more)}</p>`:''}<div class="meta">${info}</div>${notes}<div class="actions">${actions}</div></div></article>`;
 }
 function renderSection(cat,sub){
  const all=(byCategory[cat]||[]).slice().sort(byDistance);
