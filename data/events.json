@@ -2,25 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-10T17:55:39.216Z",
+  "generatedAt": "2026-11-11T01:17:12.783Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "state-farm-arena",
-      "name": "The Neighbourhood: THE WOURLD TOUR",
-      "date": "2026-11-10",
-      "time": "19:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/the-neighbourhood-the-wourld-tour-atlanta-georgia-11-10-2026/event/0E006444A7A0612C"
-    },
-    {
-      "venueId": "mercedes-benz-stadium",
-      "name": "The R&B Tour - Starring Usher Raymond & Chris Brown",
-      "date": "2026-11-10",
-      "time": "19:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/the-rb-tour-starring-usher-raymond-atlanta-georgia-11-10-2026/event/0E006494E279F124"
-    },
     {
       "venueId": "state-farm-arena",
       "name": "Olivia Rodrigo: The Unraveled Tour",
@@ -100,6 +84,30 @@
       "time": "19:00",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-atlanta-georgia-11-15-2026/event/0E0064B3C4C2EDAC"
+    },
+    {
+      "venueId": "the-tabernacle",
+      "name": "Periphery - A Pale White Dot US Tour",
+      "date": "2026-11-17",
+      "time": "18:30",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/periphery-a-pale-white-dot-us-atlanta-georgia-11-17-2026/event/0E0064B38CDC6973"
+    },
+    {
+      "venueId": "fox-theatre",
+      "name": "Death Becomes Her (Touring)",
+      "date": "2026-11-17",
+      "time": "19:30",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-vkd"
+    },
+    {
+      "venueId": "state-farm-arena",
+      "name": "Doja Cat - Tour Ma Vie World Tour",
+      "date": "2026-11-17",
+      "time": "19:30",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/doja-cat-tour-ma-vie-world-atlanta-georgia-11-17-2026/event/0E00633AC24B633B"
     }
   ]
 }
