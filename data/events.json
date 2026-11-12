@@ -2,33 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-11T17:55:49.227Z",
+  "generatedAt": "2026-11-12T02:18:36.267Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "state-farm-arena",
-      "name": "Olivia Rodrigo: The Unraveled Tour",
-      "date": "2026-11-11",
-      "time": "19:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/olivia-rodrigo-the-unraveled-tour-atlanta-georgia-11-11-2026/event/0E00649DBD3E870B"
-    },
-    {
-      "venueId": "the-tabernacle",
-      "name": "Whitechapel - 20th Anniversary Tour",
-      "date": "2026-11-11",
-      "time": "19:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/whitechapel-20th-anniversary-tour-atlanta-georgia-11-11-2026/event/0E0064ADDA0E9C02"
-    },
-    {
-      "venueId": "mercedes-benz-stadium",
-      "name": "The R&B Tour - Starring Usher Raymond & Chris Brown",
-      "date": "2026-11-11",
-      "time": "19:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/the-rb-tour-starring-usher-raymond-atlanta-georgia-11-11-2026/event/0E006494E283F132"
-    },
     {
       "venueId": "state-farm-arena",
       "name": "Olivia Rodrigo: The Unraveled Tour",
@@ -108,6 +84,22 @@
       "time": "19:30",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/doja-cat-tour-ma-vie-world-atlanta-georgia-11-17-2026/event/0E00633AC24B633B"
+    },
+    {
+      "venueId": "fox-theatre",
+      "name": "Death Becomes Her (Touring)",
+      "date": "2026-11-18",
+      "time": "19:30",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-vk7"
+    },
+    {
+      "venueId": "state-farm-arena",
+      "name": "Rod Wave: Don't Look Down Tour",
+      "date": "2026-11-18",
+      "time": "20:00",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/rod-wave-dont-look-down-tour-atlanta-georgia-11-18-2026/event/0E0064D01EE7C7F2"
     }
   ]
 }
