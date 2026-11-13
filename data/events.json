@@ -2,25 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-12T18:23:33.309Z",
+  "generatedAt": "2026-11-13T01:54:26.275Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "state-farm-arena",
-      "name": "Olivia Rodrigo: The Unraveled Tour",
-      "date": "2026-11-12",
-      "time": "19:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/olivia-rodrigo-the-unraveled-tour-atlanta-georgia-11-12-2026/event/0E00649DBD418718"
-    },
-    {
-      "venueId": "the-tabernacle",
-      "name": "Judah & the Lion",
-      "date": "2026-11-12",
-      "time": "19:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/judah-the-lion-atlanta-georgia-11-12-2026/event/0E0064CAEDCFA6E0"
-    },
     {
       "venueId": "state-farm-arena",
       "name": "The Red Clay Strays",
@@ -100,6 +84,22 @@
       "time": "20:00",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/rod-wave-dont-look-down-tour-atlanta-georgia-11-18-2026/event/0E0064D01EE7C7F2"
+    },
+    {
+      "venueId": "fox-theatre",
+      "name": "Death Becomes Her (Touring)",
+      "date": "2026-11-19",
+      "time": "19:30",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OSZk"
+    },
+    {
+      "venueId": "state-farm-arena",
+      "name": "Rod Wave: Don't Look Down Tour",
+      "date": "2026-11-19",
+      "time": "20:00",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/rod-wave-dont-look-down-tour-atlanta-georgia-11-19-2026/event/0E0064D6B1008B42"
     }
   ]
 }
