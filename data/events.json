@@ -2,25 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-13T17:50:34.916Z",
+  "generatedAt": "2026-11-14T01:28:54.044Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "state-farm-arena",
-      "name": "The Red Clay Strays",
-      "date": "2026-11-13",
-      "time": "18:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/the-red-clay-strays-atlanta-georgia-11-13-2026/event/0E00644BD38B9C21"
-    },
-    {
-      "venueId": "the-tabernacle",
-      "name": "Orville Peck - Man Turned Mule Tour",
-      "date": "2026-11-13",
-      "time": "20:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/orville-peck-man-turned-mule-tour-atlanta-georgia-11-13-2026/event/0E0064EF97CB7162"
-    },
     {
       "venueId": "fox-theatre",
       "name": "Mannheim Steamroller Christmas",
@@ -100,6 +84,30 @@
       "time": "20:00",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/rod-wave-dont-look-down-tour-atlanta-georgia-11-19-2026/event/0E0064D6B1008B42"
+    },
+    {
+      "venueId": "state-farm-arena",
+      "name": "Atlanta Hawks vs. Charlotte Hornets",
+      "date": "2026-11-20",
+      "time": "19:00",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/atlanta-hawks-vs-charlotte-hornets-atlanta-georgia-11-20-2026/event/0E00650592505247"
+    },
+    {
+      "venueId": "fox-theatre",
+      "name": "Death Becomes Her (Touring)",
+      "date": "2026-11-20",
+      "time": "19:30",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OSZ6"
+    },
+    {
+      "venueId": "the-tabernacle",
+      "name": "Imminence - Axis Mundi Tour: North America 2026",
+      "date": "2026-11-20",
+      "time": "19:30",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/imminence-axis-mundi-tour-north-america-atlanta-georgia-11-20-2026/event/0E0064C924C513D1"
     }
   ]
 }
