@@ -2,33 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-17T19:13:38.038Z",
+  "generatedAt": "2026-11-18T02:57:16.124Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "the-tabernacle",
-      "name": "Periphery - A Pale White Dot US Tour",
-      "date": "2026-11-17",
-      "time": "18:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/periphery-a-pale-white-dot-us-atlanta-georgia-11-17-2026/event/0E0064B38CDC6973"
-    },
-    {
-      "venueId": "fox-theatre",
-      "name": "Death Becomes Her (Touring)",
-      "date": "2026-11-17",
-      "time": "19:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-vkd"
-    },
-    {
-      "venueId": "state-farm-arena",
-      "name": "Doja Cat - Tour Ma Vie World Tour",
-      "date": "2026-11-17",
-      "time": "19:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/doja-cat-tour-ma-vie-world-atlanta-georgia-11-17-2026/event/0E00633AC24B633B"
-    },
     {
       "venueId": "fox-theatre",
       "name": "Death Becomes Her (Touring)",
@@ -86,6 +62,14 @@
       "url": "https://www.ticketmaster.com/imminence-axis-mundi-tour-north-america-atlanta-georgia-11-20-2026/event/0E0064C924C513D1"
     },
     {
+      "venueId": "bobby-dodd-stadium",
+      "name": "Georgia Tech Yellow Jackets Football vs. Wake Forest Demon Deacons Football",
+      "date": "2026-11-21",
+      "time": "12:00",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OVow"
+    },
+    {
       "venueId": "fox-theatre",
       "name": "Death Becomes Her (Touring)",
       "date": "2026-11-21",
@@ -108,14 +92,6 @@
       "time": "19:30",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OSZF"
-    },
-    {
-      "venueId": "bobby-dodd-stadium",
-      "name": "Georgia Tech Yellow Jackets Football vs. Wake Forest Demon Deacons Football",
-      "date": "2026-11-21",
-      "time": null,
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OVow"
     },
     {
       "venueId": "fox-theatre",
@@ -148,6 +124,14 @@
       "time": "20:00",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/blue-october-foiled-20th-anniversary-world-atlanta-georgia-11-22-2026/event/0E006470C3E3B192"
+    },
+    {
+      "venueId": "the-tabernacle",
+      "name": "Syd: Beard Tour",
+      "date": "2026-11-24",
+      "time": "20:00",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/syd-beard-tour-atlanta-georgia-11-24-2026/event/0E00652BADD4C700"
     }
   ]
 }
