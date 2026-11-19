@@ -2,25 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-18T18:54:00.150Z",
+  "generatedAt": "2026-11-19T02:38:17.920Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "fox-theatre",
-      "name": "Death Becomes Her (Touring)",
-      "date": "2026-11-18",
-      "time": "19:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-vk7"
-    },
-    {
-      "venueId": "state-farm-arena",
-      "name": "Rod Wave: Don't Look Down Tour",
-      "date": "2026-11-18",
-      "time": "20:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/rod-wave-dont-look-down-tour-atlanta-georgia-11-18-2026/event/0E0064D01EE7C7F2"
-    },
     {
       "venueId": "fox-theatre",
       "name": "Death Becomes Her (Touring)",
@@ -132,6 +116,22 @@
       "time": "20:00",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/syd-beard-tour-atlanta-georgia-11-24-2026/event/0E00652BADD4C700"
+    },
+    {
+      "venueId": "state-farm-arena",
+      "name": "RUSH: Fifty Something",
+      "date": "2026-11-25",
+      "time": "19:30",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/rush-fifty-something-atlanta-georgia-11-25-2026/event/0E006350D2B1924E"
+    },
+    {
+      "venueId": "the-tabernacle",
+      "name": "Belly Gang Kushington: Wtf Goin Tour",
+      "date": "2026-11-25",
+      "time": "20:00",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/belly-gang-kushington-wtf-goin-tour-atlanta-georgia-11-25-2026/event/0E006556FAF979EA"
     }
   ]
 }
