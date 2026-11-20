@@ -2,25 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-19T19:02:21.006Z",
+  "generatedAt": "2026-11-20T02:23:49.388Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "fox-theatre",
-      "name": "Death Becomes Her (Touring)",
-      "date": "2026-11-19",
-      "time": "19:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OSZk"
-    },
-    {
-      "venueId": "state-farm-arena",
-      "name": "Rod Wave: Don't Look Down Tour",
-      "date": "2026-11-19",
-      "time": "20:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/rod-wave-dont-look-down-tour-atlanta-georgia-11-19-2026/event/0E0064D6B1008B42"
-    },
     {
       "venueId": "state-farm-arena",
       "name": "Atlanta Hawks vs. Charlotte Hornets",
