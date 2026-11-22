@@ -2,33 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-21T17:36:51.670Z",
+  "generatedAt": "2026-11-22T01:24:10.173Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "fox-theatre",
-      "name": "Death Becomes Her (Touring)",
-      "date": "2026-11-21",
-      "time": "14:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OSZA"
-    },
-    {
-      "venueId": "the-tabernacle",
-      "name": "Manchester Orchestra - The Stuffing XVI",
-      "date": "2026-11-21",
-      "time": "19:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/manchester-orchestra-the-stuffing-xvi-atlanta-georgia-11-21-2026/event/0E006513BB91BD98"
-    },
-    {
-      "venueId": "fox-theatre",
-      "name": "Death Becomes Her (Touring)",
-      "date": "2026-11-21",
-      "time": "19:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OSZF"
-    },
     {
       "venueId": "fox-theatre",
       "name": "Death Becomes Her (Touring)",
@@ -108,6 +84,14 @@
       "time": "20:00",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7JKj9"
+    },
+    {
+      "venueId": "the-tabernacle",
+      "name": "Story Of The Year & Silverstein: CAMP SCREAMO TOUR",
+      "date": "2026-11-28",
+      "time": "19:00",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/story-of-the-year-silverstein-camp-atlanta-georgia-11-28-2026/event/0E0064F592547DFD"
     }
   ]
 }
