@@ -2,41 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-22T17:52:35.972Z",
+  "generatedAt": "2026-11-23T01:47:36.993Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "fox-theatre",
-      "name": "Death Becomes Her (Touring)",
-      "date": "2026-11-22",
-      "time": "13:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OSZo"
-    },
-    {
-      "venueId": "state-farm-arena",
-      "name": "Atlanta Hawks vs. Detroit Pistons",
-      "date": "2026-11-22",
-      "time": "15:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/atlanta-hawks-vs-detroit-pistons-atlanta-georgia-11-22-2026/event/0E0065059254524D"
-    },
-    {
-      "venueId": "fox-theatre",
-      "name": "Death Becomes Her (Touring)",
-      "date": "2026-11-22",
-      "time": "18:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OSZa"
-    },
-    {
-      "venueId": "the-tabernacle",
-      "name": "Blue October: Foiled 20th Anniversary World Tour",
-      "date": "2026-11-22",
-      "time": "20:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/blue-october-foiled-20th-anniversary-world-atlanta-georgia-11-22-2026/event/0E006470C3E3B192"
-    },
     {
       "venueId": "the-tabernacle",
       "name": "Syd: Beard Tour",
