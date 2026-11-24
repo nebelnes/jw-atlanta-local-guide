@@ -2,7 +2,7 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-23T22:05:14.983Z",
+  "generatedAt": "2026-11-24T20:41:39.498Z",
   "days": 7,
   "events": [
     {
@@ -60,6 +60,22 @@
       "time": "19:00",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/story-of-the-year-silverstein-camp-atlanta-georgia-11-28-2026/event/0E0064F592547DFD"
+    },
+    {
+      "venueId": "state-farm-arena",
+      "name": "Delta Sky360 Worlds Collide Social",
+      "date": "2026-11-30",
+      "time": "19:00",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/delta-sky360-worlds-collide-social-atlanta-georgia-11-30-2026/event/0E00653CE7F14494"
+    },
+    {
+      "venueId": "state-farm-arena",
+      "name": "Disney Descendants, ZOMBIES & Camp Rock: Worlds Collide Concert Tour",
+      "date": "2026-11-30",
+      "time": "19:00",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/disney-descendants-zombies-camp-rock-worlds-atlanta-georgia-11-30-2026/event/0E006469DE54C00D"
     }
   ]
 }
