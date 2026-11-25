@@ -2,17 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-24T20:41:39.498Z",
+  "generatedAt": "2026-11-25T04:17:14.168Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "the-tabernacle",
-      "name": "Syd: Beard Tour",
-      "date": "2026-11-24",
-      "time": "20:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/syd-beard-tour-atlanta-georgia-11-24-2026/event/0E00652BADD4C700"
-    },
     {
       "venueId": "state-farm-arena",
       "name": "RUSH: Fifty Something",
