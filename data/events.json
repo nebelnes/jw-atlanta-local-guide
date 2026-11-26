@@ -2,25 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-25T19:58:17.953Z",
+  "generatedAt": "2026-11-26T03:38:09.294Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "state-farm-arena",
-      "name": "RUSH: Fifty Something",
-      "date": "2026-11-25",
-      "time": "19:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/rush-fifty-something-atlanta-georgia-11-25-2026/event/0E006350D2B1924E"
-    },
-    {
-      "venueId": "the-tabernacle",
-      "name": "Belly Gang Kushington: Wtf Goin Tour",
-      "date": "2026-11-25",
-      "time": "20:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/belly-gang-kushington-wtf-goin-tour-atlanta-georgia-11-25-2026/event/0E006556FAF979EA"
-    },
     {
       "venueId": "state-farm-arena",
       "name": "RUSH: Fifty Something",
@@ -68,6 +52,14 @@
       "time": "19:00",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/disney-descendants-zombies-camp-rock-worlds-atlanta-georgia-11-30-2026/event/0E006469DE54C00D"
+    },
+    {
+      "venueId": "fox-theatre",
+      "name": "Twas the Night Before by Cirque du Soleil",
+      "date": "2026-12-02",
+      "time": "19:30",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-vkK"
     }
   ]
 }
