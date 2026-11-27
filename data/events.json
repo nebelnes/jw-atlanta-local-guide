@@ -2,7 +2,7 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-26T19:42:31.682Z",
+  "generatedAt": "2026-11-27T03:40:10.196Z",
   "days": 7,
   "events": [
     {
@@ -60,6 +60,22 @@
       "time": "19:30",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-vkK"
+    },
+    {
+      "venueId": "state-farm-arena",
+      "name": "Atlanta Hawks vs. Indiana Pacers",
+      "date": "2026-12-03",
+      "time": "19:00",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/atlanta-hawks-vs-indiana-pacers-atlanta-georgia-12-03-2026/event/0E00650592595254"
+    },
+    {
+      "venueId": "fox-theatre",
+      "name": "Twas the Night Before by Cirque du Soleil",
+      "date": "2026-12-03",
+      "time": "19:30",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-vkf"
     }
   ]
 }
