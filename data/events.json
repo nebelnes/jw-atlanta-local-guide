@@ -2,33 +2,9 @@
   "source": "Ticketmaster",
   "sourceUrl": "https://www.ticketmaster.com",
   "timeZone": "America/New_York",
-  "generatedAt": "2026-11-27T19:30:26.440Z",
+  "generatedAt": "2026-11-28T03:21:03.327Z",
   "days": 7,
   "events": [
-    {
-      "venueId": "state-farm-arena",
-      "name": "RUSH: Fifty Something",
-      "date": "2026-11-27",
-      "time": "19:30",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/rush-fifty-something-atlanta-georgia-11-27-2026/event/0E00635692B0686C"
-    },
-    {
-      "venueId": "the-tabernacle",
-      "name": "Blackberry Smoke: Holiday Homecoming",
-      "date": "2026-11-27",
-      "time": "20:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/blackberry-smoke-holiday-homecoming-atlanta-georgia-11-27-2026/event/0E0064C90EBCD5D3"
-    },
-    {
-      "venueId": "fox-theatre",
-      "name": "Stray Cats",
-      "date": "2026-11-27",
-      "time": "20:00",
-      "status": "scheduled",
-      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7JKj9"
-    },
     {
       "venueId": "the-tabernacle",
       "name": "Story Of The Year & Silverstein: CAMP SCREAMO TOUR",
@@ -76,6 +52,22 @@
       "time": "19:30",
       "status": "scheduled",
       "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-vkf"
+    },
+    {
+      "venueId": "fox-theatre",
+      "name": "Twas the Night Before by Cirque du Soleil",
+      "date": "2026-12-04",
+      "time": "19:30",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OwQ4"
+    },
+    {
+      "venueId": "state-farm-arena",
+      "name": "Lil Baby: Fresh Prince of Atlanta Birthday Celebration",
+      "date": "2026-12-04",
+      "time": "20:00",
+      "status": "scheduled",
+      "url": "https://www.ticketmaster.com/lil-baby-fresh-prince-of-atlanta-atlanta-georgia-12-04-2026/event/0E006546B512E89C"
     }
   ]
 }
